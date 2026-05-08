@@ -351,7 +351,7 @@ export default function HomePage() {
           <label className="c-lbl">Message <span className="c-sub">(required)</span></label>
           <textarea className="inp" rows={5} id="cMsg"></textarea>
         </div>
-        <div><button className="btn-solid" style={{ padding: '14px 44px' }} onClick={() => { (window as any).sendContact(); }}>Send Message</button></div>
+        <div><button id="cBtn" className="btn-solid" style={{ padding: '14px 44px' }} onClick={() => { (window as any).sendContact(); }}>Send Message</button></div>
         <div id="cStatus" style={{ marginTop: '12px', fontSize: '.85rem', display: 'none' }}></div>
       </div>
     </div>

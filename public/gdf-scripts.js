@@ -339,7 +339,7 @@ function teamSubmit(){var appId='TEAM'+Date.now().toString().slice(-6);document.
 function tv(id){var el=document.getElementById(id);return el?el.value.trim():'';}
 
 function sendContact(){
-  var fname=document.getElementById('cFname').value.trim(),lname=document.getElementById('cLname').value.trim(),email=document.getElementById('cEmail').value.trim(),msg=document.getElementById('cMsg').value.trim(),status=document.getElementById('cStatus'),btn=document.querySelector('[onclick="sendContact()"]');
+  var fname=document.getElementById('cFname').value.trim(),lname=document.getElementById('cLname').value.trim(),email=document.getElementById('cEmail').value.trim(),msg=document.getElementById('cMsg').value.trim(),status=document.getElementById('cStatus'),btn=document.getElementById('cBtn');
   if(!fname||!lname||!email||!msg){status.style.display='block';status.style.color='#c0392b';status.textContent='Please fill in all required fields.';return;}
   btn.disabled=true;btn.textContent='Sending…';status.style.display='none';
   emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
