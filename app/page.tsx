@@ -319,7 +319,10 @@ export default function HomePage() {
             <span style={{ width: '36px', height: '36px', background: 'var(--navy)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </span>
-            <a href="mailto:globaldiplomaticfoundaiton@gmail.com" style={{ color: 'var(--muted)', textDecoration: 'none' }}>globaldiplomaticfoundaiton@gmail.com</a>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <a href="mailto:info@gdfintl.org" style={{ color: 'var(--muted)', textDecoration: 'none' }}>info@gdfintl.org</a>
+              <a href="mailto:globaldiplomaticfoundaiton@gmail.com" style={{ color: 'var(--muted)', textDecoration: 'none' }}>globaldiplomaticfoundaiton@gmail.com</a>
+            </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <span style={{ width: '36px', height: '36px', background: 'var(--navy)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
@@ -372,7 +375,11 @@ export default function HomePage() {
     </div>
     <div className="ft-col">
       <div className="ft-col-title">Contact</div>
-      <p><a href="mailto:globaldiplomaticfoundaiton@gmail.com">globaldiplomaticfoundaiton@gmail.com</a><br />(+971) 56 297 1909</p>
+      <p>
+        <a href="mailto:info@gdfintl.org">info@gdfintl.org</a><br />
+        <a href="mailto:globaldiplomaticfoundaiton@gmail.com">globaldiplomaticfoundaiton@gmail.com</a><br />
+        (+971) 56 297 1909
+      </p>
     </div>
   </div>
 </footer>
