@@ -24,9 +24,9 @@ export default function HomePage() {
 <nav>
   <a href="#hero" className="nav-brand">
     <img src="images/LGC.png" />
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
       <span>Global Diplomatic Foundation</span>
-      <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
+      <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '4px' }}>INTERNATIONAL</span>
     </div>
   </a>
 <div className="nav-links">
@@ -392,9 +392,9 @@ export default function HomePage() {
   <div className="ov-nav">
     <a href="#" onClick={() => { (window as any).closeSvc(); return false; }} className="nav-brand">
       <img src="images/LGC.png" />
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
         <span>Global Diplomatic Foundation</span>
-        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '4px' }}>INTERNATIONAL</span>
       </div>
     </a>
     <div style={{ display: 'flex', gap: '32px' }}>
@@ -427,9 +427,9 @@ export default function HomePage() {
   <div className="ov-nav">
     <a href="#" onClick={() => { (window as any).closeTeamOverlay(); return false; }} className="nav-brand">
       <img src="images/LGC.png" />
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
         <span>Global Diplomatic Foundation</span>
-        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '4px' }}>INTERNATIONAL</span>
       </div>
     </a>
     <div style={{ display: 'flex', gap: '32px' }}>
