@@ -597,10 +597,6 @@ export default function HomePage() {
       <div id="payDetailsIndian" style={{ display: 'none' }}>
         <div className="pay-card" style={{ textAlign: 'center', background: '#fff', color: '#1a2740' }}>
           <div style={{ fontSize: '.7rem', letterSpacing: '.1em', textTransform: 'uppercase', opacity: '.6', marginBottom: '12px', color: '#666' }}>Scan to Pay (UPI)</div>
-          <div style={{ background: '#fff', padding: '15px', borderRadius: '12px', display: 'inline-block', marginBottom: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-            <img src="images/qr_code.png" alt="Payment QR Code" style={{ width: '200px', height: '200px', display: 'block' }} />
-          </div>
-          <div style={{ fontSize: '1.8rem', fontWeight: '700', marginBottom: '4px' }}>₹450 INR</div>
           <div style={{ fontSize: '.82rem', opacity: '.7', color: '#666' }}>GDF International — Delegate</div>
           <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid #eee' }}>
             <div style={{ fontSize: '.75rem', fontWeight: '600', color: '#999' }}>UPI ID</div>
