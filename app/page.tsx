@@ -597,6 +597,10 @@ export default function HomePage() {
       <div id="payDetailsIndian" style={{ display: 'none' }}>
         <div className="pay-card" style={{ textAlign: 'center', background: '#fff', color: '#1a2740' }}>
           <div style={{ fontSize: '.7rem', letterSpacing: '.1em', textTransform: 'uppercase', opacity: '.6', marginBottom: '12px', color: '#666' }}>Scan to Pay (UPI)</div>
+          <div style={{ background: '#fff', padding: '15px', borderRadius: '12px', display: 'inline-block', marginBottom: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+            <img src="images/qr_code.png" alt="Payment QR Code" style={{ width: '280px', height: '280px', display: 'block' }} />
+          </div>
+          <div style={{ fontSize: '1.8rem', fontWeight: '700', marginBottom: '4px' }}>₹500 INR</div>
           <div style={{ fontSize: '.82rem', opacity: '.7', color: '#666' }}>GDF International — Delegate</div>
           <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid #eee' }}>
             <div style={{ fontSize: '.75rem', fontWeight: '600', color: '#999' }}>UPI ID</div>
@@ -809,27 +813,40 @@ export default function HomePage() {
       </div>
     </div>
 
-    <div id="tStep3" style={{ display: 'none' }}>
-      <h3 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '4px' }}>Review & Confirm <span className="chair-tag">SECRETARIAT</span></h3>
-      <p style={{ fontSize: '.8rem', color: '#999', marginBottom: '20px' }}>Step 3 of 3 — Check your details before submitting</p>
-      <div id="tm_review" className="reg-summary" style={{ marginBottom: '20px' }}></div>
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <button className="btn-outline" style={{ flex: '1', padding: '12px' }} onClick={() => { (window as any).teamBack(3); }}>← Back</button>
-        <button className="btn-solid" style={{ flex: '1', padding: '12px' }} onClick={() => { (window as any).teamSubmit(); }}>Confirm & Submit →</button>
-      </div>
-    </div>
-
-    <div id="tStep4" style={{ display: 'none', textAlign: 'center', padding: '20px 0' }}>
+    <div id="tStep3" style={{ display: 'none', textAlign: 'center', padding: '20px 0' }}>
       <div className="confirm-icon">&#10003;</div>
       <h3 style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--navy)', marginBottom: '12px' }}>Application Submitted!</h3>
-      <p style={{ fontSize: '.9rem', color: 'var(--muted)', lineHeight: '1.75', marginBottom: '18px' }}>Thank you for applying to join GDF!<br />We will review your application and get back to you by email.</p>
-      <div id="tm_appid" className="reg-summary" style={{ marginBottom: '22px' }}></div>
+      <p style={{ fontSize: '.9rem', color: 'var(--muted)', lineHeight: '1.75', marginBottom: '24px' }}>Thank you for applying to the GDF Secretariat. Our team will review your application and get back to you soon.</p>
       <button className="btn-solid" style={{ padding: '12px 40px' }} onClick={() => { (window as any).closeTeamApp(); }}>Close</button>
     </div>
+
   </div>
 </div>
 
-{/* ========== ALL SCRIPTS ========== */}
+{/* ========== ADMIN / ADMISSION OVERLAY ========== */}
+<div style={{ display: 'none', position: 'fixed', inset: '0', zIndex: '10000', alignItems: 'center', justifyContent: 'center', background: '#080e24' }} id="admOverlay">
+  <div style={{ width: '100%', maxWidth: '400px', padding: '40px', textAlign: 'center' }}>
+    <h2 style={{ color: '#fff', marginBottom: '24px' }}>Admin Access</h2>
+    <input type="password" id="admPass" placeholder="Enter Password" style={{ width: '100%', padding: '12px', borderRadius: '4px', border: 'none', marginBottom: '16px' }} />
+    <button className="btn-solid" style={{ width: '100%' }} onClick={() => { (window as any).checkAdm(); }}>Login</button>
+    <button className="btn-outline" style={{ width: '100%', marginTop: '12px', borderColor: 'rgba(255,255,255,.2)', color: '#fff' }} onClick={() => { document.getElementById('admOverlay').style.display='none'; }}>Cancel</button>
+  </div>
+</div>
+
+<div style={{ display: 'none', position: 'fixed', inset: '0', zIndex: '10000', background: '#fff', overflowY: 'auto' }} id="admPortal">
+  <div style={{ padding: '40px' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+      <h2 style={{ fontSize: '1.8rem', fontWeight: '800' }}>GDF Admissions Portal</h2>
+      <button className="btn-outline" onClick={() => { document.getElementById('admPortal').style.display='none'; }}>Logout</button>
+    </div>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px', marginBottom: '40px' }}>
+      <div className="stat-card"><h3>Delegates</h3><div className="num" id="statD">0</div></div>
+      <div className="stat-card"><h3>Chairs</h3><div className="num" id="statC">0</div></div>
+      <div className="stat-card"><h3>Team</h3><div className="num" id="statT">0</div></div>
+    </div>
+    <div id="admContent"></div>
+  </div>
+</div>
 
     </>
   );
