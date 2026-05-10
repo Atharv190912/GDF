@@ -26,7 +26,7 @@ export default function HomePage() {
     <img src="images/LGC.png" />
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <span>Global Diplomatic Foundation</span>
-      <span style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>INTERNATIONAL</span>
+      <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
     </div>
   </a>
 <div className="nav-links">
@@ -394,7 +394,7 @@ export default function HomePage() {
       <img src="images/LGC.png" />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <span>Global Diplomatic Foundation</span>
-        <span style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>INTERNATIONAL</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
       </div>
     </a>
     <div style={{ display: 'flex', gap: '32px' }}>
@@ -429,7 +429,7 @@ export default function HomePage() {
       <img src="images/LGC.png" />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <span>Global Diplomatic Foundation</span>
-        <span style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>INTERNATIONAL</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
       </div>
     </a>
     <div style={{ display: 'flex', gap: '32px' }}>
