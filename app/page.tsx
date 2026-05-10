@@ -36,8 +36,8 @@ export default function HomePage() {
         strategy="afterInteractive"
         onLoad={() => { (window as any).emailjs?.init('cck5UdkTGd-58RJEU'); }}
       />
-      {/* Site scripts */}
-      <Script src="/gdf-scripts.js" strategy="afterInteractive" />
+      {/* Site scripts - v2 */}
+      <Script src={`/gdf-scripts.js?v=${Date.now()}`} strategy="afterInteractive" />
 
 {/* NAV */}
 <nav>
@@ -389,7 +389,7 @@ export default function HomePage() {
     <div>
       <div className="ft-brand" id="ftBrand">Global Diplomatic Foundation</div>
       <div className="ft-tag">Check Us Out!</div>
-      <button onClick={() => { (window as any).tryOpenAdm(); }} style={{ background: 'none', border: 'none', padding: '0', font: 'inherit', cursor: 'pointer', fontSize: '.72rem', color: 'rgba(255,255,255,.25)', display: 'inline-block', marginTop: '10px', letterSpacing: '0.08em' }}>Admin Access</button>
+      <button id="newAdminBtn" onClick={() => { if(typeof window !== 'undefined' && (window as any).launchAdminDashboard) (window as any).launchAdminDashboard(); }} style={{ background: 'none', border: 'none', padding: '0', font: 'inherit', cursor: 'pointer', fontSize: '.72rem', color: 'rgba(255,255,255,.35)', display: 'inline-block', marginTop: '12px', borderBottom: '1px solid rgba(255,255,255,.1)' }}>System Admin Portal</button>
     </div>
     <div className="ft-col">
       <div className="ft-col-title">Location</div>

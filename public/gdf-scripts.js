@@ -91,7 +91,7 @@ var COMMITTEES = [
   {id:'WHO',name:'WHO – World Health Organization',portfolios:['Sweden','Norway','Finland','Denmark','Canada','Netherlands','Germany','Rwanda','New Zealand','Philippines','United States','United Kingdom','France','Spain','Italy','Belgium','Switzerland','Austria','Ireland','Portugal','Australia','Japan','South Korea','Argentina','Chile','Colombia','Peru','Mexico','Brazil','South Africa','Kenya','Ghana','Nigeria','Ethiopia','Morocco','Tunisia','Egypt','Turkey','Indonesia','Malaysia','Thailand','Vietnam','Bangladesh','Pakistan','Nepal','Sri Lanka','United Arab Emirates','Qatar','Saudi Arabia']},
   {id:'UNODC',name:'UNODC – UN Office on Drugs & Crime',portfolios:['Mexico','Colombia','United States','Afghanistan','Myanmar','Peru','Bolivia','Brazil','Nigeria','South Africa','Pakistan','Iran','Turkey','Thailand','Laos','Cambodia','Vietnam','Philippines','Indonesia','Malaysia','India','Bangladesh','Sri Lanka','Nepal','Kenya','Ghana','Ethiopia','Morocco','Algeria','Tunisia','Egypt','Argentina','Chile','Paraguay','Uruguay','Canada','Australia','United Kingdom','France','Germany','Italy','Spain','Netherlands','Belgium','Poland','Ukraine','Romania','Greece','Portugal','Ireland']},
   {id:'AIPPM',name:'AIPPM – All India Political Parties Meet',portfolios:['Narendra Modi','Rahul Gandhi','Amit Shah','Arvind Kejriwal','Mamata Banerjee','Yogi Adityanath','Nitin Gadkari','Sonia Gandhi','Mallikarjun Kharge','Sharad Pawar','Uddhav Thackeray','Eknath Shinde','Devendra Fadnavis','Tejashwi Yadav','Nitish Kumar','Lalu Prasad Yadav','Hemant Soren','Bhupesh Baghel','Ashok Gehlot','Sachin Pilot','Pinarayi Vijayan','MK Stalin','K Chandrashekar Rao','Revanth Reddy','Jagan Mohan Reddy','Chandrababu Naidu','HD Kumaraswamy','Basavaraj Bommai','Manohar Lal Khattar','Bhagwant Mann','Pramod Sawant','Himanta Biswa Sarma','Conrad Sangma','Neiphiu Rio','Naveen Patnaik','Biplab Deb','Manik Saha','Farooq Abdullah','Omar Abdullah','Mehbooba Mufti','Anurag Thakur','Smriti Irani','Rajnath Singh','S Jaishankar','Piyush Goyal','Kiren Rijiju','Jyotiraditya Scindia','Ghulam Nabi Azad','Asaduddin Owaisi','Kapil Sibal']},
-  {id:'G20',name:'G20 Summit',portfolios:['Joe Biden','Xi Jinping','Narendra Modi','Rishi Sunak','Emmanuel Macron','Olaf Scholz','Giorgia Meloni','Justin Trudeau','Anthony Albanese','Luiz Inacio Lula da Silva','Cyril Ramaphosa','Mohammed bin Salman','Recep Tayyip Erdogan','Joko Widodo','Yoon Suk Yeol','Andres Manuel Lopez Obrador','Alberto Fernandez','Ursula von der Leyen','Kristalina Georgieva','Ajay Banga']},
+  {id:'G20',name:'G20 Summit',portfolios:['Joe Biden','Xi Jinping','Narendra Modi','Rishi Sunak','Emmanuel Macron','Olaf Scholz','Giorgia Meloni','Justin Trudeau','Anthony Albanese','Luiz Inacio Lula da Silva','Cyril Ramaphosa','Mohammed bin Salman','Recep Tayyip Erdogan','Joko Widodo','Yoon Suk Yeol','Andres Mexicano Lopez Obrador','Alberto Fernandez','Ursula von der Leyen','Kristalina Georgieva','Ajay Banga']},
   {id:'ICC',name:'ICC – International Cricket Council',portfolios:['India','Australia','England','South Africa','New Zealand','Pakistan','Sri Lanka','Bangladesh','Afghanistan','West Indies','Zimbabwe','Ireland','Netherlands','Scotland','United Arab Emirates','Nepal','Canada','Oman','Namibia','United States']},
   {id:'IPL',name:'IPL – Indian Premier League',portfolios:['Mumbai Indians','Chennai Super Kings','Royal Challengers Bangalore','Kolkata Knight Riders','Delhi Capitals','Rajasthan Royals','Sunrisers Hyderabad','Punjab Kings','Lucknow Super Giants','Gujarat Titans']},
   {id:'FIFA',name:'FIFA',portfolios:['Real Madrid','FC Barcelona','Manchester United','Manchester City','Liverpool FC','Chelsea FC','Arsenal FC','Bayern Munich','Borussia Dortmund','Paris Saint-Germain','Juventus','AC Milan','Inter Milan','Napoli','Atletico Madrid','Sevilla FC','Tottenham Hotspur','RB Leipzig','Ajax','PSV Eindhoven']},
@@ -170,17 +170,16 @@ function closeReg(){document.getElementById('regBackdrop').style.display='none';
 function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
 function closeSvc(){document.getElementById('svcOverlay').classList.remove('open');}
 
-function tryOpenAdm(){
-  console.log('Opening Admin Overlay...');
+function launchAdminDashboard(){
+  console.log('Launching Admin Dashboard (v2)...');
   const el = document.getElementById('admOverlay');
   if(el) {
     el.style.display='flex';
-    console.log('Admin Overlay set to flex');
   } else {
     console.error('admOverlay element not found!');
   }
 }
-window.tryOpenAdm = tryOpenAdm;
+window.launchAdminDashboard = launchAdminDashboard;
 
 function checkAdm(){
   const u = document.getElementById('admUser').value;
