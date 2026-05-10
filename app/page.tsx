@@ -116,7 +116,7 @@ export default function HomePage() {
       <div style={{ flex: '1', minWidth: '240px', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '8px' }}>
         <p style={{ fontSize: '.97rem', color: 'var(--muted)', lineHeight: '1.85', marginBottom: '28px' }}>Stay connected with us for the latest updates and announcements regarding our upcoming conferences and global events.</p>
         <div>
-          <button className="btn-sq-solid" onClick={() => { (window as any).openReg(); }} style={{ padding: '14px 40px', letterSpacing: '.1em' }}>REGISTER NOW!</button>
+          <button className="btn-sq-solid" onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }} style={{ padding: '14px 40px', letterSpacing: '.1em' }}>REGISTER NOW!</button>
         </div>
       </div>
 
@@ -414,7 +414,7 @@ export default function HomePage() {
         <div className="svc-price">20 AED</div>
         <p className="svc-desc">GDF International is a youth-focused platform dedicated to fostering diplomacy, leadership, and global engagement. Register below to secure your delegate spot.</p>
         <div style={{ marginTop: '24px', width: '100%', position: 'relative' }}>
-          <button className="btn-solid" style={{ width: '100%', padding: '15px' }} onClick={() => { (window as any).openReg(); }}>Register as Delegate</button>
+          <button className="btn-solid" style={{ width: '100%', padding: '15px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>Register as Delegate</button>
           <span style={{ position: 'absolute', top: '-12px', right: '10px', background: '#e74c3c', color: 'white', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Opening Soon · Apr 7</span>
         </div>
       </div>
@@ -478,12 +478,12 @@ export default function HomePage() {
       <h3 style={{ fontSize: '1.3rem', fontWeight: '700', marginBottom: '6px' }}>GDF Registration</h3>
       <p style={{ fontSize: '.85rem', color: 'var(--muted)', marginBottom: '4px' }}>How would you like to participate?</p>
       <div className="role-cards">
-        <div className="role-card" id="roleDelegate" onClick={() => { (window as any).selectRole('delegate'); }}>
+        <div className="role-card" id="roleDelegate" onClick={() => { if (typeof window !== 'undefined' && (window as any).selectRole) (window as any).selectRole('delegate'); }}>
           <div className="role-check">&#10003;</div>
           <div className="role-title">Delegate</div>
           <div className="role-desc">Represent a country or portfolio in a committee and debate global issues.</div>
         </div>
-        <div className="role-card" id="roleChair" onClick={() => { (window as any).selectRole('chair'); }}>
+        <div className="role-card" id="roleChair" onClick={() => { if (typeof window !== 'undefined' && (window as any).selectRole) (window as any).selectRole('chair'); }}>
           <div className="role-check">&#10003;</div>
           <div className="role-title">Chair</div>
           <div className="role-desc">Lead and moderate a committee as a Chairperson or Vice-Chair.</div>
@@ -560,7 +560,7 @@ export default function HomePage() {
           className="btn-outline" 
           style={{ flex: '1', padding: '10px', fontSize: '.85rem', background: 'var(--navy)', color: 'white' }}
           onClick={() => {
-            (window as any).setPaymentType('international');
+            if (typeof window !== 'undefined' && window.setPaymentType) window.setPaymentType('international');
           }}
         >
           International
@@ -570,7 +570,7 @@ export default function HomePage() {
           className="btn-outline" 
           style={{ flex: '1', padding: '10px', fontSize: '.85rem' }}
           onClick={() => {
-            (window as any).setPaymentType('indian');
+            if (typeof window !== 'undefined' && window.setPaymentType) window.setPaymentType('indian');
           }}
         >
           Indian (UPI)
