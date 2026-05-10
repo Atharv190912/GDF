@@ -390,6 +390,7 @@ export default function HomePage() {
       <div className="ft-brand" id="ftBrand">Global Diplomatic Foundation</div>
       <div className="ft-tag">Check Us Out!</div>
       <button id="newAdminBtn" onClick={() => { if(typeof window !== 'undefined' && (window as any).launchAdminDashboard) (window as any).launchAdminDashboard(); }} style={{ background: 'none', border: 'none', padding: '0', font: 'inherit', cursor: 'pointer', fontSize: '.72rem', color: 'rgba(255,255,255,.35)', display: 'inline-block', marginTop: '12px', borderBottom: '1px solid rgba(255,255,255,.1)' }}>System Admin Portal</button>
+      <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.1)', marginTop: '4px' }}>Build v2.4.1</div>
     </div>
     <div className="ft-col">
       <div className="ft-col-title">Location</div>
