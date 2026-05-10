@@ -552,32 +552,96 @@ export default function HomePage() {
     <div id="rStep4" style={{ display: 'none' }}>
       <h3 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '4px' }}>Payment</h3>
       <p style={{ fontSize: '.8rem', color: '#999', marginBottom: '20px' }}>Step 4 of 4 — Transfer your registration fee</p>
-      <div className="pay-card">
-        <div style={{ fontSize: '.7rem', letterSpacing: '.1em', textTransform: 'uppercase', opacity: '.6', marginBottom: '8px' }}>Registration Fee</div>
-        <div style={{ fontSize: '2.4rem', fontWeight: '700', marginBottom: '4px' }}>20 AED</div>
-        <div style={{ fontSize: '.82rem', opacity: '.7', marginBottom: '20px' }}>GDF International — Delegate</div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,.15)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <div className="pay-row"><span>Bank</span><span>HSBC</span></div>
-          <div className="pay-row"><span>Account Name</span><span>Sanskriti Johari</span></div>
-          <div className="pay-row"><span>IBAN</span><span style={{ fontFamily: 'monospace' }}>AE920200000041712654001</span></div>
-          <div className="pay-row"><span>Reference</span><span style={{ fontFamily: 'monospace' }} id="payRef2">GDF-REG</span></div>
+      
+      {/* Payment Type Selection */}
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+        <button 
+          id="payTypeIntl"
+          className="btn-outline" 
+          style={{ flex: '1', padding: '10px', fontSize: '.85rem', background: 'var(--navy)', color: 'white' }}
+          onClick={() => {
+            (window as any).setPaymentType('international');
+          }}
+        >
+          International
+        </button>
+        <button 
+          id="payTypeIndian"
+          className="btn-outline" 
+          style={{ flex: '1', padding: '10px', fontSize: '.85rem' }}
+          onClick={() => {
+            (window as any).setPaymentType('indian');
+          }}
+        >
+          Indian (UPI)
+        </button>
+      </div>
+
+      {/* International Payment Details */}
+      <div id="payDetailsIntl">
+        <div className="pay-card">
+          <div style={{ fontSize: '.7rem', letterSpacing: '.1em', textTransform: 'uppercase', opacity: '.6', marginBottom: '8px' }}>Registration Fee</div>
+          <div style={{ fontSize: '2.4rem', fontWeight: '700', marginBottom: '4px' }}>20 AED</div>
+          <div style={{ fontSize: '.82rem', opacity: '.7', marginBottom: '20px' }}>GDF International — Delegate</div>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,.15)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div className="pay-row"><span>Bank</span><span>HSBC</span></div>
+            <div className="pay-row"><span>Account Name</span><span>Sanskriti Johari</span></div>
+            <div className="pay-row"><span>IBAN</span><span style={{ fontFamily: 'monospace' }}>AE920200000041712654001</span></div>
+            <div className="pay-row"><span>Reference</span><span style={{ fontFamily: 'monospace' }} id="payRef2">GDF-REG</span></div>
+          </div>
+        </div>
+        <div className="warn-box">Use your full name as the payment reference. Fill in your transfer details below after paying.</div>
+      </div>
+
+      {/* Indian Payment Details (QR Code) */}
+      <div id="payDetailsIndian" style={{ display: 'none' }}>
+        <div className="pay-card" style={{ textAlign: 'center', background: '#fff', color: '#1a2740' }}>
+          <div style={{ fontSize: '.7rem', letterSpacing: '.1em', textTransform: 'uppercase', opacity: '.6', marginBottom: '12px', color: '#666' }}>Scan to Pay (UPI)</div>
+          <div style={{ background: '#fff', padding: '15px', borderRadius: '12px', display: 'inline-block', marginBottom: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+            <img src="images/qr_code.png" alt="Payment QR Code" style={{ width: '200px', height: '200px', display: 'block' }} />
+          </div>
+          <div style={{ fontSize: '1.8rem', fontWeight: '700', marginBottom: '4px' }}>₹450 INR</div>
+          <div style={{ fontSize: '.82rem', opacity: '.7', color: '#666' }}>GDF International — Delegate</div>
+          <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid #eee' }}>
+            <div style={{ fontSize: '.75rem', fontWeight: '600', color: '#999' }}>UPI ID</div>
+            <div style={{ fontFamily: 'monospace', fontSize: '1rem', color: '#1a2740' }}>8871742919@axl</div>
+          </div>
+        </div>
+        <div className="warn-box" style={{ background: 'rgba(0,0,0,0.05)', color: '#444', border: '1px solid #ddd' }}>Scan the QR code above or use the UPI ID. Fill in the transaction details below.</div>
+      </div>
+
+      <div className="mf">
+        <div className="m2">
+          <div>
+            <label className="ml" id="lbl_chname">Cardholder / Account Name <span className="req">*</span></label>
+            <input type="text" className="mi" id="d_chname" placeholder="Full Name" />
+          </div>
+          <div id="col_card4">
+            <label className="ml">Last 4 digits of card <span className="req">*</span></label>
+            <input type="text" className="mi" id="d_card4" placeholder="XXXX" maxLength={4} />
+          </div>
         </div>
       </div>
-      <div className="warn-box">Use your full name as the payment reference. Fill in your transfer details below after paying.</div>
-      <div className="mf"><div className="m2">
-        <div><label className="ml">Cardholder / Account Name <span className="req">*</span></label><input type="text" className="mi" id="d_chname" placeholder="Name on card" /></div>
-        <div><label className="ml">Last 4 digits of card <span className="req">*</span></label><input type="text" className="mi" id="d_card4" placeholder="XXXX" maxLength={4} /></div>
-      </div></div>
-      <div className="mf"><div className="m2">
-        <div><label className="ml">Bank Name <span className="req">*</span></label><input type="text" className="mi" id="d_bankname" placeholder="e.g. Emirates NBD" /></div>
-        <div><label className="ml">Transaction Reference <span className="req">*</span></label><input type="text" className="mi" id="d_transref" placeholder="e.g. TXN123456" /></div>
-      </div></div>
+      <div className="mf">
+        <div className="m2">
+          <div id="col_bankname">
+            <label className="ml">Bank Name <span className="req">*</span></label>
+            <input type="text" className="mi" id="d_bankname" placeholder="e.g. Emirates NBD" />
+          </div>
+          <div>
+            <label className="ml" id="lbl_transref">Transaction Reference <span className="req">*</span></label>
+            <input type="text" className="mi" id="d_transref" placeholder="e.g. TXN123456" />
+          </div>
+        </div>
+      </div>
       <div className="mf"><label className="ml">Transfer Date <span className="req">*</span></label><input type="date" className="mi" id="d_transdate" /></div>
+      
       <div style={{ display: 'flex', gap: '10px', marginTop: '8px' }}>
         <button className="btn-outline" style={{ flex: '1', padding: '13px' }} onClick={() => { (window as any).regBack(4); }}>← Back</button>
         <button className="btn-solid" style={{ flex: '1', padding: '13px' }} onClick={() => { (window as any).submitDelegate(); }}>Submit Application →</button>
       </div>
     </div>
+
 
     {/* ── CHAIR STEP 1: Personal Details ── */}
     <div id="cStep1" style={{ display: 'none' }}>

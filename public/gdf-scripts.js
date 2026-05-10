@@ -101,7 +101,44 @@ var COMMITTEES = [
   {id:'PM',name:'Pokémon (Crisis)',portfolios:['Ash Ketchum','Pikachu','Misty','Brock','Gary Oak','Professor Oak','Team Rocket','Jessie','James','Meowth','Charizard','Bulbasaur','Squirtle','Greninja','Lucario','Mewtwo','Mew']}
 ];
 
-var regRole='', selectedComms=[], chairPrefs=[];
+var regRole='', selectedComms=[], chairPrefs=[], currentPaymentType='international';
+
+function setPaymentType(type) {
+  currentPaymentType = type;
+  const intlBtn = document.getElementById('payTypeIntl');
+  const indBtn = document.getElementById('payTypeIndian');
+  const intlDetails = document.getElementById('payDetailsIntl');
+  const indDetails = document.getElementById('payDetailsIndian');
+  const colCard4 = document.getElementById('col_card4');
+  const colBank = document.getElementById('col_bankname');
+  const lblChName = document.getElementById('lbl_chname');
+  const lblTransRef = document.getElementById('lbl_transref');
+
+  if (type === 'international') {
+    intlBtn.style.background = 'var(--navy)';
+    intlBtn.style.color = 'white';
+    indBtn.style.background = 'transparent';
+    indBtn.style.color = 'inherit';
+    intlDetails.style.display = 'block';
+    indDetails.style.display = 'none';
+    colCard4.style.display = 'block';
+    colBank.style.display = 'block';
+    lblChName.innerHTML = 'Cardholder / Account Name <span class="req">*</span>';
+    lblTransRef.innerHTML = 'Transaction Reference <span class="req">*</span>';
+  } else {
+    indBtn.style.background = 'var(--navy)';
+    indBtn.style.color = 'white';
+    intlBtn.style.background = 'transparent';
+    intlBtn.style.color = 'inherit';
+    intlDetails.style.display = 'none';
+    indDetails.style.display = 'block';
+    colCard4.style.display = 'none';
+    colBank.style.display = 'none';
+    lblChName.innerHTML = 'Name <span class="req">*</span>';
+    lblTransRef.innerHTML = 'Transaction ID <span class="req">*</span>';
+  }
+}
+
 
 function openReg(){regRole='';selectedComms=[];chairPrefs=[];var rd=document.getElementById('roleDelegate'),rc=document.getElementById('roleChair'),re=document.getElementById('roleError');if(rd)rd.classList.remove('selected');if(rc)rc.classList.remove('selected');if(re)re.style.display='none';goRegStep(0);document.getElementById('regBackdrop').style.display='flex';}
 function closeReg(){document.getElementById('regBackdrop').style.display='none';}
@@ -306,7 +343,66 @@ function initCountryDropdown(selId){var sel=document.getElementById(selId);if(!s
 function onCountryChange(){var country=document.getElementById('d_country').value,cityEl=document.getElementById('d_city'),emirRow=document.getElementById('emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('d_emirate').value='';}
 function onChairCountryChange(){var country=document.getElementById('c_country').value,cityEl=document.getElementById('c_city'),emirRow=document.getElementById('c_emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('c_emirate').value='';}
 function v(id){var el=document.getElementById(id);return el?el.value.trim():'';}
-function submitDelegate(){if(!v('d_chname')||!v('d_card4')){alert('Please fill in all payment details.');return;}var app={id:'DEL'+Date.now().toString().slice(-6),fname:v('d_fn'),lname:v('d_ln'),age:v('d_age'),phone:v('d_ph'),email:v('d_em'),address:v('d_addr')+', '+v('d_emirate')+', '+v('d_country'),committees:selectedComms,portfolios:{},cardName:v('d_chname'),cardLast4:v('d_card4'),date:new Date().toLocaleString()};selectedComms.forEach(function(id){var el=document.getElementById('pf_'+id);app.portfolios[id]=el?el.value:'';});showConfirmation('Delegate',app.id,app.fname+' '+app.lname,app.email,'Committees: '+app.committees.join(', ')+'<br><b>Cardholder:</b> '+app.cardName+'<br><b>Last 4 Digits:</b> ****'+app.cardLast4);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Delegate Registration',app_id:app.id,full_name:app.fname+' '+app.lname,age:app.age,email:app.email,phone:app.phone,address:app.address,details:'Committees: '+app.committees.join(', '),extra:'Cardholder: '+app.cardName+' | Last 4: ****'+app.cardLast4+' | Portfolios: '+JSON.stringify(app.portfolios),date:app.date});}}
+function submitDelegate(){
+  if (currentPaymentType === 'international') {
+    if(!v('d_chname')||!v('d_card4')||!v('d_bankname')||!v('d_transref')||!v('d_transdate')){
+      alert('Please fill in all payment details.');
+      return;
+    }
+  } else {
+    if(!v('d_chname')||!v('d_transref')||!v('d_transdate')){
+      alert('Please fill in all payment details.');
+      return;
+    }
+  }
+
+  var app={
+    id:'DEL'+Date.now().toString().slice(-6),
+    fname:v('d_fn'),
+    lname:v('d_ln'),
+    age:v('d_age'),
+    phone:v('d_ph'),
+    email:v('d_em'),
+    address:v('d_addr')+', '+v('d_emirate')+', '+v('d_country'),
+    committees:selectedComms,
+    portfolios:{},
+    paymentType: currentPaymentType,
+    cardName:v('d_chname'),
+    cardLast4:v('d_card4'),
+    bankName:v('d_bankname'),
+    transRef:v('d_transref'),
+    transDate:v('d_transdate'),
+    date:new Date().toLocaleString()
+  };
+
+  selectedComms.forEach(function(id){
+    var el=document.getElementById('pf_'+id);
+    app.portfolios[id]=el?el.value:'';
+  });
+
+  var extraHtml = '<b>Method:</b> ' + (currentPaymentType === 'international' ? 'International' : 'Indian (UPI)') + 
+                  '<br><b>Name:</b> ' + app.cardName + 
+                  (currentPaymentType === 'international' ? ('<br><b>Last 4:</b> ****' + app.cardLast4 + '<br><b>Bank:</b> ' + app.bankName) : '') + 
+                  '<br><b>Ref/ID:</b> ' + app.transRef;
+
+  showConfirmation('Delegate',app.id,app.fname+' '+app.lname,app.email,'Committees: '+app.committees.join(', ')+'<br>'+extraHtml);
+  
+  if(typeof emailjs!=='undefined'){
+    emailjs.send('service_gdfinternational','template_h75i69m',{
+      app_type:'Delegate Registration',
+      app_id:app.id,
+      full_name:app.fname+' '+app.lname,
+      age:app.age,
+      email:app.email,
+      phone:app.phone,
+      address:app.address,
+      details:'Committees: '+app.committees.join(', '),
+      extra:'Method: '+currentPaymentType+' | Name: '+app.cardName+' | Ref: '+app.transRef+' | Bank: '+app.bankName+' | Last 4: '+app.cardLast4+' | Portfolios: '+JSON.stringify(app.portfolios),
+      date:app.date
+    });
+  }
+}
+
 function submitChair(){var prefNames=chairPrefs.map(function(id,i){var c=COMMITTEES.find(function(x){return x.id===id;});return(i+1)+'. '+(c?c.name:id);});var app={id:'CHAIR'+Date.now().toString().slice(-6),fname:v('c_fn'),lname:v('c_ln'),age:v('c_age'),phone:v('c_ph'),email:v('c_em'),address:v('c_addr')+', '+v('c_emirate')+', '+v('c_country'),school:v('c_school'),expLevel:v('c_exp_level'),conferences:v('c_conferences'),chairExp:v('c_chair_exp'),awards:v('c_awards'),skills:v('c_skills'),why:v('c_why'),prefs:prefNames,date:new Date().toLocaleString()};showConfirmation('Chair',app.id,app.fname+' '+app.lname,app.email,'Committee Preferences:<br>'+prefNames.join('<br>')+'<br><b>School:</b> '+app.school+'<br><b>Experience:</b> '+app.expLevel);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Chair Application',app_id:app.id,full_name:app.fname+' '+app.lname,age:app.age,email:app.email,phone:app.phone,address:app.address,details:'Committee Prefs: '+prefNames.join(' | ')+' | School: '+app.school+' | Level: '+app.expLevel,extra:'Awards: '+app.awards+' | Skills: '+app.skills+' | Why: '+app.why+' | Conferences: '+app.conferences,date:app.date});}}
 function showConfirmation(roleLabel,id,name,email,extraHtml){document.getElementById('confirmTitle').textContent=roleLabel+' Application Submitted!';document.getElementById('confirmMsg').innerHTML='Thank you! Our team will verify your payment within <strong>2–3 business days</strong>. '+(roleLabel==='Chair'?'We will review your chair application and notify you by email.':"Once approved you'll receive your committee and portfolio assignment by email.");document.getElementById('regSummary').innerHTML='<b>Application ID:</b> '+id+'<br><b>Name:</b> '+name+'<br><b>Email:</b> '+email+'<br><b>Role:</b> '+roleLabel+'<br>'+extraHtml+'<br><b>Status:</b> Submitted — confirmation email on its way.';goRegStep(5);}
 
