@@ -389,7 +389,7 @@ export default function HomePage() {
     <div>
       <div className="ft-brand" id="ftBrand">Global Diplomatic Foundation</div>
       <div className="ft-tag">Check Us Out!</div>
-      <a href="javascript:void(0)" onClick={() => { (window as any).tryOpenAdm(); }} style={{ fontSize: '.72rem', color: 'rgba(255,255,255,.25)', textDecoration: 'none', display: 'inline-block', marginTop: '10px', letterSpacing: '0.08em' }}>Admin Access</a>
+      <button onClick={() => { (window as any).tryOpenAdm(); }} style={{ background: 'none', border: 'none', padding: '0', font: 'inherit', cursor: 'pointer', fontSize: '.72rem', color: 'rgba(255,255,255,.25)', display: 'inline-block', marginTop: '10px', letterSpacing: '0.08em' }}>Admin Access</button>
     </div>
     <div className="ft-col">
       <div className="ft-col-title">Location</div>
