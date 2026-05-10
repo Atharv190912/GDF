@@ -850,7 +850,7 @@ export default function HomePage() {
     <input type="text" id="admUser" placeholder="Username" style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #ddd', marginBottom: '12px' }} />
     <input type="password" id="admPass" placeholder="Password" style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #ddd', marginBottom: '20px' }} />
     <button className="btn-solid" style={{ width: '100%', padding: '12px' }} onClick={() => { (window as any).checkAdm(); }}>Login to Dashboard</button>
-    <button className="btn-outline" style={{ width: '100%', marginTop: '12px', borderColor: '#ddd', color: '#666' }} onClick={() => { document.getElementById('admOverlay').style.display='none'; }}>Cancel</button>
+    <button className="btn-outline" style={{ width: '100%', marginTop: '12px', borderColor: '#ddd', color: '#666' }} onClick={() => { const el = document.getElementById('admOverlay'); if(el) el.style.display='none'; }}>Cancel</button>
   </div>
 </div>
 
@@ -859,7 +859,7 @@ export default function HomePage() {
   <div style={{ padding: '40px' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
       <h2 style={{ fontSize: '1.8rem', fontWeight: '800' }}>GDF Admissions Portal</h2>
-      <button className="btn-outline" onClick={() => { document.getElementById('admPortal').style.display='none'; }}>Logout</button>
+      <button className="btn-outline" onClick={() => { const el = document.getElementById('admPortal'); if(el) el.style.display='none'; }}>Logout</button>
     </div>
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px', marginBottom: '40px' }}>
       <div className="stat-card"><h3>Delegates</h3><div className="num" id="statD">0</div></div>
