@@ -5,9 +5,9 @@ export const metadata: Metadata = {
   title: 'Global Diplomatic Foundation',
   description: 'The Global Diplomatic Foundation fosters a culture of dialogue, leadership, and international cooperation.',
   icons: {
-    icon: '/images/img_002_3ea5b8ad.png',
-    shortcut: '/images/img_002_3ea5b8ad.png',
-    apple: '/images/img_002_3ea5b8ad.png',
+    icon: '/images/LGC.png',
+    shortcut: '/images/LGC.png',
+    apple: '/images/LGC.png',
   },
 }
 
