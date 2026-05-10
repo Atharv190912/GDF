@@ -169,8 +169,16 @@ window.openReg = openReg;
 function closeReg(){document.getElementById('regBackdrop').style.display='none';}
 function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
 function closeSvc(){document.getElementById('svcOverlay').classList.remove('open');}
+
 function tryOpenAdm(){
-  document.getElementById('admOverlay').style.display='flex';
+  console.log('Opening Admin Overlay...');
+  const el = document.getElementById('admOverlay');
+  if(el) {
+    el.style.display='flex';
+    console.log('Admin Overlay set to flex');
+  } else {
+    console.error('admOverlay element not found!');
+  }
 }
 window.tryOpenAdm = tryOpenAdm;
 
