@@ -114,33 +114,52 @@ function setPaymentType(type) {
   const lblChName = document.getElementById('lbl_chname');
   const lblTransRef = document.getElementById('lbl_transref');
 
+  if (!intlBtn || !indBtn || !intlDetails || !indDetails) return;
+
   if (type === 'international') {
-    intlBtn.style.background = 'var(--navy)';
+    intlBtn.style.background = '#1a2740'; // var(--navy)
     intlBtn.style.color = 'white';
     indBtn.style.background = 'transparent';
     indBtn.style.color = 'inherit';
     intlDetails.style.display = 'block';
     indDetails.style.display = 'none';
-    colCard4.style.display = 'block';
-    colBank.style.display = 'block';
-    lblChName.innerHTML = 'Cardholder / Account Name <span class="req">*</span>';
-    lblTransRef.innerHTML = 'Transaction Reference <span class="req">*</span>';
+    if (colCard4) colCard4.style.display = 'block';
+    if (colBank) colBank.style.display = 'block';
+    if (lblChName) lblChName.innerHTML = 'Cardholder / Account Name <span class="req">*</span>';
+    if (lblTransRef) lblTransRef.innerHTML = 'Transaction Reference <span class="req">*</span>';
   } else {
-    indBtn.style.background = 'var(--navy)';
+    indBtn.style.background = '#1a2740'; // var(--navy)
     indBtn.style.color = 'white';
     intlBtn.style.background = 'transparent';
     intlBtn.style.color = 'inherit';
     intlDetails.style.display = 'none';
     indDetails.style.display = 'block';
-    colCard4.style.display = 'none';
-    colBank.style.display = 'none';
-    lblChName.innerHTML = 'Name <span class="req">*</span>';
-    lblTransRef.innerHTML = 'Transaction ID <span class="req">*</span>';
+    if (colCard4) colCard4.style.display = 'none';
+    if (colBank) colBank.style.display = 'none';
+    if (lblChName) lblChName.innerHTML = 'Name <span class="req">*</span>';
+    if (lblTransRef) lblTransRef.innerHTML = 'Transaction ID <span class="req">*</span>';
   }
 }
+window.setPaymentType = setPaymentType;
 
 
-function openReg(){regRole='';selectedComms=[];chairPrefs=[];var rd=document.getElementById('roleDelegate'),rc=document.getElementById('roleChair'),re=document.getElementById('roleError');if(rd)rd.classList.remove('selected');if(rc)rc.classList.remove('selected');if(re)re.style.display='none';goRegStep(0);document.getElementById('regBackdrop').style.display='flex';}
+
+function openReg(){
+  regRole='';
+  selectedComms=[];
+  chairPrefs=[];
+  var rd=document.getElementById('roleDelegate'),rc=document.getElementById('roleChair'),re=document.getElementById('roleError');
+  if(rd)rd.classList.remove('selected');
+  if(rc)rc.classList.remove('selected');
+  if(re)re.style.display='none';
+  
+  // Reset payment type to international
+  if (typeof setPaymentType === 'function') setPaymentType('international');
+  
+  goRegStep(0);
+  document.getElementById('regBackdrop').style.display='flex';
+}
+
 function closeReg(){document.getElementById('regBackdrop').style.display='none';}
 function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
 function closeSvc(){document.getElementById('svcOverlay').classList.remove('open');}
