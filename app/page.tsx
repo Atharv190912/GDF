@@ -580,7 +580,7 @@ export default function HomePage() {
           className="btn-outline" 
           style={{ flex: '1', padding: '10px', fontSize: '.85rem', background: 'var(--navy)', color: 'white' }}
           onClick={() => {
-            if (typeof window !== 'undefined' && window.setPaymentType) window.setPaymentType('international');
+            if (typeof window !== 'undefined' && (window as any).setPaymentType) (window as any).setPaymentType('international');
           }}
         >
           International
@@ -590,7 +590,7 @@ export default function HomePage() {
           className="btn-outline" 
           style={{ flex: '1', padding: '10px', fontSize: '.85rem' }}
           onClick={() => {
-            if (typeof window !== 'undefined' && window.setPaymentType) window.setPaymentType('indian');
+            if (typeof window !== 'undefined' && (window as any).setPaymentType) (window as any).setPaymentType('indian');
           }}
         >
           Indian (UPI)
