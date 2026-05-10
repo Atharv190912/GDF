@@ -169,10 +169,98 @@ window.openReg = openReg;
 function closeReg(){document.getElementById('regBackdrop').style.display='none';}
 function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
 function closeSvc(){document.getElementById('svcOverlay').classList.remove('open');}
-function openTeamOverlay(){document.getElementById('teamOverlay').classList.add('open');}
-function closeTeamOverlay(){document.getElementById('teamOverlay').classList.remove('open');}
+function tryOpenAdm(){
+  document.getElementById('admOverlay').style.display='flex';
+}
+window.tryOpenAdm = tryOpenAdm;
 
-document.addEventListener('click',function(e){if(e.target.id==='regBackdrop')closeReg();if(e.target.id==='teamBackdrop')closeTeamApp();});
+function checkAdm(){
+  const u = document.getElementById('admUser').value;
+  const p = document.getElementById('admPass').value;
+  if(u === 'GDF@Atharv' && p === 'NASA@412919') {
+    document.getElementById('admOverlay').style.display='none';
+    openAdmPortal();
+  } else {
+    alert('Invalid credentials');
+  }
+}
+window.checkAdm = checkAdm;
+
+async function openAdmPortal() {
+  document.getElementById('admPortal').style.display = 'block';
+  const u = 'GDF@Atharv';
+  const p = 'NASA@412919';
+  
+  try {
+    const res = await fetch(`/api/applications?user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`);
+    const apps = await res.json();
+    renderAdmContent(apps);
+  } catch (err) {
+    console.error('Failed to load applications:', err);
+  }
+}
+
+function renderAdmContent(apps) {
+  const container = document.getElementById('admContent');
+  if(!container) return;
+  
+  // Stats
+  document.getElementById('statD').textContent = apps.filter(a => a.type === 'delegate').length;
+  document.getElementById('statC').textContent = apps.filter(a => a.type === 'chair').length;
+  document.getElementById('statT').textContent = apps.filter(a => a.type === 'team').length;
+
+  let html = `<table class="adm-table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Details</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>`;
+
+  apps.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp)).forEach(app => {
+    const details = app.type === 'delegate' 
+      ? `Comm: ${app.committees.map(c => c.id).join(', ')}` 
+      : app.type === 'chair' ? 'Chair App' : 'Team App';
+      
+    html += `<tr>
+      <td><span class="type-badge ${app.type}">${app.type}</span></td>
+      <td>${app.name}</td>
+      <td>${details}</td>
+      <td><span class="status-badge ${app.status}">${app.status}</span></td>
+      <td>
+        ${app.status === 'pending' ? `
+          <button class="btn-s btn-acc" onclick="updateAppStatus('${app.id}', 'accepted')">Accept</button>
+          <button class="btn-s btn-dec" onclick="updateAppStatus('${app.id}', 'declined')">Decline</button>
+        ` : ''}
+      </td>
+    </tr>`;
+  });
+
+  html += `</tbody></table>`;
+  container.innerHTML = html;
+}
+window.renderAdmContent = renderAdmContent;
+
+async function updateAppStatus(id, status) {
+  const u = 'GDF@Atharv';
+  const p = 'NASA@412919';
+  try {
+    const res = await fetch('/api/applications', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, status, user: u, pass: p })
+    });
+    if(res.ok) openAdmPortal();
+  } catch (err) {
+    alert('Update failed');
+  }
+}
+window.updateAppStatus = updateAppStatus;
+
 
 function selectRole(role){regRole=role;document.getElementById('roleDelegate').classList.toggle('selected',role==='delegate');document.getElementById('roleChair').classList.toggle('selected',role==='chair');document.getElementById('roleError').style.display='none';}
 
@@ -363,7 +451,41 @@ function updateChairCommCount() {
   el.className = 'comm-sel-count ' + (n === 0 ? 'c0' : n < 3 ? 'c-partial' : 'c-full');
 }
 
-function buildPortfolioFields(sel){document.getElementById('portfolioFields').innerHTML=sel.map(function(id){var c=COMMITTEES.find(function(x){return x.id===id;});if(!c)return'';return'<div><label class="ml" style="margin-bottom:6px;display:block;">'+c.name+'</label><select class="mi" id="pf_'+id+'"><option value="">-- Select portfolio --</option>'+c.portfolios.map(function(p){return'<option>'+p+'</option>';}).join('')+'</select></div>';}).join('');}
+async function buildPortfolioFields(comms) {
+  const container = document.getElementById('portfolioFields');
+  if(!container) return;
+  container.innerHTML = '<p style="font-size:.85rem;color:#666;">Checking portfolio availability...</p>';
+
+  // Fetch allotted portfolios from our local DB
+  let allotted = [];
+  try {
+    const res = await fetch('/api/applications?allotted=true');
+    const apps = await res.json();
+    // Get all accepted delegate portfolios
+    allotted = apps
+      .filter(a => a.type === 'delegate' && a.status === 'accepted')
+      .flatMap(a => a.committees.map(c => `${c.id}:${c.portfolio}`));
+  } catch (err) {
+    console.error('Failed to fetch allotted portfolios');
+  }
+
+  let html = '';
+  comms.forEach(c => {
+    html += `<div class="mf">
+      <label class="ml"><b>${c.name}</b> portfolio <span class="req">*</span></label>
+      <select class="mi" id="pf_${c.id}">
+        <option value="">Select a portfolio</option>
+        ${c.portfolios.map(p => {
+          const isTaken = allotted.includes(`${c.id}:${p}`);
+          return `<option value="${p}" ${isTaken ? 'disabled style="color:#ccc"' : ''}>${p}${isTaken ? ' (Allotted)' : ''}</option>`;
+        }).join('')}
+      </select>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+window.buildPortfolioFields = buildPortfolioFields;
+
 function initCountryDropdown(selId){var sel=document.getElementById(selId);if(!sel||sel.options.length>1)return;Object.keys(COUNTRY_DATA).sort().forEach(function(c){var opt=document.createElement('option');opt.value=c;opt.textContent=c;sel.appendChild(opt);});}
 function onCountryChange(){var country=document.getElementById('d_country').value,cityEl=document.getElementById('d_city'),emirRow=document.getElementById('emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('d_emirate').value='';}
 function onChairCountryChange(){var country=document.getElementById('c_country').value,cityEl=document.getElementById('c_city'),emirRow=document.getElementById('c_emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('c_emirate').value='';}
@@ -423,12 +545,80 @@ function submitDelegate(){
       address:app.address,
       details:'Committees: '+app.committees.join(', '),
       extra:'Method: '+currentPaymentType+' | Name: '+app.cardName+' | Ref: '+app.transRef+' | Bank: '+app.bankName+' | Last 4: '+app.cardLast4+' | Portfolios: '+JSON.stringify(app.portfolios),
-      date:app.date
-    });
-  }
+  const appData = {
+    type: 'delegate',
+    name: v('d_fn')+' '+v('d_ln'),
+    email: v('d_em'),
+    phone: v('d_ph'),
+    committees: selectedComms.map(c => {
+      const portfolio = document.getElementById('pf_'+c).value;
+      return { id: c, portfolio };
+    }),
+    payment: {
+      method: currentPaymentType,
+      ref: v('d_transref'),
+      date: v('d_transdate')
+    }
+  };
+  fetch('/api/applications', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(appData)
+  }).catch(err => console.error('DB Error:', err));
+  const extra = `Payment: ${currentPaymentType.toUpperCase()} | Ref: ${v('d_transref')} | Date: ${v('d_transdate')}`;
+  emailjs.send("service_x9r225b","template_h75i69m",{
+    to_name: "Admin",
+    from_name: v('d_fn')+' '+v('d_ln'),
+    from_email: v('d_em'),
+    role: "Delegate",
+    details: 'Committees: '+selectedComms.join(', '),
+    extra: extra
+  }).then(function(){
+    document.getElementById('confirmTitle').textContent='Application Submitted!';
+    document.getElementById('confirmMsg').textContent='Thank you for registering. We have received your application and will review your payment shortly.';
+    goRegStep(5);
+  }, function(err){
+    alert('Submission failed. Please try again.');
+  });
 }
 
-function submitChair(){var prefNames=chairPrefs.map(function(id,i){var c=COMMITTEES.find(function(x){return x.id===id;});return(i+1)+'. '+(c?c.name:id);});var app={id:'CHAIR'+Date.now().toString().slice(-6),fname:v('c_fn'),lname:v('c_ln'),age:v('c_age'),phone:v('c_ph'),email:v('c_em'),address:v('c_addr')+', '+v('c_emirate')+', '+v('c_country'),school:v('c_school'),expLevel:v('c_exp_level'),conferences:v('c_conferences'),chairExp:v('c_chair_exp'),awards:v('c_awards'),skills:v('c_skills'),why:v('c_why'),prefs:prefNames,date:new Date().toLocaleString()};showConfirmation('Chair',app.id,app.fname+' '+app.lname,app.email,'Committee Preferences:<br>'+prefNames.join('<br>')+'<br><b>School:</b> '+app.school+'<br><b>Experience:</b> '+app.expLevel);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Chair Application',app_id:app.id,full_name:app.fname+' '+app.lname,age:app.age,email:app.email,phone:app.phone,address:app.address,details:'Committee Prefs: '+prefNames.join(' | ')+' | School: '+app.school+' | Level: '+app.expLevel,extra:'Awards: '+app.awards+' | Skills: '+app.skills+' | Why: '+app.why+' | Conferences: '+app.conferences,date:app.date});}}
+function submitChair(){
+  const appData = {
+    type: 'chair',
+    name: v('c_fn')+' '+v('c_ln'),
+    email: v('c_em'),
+    prefs: chairPrefs,
+    school: v('c_school')
+  };
+  fetch('/api/applications', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(appData)
+  }).catch(err => console.error('DB Error:', err));
+  emailjs.send("service_x9r225b","template_h75i69m",{
+    to_name: "Admin",
+    from_name: v('c_fn')+' '+v('c_ln'),
+    from_email: v('c_em'),
+    role: "Chair",
+    details: 'Prefs: '+chairPrefs.join(', '),
+    extra: 'School: '+v('c_school')
+  }).then(function(){
+    document.getElementById('confirmTitle').textContent='Application Submitted!';
+    document.getElementById('confirmMsg').textContent='Thank you. We will review your chair application and notify you by email.';
+    goRegStep(5);
+  });
+}
+
+async function checkAllottedPortfolios(email) {
+  const res = await fetch(`/api/allotted?email=${email}`);
+  return await res.json();
+}
+
+function adminLogin() {
+  const p = prompt('Admin Password:');
+  if(p === 'admin123') localStorage.setItem('isAdmin', 'true');
+}
+
 function showConfirmation(roleLabel,id,name,email,extraHtml){document.getElementById('confirmTitle').textContent=roleLabel+' Application Submitted!';document.getElementById('confirmMsg').innerHTML='Thank you! Our team will verify your payment within <strong>2–3 business days</strong>. '+(roleLabel==='Chair'?'We will review your chair application and notify you by email.':"Once approved you'll receive your committee and portfolio assignment by email.");document.getElementById('regSummary').innerHTML='<b>Application ID:</b> '+id+'<br><b>Name:</b> '+name+'<br><b>Email:</b> '+email+'<br><b>Role:</b> '+roleLabel+'<br>'+extraHtml+'<br><b>Status:</b> Submitted — confirmation email on its way.';goRegStep(5);}
 
 function openTeamApp(){
@@ -456,7 +646,25 @@ function teamNext(step){
 function teamBack(step){if(step===2)goTeamStep(1);else if(step===3)goTeamStep(2);}
 function goTeamStep(n){['tStep1','tStep2','tStep3','tStep4'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});var el=document.getElementById('tStep'+n);if(el)el.style.display='block';updateTeamDots(n);var modal=document.querySelector('#teamBackdrop .modal');if(modal)modal.scrollTop=0;}
 function buildTeamReview(){var rows=[['Name',tv('tm_fn')+' '+tv('tm_ln')],['Age',tv('tm_age')],['Email',tv('tm_em')],['Phone',tv('tm_ph')],['Address',tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value],['Department',document.getElementById('tm_dept').value],['Experience',tv('tm_exp')],['Why GDF',tv('tm_why')]];document.getElementById('tm_review').innerHTML=rows.map(function(r){return'<b>'+r[0]+':</b> '+r[1]+'<br>';}).join('');}
-function teamSubmit(){var appId='TEAM'+Date.now().toString().slice(-6);document.getElementById('tm_appid').innerHTML='<b>Application ID:</b> '+appId+'<br><b>Name:</b> '+tv('tm_fn')+' '+tv('tm_ln')+'<br><b>Email:</b> '+tv('tm_em')+'<br><b>Department:</b> '+document.getElementById('tm_dept').value+'<br><b>Status:</b> Submitted — we\'ll be in touch soon.';goTeamStep(4);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Team Application',app_id:appId,full_name:tv('tm_fn')+' '+tv('tm_ln'),age:tv('tm_age'),email:tv('tm_em'),phone:tv('tm_ph'),address:tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value,details:'Department: '+document.getElementById('tm_dept').value,extra:'Experience: '+tv('tm_exp')+' | Why GDF: '+tv('tm_why'),date:new Date().toLocaleString()}).catch(function(err){console.warn('EmailJS:',err);});}}
+function teamSubmit(){
+  const appData = {
+    type: 'team',
+    name: tv('tm_fn')+' '+tv('tm_ln'),
+    age: tv('tm_age'),
+    email: tv('tm_em'),
+    phone: tv('tm_ph'),
+    address: tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value,
+    department: document.getElementById('tm_dept').value,
+    experience: tv('tm_exp'),
+    why: tv('tm_why')
+  };
+  fetch('/api/applications', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(appData)
+  }).catch(err => console.error('DB Error:', err));
+  
+  var appId='TEAM'+Date.now().toString().slice(-6);document.getElementById('tm_appid').innerHTML='<b>Application ID:</b> '+appId+'<br><b>Name:</b> '+tv('tm_fn')+' '+tv('tm_ln')+'<br><b>Email:</b> '+tv('tm_em')+'<br><b>Department:</b> '+document.getElementById('tm_dept').value+'<br><b>Status:</b> Submitted — we\'ll be in touch soon.';goTeamStep(4);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Team Application',app_id:appId,full_name:tv('tm_fn')+' '+tv('tm_ln'),age:tv('tm_age'),email:tv('tm_em'),phone:tv('tm_ph'),address:tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value,details:'Department: '+document.getElementById('tm_dept').value,extra:'Experience: '+tv('tm_exp')+' | Why GDF: '+tv('tm_why'),date:new Date().toLocaleString()}).catch(function(err){console.warn('EmailJS:',err);});}}
 function tv(id){var el=document.getElementById(id);return el?el.value.trim():'';}
 
 function sendContact(){
