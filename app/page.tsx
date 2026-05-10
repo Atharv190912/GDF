@@ -26,7 +26,7 @@ export default function HomePage() {
     <img src="images/LGC.png" />
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <span>Global Diplomatic Foundation</span>
-      <span style={{ color: 'var(--gold)', fontSize: '.45rem' }}>INTERNATIONAL</span>
+      <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
     </div>
   </a>
 <div className="nav-links">
@@ -323,7 +323,7 @@ export default function HomePage() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </span>
             <div>
-              <a href="mailto:info@gdfintl.org" style={{ color: 'var(--muted)', textDecoration: 'none' }}>info@gdfintl.org</a>
+              <a href="mailto:info@gdfintl.org" style={{ color: 'var(--muted)', textDecoration: 'none' }}>info@gdfintl.org</a><br />
               <a href="mailto:globaldiplomaticfoundaiton@gmail.com" style={{ color: 'var(--muted)', textDecoration: 'none' }}>globaldiplomaticfoundaiton@gmail.com</a>
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function HomePage() {
     <div className="ft-col">
       <div className="ft-col-title">Contact</div>
       <p>
-        <a href="mailto:info@gdfintl.org">info@gdfintl.org</a>
+        <a href="mailto:info@gdfintl.org">info@gdfintl.org</a><br />
         <a href="mailto:globaldiplomaticfoundaiton@gmail.com">globaldiplomaticfoundaiton@gmail.com</a><br />
         (+971) 56 297 1909
       </p>
@@ -394,7 +394,7 @@ export default function HomePage() {
       <img src="images/LGC.png" />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <span>Global Diplomatic Foundation</span>
-        <span style={{ color: 'var(--gold)', fontSize: '.45rem' }}>INTERNATIONAL</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
       </div>
     </a>
     <div style={{ display: 'flex', gap: '32px' }}>
@@ -429,7 +429,7 @@ export default function HomePage() {
       <img src="images/LGC.png" />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <span>Global Diplomatic Foundation</span>
-        <span style={{ color: 'var(--gold)', fontSize: '.45rem' }}>INTERNATIONAL</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '10px' }}>INTERNATIONAL</span>
       </div>
     </a>
     <div style={{ display: 'flex', gap: '32px' }}>
