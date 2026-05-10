@@ -1,6 +1,10 @@
 // EmailJS initialisation is handled in page.tsx onLoad
 
+// Global exports for React components
+window.setPaymentType = function(type) { if (typeof setPaymentType === 'function') setPaymentType(type); };
+
 let tCurrent = 0;
+
 
   function tGoTo(index) {
     const track = document.getElementById('tTrack');
@@ -154,11 +158,13 @@ function openReg(){
   if(re)re.style.display='none';
   
   // Reset payment type to international
-  if (typeof setPaymentType === 'function') setPaymentType('international');
+  if (typeof window.setPaymentType === 'function') window.setPaymentType('international');
   
   goRegStep(0);
   document.getElementById('regBackdrop').style.display='flex';
 }
+window.openReg = openReg;
+
 
 function closeReg(){document.getElementById('regBackdrop').style.display='none';}
 function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
