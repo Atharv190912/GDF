@@ -1,80 +1,60 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { query, initDb } from '@/lib/db';
 
-const DATA_PATH = path.join(process.cwd(), 'data', 'applications.json');
-
-function ensureFile() {
-  if (!fs.existsSync(DATA_PATH)) {
-    fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
-    fs.writeFileSync(DATA_PATH, JSON.stringify([]));
-  }
-}
+const ADM_USER = 'GDF@Atharv';
+const ADM_PASS = 'NASA@412919';
 
 export async function GET(request: Request) {
-  try {
-    ensureFile();
-    const { searchParams } = new URL(request.url);
-    const user = searchParams.get('user');
-    const pass = searchParams.get('pass');
-    const allottedOnly = searchParams.get('allotted') === 'true';
+  const { searchParams } = new URL(request.url);
+  const user = searchParams.get('user');
+  const pass = searchParams.get('pass');
+  const allotted = searchParams.get('allotted');
 
-    const data = fs.readFileSync(DATA_PATH, 'utf8');
-    const apps = JSON.parse(data);
+  await initDb();
 
-    if (allottedOnly) {
-      return NextResponse.json(apps);
-    }
-
-    if (user !== 'GDF@Atharv' || pass !== 'NASA@412919') {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
+  if (allotted === 'true') {
+    const rows = await query("SELECT * FROM applications WHERE status = 'accepted' AND type = 'delegate'") as any[];
+    const apps = rows.map(r => ({ ...JSON.parse(r.data), id: r.app_id, status: r.status, type: r.type }));
     return NextResponse.json(apps);
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch' }, { status: 500 });
   }
+
+  if (user !== ADM_USER || pass !== ADM_PASS) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const rows = await query("SELECT * FROM applications ORDER BY created_at DESC") as any[];
+  const apps = rows.map(r => ({ ...JSON.parse(r.data), id: r.app_id, status: r.status, type: r.type, timestamp: r.created_at }));
+  return NextResponse.json(apps);
 }
 
 export async function POST(request: Request) {
   try {
-    ensureFile();
-    const newApp = await request.json();
-    newApp.id = Date.now().toString();
-    newApp.status = 'pending';
-    newApp.timestamp = new Date().toISOString();
+    const body = await request.json();
+    await initDb();
+    
+    const appId = (body.type === 'delegate' ? 'DEL' : body.type === 'chair' ? 'CHA' : 'TEM') + Date.now().toString().slice(-6);
+    
+    // We store the whole body as JSON in the 'data' column, but extract some for easy sorting/filtering
+    const sql = "INSERT INTO applications (app_id, type, name, email, data) VALUES (?, ?, ?, ?, ?)";
+    await query(sql, [appId, body.type, body.name, body.email, JSON.stringify(body)]);
 
-    const data = fs.readFileSync(DATA_PATH, 'utf8');
-    const apps = JSON.parse(data);
-    apps.push(newApp);
-
-    fs.writeFileSync(DATA_PATH, JSON.stringify(apps, null, 2));
-    return NextResponse.json({ success: true, id: newApp.id });
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to save' }, { status: 500 });
+    return NextResponse.json({ success: true, id: appId });
+  } catch (err) {
+    console.error('Database Error:', err);
+    return NextResponse.json({ error: 'Failed to save application' }, { status: 500 });
   }
 }
 
 export async function PATCH(request: Request) {
-  try {
-    ensureFile();
-    const { id, status, user, pass } = await request.json();
+  const body = await request.json();
+  const { id, status, user, pass } = body;
 
-    if (user !== 'GDF@Atharv' || pass !== 'NASA@412919') {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const data = fs.readFileSync(DATA_PATH, 'utf8');
-    let apps = JSON.parse(data);
-    
-    apps = apps.map((app: any) => {
-      if (app.id === id) return { ...app, status };
-      return app;
-    });
-
-    fs.writeFileSync(DATA_PATH, JSON.stringify(apps, null, 2));
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to update' }, { status: 500 });
+  if (user !== ADM_USER || pass !== ADM_PASS) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+
+  await initDb();
+  await query("UPDATE applications SET status = ? WHERE app_id = ?", [status, id]);
+  
+  return NextResponse.json({ success: true });
 }
