@@ -11,6 +11,25 @@ export default function HomePage() {
 
   return (
     <>
+      <style>{`
+        .adm-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.85rem; color: #333; }
+        .adm-table th, .adm-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        .adm-table th { background: #f8f9fa; font-weight: 700; color: #1a2740; }
+        .type-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+        .type-badge.delegate { background: #e3f2fd; color: #1976d2; }
+        .type-badge.chair { background: #f3e5f5; color: #7b1fa2; }
+        .type-badge.team { background: #e8f5e9; color: #2e7d32; }
+        .status-badge { padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; }
+        .status-badge.pending { background: #fff3e0; color: #f57c00; }
+        .status-badge.accepted { background: #e8f5e9; color: #2e7d32; }
+        .status-badge.declined { background: #ffebee; color: #c62828; }
+        .btn-s { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 600; margin-right: 5px; }
+        .btn-acc { background: #2e7d32; color: #fff; }
+        .btn-dec { background: #c62828; color: #fff; }
+        .stat-card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center; }
+        .stat-card h3 { font-size: 0.8rem; color: #666; margin-bottom: 8px; }
+        .stat-card .num { font-size: 1.8rem; font-weight: 800; color: #1a2740; }
+      `}</style>
       {/* EmailJS */}
       <Script
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
@@ -370,7 +389,7 @@ export default function HomePage() {
     <div>
       <div className="ft-brand" id="ftBrand">Global Diplomatic Foundation</div>
       <div className="ft-tag">Check Us Out!</div>
-      <a href="#" onClick={() => { (window as any).tryOpenAdm(); }} style={{ fontSize: '.72rem', color: 'rgba(255,255,255,.25)', textDecoration: 'none', display: 'inline-block', marginTop: '10px', letterSpacing: '0.08em' }}>Admin Access</a>
+      <a href="javascript:void(0)" onClick={() => { (window as any).tryOpenAdm(); }} style={{ fontSize: '.72rem', color: 'rgba(255,255,255,.25)', textDecoration: 'none', display: 'inline-block', marginTop: '10px', letterSpacing: '0.08em' }}>Admin Access</a>
     </div>
     <div className="ft-col">
       <div className="ft-col-title">Location</div>
@@ -653,7 +672,7 @@ export default function HomePage() {
       </div></div>
       <div className="mf"><div className="m2">
         <div><label className="ml">Age <span className="req">*</span></label><input type="number" className="mi" id="c_age" min="14" max="35" placeholder="e.g. 19" /></div>
-        <div><label className="ml">Phone <span className="req">*</span></label><input type="tel" className="mi" id="c_ph" placeholder="+971 XX XXX XXXX" /></div>
+        <div><label className="ml">Phone <span className="req">*</span></label><input type="tel" className="mi" id="d_ph" placeholder="+971 XX XXX XXXX" /></div>
       </div></div>
       <div className="mf"><label className="ml">Email <span className="req">*</span></label><input type="email" className="mi" id="c_em" /></div>
       <div className="mf"><label className="ml">Address <span className="req">*</span></label>
@@ -824,14 +843,16 @@ export default function HomePage() {
 </div>
 
 {/* ========== ADMIN / ADMISSION OVERLAY ========== */}
-<div style={{ display: 'none', position: 'fixed', inset: '0', zIndex: '10000', alignItems: 'center', justifyContent: 'center', background: '#080e24' }} id="admOverlay">
-  <div style={{ width: '100%', maxWidth: '400px', padding: '40px', textAlign: 'center' }}>
-    <h2 style={{ color: '#fff', marginBottom: '24px' }}>Admin Access</h2>
-    <input type="password" id="admPass" placeholder="Enter Password" style={{ width: '100%', padding: '12px', borderRadius: '4px', border: 'none', marginBottom: '16px' }} />
-    <button className="btn-solid" style={{ width: '100%' }} onClick={() => { (window as any).checkAdm(); }}>Login</button>
-    <button className="btn-outline" style={{ width: '100%', marginTop: '12px', borderColor: 'rgba(255,255,255,.2)', color: '#fff' }} onClick={() => { document.getElementById('admOverlay').style.display='none'; }}>Cancel</button>
+<div style={{ display: 'none', position: 'fixed', inset: '0', zIndex: '10000', alignItems: 'center', justifyContent: 'center', background: 'rgba(8,14,36,.85)' }} id="admOverlay">
+  <div style={{ width: '100%', maxWidth: '400px', padding: '40px', textAlign: 'center', background: '#fff', borderRadius: '12px', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
+    <h2 style={{ color: '#1a2740', marginBottom: '24px', fontSize: '1.5rem', fontWeight: '800' }}>Admin Login</h2>
+    <input type="text" id="admUser" placeholder="Username" style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #ddd', marginBottom: '12px' }} />
+    <input type="password" id="admPass" placeholder="Password" style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #ddd', marginBottom: '20px' }} />
+    <button className="btn-solid" style={{ width: '100%', padding: '12px' }} onClick={() => { (window as any).checkAdm(); }}>Login to Dashboard</button>
+    <button className="btn-outline" style={{ width: '100%', marginTop: '12px', borderColor: '#ddd', color: '#666' }} onClick={() => { document.getElementById('admOverlay').style.display='none'; }}>Cancel</button>
   </div>
 </div>
+
 
 <div style={{ display: 'none', position: 'fixed', inset: '0', zIndex: '10000', background: '#fff', overflowY: 'auto' }} id="admPortal">
   <div style={{ padding: '40px' }}>
