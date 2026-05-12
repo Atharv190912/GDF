@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow: /_next/
+Sitemap: https://gdfintl.org/sitemap.xml
