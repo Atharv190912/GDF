@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Diplomatic Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("cck5UdkTGd-58RJEU");
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Josefin Sans',Arial,sans-serif;color:#1a1a1a;background:#fff;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;}
+
+:root{
+  --navy:#152444;
+  --navy2:#0e1b35;
+  --gold:#c9a84c;
+  --white:#fff;
+  --off:#f7f5f0;
+  --beige:#ede9e0;
+  --beige2:#e4dfd3;
+  --muted:#444;
+  --border:#d8d3c8;
+  --text:#1a1a1a;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:72px;background:var(--navy);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.nav-brand{display:flex;align-items:center;gap:13px;color:#fff;font-size:0.82rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;}
+.nav-brand img{height:44px;width:auto;}
+.nav-links{display:flex;align-items:center;gap:38px;}
+.nav-links a{color:rgba(255,255,255,0.75);font-size:0.72rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-socials{display:flex;align-items:center;gap:16px;}
+.nav-socials a{color:rgba(255,255,255,0.55);transition:color .2s;}
+.nav-socials a:hover{color:var(--gold);}
+
+/* ── HERO ── */
+#hero{
+  margin-top:72px;position:relative;
+  height:calc(100vh - 72px);min-height:580px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.hero-photo{position:absolute;inset:0;background:url('/images/img_001_f4f1400b.jpg') center/cover no-repeat;}
+.hero-dim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,46,.74) 0%,rgba(10,18,46,.5) 55%,rgba(10,18,46,.8) 100%);}
+.hero-body{position:relative;z-index:2;text-align:center;padding:0 20px;display:flex;flex-direction:column;align-items:center;}
+.hero-crest{width:clamp(110px,12vw,160px);height:auto;margin-bottom:28px;filter:drop-shadow(0 6px 28px rgba(0,0,0,.5));}
+.hero-body h1{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:clamp(2.6rem,5.5vw,5.5rem);
+  color:#fff;font-weight:300;line-height:1.1;
+  letter-spacing:0.12em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.hero-body p{
+  color:rgba(255,255,255,.78);font-size:0.88rem;
+  line-height:1.9;max-width:500px;margin-bottom:38px;
+  font-weight:300;letter-spacing:0.06em;
+}
+/* Square outline button */
+.btn-sq-outline{
+  display:inline-block;padding:14px 48px;
+  border:1.5px solid rgba(255,255,255,.75);
+  color:#fff;background:transparent;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.72rem;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;
+  transition:background .25s,border-color .25s,color .25s;
+}
+.btn-sq-outline:hover{background:#fff;border-color:#fff;color:var(--navy);}
+
+/* ── MARQUEE ── */
+.marquee-section{
+  background:var(--navy2);
+  padding:0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.marquee-track{
+  display:flex;white-space:nowrap;
+  animation:marqueeRun 22s linear infinite;
+}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-item{
+  display:inline-flex;align-items:center;gap:28px;
+  padding:22px 0;flex-shrink:0;
+}
+.marquee-text{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.72rem;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+  padding-right:48px;
+}
+.marquee-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;margin-right:20px;
+}
+@keyframes marqueeRun{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+
+/* ── SHARED ── */
+.wrap{max-width:1180px;margin:0 auto;}
+.pad{padding:96px 0;}
+.tag{font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.h2{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:clamp(2.4rem,4.5vw,4rem);
+  font-weight:300;letter-spacing:0.1em;text-transform:uppercase;
+  line-height:1.1;margin-bottom:20px;
+}
+.divider{width:40px;height:2px;background:var(--gold);margin-bottom:32px;}
+.body-text{font-size:0.85rem;line-height:1.95;color:var(--muted);font-weight:300;letter-spacing:0.04em;}
+
+/* Square solid button */
+.btn-sq-solid{
+  display:inline-block;padding:13px 38px;
+  background:var(--navy);color:#fff;border:1.5px solid var(--navy);
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.btn-sq-solid:hover{background:transparent;color:var(--navy);}
+
+/* Square outline button (dark) */
+.btn-sq-dark{
+  display:inline-block;padding:12px 36px;
+  border:1.5px solid var(--navy);color:var(--navy);background:transparent;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;
+  transition:all .2s;
+}
+.btn-sq-dark:hover{background:var(--navy);color:#fff;}
+
+/* Ghost button */
+.btn-ghost{
+  display:inline-block;padding:12px 36px;
+  border:1.5px solid rgba(255,255,255,.5);color:#fff;background:transparent;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.72rem;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
+  transition:all .2s;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+
+/* Ghost button */
+.btn-ghost{
+  display:inline-block;padding:12px 36px;
+  border:1.5px solid rgba(255,255,255,.5);color:#fff;background:transparent;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.72rem;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
+  transition:all .2s;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+
+/* ── CONFERENCES ── */
+#conferences{background:var(--beige);}
+.conf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;margin-top:44px;}
+.conf-card{background:#fff;cursor:pointer;transition:box-shadow .25s,transform .25s;box-shadow:0 2px 16px rgba(0,0,0,.06);}
+.conf-card:hover{box-shadow:0 14px 44px rgba(0,0,0,.12);transform:translateY(-4px);}
+.conf-thumb{position:relative;}
+.conf-thumb img{width:100%;height:200px;object-fit:cover;}
+.badge{position:absolute;top:12px;right:12px;background:var(--navy);color:#fff;font-family:'Josefin Sans',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;}
+.conf-info{padding:16px 18px 20px;}
+.conf-name{font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+.conf-price{font-size:0.8rem;color:var(--muted);letter-spacing:0.06em;}
+.conf-price s{color:#bbb;}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.side-img{width:100%;height:450px;object-fit:cover;}
+
+/* ── NEWS ── */
+#news{background:var(--white);}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
+.news-img{width:100%;height:200px;object-fit:cover;margin-bottom:16px;}
+.news-title{font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;line-height:1.4;}
+.news-text{font-size:0.8rem;line-height:1.85;color:var(--muted);letter-spacing:0.03em;font-weight:300;}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--beige2);padding:88px 56px;}
+.t-overflow{overflow:hidden;}
+.t-track{display:flex;transition:transform .42s ease;}
+.t-slide{flex-shrink:0;padding:52px 56px;}
+.t-slide blockquote{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:clamp(1.2rem,2.2vw,1.7rem);
+  line-height:1.55;color:var(--navy);font-weight:200;
+  letter-spacing:0.06em;
+  margin-bottom:22px;padding-left:24px;
+  border-left:3px solid var(--gold);
+}
+.t-slide cite{font-size:0.72rem;color:var(--muted);font-style:normal;letter-spacing:0.15em;text-transform:uppercase;padding-left:24px;}
+.t-nav{display:flex;justify-content:flex-end;gap:10px;margin-top:28px;}
+.t-btn{width:40px;height:40px;border:1.5px solid var(--border);background:transparent;cursor:pointer;font-size:0.95rem;color:var(--navy);transition:all .2s;}
+.t-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* ── TEAM ── */
+#team{background:var(--white);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.team-row2{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+.t-card{position:relative;overflow:hidden;background:var(--beige2);aspect-ratio:3/4;cursor:pointer;}
+.t-card img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s;filter:saturate(.75);}
+.t-card:hover img{transform:scale(1.04);filter:saturate(1);}
+.t-cap{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);padding:12px 16px;}
+.t-cap-name{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:3px;}
+.t-cap-role{font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;}
+.join-box{aspect-ratio:3/4;background:var(--beige);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border:1.5px solid var(--border);}
+.join-box p{font-size:0.72rem;color:var(--muted);text-align:center;letter-spacing:0.08em;text-transform:uppercase;padding:0 20px;line-height:1.7;}
+
+/* ── SOCIAL ── */
+#social{background:var(--navy);padding:0;overflow:hidden;}
+.social-wave-area{overflow:hidden;padding:64px 0 52px;}
+.soc-row{display:flex;align-items:center;justify-content:center;gap:16px;padding-bottom:64px;}
+.soc-btn{width:50px;height:50px;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:#fff;transition:all .2s;}
+.soc-btn:hover{background:var(--gold);border-color:var(--gold);}
+
+/* ── CONTACT ── */
+#contact{background:var(--beige);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.8fr;gap:80px;align-items:start;max-width:960px;margin:0 auto;}
+.c-left h2{font-family:'Josefin Sans',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;letter-spacing:0.1em;text-transform:uppercase;line-height:1.1;margin-bottom:20px;}
+.c-left p{font-size:0.82rem;line-height:1.95;color:var(--muted);font-weight:300;letter-spacing:0.04em;}
+.c-form{display:flex;flex-direction:column;gap:14px;}
+.c-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.c-group{display:flex;flex-direction:column;gap:5px;}
+.c-lbl{font-size:0.68rem;font-weight:600;color:var(--text);letter-spacing:0.12em;text-transform:uppercase;}
+.c-sub{font-size:0.65rem;color:#aaa;font-weight:400;letter-spacing:0.06em;}
+.inp{padding:12px 14px;border:1.5px solid var(--border);background:#fff;font-family:'Josefin Sans',sans-serif;font-size:0.82rem;color:var(--text);outline:none;transition:border-color .2s;width:100%;letter-spacing:0.04em;}
+.inp:focus{border-color:var(--navy);}
+textarea.inp{resize:vertical;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy2);padding:54px 56px 44px;border-top:2px solid var(--gold);}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1180px;margin:0 auto;}
+.ft-brand{font-family:'Josefin Sans',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#fff;margin-bottom:8px;cursor:default;}
+.ft-tag{font-size:0.72rem;color:rgba(255,255,255,.4);letter-spacing:0.1em;}
+.ft-col-title{font-size:0.65rem;font-weight:600;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:14px;}
+.ft-col p{font-size:0.8rem;color:rgba(255,255,255,.5);line-height:1.9;letter-spacing:0.04em;}
+.ft-col a{color:rgba(255,255,255,.5);}
+.ft-col a:hover{color:var(--gold);}
+
+/* ── SERVICE OVERLAY ── */
+.overlay{position:fixed;inset:0;z-index:2000;background:#fff;overflow-y:auto;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);}
+.overlay.open{transform:translateX(0);}
+.ov-nav{position:sticky;top:0;z-index:10;background:var(--navy);height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
+.ov-inner{padding:52px 56px 80px;max-width:1180px;margin:0 auto;}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;margin-top:28px;}
+.svc-img{background:var(--navy);display:flex;align-items:center;justify-content:center;min-height:400px;padding:44px;}
+.svc-img img{max-width:280px;width:80%;object-fit:contain;}
+.svc-h1{font-family:'Josefin Sans',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.svc-price{font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:22px;letter-spacing:0.06em;}
+.svc-desc{font-size:0.82rem;line-height:1.9;color:var(--muted);margin-bottom:24px;font-weight:300;letter-spacing:0.03em;}
+.svc-sel{width:100%;padding:12px 14px;border:1.5px solid var(--border);background:#fff;font-family:'Josefin Sans',sans-serif;font-size:0.82rem;outline:none;cursor:pointer;letter-spacing:0.06em;}
+.qty-row{display:flex;align-items:center;gap:10px;margin-top:20px;}
+.q-btn{width:36px;height:36px;border:1.5px solid var(--border);background:transparent;font-size:1rem;cursor:pointer;color:var(--navy);transition:all .2s;}
+.q-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+.q-val{font-size:0.9rem;font-weight:600;min-width:22px;text-align:center;letter-spacing:0.06em;}
+.crumb{font-size:0.72rem;color:var(--muted);margin-bottom:16px;letter-spacing:0.1em;text-transform:uppercase;}
+.crumb a{color:var(--navy);}
+
+/* ── MODAL ── */
+.backdrop{position:fixed;inset:0;z-index:3000;background:rgba(8,14,36,.65);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px;}
+.backdrop.show{display:flex;}
+.modal{background:#fff;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:40px 44px 36px;position:relative;}
+.modal-x{position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#bbb;line-height:1;}
+.modal-x:hover{color:#333;}
+.step-row{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:28px;}
+.s-dot{width:30px;height:30px;border:1.5px solid #ddd;background:#fff;color:#bbb;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;display:flex;align-items:center;justify-content:center;transition:all .3s;}
+.s-dot.on{border-color:var(--navy);background:var(--navy);color:#fff;}
+.s-dot.done{border-color:#43a047;background:#43a047;color:#fff;}
+.s-line{flex:1;height:1.5px;background:#eee;max-width:56px;transition:background .3s;}
+.s-line.done{background:#43a047;}
+.mf{margin-bottom:14px;}
+.ml{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:7px;color:#555;}
+.req{font-size:0.65rem;color:#bbb;font-weight:400;letter-spacing:0.06em;}
+.mi{width:100%;padding:11px 14px;border:1.5px solid var(--border);background:#fff;font-family:'Josefin Sans',sans-serif;font-size:0.82rem;color:var(--text);outline:none;transition:border-color .2s;letter-spacing:0.04em;}
+.mi:focus{border-color:var(--navy);}
+.m2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.m-ph{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;}
+.pay-card{background:var(--navy);padding:28px;color:#fff;margin-bottom:20px;}
+.pay-amount{font-size:2.4rem;font-weight:300;letter-spacing:0.08em;margin:8px 0 4px;}
+.pay-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;opacity:.6;}
+.pay-sub{font-size:0.78rem;opacity:.65;margin-bottom:20px;letter-spacing:0.06em;}
+.pay-row{display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+.pay-row:last-child{border:none;}
+.pay-key{opacity:.6;letter-spacing:0.06em;}
+.pay-val{font-weight:600;font-family:monospace;}
+.pay-warn{background:#fff8e1;border-left:3px solid #f9a825;padding:12px 14px;font-size:0.78rem;color:#7a5c00;margin-bottom:20px;letter-spacing:0.03em;}
+.confirm-icon{width:68px;height:68px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;}
+.confirm-summary{background:#f7f5f0;padding:16px 18px;font-size:0.8rem;line-height:2.1;color:#333;margin-bottom:24px;letter-spacing:0.04em;}
+
+/* ── ADMIN ── */
+.adm-back{position:fixed;inset:0;z-index:9999;background:#f1efe9;display:none;overflow-y:auto;}
+.adm-back.show{display:block !important;}
+.adm-nav{background:var(--navy);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:sticky;top:0;z-index:5;border-bottom:2px solid var(--gold);}
+.adm-body{padding:40px;max-width:1120px;margin:0 auto;}
+.adm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;}
+.adm-stat{background:#fff;padding:22px 24px;}
+.adm-num{font-size:1.9rem;font-weight:300;color:var(--navy);letter-spacing:0.06em;}
+.adm-lbl{font-size:0.68rem;color:#999;margin-top:4px;letter-spacing:0.1em;text-transform:uppercase;}
+.adm-table-wrap{background:#fff;}
+.adm-table-head{padding:16px 22px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+th{padding:12px 16px;text-align:left;font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:#999;background:#fafafa;}
+td{padding:14px 16px;border-bottom:1px solid #f2f2f2;}
+.bp{background:#fff3e0;color:#e65100;padding:3px 10px;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;}
+.bc{background:#e3f2fd;color:#1565c0;padding:3px 10px;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;}
+.ba{background:#e8f5e9;color:#2e7d32;padding:3px 10px;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;}
+.adm-empty{text-align:center;padding:60px 20px;color:#bbb;letter-spacing:0.08em;font-size:0.8rem;}
+z-
+@media(max-width:920px){
+  nav{padding:0 20px;height:64px;}
+  .nav-links{display:none;}
+  #hero{margin-top:64px;}
+  .pad{padding:60px 24px;}
+  .two-col,.svc-grid,.contact-grid{grid-template-columns:1fr;}
+  .news-grid,.team-grid,.team-row2{grid-template-columns:1fr;}
+  #testimonials{padding:60px 24px;}
+  footer{padding:44px 24px 36px;}
+  .ft-grid{grid-template-columns:1fr;}
+  .modal{padding:26px 20px 22px;max-width:100%;}
+  .ov-inner{padding:30px 24px 60px;}
+  .ov-nav{padding:0 20px;}
+  .adm-body{padding:20px 16px;}
+  .adm-stats{grid-template-columns:1fr 1fr;}
+}
+
+/* ── ROLE CARDS ── */
+.role-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin: 18px 0 20px;
+}
+
+.role-card {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid var(--navy);
+  background: #fff;
+  cursor: pointer;
+  transition: all .25s ease;
+  user-select: none;
+  text-align: center;
+}
+
+.role-card:hover {
+  background: var(--beige);
+}
+
+.role-card.selected {
+  background: var(--navy);
+  border-color: var(--gold);
+}
+
+.role-card.selected .role-title {
+  color: #fff;
+}
+
+.role-card.selected .role-desc {
+  color: rgba(255,255,255,.65);
+}
+
+.role-check {
+  display: none;
+}
+
+.role-title {
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.role-desc {
+  font-size: .75rem;
+  color: var(--muted);
+  line-height: 1.6;
+  letter-spacing: .03em;
+  font-weight: 300;
+}
+
+/* Grid wrapper */
+.comm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+ 
+/* Scrollbar styling */
+.comm-grid::-webkit-scrollbar { width: 4px; }
+.comm-grid::-webkit-scrollbar-track { background: var(--beige); }
+.comm-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+ 
+/* Section divider label inside grid */
+.comm-section-lbl {
+  grid-column: 1 / -1;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #bbb;
+  padding: 10px 0 4px;
+  border-top: 1px solid var(--border);
+  margin-top: 2px;
+}
+.comm-section-lbl:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+ 
+/* Individual committee card */
+.comm-card {
+  border: 1.5px solid var(--border);
+  background: #fff;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 62px;
+}
+.comm-card:hover:not(.comm-disabled) {
+  border-color: var(--navy);
+  background: var(--beige);
+  transform: translateY(-1px);
+}
+ 
+/* Selected state */
+.comm-card.comm-selected {
+  border-color: var(--navy);
+  background: var(--navy);
+}
+/* Checkmark on selected */
+.comm-card.comm-selected::after {
+  content: '✓';
+  position: absolute;
+  top: 7px; right: 9px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+ 
+/* Disabled (max reached, not selected) */
+.comm-card.comm-disabled {
+  opacity: .38;
+  cursor: not-allowed;
+}
+ 
+/* Card text */
+.comm-card-abbr {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  transition: color .2s;
+  padding-right: 18px;        /* space for tick */
+}
+.comm-card.comm-selected .comm-card-abbr { color: var(--gold); }
+ 
+.comm-card-name {
+  font-size: .7rem;
+  font-weight: 300;
+  letter-spacing: .03em;
+  color: var(--muted);
+  line-height: 1.35;
+  transition: color .2s;
+}
+.comm-card.comm-selected .comm-card-name { color: rgba(255,255,255,.68); }
+ 
+/* Crisis pill */
+.comm-crisis-pill {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: .57rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  background: rgba(201,168,76,.12);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.3);
+  width: fit-content;
+  transition: background .2s, border-color .2s;
+}
+.comm-card.comm-selected .comm-crisis-pill {
+  background: rgba(201,168,76,.25);
+  border-color: rgba(201,168,76,.55);
+}
+ 
+/* ── CHAIR-SPECIFIC: ranked preference badges ── */
+.comm-card.pref1 { border-color: #1a3a6b; background: #1a3a6b; }
+.comm-card.pref2 { border-color: #2d5a9e; background: #2d5a9e; }
+.comm-card.pref3 { border-color: #4472c4; background: #4472c4; }
+.comm-card.pref1 .comm-card-abbr,
+.comm-card.pref2 .comm-card-abbr,
+.comm-card.pref3 .comm-card-abbr { color: var(--gold); }
+.comm-card.pref1 .comm-card-name,
+.comm-card.pref2 .comm-card-name,
+.comm-card.pref3 .comm-card-name { color: rgba(255,255,255,.68); }
+ 
+/* Rank badge (1st / 2nd / 3rd) inside chair cards */
+.pref-num-badge {
+  position: absolute;
+  top: 7px; right: 9px;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--gold);
+  padding: 1px 6px;
+}
+ 
+/* Selected count line */
+.comm-sel-count {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  margin-bottom: 14px;
+}
+.comm-sel-count.c0 { color: #c0392b; }
+.comm-sel-count.c-partial { color: var(--gold); }
+.comm-sel-count.c-full { color: #27ae60; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">
+    <img src="images/LGC.png">
+    Global Diplomatic Foundation
+  </a>
+<div class="nav-links">
+  <a href="#conferences">Conference</a>
+  <a href="#news">Updates</a>
+  <a href="#wwa">About Our Foundation</a>
+  <a href="#contact">Contact</a>
+</div>
+<div class="nav-socials">
+  <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+  </a>
+  <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+  </a>
+  <a href="https://www.instagram.com/gdf_international/" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-dim"></div>
+  <div class="hero-body">
+    <img src="/images/img_002_3ea5b8ad.png" alt="GDF" class="hero-crest">
+    <h1>Think Globally.<br>Lead Diplomatically.</h1>
+    <p>The Global Diplomatic Foundation fosters a culture of dialogue, leadership, and international cooperation — bringing together students from diverse backgrounds to build the next generation of global leaders.</p> 
+    <a href="#wwa" class="btn-sq-outline">Learn More</a>
+  </div>
+</section>
+
+<!-- RUNNING TEXT MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- Two copies for seamless loop -->
+    <div class="marquee-item">
+      <span class="marquee-dot"></span><span class="marquee-text">Global Diplomatic Foundation</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Diplomacy &amp; Leadership</span>
+      <span class="marquee-dot"></span><span class="marquee-text">International Cooperation</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Youth Empowerment</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Model United Nations</span>
+      <span class="marquee-dot"></span><span class="marquee-text">GDF International 2025</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Future Global Leaders</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Sharjah, UAE</span>
+    </div>
+    <div class="marquee-item" aria-hidden="true">
+      <span class="marquee-dot"></span><span class="marquee-text">Global Diplomatic Foundation</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Diplomacy &amp; Leadership</span>
+      <span class="marquee-dot"></span><span class="marquee-text">International Cooperation</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Youth Empowerment</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Model United Nations</span>
+      <span class="marquee-dot"></span><span class="marquee-text">GDF International 2025</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Future Global Leaders</span>
+      <span class="marquee-dot"></span><span class="marquee-text">Sharjah, UAE</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONFERENCES -->
+<section id="conferences" class="pad" style="background:var(--beige);">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <p class="tag">Upcoming Events</p>
+    <h2 class="h2">Conferences</h2>
+    <div class="divider"></div>
+
+    <div style="display:flex;align-items:center;gap:60px;flex-wrap:wrap;">
+
+      <!-- Card -->
+<div class="conf-grid" style="flex-shrink:0;max-width:310px;width:100%;">
+  <div class="conf-card" onclick="openService()" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1); cursor:pointer;">
+    
+    <!-- Image fills top -->
+    <img src="images/GDFI.png" style="width:100%;height:auto;object-fit:contain;display:block;background:#1a2740;">
+
+    <!-- Text section: clean white box below -->
+    <div style="background:#ffffff;padding:14px 16px;">
+      <div style="font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1a2740;">GDF International</div>
+      <div style="font-size:.85rem;color:#777;margin-top:4px;">20 AED</div>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Write-up + button -->
+      <div style="flex:1;min-width:240px;display:flex;flex-direction:column;justify-content:center;padding-top:8px;">
+        <p style="font-size:.97rem;color:var(--muted);line-height:1.85;margin-bottom:28px;">Stay connected with us for the latest updates and announcements regarding our upcoming conferences and global events.</p>
+        <div>
+          <button class="btn-sq-solid" onclick="openReg()" style="padding:14px 40px;letter-spacing:.1em;">REGISTER NOW!</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section id="wwa" class="pad" style="background:var(--off);">
+<div class="wrap">
+    <div class="two-col">
+      <div>
+        <p class="tag">Our Mission</p>
+        <h2 class="h2">Who We Are</h2>
+        <div class="divider"></div>
+        <p class="body-text">The Global Diplomatic Foundation is dedicated to empowering young minds through strategic diplomatic dialogue, leadership development, and international cooperation. Our expert-led approach brings together students from diverse backgrounds to create meaningful debate, build cross-cultural understanding, and develop the next generation of global leaders.</p>
+      </div>
+</div>
+     <img src="images/tinted_large.jpg">    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news" class="pad" style="background:var(--white);">
+  <div class="wrap">
+    <p class="tag">Updates</p>
+    <h2 class="h2">Latest News</h2>
+    <div class="divider"></div>
+    <div class="news-grid">
+      <div>
+      <img src="images/MYC.png" alt="News Image"> <br>        
+<div class="news-title">Mark Your Calendar: 15th August</div>
+        <div class="news-text">The GDF International Conference will commence on 15th August and continue over two days, concluding on 16th August. Join students from around the world for a landmark gathering of young diplomats and future global leaders.</div>
+      </div>
+      <div>
+        <img src="images/DEL.png" alt="News Image"> <br> 
+        <div class="news-title">Delegate Applications: Now Open!</div>
+        <div class="news-text">Delegate applications for the GDF International are Now Open!. Limited spots are available — mark your calendars now.</div>
+      </div>
+      <div>
+        <img src="images/SA.png" alt="News Image"> <br>    
+        <div class="news-title">Secretariat Applications Open</div>
+        <div class="news-text">Applications are now open for the GDF Secretariat. Students can register to be part of the organising team shaping the conference experience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="t-overflow">
+      <div class="t-track" id="tTrack">
+        <div class="t-slide">
+          <blockquote>“At GDF, we inspire leadership through debate, diplomacy, and principled action.”
+</blockquote>
+          <cite>— Founder & CEO</cite>
+        </div>
+        <div class="t-slide">
+          <blockquote>“Through GDF, we strive young minds to transcend boundaries & lead with purpose."</blockquote>
+          <cite>— President</cite>
+        </div>
+        <div class="t-slide">
+          <blockquote>“Our mission is to coordinate, support, and empower global teams in true diplomacy.”
+</blockquote>
+          <cite>— Global Manager</cite>
+        </div>
+      </div>
+    </div>
+    <div class="t-nav">
+      <button class="t-btn" onclick="tPrev()">&#8592;</button>
+      <button class="t-btn" onclick="tNext()">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .t-slide blockquote {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+</style>
+
+<script>
+  let tCurrent = 0;
+
+  function tGoTo(index) {
+    const track = document.getElementById('tTrack');
+    const slides = track.querySelectorAll('.t-slide');
+    const total = slides.length;
+    tCurrent = (index + total) % total;
+    slides.forEach((slide, i) => {
+      slide.style.display = i === tCurrent ? 'block' : 'none';
+    });
+  }
+
+  function tNext() { tGoTo(tCurrent + 1); }
+  function tPrev() { tGoTo(tCurrent - 1); }
+
+  document.addEventListener('DOMContentLoaded', () => tGoTo(0));
+</script>
+
+<!-- TEAM -->
+<section id="team" class="pad" style="background:var(--white);">
+  <div class="wrap">
+    <p class="tag">The People Behind GDF</p>
+    <h2 class="h2">Our Team</h2>
+    <div class="divider"></div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,340px);gap:10px;">
+
+      <!-- Row 1 -->
+      <div style="position:relative;overflow:hidden;background:var(--beige2);">
+        <img src="images/Atharv.jpg">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,25,60,.82));padding:18px 16px 14px;">
+          <div style="color:#fff;font-size:.88rem;font-weight:700;">Atharv Johari</div>
+          <div style="color:var(--gold);font-size:.74rem;margin-top:3px;">Founder &amp; CEO</div>
+        </div>
+      </div>
+
+      <div style="position:relative;overflow:hidden;background:var(--beige2);">
+        <img src="images/mohit_tinted.jpg">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,25,60,.82));padding:18px 16px 14px;">
+          <div style="color:#fff;font-size:.88rem;font-weight:700;">Mohit Tanay Dandamudi</div>
+          <div style="color:var(--gold);font-size:.74rem;margin-top:3px;">President</div>
+        </div>
+      </div>
+
+      <div style="position:relative;overflow:hidden;background:var(--beige2);">
+        <img src="images/aman_tinted.jpg">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,25,60,.82));padding:18px 16px 14px;">
+          <div style="color:#fff;font-size:.88rem;font-weight:700;">Aman Kumar Mishra</div>
+          <div style="color:var(--gold);font-size:.74rem;margin-top:3px;">Global Manager</div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div style="position:relative;overflow:hidden;background:var(--beige2);">
+        <img src="images/tinted_student.jpg" style="width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,25,60,.82));padding:18px 16px 14px;">
+          <div style="color:#fff;font-size:.88rem;font-weight:700;">Pranav Sajith Nair</div>
+          <div style="color:var(--gold);font-size:.74rem;margin-top:3px;">Chief Operations Officer</div>
+        </div>
+      </div>
+
+      <div style="position:relative;overflow:hidden;background:var(--beige2);">
+        <img src="images/guru.jpg" style="width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,25,60,.82));padding:18px 16px 14px;">
+          <div style="color:#fff;font-size:.88rem;font-weight:700;">Guru Sriman Murari</div>
+          <div style="color:var(--gold);font-size:.74rem;margin-top:3px;">Chief Communication Officer</div>
+        </div>
+      </div>
+
+      <!-- Join Our Team cell -->
+      <div style="background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;">
+        <div style="color:var(--gold);font-size:2rem;">✦</div>
+        <p style="color:rgba(255,255,255,.75);font-size:.85rem;text-align:center;line-height:1.7;font-family:Arial,Helvetica,sans-serif;">Want to be part of something global?</p>
+        <button onclick="openTeamApp()" style="font-size:.72rem;padding:12px 28px;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Join Our Team</button>
+      </div>
+
+    </div><!-- end grid -->
+  </div><!-- end wrap -->
+</section><!-- end team section -->
+
+<!-- ========== SOCIAL ========== -->
+<section id="social" style="background:var(--navy);padding:70px 0 80px;overflow:hidden;margin-top:100px;">
+  <div style="width:100%;overflow:hidden;margin-bottom:44px;">
+    <svg viewBox="0 0 1200 130" width="100%" height="130" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+      <defs><path id="arcStatic" d="M50,115 Q600,5 1150,115"/></defs>
+      <text font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="900" fill="white" letter-spacing="3">
+        <textPath href="#arcStatic" startOffset="50%" text-anchor="middle">Follow Us On Social Media</textPath>
+      </text>
+    </svg>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:18px;">
+    <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" aria-label="Facebook" style="display:flex;align-items:center;justify-content:center;width:54px;height:54px;background:#fff;border-radius:10px;color:#1b2a4a;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/gdf_international/" target="_blank" style="display:flex;align-items:center;justify-content:center;width:54px;height:54px;background:#fff;border-radius:10px;color:#1b2a4a;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" style="display:flex;align-items:center;justify-content:center;width:54px;height:54px;background:#fff;border-radius:10px;color:#1b2a4a;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.06C12.66 9.1 14 8 16 8c4 0 5 2.6 5 6v10h-5v-9c0-2.1-.04-4.8-3-4.8S10 12.9 10 15v9H7.5V8z"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ========== SPONSORS ========== -->
+<section id="sponsors" style="background:#fff;padding:60px 0;">
+  <div class="wrap" style="text-align:center;">
+    <p class="tag" style="text-align:center;">Our Partners</p>
+    <h2 class="h2" style="text-align:center;">Sponsors &amp; Partners</h2>
+    <div class="divider" style="margin:0 auto 40px;"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:48px;margin-bottom:48px;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="background:#fff;padding:24px 36px;border:1px solid #e8e4da;display:flex;align-items:center;justify-content:center;min-width:200px;min-height:90px;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow='none'">
+          <img src="images/solarize.png" alt="Solarize Digitech" style="max-height:70px;max-width:180px;object-fit:contain;">
+        </div>
+        <span style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">Technology Partner</span>
+      </div>
+    </div>
+    <p style="font-size:.9rem;color:var(--muted);">Interested in sponsoring GDF? <a href="#contact" style="color:var(--navy);font-weight:700;text-decoration:underline;">Get in touch</a></p>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="pad" style="background:var(--beige);">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="c-left">
+        <p class="tag">Get In Touch</p>
+        <h2 style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:18px;">Contact Us</h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:28px;">Interested in working together? Fill out some info and we will be in touch shortly. We can't wait to hear from you!</p>
+        <div style="display:flex;flex-direction:column;gap:14px;font-size:.9rem;color:var(--muted);">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:36px;height:36px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.12 2.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </span>
+            <a href="tel:+971562971909" style="color:var(--muted);text-decoration:none;">+971 56 297 1909</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:36px;height:36px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <a href="mailto:globaldiplomaticfoundaiton@gmail.com" style="color:var(--muted);text-decoration:none;">globaldiplomaticfoundaiton@gmail.com</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:36px;height:36px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>Sharjah, United Arab Emirates</span>
+          </div>
+        </div>
+      </div>
+      <div class="c-form">
+        <div class="c-group">
+          <span class="c-lbl">Name</span>
+          <div class="c-row">
+            <div class="c-group">
+              <label class="c-lbl" style="font-size:.73rem;color:#999;">First Name <span class="c-sub">(required)</span></label>
+              <input type="text" class="inp" id="cFname">
+            </div>
+            <div class="c-group">
+              <label class="c-lbl" style="font-size:.73rem;color:#999;">Last Name <span class="c-sub">(required)</span></label>
+              <input type="text" class="inp" id="cLname">
+            </div>
+          </div>
+        </div>
+        <div class="c-group">
+          <label class="c-lbl">Email <span class="c-sub">(required)</span></label>
+          <input type="email" class="inp" id="cEmail">
+        </div>
+        <div class="c-group">
+          <label class="c-lbl">Message <span class="c-sub">(required)</span></label>
+          <textarea class="inp" rows="5" id="cMsg"></textarea>
+        </div>
+        <div><button class="btn-solid" style="padding:14px 44px;" onclick="sendContact()">Send Message</button></div>
+        <div id="cStatus" style="margin-top:12px;font-size:.85rem;display:none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand" id="ftBrand">Global Diplomatic Foundation</div>
+      <div class="ft-tag">Check Us Out!</div>
+      <a href="javascript:void(0)" onclick="tryOpenAdm()" style="font-size:.72rem;color:rgba(255,255,255,.25);text-decoration:none;display:inline-block;margin-top:10px;letter-spacing:0.08em;">Admin Access</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Location</div>
+      <p>Sharjah,<br>United Arab Emirates</p>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Contact</div>
+      <p><a href="mailto:globaldiplomaticfoundaiton@gmail.com">globaldiplomaticfoundaiton@gmail.com</a><br>(+971) 56 297 1909</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== SERVICE OVERLAY (Conference) ========== -->
+<div class="overlay" id="svcOverlay">
+  <div class="ov-nav">
+    <a href="#" onclick="closeSvc();return false;" class="nav-brand">
+      <img src="images/LGC.png">
+      Global Diplomatic Foundation
+    </a>
+    <div style="display:flex;gap:32px;">
+      <a href="#" onclick="closeSvc();return false;" style="color:rgba(255,255,255,.75);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Conference</a>
+      <a href="#" style="color:rgba(255,255,255,.75);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">About Our Foundation</a>
+      <a href="#contact" onclick="closeSvc();" style="color:rgba(255,255,255,.75);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Contact</a>
+    </div>
+  </div>
+  <div class="ov-inner">
+    <div class="crumb"><a href="#" onclick="closeSvc();return false;">Conference</a> &rsaquo; GDF International</div>
+    <div style="display:flex;flex-direction:row;align-items:flex-start;gap:48px;max-width:900px;">
+      <div style="flex:0 0 42%;">
+        <img src="images/GDFINTL.png" style="width:100%;display:block;border-radius:8px;">
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:16px;">
+        <h1 class="svc-h1" style="margin-top:0;">GDF International</h1>
+        <div class="svc-price">20 AED</div>
+        <p class="svc-desc">GDF International is a youth-focused platform dedicated to fostering diplomacy, leadership, and global engagement. Register below to secure your delegate spot.</p>
+        <div style="margin-top:24px;width:100%;position:relative;">
+          <button class="btn-solid" style="width:100%;padding:15px;" onclick="openReg()">Register as Delegate</button>
+          <span style="position:absolute;top:-12px;right:10px;background:#e74c3c;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;">Opening Soon · Apr 7</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TEAM SERVICE OVERLAY ========== -->
+<div class="overlay" id="teamOverlay">
+  <div class="ov-nav">
+    <a href="#" onclick="closeTeamOverlay();return false;" class="nav-brand">
+      <img src="images/LGC.png">
+      Global Diplomatic Foundation
+    </a>
+    <div style="display:flex;gap:32px;">
+      <a href="#" onclick="closeTeamOverlay();return false;" style="color:rgba(255,255,255,.75);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Conference</a>
+      <a href="#" style="color:rgba(255,255,255,.75);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">About Our Foundation</a>
+      <a href="#contact" onclick="closeTeamOverlay();" style="color:rgba(255,255,255,.75);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Contact</a>
+    </div>
+  </div>
+  <div class="ov-inner">
+    <div class="crumb"><a href="#" onclick="closeTeamOverlay();return false;">Home</a> &rsaquo; Join Our Team</div>
+    <div style="display:flex;flex-direction:row;align-items:flex-start;gap:48px;max-width:900px;">
+      <div style="flex:0 0 42%;">
+        <img src="images/GDFTEAM.png" style="width:100%;display:block;border-radius:8px;">
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:16px;">
+        <h1 class="svc-h1" style="margin-top:0;">Join the Secretariat</h1>
+        <p class="svc-desc" style="margin-top:12px;">Be part of the team that makes GDF happen. We're looking for passionate individuals in Marketing, Operations, Graphic Design, and Social Media.</p>
+        <div style="margin-top:24px;width:100%;">
+          <button class="btn-solid" style="width:100%;padding:15px;" onclick="closeTeamOverlay();openTeamApp();">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== REGISTRATION MODAL ========== -->
+<div style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;background:rgba(8,14,36,.65);" id="regBackdrop">
+  <div class="modal" style="max-width:600px;">
+    <button class="modal-x" onclick="closeReg()">&#215;</button>
+    <div class="step-row" id="regStepRow">
+      <div class="s-dot on" id="rs0" style="background:var(--gold);border-color:var(--gold);padding:0;overflow:visible;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 10 L22 12 L14.5 14 L12 22 L9.5 14 L2 12 L9.5 10 Z" fill="white"/></svg>
+      </div>
+      <div class="s-line" id="rl01"></div>
+      <div class="s-dot" id="rs1">1</div>
+      <div class="s-line" id="rl12"></div>
+      <div class="s-dot" id="rs2">2</div>
+      <div class="s-line" id="rl23"></div>
+      <div class="s-dot" id="rs3">3</div>
+      <div class="s-line" id="rl34"></div>
+      <div class="s-dot" id="rs4">4</div>
+    </div>
+
+    <!-- ── STEP 0: Role Selection ── -->
+    <div id="rStep0" style="display:block;">
+      <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:6px;">GDF Registration</h3>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:4px;">How would you like to participate?</p>
+      <div class="role-cards">
+        <div class="role-card" id="roleDelegate" onclick="selectRole('delegate')">
+          <div class="role-check">&#10003;</div>
+          <div class="role-title">Delegate</div>
+          <div class="role-desc">Represent a country or portfolio in a committee and debate global issues.</div>
+        </div>
+        <div class="role-card" id="roleChair" onclick="selectRole('chair')">
+          <div class="role-check">&#10003;</div>
+          <div class="role-title">Chair</div>
+          <div class="role-desc">Lead and moderate a committee as a Chairperson or Vice-Chair.</div>
+        </div>
+      </div>
+      <div id="roleError" style="color:#e53;font-size:.82rem;margin-bottom:12px;display:none;">Please select a role to continue.</div>
+      <button class="btn-solid" style="width:100%;padding:14px;" onclick="regNext(0)">Continue →</button>
+    </div>
+
+    <!-- ── STEP 1 (Delegate): Personal Details ── -->
+    <div id="rStep1" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Delegate Registration</h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 1 of 4 — Personal Details</p>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">First Name <span class="req">*</span></label><input type="text" class="mi" id="d_fn"></div>
+        <div><label class="ml">Last Name <span class="req">*</span></label><input type="text" class="mi" id="d_ln"></div>
+      </div></div>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">Age <span class="req">*</span></label><input type="number" class="mi" id="d_age" min="10" max="30" placeholder="e.g. 17"></div>
+        <div><label class="ml">Phone <span class="req">*</span></label><input type="tel" class="mi" id="d_ph" placeholder="+971 XX XXX XXXX"></div>
+      </div></div>
+      <div class="mf"><label class="ml">Email <span class="req">*</span></label><input type="email" class="mi" id="d_em"></div>
+      <div class="mf"><label class="ml">Address <span class="req">*</span></label>
+        <input type="text" class="mi" id="d_addr" placeholder="Street address" style="margin-bottom:8px;">
+        <div class="m2" style="margin-bottom:8px;">
+          <select class="mi" id="d_country" onchange="onCountryChange()"><option value="">Country *</option></select>
+          <select class="mi" id="d_city"><option value="">City / Region *</option></select>
+        </div>
+        <div id="emirate_row" style="display:none;margin-bottom:8px;">
+          <select class="mi" id="d_emirate" style="width:100%">
+            <option value="">Emirate *</option>
+            <option>Abu Dhabi</option><option>Dubai</option><option>Sharjah</option>
+            <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Umm Al Quwain</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-solid" style="width:100%;padding:14px;margin-top:8px;" onclick="regNext(1)">Next: Committee Preferences →</button>
+    </div>
+
+    <!-- ── STEP 2 (Delegate): Committee Preferences — CARD GRID ── -->
+    <div id="rStep2" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Committee Preferences</h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:6px;">Step 2 of 4 — Select up to <strong>3 committees</strong></p>
+      <p class="comm-sel-count c0" id="commSelCount">0 / 3 selected</p>
+
+      <div class="comm-grid" id="committeeGrid"></div>
+
+      <div style="display:flex;gap:10px;">
+        <button class="btn-outline" style="flex:1;padding:12px;" onclick="regBack(2)">← Back</button>
+        <button class="btn-solid" style="flex:1;padding:12px;" onclick="regNext(2)">Next: Portfolio →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3 (Delegate): Portfolio ── -->
+    <div id="rStep3" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Portfolio Preference</h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 3 of 4 — Choose your preferred country/role for each committee</p>
+      <div id="portfolioFields" style="display:flex;flex-direction:column;gap:16px;margin-bottom:20px;"></div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-outline" style="flex:1;padding:12px;" onclick="regBack(3)">← Back</button>
+        <button class="btn-solid" style="flex:1;padding:12px;" onclick="regNext(3)">Next: Payment →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 4 (Delegate): Payment ── -->
+    <div id="rStep4" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Payment</h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 4 of 4 — Transfer your registration fee</p>
+      <div class="pay-card">
+        <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-bottom:8px;">Registration Fee</div>
+        <div style="font-size:2.4rem;font-weight:700;margin-bottom:4px;">20 AED</div>
+        <div style="font-size:.82rem;opacity:.7;margin-bottom:20px;">GDF International — Delegate</div>
+        <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:16px;display:flex;flex-direction:column;gap:10px;">
+          <div class="pay-row"><span>Bank</span><span>HSBC</span></div>
+          <div class="pay-row"><span>Account Name</span><span>Sanskriti Johari</span></div>
+          <div class="pay-row"><span>IBAN</span><span style="font-family:monospace;">AE920200000041712654001</span></div>
+          <div class="pay-row"><span>Reference</span><span style="font-family:monospace;" id="payRef2">GDF-REG</span></div>
+        </div>
+      </div>
+      <div class="warn-box">Use your full name as the payment reference. Fill in your transfer details below after paying.</div>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">Cardholder / Account Name <span class="req">*</span></label><input type="text" class="mi" id="d_chname" placeholder="Name on card"></div>
+        <div><label class="ml">Last 4 digits of card <span class="req">*</span></label><input type="text" class="mi" id="d_card4" placeholder="XXXX" maxlength="4"></div>
+      </div></div>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">Bank Name <span class="req">*</span></label><input type="text" class="mi" id="d_bankname" placeholder="e.g. Emirates NBD"></div>
+        <div><label class="ml">Transaction Reference <span class="req">*</span></label><input type="text" class="mi" id="d_transref" placeholder="e.g. TXN123456"></div>
+      </div></div>
+      <div class="mf"><label class="ml">Transfer Date <span class="req">*</span></label><input type="date" class="mi" id="d_transdate"></div>
+      <div style="display:flex;gap:10px;margin-top:8px;">
+        <button class="btn-outline" style="flex:1;padding:13px;" onclick="regBack(4)">← Back</button>
+        <button class="btn-solid" style="flex:1;padding:13px;" onclick="submitDelegate()">Submit Application →</button>
+      </div>
+    </div>
+
+    <!-- ── CHAIR STEP 1: Personal Details ── -->
+    <div id="cStep1" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Chair Application <span class="chair-tag">CHAIR</span></h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 1 of 3 — Personal Details</p>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">First Name <span class="req">*</span></label><input type="text" class="mi" id="c_fn"></div>
+        <div><label class="ml">Last Name <span class="req">*</span></label><input type="text" class="mi" id="c_ln"></div>
+      </div></div>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">Age <span class="req">*</span></label><input type="number" class="mi" id="c_age" min="14" max="35" placeholder="e.g. 19"></div>
+        <div><label class="ml">Phone <span class="req">*</span></label><input type="tel" class="mi" id="c_ph" placeholder="+971 XX XXX XXXX"></div>
+      </div></div>
+      <div class="mf"><label class="ml">Email <span class="req">*</span></label><input type="email" class="mi" id="c_em"></div>
+      <div class="mf"><label class="ml">Address <span class="req">*</span></label>
+        <input type="text" class="mi" id="c_addr" placeholder="Street address" style="margin-bottom:8px;">
+        <div class="m2" style="margin-bottom:8px;">
+          <select class="mi" id="c_country" onchange="onChairCountryChange()"><option value="">Country *</option></select>
+          <select class="mi" id="c_city"><option value="">City / Region *</option></select>
+        </div>
+        <div id="c_emirate_row" style="display:none;margin-bottom:8px;">
+          <select class="mi" id="c_emirate" style="width:100%">
+            <option value="">Emirate *</option>
+            <option>Abu Dhabi</option><option>Dubai</option><option>Sharjah</option>
+            <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Umm Al Quwain</option>
+          </select>
+        </div>
+      </div>
+      <div class="mf"><label class="ml">School / University <span class="req">*</span></label><input type="text" class="mi" id="c_school" placeholder="e.g. American University of Dubai"></div>
+      <button class="btn-solid" style="width:100%;padding:14px;margin-top:8px;" onclick="chairNext(1)">Next: Experience & Background →</button>
+    </div>
+
+    <!-- ── CHAIR STEP 2: Experience ── -->
+    <div id="cStep2" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Experience & Background <span class="chair-tag">CHAIR</span></h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 2 of 3 — Tell us about your MUN experience</p>
+      <div class="mf"><label class="ml">MUN Experience <span class="req">*</span></label>
+        <select class="mi" id="c_exp_level">
+          <option value="">Select experience level</option>
+          <option>First MUN (no prior experience)</option>
+          <option>1–2 conferences</option>
+          <option>3–5 conferences</option>
+          <option>6–10 conferences</option>
+          <option>10+ conferences</option>
+        </select>
+      </div>
+      <div class="mf"><label class="ml">Past Conferences Attended <span class="req">*</span></label><textarea class="mi" id="c_conferences" rows="3" placeholder="List the MUN conferences you've attended (name, year, role)..."></textarea></div>
+      <div class="mf"><label class="ml">Chairing Experience</label><textarea class="mi" id="c_chair_exp" rows="3" placeholder="Any previous chairing or dais experience? If none, write 'None'"></textarea></div>
+      <div class="mf"><label class="ml">Awards & Achievements</label><textarea class="mi" id="c_awards" rows="3" placeholder="List any MUN awards, Best Delegate, Outstanding Delegate, etc."></textarea></div>
+      <div class="mf"><label class="ml">Relevant Skills & Strengths <span class="req">*</span></label><textarea class="mi" id="c_skills" rows="3" placeholder="e.g. Public speaking, parliamentary procedure, research..."></textarea></div>
+      <div class="mf"><label class="ml">Why do you want to Chair at GDF? <span class="req">*</span></label><textarea class="mi" id="c_why" rows="3" placeholder="Tell us your motivation and what you bring to the dais..."></textarea></div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-outline" style="flex:1;padding:12px;" onclick="chairBack(2)">← Back</button>
+        <button class="btn-solid" style="flex:1;padding:12px;" onclick="chairNext(2)">Next: Committee Preferences →</button>
+      </div>
+    </div>
+
+    <!-- ── CHAIR STEP 3: Committee Preferences — CARD GRID ── -->
+    <div id="cStep3" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Committee Preferences <span class="chair-tag">CHAIR</span></h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:10px;">Step 3 of 3 — Select your <strong>top 3 committees</strong> to chair, in order of preference</p>
+
+      <!-- Legend -->
+      <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+        <span style="display:flex;align-items:center;gap:5px;font-size:.76rem;font-weight:700;">
+          <span class="pref-badge pb1">1st</span> 1st Choice
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:.76rem;font-weight:700;">
+          <span class="pref-badge pb2">2nd</span> 2nd Choice
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:.76rem;font-weight:700;">
+          <span class="pref-badge pb3">3rd</span> 3rd Choice
+        </span>
+      </div>
+
+      <p class="comm-sel-count c0" id="chairCommCount">0 / 3 selected</p>
+
+      <div class="comm-grid" id="chairCommGrid"></div>
+
+      <p style="font-size:.75rem;color:#aaa;margin-bottom:16px;">Click committees in order of preference. Click again to deselect.</p>
+
+      <div style="display:flex;gap:10px;">
+        <button class="btn-outline" style="flex:1;padding:12px;" onclick="chairBack(3)">← Back</button>
+        <button class="btn-solid" style="flex:1;padding:12px;" onclick="chairNext(3)">Submit Application →</button>
+      </div>
+    </div>
+
+    <!-- ── FINAL: Confirmation ── -->
+    <div id="rStep5" style="display:none;text-align:center;padding:20px 0;">
+      <div class="confirm-icon">&#10003;</div>
+      <h3 style="font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:12px;" id="confirmTitle">Application Submitted!</h3>
+      <p style="font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:18px;" id="confirmMsg"></p>
+      <div id="regSummary" class="reg-summary"></div>
+      <button class="btn-solid" style="padding:12px 40px;" onclick="closeReg()">Close</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== TEAM APPLICATION MODAL ========== -->
+<div style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;background:rgba(8,14,36,.65);" id="teamBackdrop">
+  <div class="modal" style="max-width:600px;">
+    <button class="modal-x" onclick="closeTeamApp()">&#215;</button>
+    <div class="step-row">
+      <div class="s-dot" id="ts0" style="background:var(--gold);border-color:var(--gold);padding:0;overflow:visible;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 10 L22 12 L14.5 14 L12 22 L9.5 14 L2 12 L9.5 10 Z" fill="white"/></svg>
+      </div>
+      <div class="s-line" id="tl01"></div>
+      <div class="s-dot" id="ts1">1</div>
+      <div class="s-line" id="tl12"></div>
+      <div class="s-dot" id="ts2">2</div>
+      <div class="s-line" id="tl23"></div>
+      <div class="s-dot" id="ts3">3</div>
+    </div>
+
+    <div id="tStep1" style="display:block;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Join Our Team <span class="chair-tag">SECRETARIAT</span></h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 1 of 3 — Personal Details</p>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">First Name <span class="req">*</span></label><input type="text" class="mi" id="tm_fn"></div>
+        <div><label class="ml">Last Name <span class="req">*</span></label><input type="text" class="mi" id="tm_ln"></div>
+      </div></div>
+      <div class="mf"><div class="m2">
+        <div><label class="ml">Age <span class="req">*</span></label><input type="number" class="mi" id="tm_age" placeholder="e.g. 17"></div>
+        <div><label class="ml">Phone <span class="req">*</span></label><input type="tel" class="mi" id="tm_ph" placeholder="+971 XX XXX XXXX"></div>
+      </div></div>
+      <div class="mf"><label class="ml">Email <span class="req">*</span></label><input type="email" class="mi" id="tm_em"></div>
+      <div class="mf"><label class="ml">Address <span class="req">*</span></label>
+        <input type="text" class="mi" id="tm_addr" placeholder="Street address" style="margin-bottom:8px;">
+        <div class="m2">
+          <select class="mi" id="tm_country">
+            <option value="">Country *</option>
+            <option>United Arab Emirates</option><option>Saudi Arabia</option><option>Kuwait</option>
+            <option>Qatar</option><option>Bahrain</option><option>Oman</option><option>Egypt</option>
+            <option>Jordan</option><option>Iraq</option><option>Lebanon</option><option>Other</option>
+          </select>
+          <select class="mi" id="tm_city">
+            <option value="">City / Region *</option>
+            <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Riyadh</option>
+            <option>Jeddah</option><option>Kuwait City</option><option>Doha</option><option>Manama</option>
+            <option>Muscat</option><option>Cairo</option><option>Amman</option><option>Baghdad</option>
+            <option>Beirut</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="mf">
+        <label class="ml">Department <span class="req">*</span></label>
+        <select class="mi" id="tm_dept">
+          <option value="">Select department *</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Operations">Operations</option>
+          <option value="Graphic Designing">Graphic Designing</option>
+          <option value="Social Media">Social Media</option>
+        </select>
+      </div>
+      <div id="tm_e1" style="color:#e53;font-size:.82rem;margin-bottom:12px;display:none;">Please fill in all required fields.</div>
+      <button class="btn-solid" style="width:100%;padding:14px;" onclick="teamNext(1)">Next: Experience →</button>
+    </div>
+
+    <div id="tStep2" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Experience & Motivation <span class="chair-tag">SECRETARIAT</span></h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 2 of 3 — Tell us about yourself</p>
+      <div class="mf"><label class="ml">Relevant Experience <span class="req">*</span></label><textarea class="mi" id="tm_exp" rows="4" placeholder="Describe your skills and any relevant experience…"></textarea></div>
+      <div class="mf"><label class="ml">Why do you want to join GDF? <span class="req">*</span></label><textarea class="mi" id="tm_why" rows="4" placeholder="Why do you want to join the GDF secretariat?"></textarea></div>
+      <div id="tm_e2" style="color:#e53;font-size:.82rem;margin-bottom:12px;display:none;">Please fill in all required fields.</div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-outline" style="flex:1;padding:12px;" onclick="teamBack(2)">← Back</button>
+        <button class="btn-solid" style="flex:1;padding:12px;" onclick="teamNext(2)">Review Application →</button>
+      </div>
+    </div>
+
+    <div id="tStep3" style="display:none;">
+      <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">Review & Confirm <span class="chair-tag">SECRETARIAT</span></h3>
+      <p style="font-size:.8rem;color:#999;margin-bottom:20px;">Step 3 of 3 — Check your details before submitting</p>
+      <div id="tm_review" class="reg-summary" style="margin-bottom:20px;"></div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-outline" style="flex:1;padding:12px;" onclick="teamBack(3)">← Back</button>
+        <button class="btn-solid" style="flex:1;padding:12px;" onclick="teamSubmit()">Confirm & Submit →</button>
+      </div>
+    </div>
+
+    <div id="tStep4" style="display:none;text-align:center;padding:20px 0;">
+      <div class="confirm-icon">&#10003;</div>
+      <h3 style="font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:12px;">Application Submitted!</h3>
+      <p style="font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:18px;">Thank you for applying to join GDF!<br>We will review your application and get back to you by email.</p>
+      <div id="tm_appid" class="reg-summary" style="margin-bottom:22px;"></div>
+      <button class="btn-solid" style="padding:12px 40px;" onclick="closeTeamApp()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ALL SCRIPTS ========== -->
+<script>
+var COUNTRY_DATA = {
+  "United Arab Emirates":["Abu Dhabi","Dubai","Sharjah","Ajman","Ras Al Khaimah","Fujairah","Umm Al Quwain","Al Ain","Khor Fakkan","Kalba"],
+  "Afghanistan":["Kabul","Kandahar","Herat","Mazar-i-Sharif","Jalalabad"],
+  "Algeria":["Algiers","Oran","Constantine","Annaba","Blida","Batna","Tlemcen"],
+  "Argentina":["Buenos Aires","Córdoba","Rosario","Mendoza","La Plata","Tucumán","Mar del Plata","Salta"],
+  "Australia":["Sydney","Melbourne","Brisbane","Perth","Adelaide","Gold Coast","Canberra","Newcastle","Hobart","Darwin"],
+  "Austria":["Vienna","Graz","Linz","Salzburg","Innsbruck"],
+  "Bahrain":["Manama","Riffa","Muharraq","Hamad Town"],
+  "Bangladesh":["Dhaka","Chittagong","Khulna","Rajshahi","Sylhet","Comilla"],
+  "Belgium":["Brussels","Antwerp","Ghent","Bruges","Liège","Leuven"],
+  "Brazil":["São Paulo","Rio de Janeiro","Brasília","Salvador","Fortaleza","Belo Horizonte","Manaus","Curitiba","Recife","Porto Alegre"],
+  "Canada":["Toronto","Montreal","Vancouver","Calgary","Ottawa","Edmonton","Winnipeg","Quebec City","Hamilton","Halifax"],
+  "China":["Beijing","Shanghai","Guangzhou","Shenzhen","Chengdu","Chongqing","Hangzhou","Wuhan","Xi'an","Nanjing","Tianjin","Suzhou"],
+  "Egypt":["Cairo","Alexandria","Giza","Shubra El-Kheima","Port Said","Suez","Luxor","Aswan"],
+  "France":["Paris","Marseille","Lyon","Toulouse","Nice","Nantes","Strasbourg","Montpellier","Bordeaux","Lille"],
+  "Germany":["Berlin","Hamburg","Munich","Cologne","Frankfurt","Stuttgart","Düsseldorf","Dortmund","Leipzig","Bremen"],
+  "India":["Mumbai","Delhi","Bangalore","Hyderabad","Chennai","Kolkata","Pune","Ahmedabad","Jaipur","Surat","Lucknow","Kanpur","Nagpur","Visakhapatnam","Indore","Bhopal","Patna","Vadodara","Ludhiana","Agra","Coimbatore","Kochi"],
+  "Indonesia":["Jakarta","Surabaya","Bandung","Medan","Bekasi","Tangerang","Depok","Semarang","Makassar","Batam","Yogyakarta","Bali"],
+  "Iran":["Tehran","Mashhad","Isfahan","Karaj","Tabriz","Shiraz","Qom","Ahvaz"],
+  "Iraq":["Baghdad","Basra","Mosul","Erbil","Najaf","Kirkuk"],
+  "Ireland":["Dublin","Cork","Limerick","Galway","Waterford"],
+  "Israel":["Tel Aviv","Jerusalem","Haifa","Rishon LeZion","Petah Tikva","Be'er Sheva"],
+  "Italy":["Rome","Milan","Naples","Turin","Palermo","Genoa","Bologna","Florence","Venice","Catania"],
+  "Japan":["Tokyo","Yokohama","Osaka","Nagoya","Sapporo","Fukuoka","Kobe","Kyoto","Kawasaki","Saitama"],
+  "Jordan":["Amman","Zarqa","Irbid","Aqaba","Madaba"],
+  "Kenya":["Nairobi","Mombasa","Kisumu","Nakuru","Eldoret"],
+  "Kuwait":["Kuwait City","Al Ahmadi","Hawalli","Farwaniya","Salmiya"],
+  "Lebanon":["Beirut","Tripoli","Sidon","Tyre","Jounieh"],
+  "Malaysia":["Kuala Lumpur","Penang","Johor Bahru","Ipoh","Kota Kinabalu","Petaling Jaya","Shah Alam"],
+  "Mexico":["Mexico City","Guadalajara","Monterrey","Puebla","Tijuana","Ciudad Juárez","León","Zapopan","Querétaro","Mérida"],
+  "Morocco":["Casablanca","Rabat","Fès","Marrakech","Agadir","Tangier","Meknès","Oujda"],
+  "Netherlands":["Amsterdam","Rotterdam","The Hague","Utrecht","Eindhoven","Tilburg","Groningen"],
+  "New Zealand":["Auckland","Wellington","Christchurch","Hamilton","Tauranga","Dunedin"],
+  "Nigeria":["Lagos","Kano","Ibadan","Kaduna","Port Harcourt","Abuja","Enugu","Benin City","Onitsha"],
+  "Norway":["Oslo","Bergen","Stavanger","Trondheim","Drammen"],
+  "Oman":["Muscat","Salalah","Sohar","Nizwa","Sur"],
+  "Pakistan":["Karachi","Lahore","Faisalabad","Rawalpindi","Islamabad","Gujranwala","Peshawar","Multan","Hyderabad","Quetta"],
+  "Palestine":["Gaza","Ramallah","Hebron","Nablus","Jenin"],
+  "Philippines":["Manila","Quezon City","Davao","Caloocan","Cebu City","Zamboanga","Taguig"],
+  "Poland":["Warsaw","Kraków","Łódź","Wrocław","Poznań","Gdańsk","Szczecin","Katowice"],
+  "Portugal":["Lisbon","Porto","Braga","Amadora","Setúbal","Coimbra","Funchal"],
+  "Qatar":["Doha","Al Wakrah","Al Khor","Al Rayyan","Dukhan"],
+  "Romania":["Bucharest","Cluj-Napoca","Timișoara","Iași","Constanța","Brașov"],
+  "Russia":["Moscow","Saint Petersburg","Novosibirsk","Yekaterinburg","Kazan","Nizhny Novgorod","Chelyabinsk","Samara","Omsk","Ufa","Krasnoyarsk","Rostov-on-Don"],
+  "Saudi Arabia":["Riyadh","Jeddah","Mecca","Medina","Dammam","Khobar","Taif","Tabuk","Abha"],
+  "Singapore":["Singapore"],
+  "South Africa":["Johannesburg","Cape Town","Durban","Pretoria","Port Elizabeth","Soweto","Bloemfontein"],
+  "South Korea":["Seoul","Busan","Incheon","Daegu","Daejeon","Gwangju","Suwon","Ulsan"],
+  "Spain":["Madrid","Barcelona","Valencia","Seville","Zaragoza","Málaga","Murcia","Palma","Las Palmas","Bilbao"],
+  "Sri Lanka":["Colombo","Dehiwala","Moratuwa","Jaffna","Kandy","Galle"],
+  "Sweden":["Stockholm","Gothenburg","Malmö","Uppsala","Västerås","Örebro"],
+  "Switzerland":["Zürich","Geneva","Basel","Bern","Lausanne","Winterthur"],
+  "Thailand":["Bangkok","Chiang Mai","Nonthaburi","Pak Kret","Hat Yai","Pattaya","Phuket"],
+  "Tunisia":["Tunis","Sfax","Sousse","Kairouan","Gabès"],
+  "Turkey":["Istanbul","Ankara","Izmir","Bursa","Adana","Gaziantep","Konya","Antalya","Mersin","Diyarbakır"],
+  "Ukraine":["Kyiv","Kharkiv","Odessa","Dnipro","Donetsk","Zaporizhzhia","Lviv"],
+  "United Kingdom":["London","Birmingham","Manchester","Leeds","Glasgow","Liverpool","Sheffield","Edinburgh","Bristol","Cardiff","Leicester","Nottingham"],
+  "United States":["New York","Los Angeles","Chicago","Houston","Phoenix","Philadelphia","San Antonio","San Diego","Dallas","San Jose","Austin","Jacksonville","Fort Worth","Columbus","Charlotte","Indianapolis","San Francisco","Seattle","Denver","Washington DC","Nashville","Oklahoma City","Miami","Las Vegas","Boston","Atlanta"],
+  "Vietnam":["Hanoi","Ho Chi Minh City","Da Nang","Haiphong","Cần Thơ","Nha Trang"]
+};
+
+var COMMITTEES = [
+  {id:'UNGA',name:'UNGA – United Nations General Assembly',portfolios:['United States','China','India','Russian Federation','United Kingdom','France','Germany','Japan','Brazil','Canada','Italy','South Africa','Mexico','Indonesia','Saudi Arabia','Turkey','Republic of Korea','Argentina','Egypt','Spain','Netherlands','Switzerland','Sweden','Norway','Denmark','Finland','Poland','Belgium','Ukraine','Pakistan','Bangladesh','Nigeria','Kenya','Ethiopia','Ghana','Morocco','Algeria','United Arab Emirates','Qatar','Israel','Iran','Iraq','Afghanistan','New Zealand','Chile','Peru','Colombia','Philippines','Vietnam']},
+  {id:'UNSC',name:'UNSC – United Nations Security Council',portfolios:['United States','United Kingdom','France','Russian Federation','China','India','Brazil','Germany','Japan','South Africa','Nigeria','Mexico','Indonesia','Turkey','Saudi Arabia','Iran','Israel','Egypt','Pakistan','Bangladesh','Argentina','Canada','Australia','Italy','Spain','Netherlands','Belgium','Poland','Ukraine','Sweden','Norway','Denmark','Finland','Switzerland','Austria','Ireland','Portugal','Greece','Romania','Chile','Colombia','Peru','Philippines','Vietnam','Thailand','Malaysia','Kenya','Ghana','Ethiopia','New Zealand']},
+  {id:'UNHRC',name:'UNHRC – Human Rights Council',portfolios:['United States','United Kingdom','France','Germany','Netherlands','Switzerland','Norway','Japan','Argentina','Mexico','Brazil','India','South Africa','Canada','Australia','Italy','Spain','Belgium','Sweden','Denmark','Finland','Ireland','Portugal','Poland','Ukraine','Romania','Greece','Turkey','Indonesia','Philippines','Vietnam','Thailand','Malaysia','Pakistan','Bangladesh','Sri Lanka','Nepal','Egypt','Morocco','Algeria','Tunisia','Nigeria','Kenya','Ghana','Ethiopia','Colombia','Peru','Chile','New Zealand','Austria']},
+  {id:'CSW',name:'CSW – Commission on the Status of Women',portfolios:['United States','China','India','Brazil','South Africa','Nigeria','Indonesia','Bangladesh','Ethiopia','Mexico','Pakistan','Philippines','Vietnam','Egypt','Turkey','Iran','Iraq','Afghanistan','Kenya','Ghana','Morocco','Algeria','Colombia','Peru','Chile','Argentina','Saudi Arabia','United Arab Emirates','Qatar','Thailand','Malaysia','Singapore','Nepal','Sri Lanka','Myanmar','Cambodia','Laos','Uzbekistan','Kazakhstan','Ukraine','Poland','Romania','Greece','Italy','Spain','France','Germany','United Kingdom','Canada','Australia']},
+  {id:'IMF',name:'IMF – International Monetary Fund',portfolios:['United States','China','Japan','Germany','United Kingdom','France','India','Italy','Canada','Brazil','Russia','Australia','Spain','Mexico','Indonesia','Netherlands','Saudi Arabia','Turkey','Switzerland','Argentina','Sweden','Poland','Belgium','Thailand','Ireland','Austria','Norway','United Arab Emirates','Israel','Singapore','Malaysia','Philippines','Vietnam','Pakistan','Bangladesh','South Africa','Nigeria','Kenya','Egypt','Morocco','Algeria','Chile','Colombia','Peru','Qatar','Greece','Portugal','Denmark','Finland','New Zealand']},
+  {id:'WHO',name:'WHO – World Health Organization',portfolios:['Sweden','Norway','Finland','Denmark','Canada','Netherlands','Germany','Rwanda','New Zealand','Philippines','United States','United Kingdom','France','Spain','Italy','Belgium','Switzerland','Austria','Ireland','Portugal','Australia','Japan','South Korea','Argentina','Chile','Colombia','Peru','Mexico','Brazil','South Africa','Kenya','Ghana','Nigeria','Ethiopia','Morocco','Tunisia','Egypt','Turkey','Indonesia','Malaysia','Thailand','Vietnam','Bangladesh','Pakistan','Nepal','Sri Lanka','United Arab Emirates','Qatar','Saudi Arabia']},
+  {id:'UNODC',name:'UNODC – UN Office on Drugs & Crime',portfolios:['Mexico','Colombia','United States','Afghanistan','Myanmar','Peru','Bolivia','Brazil','Nigeria','South Africa','Pakistan','Iran','Turkey','Thailand','Laos','Cambodia','Vietnam','Philippines','Indonesia','Malaysia','India','Bangladesh','Sri Lanka','Nepal','Kenya','Ghana','Ethiopia','Morocco','Algeria','Tunisia','Egypt','Argentina','Chile','Paraguay','Uruguay','Canada','Australia','United Kingdom','France','Germany','Italy','Spain','Netherlands','Belgium','Poland','Ukraine','Romania','Greece','Portugal','Ireland']},
+  {id:'AIPPM',name:'AIPPM – All India Political Parties Meet',portfolios:['Narendra Modi','Rahul Gandhi','Amit Shah','Arvind Kejriwal','Mamata Banerjee','Yogi Adityanath','Nitin Gadkari','Sonia Gandhi','Mallikarjun Kharge','Sharad Pawar','Uddhav Thackeray','Eknath Shinde','Devendra Fadnavis','Tejashwi Yadav','Nitish Kumar','Lalu Prasad Yadav','Hemant Soren','Bhupesh Baghel','Ashok Gehlot','Sachin Pilot','Pinarayi Vijayan','MK Stalin','K Chandrashekar Rao','Revanth Reddy','Jagan Mohan Reddy','Chandrababu Naidu','HD Kumaraswamy','Basavaraj Bommai','Manohar Lal Khattar','Bhagwant Mann','Pramod Sawant','Himanta Biswa Sarma','Conrad Sangma','Neiphiu Rio','Naveen Patnaik','Biplab Deb','Manik Saha','Farooq Abdullah','Omar Abdullah','Mehbooba Mufti','Anurag Thakur','Smriti Irani','Rajnath Singh','S Jaishankar','Piyush Goyal','Kiren Rijiju','Jyotiraditya Scindia','Ghulam Nabi Azad','Asaduddin Owaisi','Kapil Sibal']},
+  {id:'G20',name:'G20 Summit',portfolios:['Joe Biden','Xi Jinping','Narendra Modi','Rishi Sunak','Emmanuel Macron','Olaf Scholz','Giorgia Meloni','Justin Trudeau','Anthony Albanese','Luiz Inacio Lula da Silva','Cyril Ramaphosa','Mohammed bin Salman','Recep Tayyip Erdogan','Joko Widodo','Yoon Suk Yeol','Andres Manuel Lopez Obrador','Alberto Fernandez','Ursula von der Leyen','Kristalina Georgieva','Ajay Banga']},
+  {id:'ICC',name:'ICC – International Cricket Council',portfolios:['India','Australia','England','South Africa','New Zealand','Pakistan','Sri Lanka','Bangladesh','Afghanistan','West Indies','Zimbabwe','Ireland','Netherlands','Scotland','United Arab Emirates','Nepal','Canada','Oman','Namibia','United States']},
+  {id:'IPL',name:'IPL – Indian Premier League',portfolios:['Mumbai Indians','Chennai Super Kings','Royal Challengers Bangalore','Kolkata Knight Riders','Delhi Capitals','Rajasthan Royals','Sunrisers Hyderabad','Punjab Kings','Lucknow Super Giants','Gujarat Titans']},
+  {id:'FIFA',name:'FIFA',portfolios:['Real Madrid','FC Barcelona','Manchester United','Manchester City','Liverpool FC','Chelsea FC','Arsenal FC','Bayern Munich','Borussia Dortmund','Paris Saint-Germain','Juventus','AC Milan','Inter Milan','Napoli','Atletico Madrid','Sevilla FC','Tottenham Hotspur','RB Leipzig','Ajax','PSV Eindhoven']},
+  {id:'GCM',name:'Global Car Market',portfolios:['Toyota','Volkswagen','Ford','General Motors','Honda','Hyundai','Kia','BMW','Mercedes-Benz','Audi','Tesla','Nissan','Renault','Peugeot','Ferrari','Lamborghini','Porsche','Volvo','Jaguar','Land Rover']},
+  {id:'F1',name:'F1 – Formula 1',portfolios:['Lewis Hamilton','Max Verstappen','Charles Leclerc','Lando Norris','George Russell','Carlos Sainz','Fernando Alonso','Sergio Perez','Oscar Piastri','Esteban Ocon','Pierre Gasly','Valtteri Bottas','Yuki Tsunoda','Daniel Ricciardo','Lance Stroll','Kevin Magnussen']},
+  {id:'BMU',name:'Bollywood Meet-Up',portfolios:['Shah Rukh Khan','Salman Khan','Aamir Khan','Ranbir Kapoor','Ranveer Singh','Hrithik Roshan','Akshay Kumar','Ajay Devgn','Varun Dhawan','Tiger Shroff','Amitabh Bachchan','Rajinikanth','Deepika Padukone','Alia Bhatt','Katrina Kaif','Kareena Kapoor','Priyanka Chopra','Anushka Sharma','Shraddha Kapoor','Kiara Advani']},
+  {id:'HMU',name:'Hollywood Meet-Up',portfolios:['Leonardo DiCaprio','Brad Pitt','Tom Cruise','Robert Downey Jr.','Chris Evans','Chris Hemsworth','Scarlett Johansson','Jennifer Lawrence','Margot Robbie','Emma Stone','Zendaya','Timothee Chalamet','Dwayne Johnson','Ryan Reynolds','Hugh Jackman','Will Smith']},
+  {id:'BRC',name:'Brain Rot Council (Crisis)',portfolios:['IShowSpeed','Kai Cenat','MrBeast','Adin Ross','xQc','Pokimane','KSI','Logan Paul','Jake Paul','Dream','Technoblade','TommyInnit']},
+  {id:'MDC',name:'Marvel vs DC (Crisis)',portfolios:['Iron Man','Captain America','Thor','Hulk','Black Widow','Hawkeye','Spider-Man','Doctor Strange','Black Panther','Captain Marvel','Scarlet Witch','Vision','Ant-Man','Batman','Superman','Wonder Woman','Flash','Aquaman','Cyborg','Green Lantern']},
+  {id:'ST',name:'Stranger Things (Crisis)',portfolios:['Eleven','Mike Wheeler','Dustin Henderson','Lucas Sinclair','Will Byers','Max Mayfield','Jim Hopper','Joyce Byers','Nancy Wheeler','Jonathan Byers','Steve Harrington','Robin Buckley','Billy Hargrove','Vecna','Demogorgon']},
+  {id:'PM',name:'Pokémon (Crisis)',portfolios:['Ash Ketchum','Pikachu','Misty','Brock','Gary Oak','Professor Oak','Team Rocket','Jessie','James','Meowth','Charizard','Bulbasaur','Squirtle','Greninja','Lucario','Mewtwo','Mew']}
+];
+
+var regRole='', selectedComms=[], chairPrefs=[];
+
+function openReg(){regRole='';selectedComms=[];chairPrefs=[];var rd=document.getElementById('roleDelegate'),rc=document.getElementById('roleChair'),re=document.getElementById('roleError');if(rd)rd.classList.remove('selected');if(rc)rc.classList.remove('selected');if(re)re.style.display='none';goRegStep(0);document.getElementById('regBackdrop').style.display='flex';}
+function closeReg(){document.getElementById('regBackdrop').style.display='none';}
+function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
+function closeSvc(){document.getElementById('svcOverlay').classList.remove('open');}
+function openTeamOverlay(){document.getElementById('teamOverlay').classList.add('open');}
+function closeTeamOverlay(){document.getElementById('teamOverlay').classList.remove('open');}
+
+document.addEventListener('click',function(e){if(e.target.id==='regBackdrop')closeReg();if(e.target.id==='teamBackdrop')closeTeamApp();});
+
+function selectRole(role){regRole=role;document.getElementById('roleDelegate').classList.toggle('selected',role==='delegate');document.getElementById('roleChair').classList.toggle('selected',role==='chair');document.getElementById('roleError').style.display='none';}
+
+var DELEGATE_STEPS=[0,1,2,3,4,5],CHAIR_STEPS=[0,'c1','c2','c3',5];
+
+function goRegStep(n){
+  ['rStep0','rStep1','rStep2','rStep3','rStep4','rStep5','cStep1','cStep2','cStep3'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+  var panelId=(typeof n==='string'&&n.charAt(0)==='c')?('cStep'+n.substring(1)):('rStep'+n);
+  var el=document.getElementById(panelId);if(el)el.style.display='block';
+  updateStepDots(n);
+  var modal=document.querySelector('#regBackdrop .modal');if(modal)modal.scrollTop=0;
+}
+function updateStepDots(current){
+  var steps=regRole==='chair'?CHAIR_STEPS:DELEGATE_STEPS,idx=steps.indexOf(current);
+  ['rs0','rs1','rs2','rs3','rs4'].forEach(function(did,i){var dot=document.getElementById(did);if(!dot)return;dot.className='s-dot'+(i<idx?' done':i===idx?' on':'');});
+  ['rl01','rl12','rl23','rl34'].forEach(function(lid,i){var line=document.getElementById(lid);if(line)line.className='s-line'+(idx>i+1?' done':'');});
+}
+function regNext(step){
+  if(step===0){if(!regRole){document.getElementById('roleError').style.display='block';return;}if(regRole==='delegate'){initCountryDropdown('d_country');goRegStep(1);}else{initCountryDropdown('c_country');goRegStep('c1');}}
+  else if(step===1){if(!v('d_fn')||!v('d_ln')||!v('d_age')||!v('d_ph')||!v('d_em')||!v('d_addr')){alert('Please fill in all required fields.');return;}buildCommitteeGrid();goRegStep(2);}
+  else if(step===2){if(selectedComms.length===0){alert('Please select at least 1 committee.');return;}buildPortfolioFields(selectedComms);goRegStep(3);}
+  else if(step===3){document.getElementById('payRef2').textContent='GDF-'+v('d_fn').substring(0,3).toUpperCase()+v('d_ln').substring(0,3).toUpperCase();goRegStep(4);}
+}
+function regBack(step){if(step===2)goRegStep(1);else if(step===3)goRegStep(2);else if(step===4)goRegStep(3);else goRegStep(0);}
+function chairNext(step){
+  if(step===1){if(!v('c_fn')||!v('c_ln')||!v('c_age')||!v('c_ph')||!v('c_em')||!v('c_addr')||!v('c_school')){alert('Please fill in all required fields.');return;}goRegStep('c2');}
+  else if(step===2){if(!v('c_exp_level')||!v('c_conferences')||!v('c_skills')||!v('c_why')){alert('Please fill in all required fields.');return;}buildChairCommGrid();goRegStep('c3');}
+  else if(step===3){if(chairPrefs.length<1){alert('Please select at least 1 committee preference.');return;}submitChair();}
+}
+function chairBack(step){if(step===2)goRegStep('c1');else if(step===3)goRegStep('c2');else goRegStep(0);}
+
+/* ── Helper: build one card element ── */
+function makeCommCard(c, clickFn) {
+  var isCrisis = c.name.indexOf('Crisis') > -1;
+  var abbr = c.id;
+  var nameMap = {
+    UNGA:'United Nations General Assembly', UNSC:'United Nations Security Council',
+    UNHRC:'Human Rights Council', CSW:'Commission on the Status of Women',
+    IMF:'International Monetary Fund', WHO:'World Health Organization',
+    UNODC:'UN Office on Drugs & Crime', AIPPM:'All India Political Parties Meet',
+    G20:'G20 Summit', ICC:'International Cricket Council',
+    IPL:'Indian Premier League', FIFA:'FIFA',
+    GCM:'Global Car Market', F1:'Formula 1',
+    BMU:'Bollywood Meet-Up', HMU:'Hollywood Meet-Up',
+    BRC:'Brain Rot Council', MDC:'Marvel vs DC',
+    ST:'Stranger Things', PM:'Pokémon'
+  };
+  var shortName = nameMap[c.id] || c.name;
+
+  var div = document.createElement('div');
+  div.className = 'comm-card';
+  div.setAttribute('data-id', c.id);
+  div.innerHTML =
+    '<span class="comm-card-abbr">' + abbr + '</span>' +
+    '<span class="comm-card-name">' + shortName + '</span>' +
+    (isCrisis ? '<span class="comm-crisis-pill">Crisis</span>' : '');
+  div.addEventListener('click', function() { clickFn(div, c.id); });
+  return div;
+}
+
+/* ── Helper: build section label element ── */
+function makeSection(label) {
+  var div = document.createElement('div');
+  div.className = 'comm-section-lbl';
+  div.textContent = label;
+  return div;
+}
+
+/* ── DELEGATE – buildCommitteeGrid (rStep2) ── */
+function buildCommitteeGrid() {
+  selectedComms = [];
+  var grid = document.getElementById('committeeGrid');
+  grid.innerHTML = '';
+
+  var sections = [
+    { label: 'UN Committees', ids: ['UNGA','UNSC','UNHRC','CSW','IMF','WHO','UNODC','AIPPM','G20'] },
+    { label: 'Specialised Committees', ids: ['ICC','IPL','FIFA','GCM','F1','BMU','HMU'] },
+    { label: 'Crisis Committees', ids: ['BRC','MDC','ST','PM'] }
+  ];
+
+  sections.forEach(function(sec) {
+    grid.appendChild(makeSection(sec.label));
+    sec.ids.forEach(function(id) {
+      var c = COMMITTEES.find(function(x) { return x.id === id; });
+      if (c) grid.appendChild(makeCommCard(c, toggleComm));
+    });
+  });
+
+  updateCommCount();
+}
+
+function toggleComm(el, id) {
+  var idx = selectedComms.indexOf(id);
+  if (idx > -1) {
+    selectedComms.splice(idx, 1);
+    el.classList.remove('comm-selected');
+  } else {
+    if (selectedComms.length >= 3) { alert('Maximum 3 committees allowed.'); return; }
+    selectedComms.push(id);
+    el.classList.add('comm-selected');
+  }
+  updateCommCount();
+}
+
+function updateCommCount() {
+  var n = selectedComms.length;
+  var el = document.getElementById('commSelCount');
+  if (!el) return;
+  el.textContent = n + ' / 3 selected';
+  el.className = 'comm-sel-count ' + (n === 0 ? 'c0' : n < 3 ? 'c-partial' : 'c-full');
+
+  var cards = document.querySelectorAll('#committeeGrid .comm-card');
+  cards.forEach(function(card) {
+    var isSelected = card.classList.contains('comm-selected');
+    if (!isSelected) {
+      card.classList.toggle('comm-disabled', n >= 3);
+    }
+  });
+}
+
+/* ── CHAIR – buildChairCommGrid (cStep3) ── */
+function buildChairCommGrid() {
+  chairPrefs = [];
+  var grid = document.getElementById('chairCommGrid');
+  grid.innerHTML = '';
+
+  var sections = [
+    { label: 'UN Committees', ids: ['UNGA','UNSC','UNHRC','CSW','IMF','WHO','UNODC','AIPPM','G20'] },
+    { label: 'Specialised Committees', ids: ['ICC','IPL','FIFA','GCM','F1','BMU','HMU'] },
+    { label: 'Crisis Committees', ids: ['BRC','MDC','ST','PM'] }
+  ];
+
+  sections.forEach(function(sec) {
+    grid.appendChild(makeSection(sec.label));
+    sec.ids.forEach(function(id) {
+      var c = COMMITTEES.find(function(x) { return x.id === id; });
+      if (c) grid.appendChild(makeCommCard(c, toggleChairComm));
+    });
+  });
+
+  updateChairCommCount();
+}
+
+function toggleChairComm(el, id) {
+  var idx = chairPrefs.indexOf(id);
+  if (idx > -1) {
+    chairPrefs.splice(idx, 1);
+  } else {
+    if (chairPrefs.length >= 3) { alert('Maximum 3 preferences allowed.'); return; }
+    chairPrefs.push(id);
+  }
+  refreshChairCommGrid();
+  updateChairCommCount();
+}
+
+function refreshChairCommGrid() {
+  var rankClass  = ['pref1','pref2','pref3'];
+  var rankLabels = ['1st','2nd','3rd'];
+
+  document.querySelectorAll('#chairCommGrid .comm-card').forEach(function(card) {
+    var id  = card.getAttribute('data-id');
+    var idx = chairPrefs.indexOf(id);
+
+    card.classList.remove('pref1','pref2','pref3','comm-disabled');
+
+    var old = card.querySelector('.pref-num-badge');
+    if (old) old.remove();
+
+    if (idx > -1) {
+      card.classList.add(rankClass[idx]);
+      var badge = document.createElement('span');
+      badge.className = 'pref-num-badge';
+      badge.textContent = rankLabels[idx];
+      card.appendChild(badge);
+    } else {
+      if (chairPrefs.length >= 3) {
+        card.classList.add('comm-disabled');
+      }
+    }
+  });
+}
+
+function updateChairCommCount() {
+  var n  = chairPrefs.length;
+  var el = document.getElementById('chairCommCount');
+  if (!el) return;
+  el.textContent = n + ' / 3 selected';
+  el.className = 'comm-sel-count ' + (n === 0 ? 'c0' : n < 3 ? 'c-partial' : 'c-full');
+}
+
+function buildPortfolioFields(sel){document.getElementById('portfolioFields').innerHTML=sel.map(function(id){var c=COMMITTEES.find(function(x){return x.id===id;});if(!c)return'';return'<div><label class="ml" style="margin-bottom:6px;display:block;">'+c.name+'</label><select class="mi" id="pf_'+id+'"><option value="">-- Select portfolio --</option>'+c.portfolios.map(function(p){return'<option>'+p+'</option>';}).join('')+'</select></div>';}).join('');}
+function initCountryDropdown(selId){var sel=document.getElementById(selId);if(!sel||sel.options.length>1)return;Object.keys(COUNTRY_DATA).sort().forEach(function(c){var opt=document.createElement('option');opt.value=c;opt.textContent=c;sel.appendChild(opt);});}
+function onCountryChange(){var country=document.getElementById('d_country').value,cityEl=document.getElementById('d_city'),emirRow=document.getElementById('emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('d_emirate').value='';}
+function onChairCountryChange(){var country=document.getElementById('c_country').value,cityEl=document.getElementById('c_city'),emirRow=document.getElementById('c_emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('c_emirate').value='';}
+function v(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+function submitDelegate(){if(!v('d_chname')||!v('d_card4')){alert('Please fill in all payment details.');return;}var app={id:'DEL'+Date.now().toString().slice(-6),fname:v('d_fn'),lname:v('d_ln'),age:v('d_age'),phone:v('d_ph'),email:v('d_em'),address:v('d_addr')+', '+v('d_emirate')+', '+v('d_country'),committees:selectedComms,portfolios:{},cardName:v('d_chname'),cardLast4:v('d_card4'),date:new Date().toLocaleString()};selectedComms.forEach(function(id){var el=document.getElementById('pf_'+id);app.portfolios[id]=el?el.value:'';});showConfirmation('Delegate',app.id,app.fname+' '+app.lname,app.email,'Committees: '+app.committees.join(', ')+'<br><b>Cardholder:</b> '+app.cardName+'<br><b>Last 4 Digits:</b> ****'+app.cardLast4);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Delegate Registration',app_id:app.id,full_name:app.fname+' '+app.lname,age:app.age,email:app.email,phone:app.phone,address:app.address,details:'Committees: '+app.committees.join(', '),extra:'Cardholder: '+app.cardName+' | Last 4: ****'+app.cardLast4+' | Portfolios: '+JSON.stringify(app.portfolios),date:app.date});}}
+function submitChair(){var prefNames=chairPrefs.map(function(id,i){var c=COMMITTEES.find(function(x){return x.id===id;});return(i+1)+'. '+(c?c.name:id);});var app={id:'CHAIR'+Date.now().toString().slice(-6),fname:v('c_fn'),lname:v('c_ln'),age:v('c_age'),phone:v('c_ph'),email:v('c_em'),address:v('c_addr')+', '+v('c_emirate')+', '+v('c_country'),school:v('c_school'),expLevel:v('c_exp_level'),conferences:v('c_conferences'),chairExp:v('c_chair_exp'),awards:v('c_awards'),skills:v('c_skills'),why:v('c_why'),prefs:prefNames,date:new Date().toLocaleString()};showConfirmation('Chair',app.id,app.fname+' '+app.lname,app.email,'Committee Preferences:<br>'+prefNames.join('<br>')+'<br><b>School:</b> '+app.school+'<br><b>Experience:</b> '+app.expLevel);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Chair Application',app_id:app.id,full_name:app.fname+' '+app.lname,age:app.age,email:app.email,phone:app.phone,address:app.address,details:'Committee Prefs: '+prefNames.join(' | ')+' | School: '+app.school+' | Level: '+app.expLevel,extra:'Awards: '+app.awards+' | Skills: '+app.skills+' | Why: '+app.why+' | Conferences: '+app.conferences,date:app.date});}}
+function showConfirmation(roleLabel,id,name,email,extraHtml){document.getElementById('confirmTitle').textContent=roleLabel+' Application Submitted!';document.getElementById('confirmMsg').innerHTML='Thank you! Our team will verify your payment within <strong>2–3 business days</strong>. '+(roleLabel==='Chair'?'We will review your chair application and notify you by email.':"Once approved you'll receive your committee and portfolio assignment by email.");document.getElementById('regSummary').innerHTML='<b>Application ID:</b> '+id+'<br><b>Name:</b> '+name+'<br><b>Email:</b> '+email+'<br><b>Role:</b> '+roleLabel+'<br>'+extraHtml+'<br><b>Status:</b> Submitted — confirmation email on its way.';goRegStep(5);}
+
+function openTeamApp(){
+  ['tStep1','tStep2','tStep3','tStep4'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+  document.getElementById('tStep1').style.display='block';
+  ['tm_fn','tm_ln','tm_age','tm_ph','tm_em','tm_addr','tm_exp','tm_why'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  var dept=document.getElementById('tm_dept');if(dept)dept.value='';
+  var country=document.getElementById('tm_country');if(country)country.value='';
+  var city=document.getElementById('tm_city');if(city)city.value='';
+  document.getElementById('tm_e1').style.display='none';
+  document.getElementById('tm_e2').style.display='none';
+  updateTeamDots(1);
+  document.getElementById('teamBackdrop').style.display='flex';
+  var modal=document.querySelector('#teamBackdrop .modal');if(modal)modal.scrollTop=0;
+}
+function closeTeamApp(){document.getElementById('teamBackdrop').style.display='none';}
+function updateTeamDots(current){
+  ['ts1','ts2','ts3'].forEach(function(did,i){var dot=document.getElementById(did);if(!dot)return;var stepNum=i+1;if(stepNum<current){dot.className='s-dot done';dot.textContent='✓';}else if(stepNum===current){dot.className='s-dot on';dot.textContent=stepNum;}else{dot.className='s-dot';dot.textContent=stepNum;}});
+  ['tl01','tl12','tl23'].forEach(function(lid,i){var line=document.getElementById(lid);if(line)line.className='s-line'+(current>i+1?' done':'');});
+}
+function teamNext(step){
+  if(step===1){var fn=tv('tm_fn'),ln=tv('tm_ln'),age=tv('tm_age'),ph=tv('tm_ph'),em=tv('tm_em'),addr=tv('tm_addr'),dept=document.getElementById('tm_dept').value,country=document.getElementById('tm_country').value,city=document.getElementById('tm_city').value;if(!fn||!ln||!age||!ph||!em||!addr||!dept||!country||!city){document.getElementById('tm_e1').style.display='block';return;}document.getElementById('tm_e1').style.display='none';goTeamStep(2);}
+  else if(step===2){if(!tv('tm_exp')||!tv('tm_why')){document.getElementById('tm_e2').style.display='block';return;}document.getElementById('tm_e2').style.display='none';buildTeamReview();goTeamStep(3);}
+}
+function teamBack(step){if(step===2)goTeamStep(1);else if(step===3)goTeamStep(2);}
+function goTeamStep(n){['tStep1','tStep2','tStep3','tStep4'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});var el=document.getElementById('tStep'+n);if(el)el.style.display='block';updateTeamDots(n);var modal=document.querySelector('#teamBackdrop .modal');if(modal)modal.scrollTop=0;}
+function buildTeamReview(){var rows=[['Name',tv('tm_fn')+' '+tv('tm_ln')],['Age',tv('tm_age')],['Email',tv('tm_em')],['Phone',tv('tm_ph')],['Address',tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value],['Department',document.getElementById('tm_dept').value],['Experience',tv('tm_exp')],['Why GDF',tv('tm_why')]];document.getElementById('tm_review').innerHTML=rows.map(function(r){return'<b>'+r[0]+':</b> '+r[1]+'<br>';}).join('');}
+function teamSubmit(){var appId='TEAM'+Date.now().toString().slice(-6);document.getElementById('tm_appid').innerHTML='<b>Application ID:</b> '+appId+'<br><b>Name:</b> '+tv('tm_fn')+' '+tv('tm_ln')+'<br><b>Email:</b> '+tv('tm_em')+'<br><b>Department:</b> '+document.getElementById('tm_dept').value+'<br><b>Status:</b> Submitted — we\'ll be in touch soon.';goTeamStep(4);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Team Application',app_id:appId,full_name:tv('tm_fn')+' '+tv('tm_ln'),age:tv('tm_age'),email:tv('tm_em'),phone:tv('tm_ph'),address:tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value,details:'Department: '+document.getElementById('tm_dept').value,extra:'Experience: '+tv('tm_exp')+' | Why GDF: '+tv('tm_why'),date:new Date().toLocaleString()}).catch(function(err){console.warn('EmailJS:',err);});}}
+function tv(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+
+function sendContact(){
+  var fname=document.getElementById('cFname').value.trim(),lname=document.getElementById('cLname').value.trim(),email=document.getElementById('cEmail').value.trim(),msg=document.getElementById('cMsg').value.trim(),status=document.getElementById('cStatus'),btn=document.querySelector('[onclick="sendContact()"]');
+  if(!fname||!lname||!email||!msg){status.style.display='block';status.style.color='#c0392b';status.textContent='Please fill in all required fields.';return;}
+  btn.disabled=true;btn.textContent='Sending…';status.style.display='none';
+  emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
+    .then(function(){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";['cFname','cLname','cEmail','cMsg'].forEach(function(id){document.getElementById(id).value='';});btn.textContent='Send Message';btn.disabled=false;})
+    .catch(function(err){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong. Please try again.';console.error('EmailJS error:',err);btn.textContent='Send Message';btn.disabled=false;});
+}
+</script>
+</body>
+</html>

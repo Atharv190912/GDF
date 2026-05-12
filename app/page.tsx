@@ -36,8 +36,8 @@ export default function HomePage() {
         strategy="afterInteractive"
         onLoad={() => { (window as any).emailjs?.init('cck5UdkTGd-58RJEU'); }}
       />
-      {/* Site scripts - v2.4.2 */}
-      <Script src="/gdf-scripts.js?v=2.4.2" strategy="afterInteractive" />
+      {/* Site scripts - v2 */}
+      <Script src={`/gdf-scripts.js?v=${Date.now()}`} strategy="afterInteractive" />
 
 {/* NAV */}
 <nav>
