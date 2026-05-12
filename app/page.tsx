@@ -36,8 +36,8 @@ export default function HomePage() {
         strategy="afterInteractive"
         onLoad={() => { (window as any).emailjs?.init('cck5UdkTGd-58RJEU'); }}
       />
-      {/* Site scripts - v2 */}
-      <Script src={`/gdf-scripts.js?v=${Date.now()}`} strategy="afterInteractive" />
+      {/* Site scripts - v2.4.2 */}
+      <Script src="/gdf-scripts.js?v=2.4.2" strategy="afterInteractive" />
 
 {/* NAV */}
 <nav>
@@ -117,7 +117,7 @@ export default function HomePage() {
 
       {/* Card */}
 <div className="conf-grid" style={{ flexShrink: '0', maxWidth: '310px', width: '100%' }}>
-  <div className="conf-card" onClick={() => { (window as any).openService(); }} style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', cursor: 'pointer' }}>
+  <div className="conf-card" onClick={() => { if (typeof window !== 'undefined' && (window as any).openService) (window as any).openService(); }} style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', cursor: 'pointer' }}>
     
     {/* Image fills top */}
     <img src="images/GDFI.png" style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#1a2740' }} />
@@ -271,7 +271,7 @@ export default function HomePage() {
       <div style={{ background: 'var(--navy)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', padding: '32px' }}>
         <div style={{ color: 'var(--gold)', fontSize: '2rem' }}>✦</div>
         <p style={{ color: 'rgba(255,255,255,.75)', fontSize: '.85rem', textAlign: 'center', lineHeight: '1.7', fontFamily: 'Arial,Helvetica,sans-serif' }}>Want to be part of something global?</p>
-        <button onClick={() => { (window as any).openTeamApp(); }} style={{ fontSize: '.72rem', padding: '12px 28px', cursor: 'pointer', border: '1.5px solid rgba(255,255,255,.5)', background: 'transparent', color: '#fff', fontFamily: 'Arial,Helvetica,sans-serif', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Join Our Team</button>
+        <button onClick={() => { if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }} style={{ fontSize: '.72rem', padding: '12px 28px', cursor: 'pointer', border: '1.5px solid rgba(255,255,255,.5)', background: 'transparent', color: '#fff', fontFamily: 'Arial,Helvetica,sans-serif', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Join Our Team</button>
       </div>
 
     </div>{/* end grid */}
@@ -376,7 +376,7 @@ export default function HomePage() {
           <label className="c-lbl">Message <span className="c-sub">(required)</span></label>
           <textarea className="inp" rows={5} id="cMsg"></textarea>
         </div>
-        <div><button id="cBtn" className="btn-solid" style={{ padding: '14px 44px' }} onClick={() => { (window as any).sendContact(); }}>Send Message</button></div>
+        <div><button id="cBtn" className="btn-solid" style={{ padding: '14px 44px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).sendContact) (window as any).sendContact(); }}>Send Message</button></div>
         <div id="cStatus" style={{ marginTop: '12px', fontSize: '.85rem', display: 'none' }}></div>
       </div>
     </div>
@@ -401,6 +401,12 @@ export default function HomePage() {
         <a href="mailto:info@gdfintl.org">info@gdfintl.org</a><br />
         <a href="mailto:globaldiplomaticfoundaiton@gmail.com">globaldiplomaticfoundaiton@gmail.com</a><br />
         (+971) 56 297 1909
+      </p>
+    </div>
+    <div className="ft-col">
+      <div className="ft-col-title">Admin</div>
+      <p>
+        <button onClick={() => { if (typeof window !== 'undefined' && (window as any).launchAdminDashboard) (window as any).launchAdminDashboard(); }} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', fontSize: '0.9rem', padding: '0', textDecoration: 'underline' }}>Admin Access</button>
       </p>
     </div>
   </div>
