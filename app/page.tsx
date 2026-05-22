@@ -460,10 +460,7 @@ export default function HomePage() {
   </div>
   <div className="ov-inner">
     <div className="crumb"><a href="#" onClick={() => { (window as any).closeTeamOverlay(); return false; }}>Home</a> &rsaquo; Join Our Team</div>
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '48px', maxWidth: '900px' }}>
-      <div style={{ flex: '0 0 42%' }}>
-        <img src="images/GDFTEAM.png" style={{ width: '100%', display: 'block', borderRadius: '8px' }} />
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '48px', maxWidth: '700px' }}>
       <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '16px' }}>
         <h1 className="svc-h1" style={{ marginTop: '0' }}>Join the Secretariat</h1>
         <p className="svc-desc" style={{ marginTop: '12px' }}>Be part of the team that makes GDF happen. We're looking for passionate individuals in Marketing, Operations, Graphic Design, and Social Media.</p>
