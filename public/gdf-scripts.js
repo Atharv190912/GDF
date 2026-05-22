@@ -1,25 +1,67 @@
-// EmailJS initialisation is handled in page.tsx onLoad
+// GDF Scripts v2.4.2
+console.log('GDF Scripts Initializing...');
 
-// Global exports for React components
-
+// Global exports for React components - assigned immediately
+window.openReg = openReg;
+window.closeReg = closeReg;
+window.openService = openSvc;
+window.openSvc = openSvc;
+window.closeSvc = closeSvc;
+window.openTeamOverlay = openTeamOverlay;
+window.closeTeamOverlay = closeTeamOverlay;
+window.launchAdminDashboard = launchAdminDashboard;
+window.checkAdm = checkAdm;
+window.renderAdmContent = renderAdmContent;
+window.updateAppStatus = updateAppStatus;
+window.buildPortfolioFields = buildPortfolioFields;
+window.setPaymentType = setPaymentType;
+window.tNext = tNext;
+window.tPrev = tPrev;
+window.regNext = regNext;
+window.regBack = regBack;
+window.chairNext = chairNext;
+window.chairBack = chairBack;
+window.selectRole = selectRole;
+window.onCountryChange = onCountryChange;
+window.onChairCountryChange = onChairCountryChange;
+window.submitDelegate = submitDelegate;
+window.submitChair = submitChair;
+window.openTeamApp = openTeamApp;
+window.closeTeamApp = closeTeamApp;
+window.teamNext = teamNext;
+window.teamBack = teamBack;
+window.teamSubmit = teamSubmit;
+window.sendContact = sendContact;
+>>>>>>> c70526799d163a03f9687c06bea3eeddf1513884
 
 let tCurrent = 0;
 
+function tGoTo(index) {
+  const track = document.getElementById('tTrack');
+  if (!track) return;
+  const slides = track.querySelectorAll('.t-slide');
+  if (!slides || slides.length === 0) return;
+  const total = slides.length;
+  tCurrent = (index + total) % total;
+  slides.forEach((slide, i) => {
+    slide.style.display = i === tCurrent ? 'block' : 'none';
+  });
+}
 
-  function tGoTo(index) {
-    const track = document.getElementById('tTrack');
-    const slides = track.querySelectorAll('.t-slide');
-    const total = slides.length;
-    tCurrent = (index + total) % total;
-    slides.forEach((slide, i) => {
-      slide.style.display = i === tCurrent ? 'block' : 'none';
-    });
-  }
+function tNext() { tGoTo(tCurrent + 1); }
+function tPrev() { tGoTo(tCurrent - 1); }
 
-  function tNext() { tGoTo(tCurrent + 1); }
-  function tPrev() { tGoTo(tCurrent - 1); }
+// Robust DOMContentLoaded handler
+function initAll() {
+  console.log('GDF Scripts: DOMContentLoaded / initAll');
+  tGoTo(0);
+}
 
-  document.addEventListener('DOMContentLoaded', () => tGoTo(0));
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}
 
 var COUNTRY_DATA = {
   "United Arab Emirates":["Abu Dhabi","Dubai","Sharjah","Ajman","Ras Al Khaimah","Fujairah","Umm Al Quwain","Al Ain","Khor Fakkan","Kalba"],
@@ -144,9 +186,6 @@ function setPaymentType(type) {
     if (lblTransRef) lblTransRef.innerHTML = 'Transaction ID <span class="req">*</span>';
   }
 }
-window.setPaymentType = setPaymentType;
-
-
 
 function openReg(){
   regRole='';
@@ -156,32 +195,41 @@ function openReg(){
   if(rd)rd.classList.remove('selected');
   if(rc)rc.classList.remove('selected');
   if(re)re.style.display='none';
-  
-  // Reset payment type to international
-  if (typeof window.setPaymentType === 'function') window.setPaymentType('international');
-  
+  if (typeof setPaymentType === 'function') setPaymentType('international');
   goRegStep(0);
-  document.getElementById('regBackdrop').style.display='flex';
+  const bd = document.getElementById('regBackdrop');
+  if(bd) bd.style.display='flex';
 }
-window.openReg = openReg;
 
+function closeReg(){
+  const bd = document.getElementById('regBackdrop');
+  if(bd) bd.style.display='none';
+}
 
-function closeReg(){document.getElementById('regBackdrop').style.display='none';}
-function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
-function closeSvc(){document.getElementById('svcOverlay').classList.remove('open');}
-function openTeamOverlay(){document.getElementById('teamOverlay').classList.add('open');}
-function closeTeamOverlay(){document.getElementById('teamOverlay').classList.remove('open');}
+function openSvc(){
+  const el = document.getElementById('svcOverlay');
+  if(el) el.classList.add('open');
+}
+
+function closeSvc(){
+  const el = document.getElementById('svcOverlay');
+  if(el) el.classList.remove('open');
+}
+
+function openTeamOverlay() {
+  const el = document.getElementById('teamOverlay');
+  if(el) el.classList.add('open');
+}
+
+function closeTeamOverlay() {
+  const el = document.getElementById('teamOverlay');
+  if(el) el.classList.remove('open');
+}
 
 function launchAdminDashboard(){
-  console.log('Launching Admin Dashboard (v2)...');
   const el = document.getElementById('admOverlay');
-  if(el) {
-    el.style.display='flex';
-  } else {
-    console.error('admOverlay element not found!');
-  }
+  if(el) el.style.display='flex';
 }
-window.launchAdminDashboard = launchAdminDashboard;
 
 function checkAdm(){
   const u = document.getElementById('admUser').value;
@@ -193,66 +241,33 @@ function checkAdm(){
     alert('Invalid credentials');
   }
 }
-window.checkAdm = checkAdm;
 
 async function openAdmPortal() {
-  document.getElementById('admPortal').style.display = 'block';
+  const el = document.getElementById('admPortal');
+  if(el) el.style.display = 'block';
   const u = 'GDF@Atharv';
   const p = 'NASA@412919';
-  
   try {
     const res = await fetch(`/api/applications?user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`);
     const apps = await res.json();
     renderAdmContent(apps);
-  } catch (err) {
-    console.error('Failed to load applications:', err);
-  }
+  } catch (err) { console.error(err); }
 }
 
 function renderAdmContent(apps) {
   const container = document.getElementById('admContent');
   if(!container) return;
-  
-  // Stats
   document.getElementById('statD').textContent = apps.filter(a => a.type === 'delegate').length;
   document.getElementById('statC').textContent = apps.filter(a => a.type === 'chair').length;
   document.getElementById('statT').textContent = apps.filter(a => a.type === 'team').length;
-
-  let html = `<table class="adm-table">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Details</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>`;
-
+  let html = `<table class="adm-table"><thead><tr><th>Type</th><th>Name</th><th>Details</th><th>Status</th><th>Actions</th></tr></thead><tbody>`;
   apps.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp)).forEach(app => {
-    const details = app.type === 'delegate' 
-      ? `Comm: ${app.committees.map(c => c.id).join(', ')}` 
-      : app.type === 'chair' ? 'Chair App' : 'Team App';
-      
-    html += `<tr>
-      <td><span class="type-badge ${app.type}">${app.type}</span></td>
-      <td>${app.name}</td>
-      <td>${details}</td>
-      <td><span class="status-badge ${app.status}">${app.status}</span></td>
-      <td>
-        ${app.status === 'pending' ? `
-          <button class="btn-s btn-acc" onclick="updateAppStatus('${app.id}', 'accepted')">Accept</button>
-          <button class="btn-s btn-dec" onclick="updateAppStatus('${app.id}', 'declined')">Decline</button>
-        ` : ''}
-      </td>
-    </tr>`;
+    const details = app.type === 'delegate' ? `Comm: ${app.committees.map(c => c.id).join(', ')}` : app.type === 'chair' ? 'Chair App' : 'Team App';
+    html += `<tr><td><span class="type-badge ${app.type}">${app.type}</span></td><td>${app.name}</td><td>${details}</td><td><span class="status-badge ${app.status}">${app.status}</span></td><td>${app.status === 'pending' ? `<button class="btn-s btn-acc" onclick="updateAppStatus('${app.id}', 'accepted')">Accept</button><button class="btn-s btn-dec" onclick="updateAppStatus('${app.id}', 'declined')">Decline</button>` : ''}</td></tr>`;
   });
-
   html += `</tbody></table>`;
   container.innerHTML = html;
 }
-window.renderAdmContent = renderAdmContent;
 
 async function updateAppStatus(id, status) {
   const u = 'GDF@Atharv';
@@ -264,73 +279,76 @@ async function updateAppStatus(id, status) {
       body: JSON.stringify({ id, status, user: u, pass: p })
     });
     if(res.ok) openAdmPortal();
-  } catch (err) {
-    alert('Update failed');
-  }
+  } catch (err) { alert('Update failed'); }
 }
-window.updateAppStatus = updateAppStatus;
 
-
-function selectRole(role){regRole=role;document.getElementById('roleDelegate').classList.toggle('selected',role==='delegate');document.getElementById('roleChair').classList.toggle('selected',role==='chair');document.getElementById('roleError').style.display='none';}
+function selectRole(role){
+  regRole=role;
+  const rd=document.getElementById('roleDelegate');
+  const rc=document.getElementById('roleChair');
+  if(rd) rd.classList.toggle('selected',role==='delegate');
+  if(rc) rc.classList.toggle('selected',role==='chair');
+  const re=document.getElementById('roleError');
+  if(re) re.style.display='none';
+}
 
 var DELEGATE_STEPS=[0,1,2,3,4,5],CHAIR_STEPS=[0,'c1','c2','c3',5];
 
 function goRegStep(n){
-  ['rStep0','rStep1','rStep2','rStep3','rStep4','rStep5','cStep1','cStep2','cStep3'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+  ['rStep0','rStep1','rStep2','rStep3','rStep4','rStep5','cStep1','cStep2','cStep3'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.display='none';
+  });
   var panelId=(typeof n==='string'&&n.charAt(0)==='c')?('cStep'+n.substring(1)):('rStep'+n);
-  var el=document.getElementById(panelId);if(el)el.style.display='block';
+  const el=document.getElementById(panelId);
+  if(el) el.style.display='block';
   updateStepDots(n);
-  var modal=document.querySelector('#regBackdrop .modal');if(modal)modal.scrollTop=0;
+  const modal=document.querySelector('#regBackdrop .modal');
+  if(modal) modal.scrollTop=0;
 }
+
 function updateStepDots(current){
   var steps=regRole==='chair'?CHAIR_STEPS:DELEGATE_STEPS,idx=steps.indexOf(current);
-  ['rs0','rs1','rs2','rs3','rs4'].forEach(function(did,i){var dot=document.getElementById(did);if(!dot)return;dot.className='s-dot'+(i<idx?' done':i===idx?' on':'');});
-  ['rl01','rl12','rl23','rl34'].forEach(function(lid,i){var line=document.getElementById(lid);if(line)line.className='s-line'+(idx>i+1?' done':'');});
+  ['rs0','rs1','rs2','rs3','rs4'].forEach((did,i) => {
+    const dot=document.getElementById(did);
+    if(dot) dot.className='s-dot'+(i<idx?' done':i===idx?' on':'');
+  });
+  ['rl01','rl12','rl23','rl34'].forEach((lid,i) => {
+    const line=document.getElementById(lid);
+    if(line) line.className='s-line'+(idx>i+1?' done':'');
+  });
 }
+
 function regNext(step){
-  if(step===0){if(!regRole){document.getElementById('roleError').style.display='block';return;}if(regRole==='delegate'){initCountryDropdown('d_country');goRegStep(1);}else{initCountryDropdown('c_country');goRegStep('c1');}}
+  if(step===0){if(!regRole){const re=document.getElementById('roleError');if(re)re.style.display='block';return;}if(regRole==='delegate'){initCountryDropdown('d_country');goRegStep(1);}else{initCountryDropdown('c_country');goRegStep('c1');}}
   else if(step===1){if(!v('d_fn')||!v('d_ln')||!v('d_age')||!v('d_ph')||!v('d_em')||!v('d_addr')){alert('Please fill in all required fields.');return;}buildCommitteeGrid();goRegStep(2);}
   else if(step===2){if(selectedComms.length===0){alert('Please select at least 1 committee.');return;}buildPortfolioFields(selectedComms);goRegStep(3);}
-  else if(step===3){document.getElementById('payRef2').textContent='GDF-'+v('d_fn').substring(0,3).toUpperCase()+v('d_ln').substring(0,3).toUpperCase();goRegStep(4);}
+  else if(step===3){const pr=document.getElementById('payRef2');if(pr)pr.textContent='GDF-'+v('d_fn').substring(0,3).toUpperCase()+v('d_ln').substring(0,3).toUpperCase();goRegStep(4);}
 }
+
 function regBack(step){if(step===2)goRegStep(1);else if(step===3)goRegStep(2);else if(step===4)goRegStep(3);else goRegStep(0);}
+
 function chairNext(step){
   if(step===1){if(!v('c_fn')||!v('c_ln')||!v('c_age')||!v('c_ph')||!v('c_em')||!v('c_addr')||!v('c_school')){alert('Please fill in all required fields.');return;}goRegStep('c2');}
   else if(step===2){if(!v('c_exp_level')||!v('c_conferences')||!v('c_skills')||!v('c_why')){alert('Please fill in all required fields.');return;}buildChairCommGrid();goRegStep('c3');}
   else if(step===3){if(chairPrefs.length<1){alert('Please select at least 1 committee preference.');return;}submitChair();}
 }
+
 function chairBack(step){if(step===2)goRegStep('c1');else if(step===3)goRegStep('c2');else goRegStep(0);}
 
-/* ── Helper: build one card element ── */
 function makeCommCard(c, clickFn) {
   var isCrisis = c.name.indexOf('Crisis') > -1;
   var abbr = c.id;
-  var nameMap = {
-    UNGA:'United Nations General Assembly', UNSC:'United Nations Security Council',
-    UNHRC:'Human Rights Council', CSW:'Commission on the Status of Women',
-    IMF:'International Monetary Fund', WHO:'World Health Organization',
-    UNODC:'UN Office on Drugs & Crime', AIPPM:'All India Political Parties Meet',
-    G20:'G20 Summit', ICC:'International Cricket Council',
-    IPL:'Indian Premier League', FIFA:'FIFA',
-    GCM:'Global Car Market', F1:'Formula 1',
-    BMU:'Bollywood Meet-Up', HMU:'Hollywood Meet-Up',
-    BRC:'Brain Rot Council', MDC:'Marvel vs DC',
-    ST:'Stranger Things', PM:'Pokémon'
-  };
+  var nameMap = {UNGA:'United Nations General Assembly', UNSC:'United Nations Security Council', UNHRC:'Human Rights Council', CSW:'Commission on the Status of Women', IMF:'International Monetary Fund', WHO:'World Health Organization', UNODC:'UN Office on Drugs & Crime', AIPPM:'All India Political Parties Meet', G20:'G20 Summit', ICC:'International Cricket Council', IPL:'Indian Premier League', FIFA:'FIFA', GCM:'Global Car Market', F1:'Formula 1', BMU:'Bollywood Meet-Up', HMU:'Hollywood Meet-Up', BRC:'Brain Rot Council', MDC:'Marvel vs DC', ST:'Stranger Things', PM:'Pokémon'};
   var shortName = nameMap[c.id] || c.name;
-
   var div = document.createElement('div');
   div.className = 'comm-card';
   div.setAttribute('data-id', c.id);
-  div.innerHTML =
-    '<span class="comm-card-abbr">' + abbr + '</span>' +
-    '<span class="comm-card-name">' + shortName + '</span>' +
-    (isCrisis ? '<span class="comm-crisis-pill">Crisis</span>' : '');
+  div.innerHTML = `<span class="comm-card-abbr">${abbr}</span><span class="comm-card-name">${shortName}</span>${isCrisis ? '<span class="comm-crisis-pill">Crisis</span>' : ''}`;
   div.addEventListener('click', function() { clickFn(div, c.id); });
   return div;
 }
 
-/* ── Helper: build section label element ── */
 function makeSection(label) {
   var div = document.createElement('div');
   div.className = 'comm-section-lbl';
@@ -338,26 +356,19 @@ function makeSection(label) {
   return div;
 }
 
-/* ── DELEGATE – buildCommitteeGrid (rStep2) ── */
 function buildCommitteeGrid() {
   selectedComms = [];
   var grid = document.getElementById('committeeGrid');
+  if(!grid) return;
   grid.innerHTML = '';
-
-  var sections = [
-    { label: 'UN Committees', ids: ['UNGA','UNSC','UNHRC','CSW','IMF','WHO','UNODC','AIPPM','G20'] },
-    { label: 'Specialised Committees', ids: ['ICC','IPL','FIFA','GCM','F1','BMU','HMU'] },
-    { label: 'Crisis Committees', ids: ['BRC','MDC','ST','PM'] }
-  ];
-
-  sections.forEach(function(sec) {
+  var sections = [{ label: 'UN Committees', ids: ['UNGA','UNSC','UNHRC','CSW','IMF','WHO','UNODC','AIPPM','G20'] }, { label: 'Specialised Committees', ids: ['ICC','IPL','FIFA','GCM','F1','BMU','HMU'] }, { label: 'Crisis Committees', ids: ['BRC','MDC','ST','PM'] }];
+  sections.forEach(sec => {
     grid.appendChild(makeSection(sec.label));
-    sec.ids.forEach(function(id) {
-      var c = COMMITTEES.find(function(x) { return x.id === id; });
+    sec.ids.forEach(id => {
+      var c = COMMITTEES.find(x => x.id === id);
       if (c) grid.appendChild(makeCommCard(c, toggleComm));
     });
   });
-
   updateCommCount();
 }
 
@@ -377,47 +388,36 @@ function toggleComm(el, id) {
 function updateCommCount() {
   var n = selectedComms.length;
   var el = document.getElementById('commSelCount');
-  if (!el) return;
-  el.textContent = n + ' / 3 selected';
-  el.className = 'comm-sel-count ' + (n === 0 ? 'c0' : n < 3 ? 'c-partial' : 'c-full');
-
-  var cards = document.querySelectorAll('#committeeGrid .comm-card');
-  cards.forEach(function(card) {
+  if (el) {
+    el.textContent = n + ' / 3 selected';
+    el.className = 'comm-sel-count ' + (n === 0 ? 'c0' : n < 3 ? 'c-partial' : 'c-full');
+  }
+  document.querySelectorAll('#committeeGrid .comm-card').forEach(card => {
     var isSelected = card.classList.contains('comm-selected');
-    if (!isSelected) {
-      card.classList.toggle('comm-disabled', n >= 3);
-    }
+    if (!isSelected) card.classList.toggle('comm-disabled', n >= 3);
   });
 }
 
-/* ── CHAIR – buildChairCommGrid (cStep3) ── */
 function buildChairCommGrid() {
   chairPrefs = [];
   var grid = document.getElementById('chairCommGrid');
+  if(!grid) return;
   grid.innerHTML = '';
-
-  var sections = [
-    { label: 'UN Committees', ids: ['UNGA','UNSC','UNHRC','CSW','IMF','WHO','UNODC','AIPPM','G20'] },
-    { label: 'Specialised Committees', ids: ['ICC','IPL','FIFA','GCM','F1','BMU','HMU'] },
-    { label: 'Crisis Committees', ids: ['BRC','MDC','ST','PM'] }
-  ];
-
-  sections.forEach(function(sec) {
+  var sections = [{ label: 'UN Committees', ids: ['UNGA','UNSC','UNHRC','CSW','IMF','WHO','UNODC','AIPPM','G20'] }, { label: 'Specialised Committees', ids: ['ICC','IPL','FIFA','GCM','F1','BMU','HMU'] }, { label: 'Crisis Committees', ids: ['BRC','MDC','ST','PM'] }];
+  sections.forEach(sec => {
     grid.appendChild(makeSection(sec.label));
-    sec.ids.forEach(function(id) {
-      var c = COMMITTEES.find(function(x) { return x.id === id; });
+    sec.ids.forEach(id => {
+      var c = COMMITTEES.find(x => x.id === id);
       if (c) grid.appendChild(makeCommCard(c, toggleChairComm));
     });
   });
-
   updateChairCommCount();
 }
 
 function toggleChairComm(el, id) {
   var idx = chairPrefs.indexOf(id);
-  if (idx > -1) {
-    chairPrefs.splice(idx, 1);
-  } else {
+  if (idx > -1) chairPrefs.splice(idx, 1);
+  else {
     if (chairPrefs.length >= 3) { alert('Maximum 3 preferences allowed.'); return; }
     chairPrefs.push(id);
   }
@@ -428,56 +428,41 @@ function toggleChairComm(el, id) {
 function refreshChairCommGrid() {
   var rankClass  = ['pref1','pref2','pref3'];
   var rankLabels = ['1st','2nd','3rd'];
-
-  document.querySelectorAll('#chairCommGrid .comm-card').forEach(function(card) {
+  document.querySelectorAll('#chairCommGrid .comm-card').forEach(card => {
     var id  = card.getAttribute('data-id');
     var idx = chairPrefs.indexOf(id);
-
     card.classList.remove('pref1','pref2','pref3','comm-disabled');
-
     var old = card.querySelector('.pref-num-badge');
     if (old) old.remove();
-
     if (idx > -1) {
       card.classList.add(rankClass[idx]);
       var badge = document.createElement('span');
       badge.className = 'pref-num-badge';
       badge.textContent = rankLabels[idx];
       card.appendChild(badge);
-    } else {
-      if (chairPrefs.length >= 3) {
-        card.classList.add('comm-disabled');
-      }
-    }
+    } else if (chairPrefs.length >= 3) card.classList.add('comm-disabled');
   });
 }
 
 function updateChairCommCount() {
   var n  = chairPrefs.length;
   var el = document.getElementById('chairCommCount');
-  if (!el) return;
-  el.textContent = n + ' / 3 selected';
-  el.className = 'comm-sel-count ' + (n === 0 ? 'c0' : n < 3 ? 'c-partial' : 'c-full');
+  if (el) {
+    el.textContent = n + ' / 3 selected';
+    el.className = 'comm-sel-count ' + (n === 0 ? 'c0' : n < 3 ? 'c-partial' : 'c-full');
+  }
 }
 
 async function buildPortfolioFields(comms) {
   const container = document.getElementById('portfolioFields');
   if(!container) return;
   container.innerHTML = '<p style="font-size:.85rem;color:#666;">Checking portfolio availability...</p>';
-
-  // Fetch allotted portfolios from our local DB
   let allotted = [];
   try {
     const res = await fetch('/api/applications?allotted=true');
     const apps = await res.json();
-    // Get all accepted delegate portfolios
-    allotted = apps
-      .filter(a => a.type === 'delegate' && a.status === 'accepted')
-      .flatMap(a => a.committees.map(c => `${c.id}:${c.portfolio}`));
-  } catch (err) {
-    console.error('Failed to fetch allotted portfolios');
-  }
-
+    allotted = apps.filter(a => a.type === 'delegate' && a.status === 'accepted').flatMap(a => a.committees.map(c => `${c.id}:${c.portfolio}`));
+  } catch (err) {}
   let html = '';
   comms.forEach(id => {
     const c = COMMITTEES.find(x => x.id === id);
@@ -495,12 +480,12 @@ async function buildPortfolioFields(comms) {
   });
   container.innerHTML = html;
 }
-window.buildPortfolioFields = buildPortfolioFields;
 
-function initCountryDropdown(selId){var sel=document.getElementById(selId);if(!sel||sel.options.length>1)return;Object.keys(COUNTRY_DATA).sort().forEach(function(c){var opt=document.createElement('option');opt.value=c;opt.textContent=c;sel.appendChild(opt);});}
-function onCountryChange(){var country=document.getElementById('d_country').value,cityEl=document.getElementById('d_city'),emirRow=document.getElementById('emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('d_emirate').value='';}
-function onChairCountryChange(){var country=document.getElementById('c_country').value,cityEl=document.getElementById('c_city'),emirRow=document.getElementById('c_emirate_row');cityEl.innerHTML='<option value="">City / Region *</option>';if(country&&COUNTRY_DATA[country])COUNTRY_DATA[country].forEach(function(city){var opt=document.createElement('option');opt.value=city;opt.textContent=city;cityEl.appendChild(opt);});emirRow.style.display=country==='United Arab Emirates'?'block':'none';if(country!=='United Arab Emirates')document.getElementById('c_emirate').value='';}
+function initCountryDropdown(selId){ var sel=document.getElementById(selId); if(!sel||sel.options.length>1)return; Object.keys(COUNTRY_DATA).sort().forEach(c => { var opt=document.createElement('option'); opt.value=c; opt.textContent=c; sel.appendChild(opt); }); }
+function onCountryChange(){ var country=document.getElementById('d_country').value,cityEl=document.getElementById('d_city'),emirRow=document.getElementById('emirate_row'); if(cityEl) cityEl.innerHTML='<option value="">City / Region *</option>'; if(country&&COUNTRY_DATA[country]) COUNTRY_DATA[country].forEach(city => { var opt=document.createElement('option'); opt.value=city; opt.textContent=city; cityEl.appendChild(opt); }); if(emirRow) emirRow.style.display=country==='United Arab Emirates'?'block':'none'; }
+function onChairCountryChange(){ var country=document.getElementById('c_country').value,cityEl=document.getElementById('c_city'),emirRow=document.getElementById('c_emirate_row'); if(cityEl) cityEl.innerHTML='<option value="">City / Region *</option>'; if(country&&COUNTRY_DATA[country]) COUNTRY_DATA[country].forEach(city => { var opt=document.createElement('option'); opt.value=city; opt.textContent=city; cityEl.appendChild(opt); }); if(emirRow) emirRow.style.display=country==='United Arab Emirates'?'block':'none'; }
 function v(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+
 function submitDelegate(){
   if (currentPaymentType === 'international') {
     if(!v('d_chname')||!v('d_card4')||!v('d_bankname')||!v('d_transref')||!v('d_transdate')){
@@ -621,97 +606,59 @@ function submitChair(){
   }
 }
 
-async function checkAllottedPortfolios(email) {
-  const res = await fetch(`/api/allotted?email=${email}`);
-  return await res.json();
-}
-
-function adminLogin() {
-  const p = prompt('Admin Password:');
-  if(p === 'admin123') localStorage.setItem('isAdmin', 'true');
-}
-
-function showConfirmation(roleLabel,id,name,email,extraHtml){document.getElementById('confirmTitle').textContent=roleLabel+' Application Submitted!';document.getElementById('confirmMsg').innerHTML='Thank you! Our team will verify your payment within <strong>2–3 business days</strong>. '+(roleLabel==='Chair'?'We will review your chair application and notify you by email.':"Once approved you'll receive your committee and portfolio assignment by email.");document.getElementById('regSummary').innerHTML='<b>Application ID:</b> '+id+'<br><b>Name:</b> '+name+'<br><b>Email:</b> '+email+'<br><b>Role:</b> '+roleLabel+'<br>'+extraHtml+'<br><b>Status:</b> Submitted — confirmation email on its way.';goRegStep(5);}
+function showConfirmation(roleLabel,id,name,email,extraHtml){ const ct=document.getElementById('confirmTitle'); if(ct)ct.textContent=roleLabel+' Application Submitted!'; const cm=document.getElementById('confirmMsg'); if(cm)cm.innerHTML='Thank you! Our team will verify your payment within <strong>2–3 business days</strong>. '+(roleLabel==='Chair'?'We will review your chair application and notify you by email.':"Once approved you'll receive your committee and portfolio assignment by email."); const rs=document.getElementById('regSummary'); if(rs)rs.innerHTML='<b>Application ID:</b> '+id+'<br><b>Name:</b> '+name+'<br><b>Email:</b> '+email+'<br><b>Role:</b> '+roleLabel+'<br>'+extraHtml+'<br><b>Status:</b> Submitted — confirmation email on its way.'; goRegStep(5); }
 
 function openTeamApp(){
-  ['tStep1','tStep2','tStep3','tStep4'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
-  document.getElementById('tStep1').style.display='block';
-  ['tm_fn','tm_ln','tm_age','tm_ph','tm_em','tm_addr','tm_exp','tm_why'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
-  var dept=document.getElementById('tm_dept');if(dept)dept.value='';
-  var country=document.getElementById('tm_country');if(country)country.value='';
-  var city=document.getElementById('tm_city');if(city)city.value='';
-  document.getElementById('tm_e1').style.display='none';
-  document.getElementById('tm_e2').style.display='none';
+  ['tStep1','tStep2','tStep3','tStep4'].forEach(id => { const el=document.getElementById(id); if(el)el.style.display='none'; });
+  const ts1=document.getElementById('tStep1'); if(ts1)ts1.style.display='block';
+  ['tm_fn','tm_ln','tm_age','tm_ph','tm_em','tm_addr','tm_exp','tm_why'].forEach(id => { const el=document.getElementById(id); if(el)el.value=''; });
+  const td=document.getElementById('tm_dept'); if(td)td.value='';
+  const tc=document.getElementById('tm_country'); if(tc)tc.value='';
+  const tci=document.getElementById('tm_city'); if(tci)tci.value='';
+  const te1=document.getElementById('tm_e1'); if(te1)te1.style.display='none';
+  const te2=document.getElementById('tm_e2'); if(te2)te2.style.display='none';
   updateTeamDots(1);
-  document.getElementById('teamBackdrop').style.display='flex';
-  var modal=document.querySelector('#teamBackdrop .modal');if(modal)modal.scrollTop=0;
+  const tb=document.getElementById('teamBackdrop'); if(tb)tb.style.display='flex';
+  const modal=document.querySelector('#teamBackdrop .modal'); if(modal)modal.scrollTop=0;
 }
-function closeTeamApp(){document.getElementById('teamBackdrop').style.display='none';}
+
+function closeTeamApp(){ const tb=document.getElementById('teamBackdrop'); if(tb)tb.style.display='none'; }
+
 function updateTeamDots(current){
-  ['ts1','ts2','ts3'].forEach(function(did,i){var dot=document.getElementById(did);if(!dot)return;var stepNum=i+1;if(stepNum<current){dot.className='s-dot done';dot.textContent='✓';}else if(stepNum===current){dot.className='s-dot on';dot.textContent=stepNum;}else{dot.className='s-dot';dot.textContent=stepNum;}});
-  ['tl01','tl12','tl23'].forEach(function(lid,i){var line=document.getElementById(lid);if(line)line.className='s-line'+(current>i+1?' done':'');});
+  ['ts1','ts2','ts3'].forEach((did,i) => { const dot=document.getElementById(did); if(!dot)return; var stepNum=i+1; if(stepNum<current){dot.className='s-dot done';dot.textContent='✓';}else if(stepNum===current){dot.className='s-dot on';dot.textContent=stepNum;}else{dot.className='s-dot';dot.textContent=stepNum;} });
+  ['tl01','tl12','tl23'].forEach((lid,i) => { const line=document.getElementById(lid); if(line)line.className='s-line'+(current>i+1?' done':''); });
 }
+
 function teamNext(step){
-  if(step===1){var fn=tv('tm_fn'),ln=tv('tm_ln'),age=tv('tm_age'),ph=tv('tm_ph'),em=tv('tm_em'),addr=tv('tm_addr'),dept=document.getElementById('tm_dept').value,country=document.getElementById('tm_country').value,city=document.getElementById('tm_city').value;if(!fn||!ln||!age||!ph||!em||!addr||!dept||!country||!city){document.getElementById('tm_e1').style.display='block';return;}document.getElementById('tm_e1').style.display='none';goTeamStep(2);}
-  else if(step===2){if(!tv('tm_exp')||!tv('tm_why')){document.getElementById('tm_e2').style.display='block';return;}document.getElementById('tm_e2').style.display='none';buildTeamReview();goTeamStep(3);}
+  if(step===1){ var fn=tv('tm_fn'),ln=tv('tm_ln'),age=tv('tm_age'),ph=tv('tm_ph'),em=tv('tm_em'),addr=tv('tm_addr'),dept=document.getElementById('tm_dept').value,country=document.getElementById('tm_country').value,city=document.getElementById('tm_city').value; if(!fn||!ln||!age||!ph||!em||!addr||!dept||!country||!city){ const te1=document.getElementById('tm_e1'); if(te1)te1.style.display='block'; return; } goTeamStep(2); }
+  else if(step===2){ if(!tv('tm_exp')||!tv('tm_why')){ const te2=document.getElementById('tm_e2'); if(te2)te2.style.display='block'; return; } buildTeamReview(); goTeamStep(3); }
 }
+
 function teamBack(step){if(step===2)goTeamStep(1);else if(step===3)goTeamStep(2);}
-function goTeamStep(n){['tStep1','tStep2','tStep3','tStep4'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});var el=document.getElementById('tStep'+n);if(el)el.style.display='block';updateTeamDots(n);var modal=document.querySelector('#teamBackdrop .modal');if(modal)modal.scrollTop=0;}
-function buildTeamReview(){var rows=[['Name',tv('tm_fn')+' '+tv('tm_ln')],['Age',tv('tm_age')],['Email',tv('tm_em')],['Phone',tv('tm_ph')],['Address',tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value],['Department',document.getElementById('tm_dept').value],['Experience',tv('tm_exp')],['Why GDF',tv('tm_why')]];document.getElementById('tm_review').innerHTML=rows.map(function(r){return'<b>'+r[0]+':</b> '+r[1]+'<br>';}).join('');}
+
+function goTeamStep(n){ ['tStep1','tStep2','tStep3','tStep4'].forEach(id => { const el=document.getElementById(id); if(el)el.style.display='none'; }); const el=document.getElementById('tStep'+n); if(el)el.style.display='block'; updateTeamDots(n); const modal=document.querySelector('#teamBackdrop .modal'); if(modal)modal.scrollTop=0; }
+
+function buildTeamReview(){ var rows=[['Name',tv('tm_fn')+' '+tv('tm_ln')],['Age',tv('tm_age')],['Email',tv('tm_em')],['Phone',tv('tm_ph')],['Address',tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value],['Department',document.getElementById('tm_dept').value],['Experience',tv('tm_exp')],['Why GDF',tv('tm_why')]]; const tr=document.getElementById('tm_review'); if(tr)tr.innerHTML=rows.map(r => '<b>'+r[0]+':</b> '+r[1]+'<br>').join(''); }
+
 function teamSubmit(){
-  const appData = {
-    type: 'team',
-    name: tv('tm_fn')+' '+tv('tm_ln'),
-    age: tv('tm_age'),
-    email: tv('tm_em'),
-    phone: tv('tm_ph'),
-    address: tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value,
-    department: document.getElementById('tm_dept').value,
-    experience: tv('tm_exp'),
-    why: tv('tm_why')
-  };
-  fetch('/api/applications', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(appData)
-  }).catch(err => console.error('DB Error:', err));
-  
-  var appId='TEAM'+Date.now().toString().slice(-6);document.getElementById('tm_appid').innerHTML='<b>Application ID:</b> '+appId+'<br><b>Name:</b> '+tv('tm_fn')+' '+tv('tm_ln')+'<br><b>Email:</b> '+tv('tm_em')+'<br><b>Department:</b> '+document.getElementById('tm_dept').value+'<br><b>Status:</b> Submitted — we\'ll be in touch soon.';goTeamStep(4);if(typeof emailjs!=='undefined'){emailjs.send('service_gdfinternational','template_h75i69m',{app_type:'Team Application',app_id:appId,full_name:tv('tm_fn')+' '+tv('tm_ln'),age:tv('tm_age'),email:tv('tm_em'),phone:tv('tm_ph'),address:tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value,details:'Department: '+document.getElementById('tm_dept').value,extra:'Experience: '+tv('tm_exp')+' | Why GDF: '+tv('tm_why'),date:new Date().toLocaleString()}).catch(function(err){console.warn('EmailJS:',err);});}}
+  const appData = { type: 'team', name: tv('tm_fn')+' '+tv('tm_ln'), age: tv('tm_age'), email: tv('tm_em'), phone: tv('tm_ph'), address: tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value, department: document.getElementById('tm_dept').value, experience: tv('tm_exp'), why: tv('tm_why') };
+  fetch('/api/applications', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(appData) }).catch(err => console.error(err));
+  var appId='TEAM'+Date.now().toString().slice(-6); const ta=document.getElementById('tm_appid'); if(ta)ta.innerHTML='<b>Application ID:</b> '+appId+'<br><b>Name:</b> '+appData.name+'<br><b>Email:</b> '+appData.email+'<br><b>Department:</b> '+appData.department+'<br><b>Status:</b> Submitted — we\'ll be in touch soon.'; goTeamStep(4);
+  if(typeof emailjs!=='undefined'){ emailjs.send('service_gdfinternational','template_h75i69m',{ app_type:'Team Application', app_id:appId, full_name:appData.name, age:appData.age, email:appData.email, phone:appData.phone, address:appData.address, details:'Department: '+appData.department, extra:'Experience: '+appData.experience+' | Why GDF: '+appData.why, date:new Date().toLocaleString() }).catch(err => console.warn(err)); }
+}
+
 function tv(id){var el=document.getElementById(id);return el?el.value.trim():'';}
 
 function sendContact(){
-  var fname=document.getElementById('cFname').value.trim(),lname=document.getElementById('cLname').value.trim(),email=document.getElementById('cEmail').value.trim(),msg=document.getElementById('cMsg').value.trim(),status=document.getElementById('cStatus'),btn=document.getElementById('cBtn');
-  if(!fname||!lname||!email||!msg){status.style.display='block';status.style.color='#c0392b';status.textContent='Please fill in all required fields.';return;}
-  btn.disabled=true;btn.textContent='Sending…';status.style.display='none';
+  var fname=v('cFname'),lname=v('cLname'),email=v('cEmail'),msg=v('cMsg'),status=document.getElementById('cStatus'),btn=document.getElementById('cBtn');
+  if(!fname||!lname||!email||!msg){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Please fill in all required fields.';} return; }
+  if(btn){btn.disabled=true;btn.textContent='Sending…';} if(status)status.style.display='none';
   if(typeof emailjs!=='undefined'){
     emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
-      .then(function(){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";['cFname','cLname','cEmail','cMsg'].forEach(function(id){document.getElementById(id).value='';});btn.textContent='Send Message';btn.disabled=false;})
-      .catch(function(err){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong. Please try again.';console.error('EmailJS error:',err);btn.textContent='Send Message';btn.disabled=false;});
+      .then(function(){ if(status){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";} ['cFname','cLname','cEmail','cMsg'].forEach(id => { const el=document.getElementById(id); if(el)el.value=''; }); if(btn){btn.textContent='Send Message';btn.disabled=false;} })
+      .catch(function(err){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong. Please try again.';} if(btn){btn.textContent='Send Message';btn.disabled=false;} });
   } else {
-    status.style.display='block';
-    status.style.color='#c0392b';
-    status.textContent='Email service is currently unavailable. Please try again later.';
-    btn.textContent='Send Message';
-    btn.disabled=false;
+    if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Email service is currently unavailable.';}
+    if(btn){btn.textContent='Send Message';btn.disabled=false;}
   }
-}
-
-// Bind all necessary global functions to the window object for Next.js
-if (typeof window !== 'undefined') {
-  window.tPrev = tPrev;
-  window.tNext = tNext;
-  window.openSvc = openSvc;
-  window.closeSvc = closeSvc;
-  window.openService = openSvc; // Safe alias
-  window.openTeamOverlay = openTeamOverlay;
-  window.closeTeamOverlay = closeTeamOverlay;
-  window.closeReg = closeReg;
-  window.openTeamApp = openTeamApp;
-  window.closeTeamApp = closeTeamApp;
-  window.teamNext = teamNext;
-  window.teamBack = teamBack;
-  window.teamSubmit = teamSubmit;
-  window.submitDelegate = submitDelegate;
-  window.submitChair = submitChair;
-  window.sendContact = sendContact;
 }
