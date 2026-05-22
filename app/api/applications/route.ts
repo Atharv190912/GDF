@@ -1,14 +1,10 @@
 import { NextResponse } from 'next/server';
 import { query, initDb } from '@/lib/db';
 
-const ADM_USER = 'GDF@Atharv';
-const ADM_PASS = 'NASA@412919';
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const user = searchParams.get('user');
-    const pass = searchParams.get('pass');
     const allotted = searchParams.get('allotted');
 
     await initDb();
@@ -19,13 +15,7 @@ export async function GET(request: Request) {
       return NextResponse.json(apps);
     }
 
-    if (user !== ADM_USER || pass !== ADM_PASS) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const rows = await query("SELECT * FROM applications ORDER BY created_at DESC") as any[];
-    const apps = rows.map(r => ({ ...JSON.parse(r.data), id: r.app_id, status: r.status, type: r.type, timestamp: r.created_at }));
-    return NextResponse.json(apps);
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
   } catch (err) {
     console.error('Database Error:', err);
     return NextResponse.json({ error: 'Database connection failed' }, { status: 500 });
@@ -50,21 +40,3 @@ export async function POST(request: Request) {
   }
 }
 
-export async function PATCH(request: Request) {
-  try {
-    const body = await request.json();
-    const { id, status, user, pass } = body;
-
-    if (user !== ADM_USER || pass !== ADM_PASS) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    await initDb();
-    await query("UPDATE applications SET status = ? WHERE app_id = ?", [status, id]);
-    
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error('Database Error:', err);
-    return NextResponse.json({ error: 'Failed to update application' }, { status: 500 });
-  }
-}

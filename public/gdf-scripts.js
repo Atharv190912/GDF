@@ -9,10 +9,7 @@ window.openSvc = openSvc;
 window.closeSvc = closeSvc;
 window.openTeamOverlay = openTeamOverlay;
 window.closeTeamOverlay = closeTeamOverlay;
-window.launchAdminDashboard = launchAdminDashboard;
-window.checkAdm = checkAdm;
-window.renderAdmContent = renderAdmContent;
-window.updateAppStatus = updateAppStatus;
+
 window.buildPortfolioFields = buildPortfolioFields;
 window.setPaymentType = setPaymentType;
 window.tNext = tNext;
@@ -226,61 +223,6 @@ function closeTeamOverlay() {
   if(el) el.classList.remove('open');
 }
 
-function launchAdminDashboard(){
-  const el = document.getElementById('admOverlay');
-  if(el) el.style.display='flex';
-}
-
-function checkAdm(){
-  const u = document.getElementById('admUser').value;
-  const p = document.getElementById('admPass').value;
-  if(u === 'GDF@Atharv' && p === 'NASA@412919') {
-    document.getElementById('admOverlay').style.display='none';
-    openAdmPortal();
-  } else {
-    alert('Invalid credentials');
-  }
-}
-
-async function openAdmPortal() {
-  const el = document.getElementById('admPortal');
-  if(el) el.style.display = 'block';
-  const u = 'GDF@Atharv';
-  const p = 'NASA@412919';
-  try {
-    const res = await fetch(`/api/applications?user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`);
-    const apps = await res.json();
-    renderAdmContent(apps);
-  } catch (err) { console.error(err); }
-}
-
-function renderAdmContent(apps) {
-  const container = document.getElementById('admContent');
-  if(!container) return;
-  document.getElementById('statD').textContent = apps.filter(a => a.type === 'delegate').length;
-  document.getElementById('statC').textContent = apps.filter(a => a.type === 'chair').length;
-  document.getElementById('statT').textContent = apps.filter(a => a.type === 'team').length;
-  let html = `<table class="adm-table"><thead><tr><th>Type</th><th>Name</th><th>Details</th><th>Status</th><th>Actions</th></tr></thead><tbody>`;
-  apps.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp)).forEach(app => {
-    const details = app.type === 'delegate' ? `Comm: ${app.committees.map(c => c.id).join(', ')}` : app.type === 'chair' ? 'Chair App' : 'Team App';
-    html += `<tr><td><span class="type-badge ${app.type}">${app.type}</span></td><td>${app.name}</td><td>${details}</td><td><span class="status-badge ${app.status}">${app.status}</span></td><td>${app.status === 'pending' ? `<button class="btn-s btn-acc" onclick="updateAppStatus('${app.id}', 'accepted')">Accept</button><button class="btn-s btn-dec" onclick="updateAppStatus('${app.id}', 'declined')">Decline</button>` : ''}</td></tr>`;
-  });
-  html += `</tbody></table>`;
-  container.innerHTML = html;
-}
-
-async function updateAppStatus(id, status) {
-  const u = 'GDF@Atharv';
-  const p = 'NASA@412919';
-  try {
-    const res = await fetch('/api/applications', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, status, user: u, pass: p })
-    });
-    if(res.ok) openAdmPortal();
-  } catch (err) { alert('Update failed'); }
-}
 
 function selectRole(role){
   regRole=role;

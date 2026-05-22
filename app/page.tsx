@@ -403,12 +403,7 @@ export default function HomePage() {
         (+971) 56 297 1909
       </p>
     </div>
-    <div className="ft-col">
-      <div className="ft-col-title">Admin</div>
-      <p>
-        <button onClick={() => { if (typeof window !== 'undefined' && (window as any).launchAdminDashboard) (window as any).launchAdminDashboard(); }} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', fontSize: '0.9rem', padding: '0', textDecoration: 'underline' }}>Admin Access</button>
-      </p>
-    </div>
+
   </div>
 </footer>
 
@@ -848,32 +843,7 @@ export default function HomePage() {
   </div>
 </div>
 
-{/* ========== ADMIN / ADMISSION OVERLAY ========== */}
-<div style={{ display: 'none', position: 'fixed', inset: '0', zIndex: '10000', alignItems: 'center', justifyContent: 'center', background: 'rgba(8,14,36,.85)' }} id="admOverlay">
-  <div style={{ width: '100%', maxWidth: '400px', padding: '40px', textAlign: 'center', background: '#fff', borderRadius: '12px', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
-    <h2 style={{ color: '#1a2740', marginBottom: '24px', fontSize: '1.5rem', fontWeight: '800' }}>Admin Login</h2>
-    <input type="text" id="admUser" placeholder="Username" style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #ddd', marginBottom: '12px' }} />
-    <input type="password" id="admPass" placeholder="Password" style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #ddd', marginBottom: '20px' }} />
-    <button className="btn-solid" style={{ width: '100%', padding: '12px' }} onClick={() => { (window as any).checkAdm(); }}>Login to Dashboard</button>
-    <button className="btn-outline" style={{ width: '100%', marginTop: '12px', borderColor: '#ddd', color: '#666' }} onClick={() => { const el = document.getElementById('admOverlay'); if(el) el.style.display='none'; }}>Cancel</button>
-  </div>
-</div>
 
-
-<div style={{ display: 'none', position: 'fixed', inset: '0', zIndex: '10000', background: '#fff', overflowY: 'auto' }} id="admPortal">
-  <div style={{ padding: '40px' }}>
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-      <h2 style={{ fontSize: '1.8rem', fontWeight: '800' }}>GDF Admissions Portal</h2>
-      <button className="btn-outline" onClick={() => { const el = document.getElementById('admPortal'); if(el) el.style.display='none'; }}>Logout</button>
-    </div>
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px', marginBottom: '40px' }}>
-      <div className="stat-card"><h3>Delegates</h3><div className="num" id="statD">0</div></div>
-      <div className="stat-card"><h3>Chairs</h3><div className="num" id="statC">0</div></div>
-      <div className="stat-card"><h3>Team</h3><div className="num" id="statT">0</div></div>
-    </div>
-    <div id="admContent"></div>
-  </div>
-</div>
 
     </>
   );
