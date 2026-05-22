@@ -117,7 +117,7 @@ export default function HomePage() {
 
       {/* Card */}
 <div className="conf-grid" style={{ flexShrink: '0', maxWidth: '310px', width: '100%' }}>
-  <div className="conf-card" onClick={() => { (window as any).openService(); }} style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', cursor: 'pointer' }}>
+  <div style={{ background: '#ffffff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', cursor: 'default' }}>
     
     {/* Image fills top */}
     <img src="images/GDFI.png" style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#1a2740' }} />

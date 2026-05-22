@@ -1,7 +1,7 @@
 // EmailJS initialisation is handled in page.tsx onLoad
 
 // Global exports for React components
-window.setPaymentType = function(type) { if (typeof setPaymentType === 'function') setPaymentType(type); };
+
 
 let tCurrent = 0;
 
@@ -169,6 +169,8 @@ window.openReg = openReg;
 function closeReg(){document.getElementById('regBackdrop').style.display='none';}
 function openSvc(){document.getElementById('svcOverlay').classList.add('open');}
 function closeSvc(){document.getElementById('svcOverlay').classList.remove('open');}
+function openTeamOverlay(){document.getElementById('teamOverlay').classList.add('open');}
+function closeTeamOverlay(){document.getElementById('teamOverlay').classList.remove('open');}
 
 function launchAdminDashboard(){
   console.log('Launching Admin Dashboard (v2)...');
@@ -477,7 +479,9 @@ async function buildPortfolioFields(comms) {
   }
 
   let html = '';
-  comms.forEach(c => {
+  comms.forEach(id => {
+    const c = COMMITTEES.find(x => x.id === id);
+    if (!c) return;
     html += `<div class="mf">
       <label class="ml"><b>${c.name}</b> portfolio <span class="req">*</span></label>
       <select class="mi" id="pf_${c.id}">
@@ -541,17 +545,6 @@ function submitDelegate(){
 
   showConfirmation('Delegate',app.id,app.fname+' '+app.lname,app.email,'Committees: '+app.committees.join(', ')+'<br>'+extraHtml);
   
-  if(typeof emailjs!=='undefined'){
-    emailjs.send('service_gdfinternational','template_h75i69m',{
-      app_type:'Delegate Registration',
-      app_id:app.id,
-      full_name:app.fname+' '+app.lname,
-      age:app.age,
-      email:app.email,
-      phone:app.phone,
-      address:app.address,
-      details:'Committees: '+app.committees.join(', '),
-      extra:'Method: '+currentPaymentType+' | Name: '+app.cardName+' | Ref: '+app.transRef+' | Bank: '+app.bankName+' | Last 4: '+app.cardLast4+' | Portfolios: '+JSON.stringify(app.portfolios),
   const appData = {
     type: 'delegate',
     name: v('d_fn')+' '+v('d_ln'),
@@ -573,20 +566,26 @@ function submitDelegate(){
     body: JSON.stringify(appData)
   }).catch(err => console.error('DB Error:', err));
   const extra = `Payment: ${currentPaymentType.toUpperCase()} | Ref: ${v('d_transref')} | Date: ${v('d_transdate')}`;
-  emailjs.send("service_x9r225b","template_h75i69m",{
-    to_name: "Admin",
-    from_name: v('d_fn')+' '+v('d_ln'),
-    from_email: v('d_em'),
-    role: "Delegate",
-    details: 'Committees: '+selectedComms.join(', '),
-    extra: extra
-  }).then(function(){
+  if(typeof emailjs!=='undefined'){
+    emailjs.send("service_x9r225b","template_h75i69m",{
+      to_name: "Admin",
+      from_name: v('d_fn')+' '+v('d_ln'),
+      from_email: v('d_em'),
+      role: "Delegate",
+      details: 'Committees: '+selectedComms.join(', '),
+      extra: extra
+    }).then(function(){
+      document.getElementById('confirmTitle').textContent='Application Submitted!';
+      document.getElementById('confirmMsg').textContent='Thank you for registering. We have received your application and will review your payment shortly.';
+      goRegStep(5);
+    }, function(err){
+      alert('Submission failed. Please try again.');
+    });
+  } else {
     document.getElementById('confirmTitle').textContent='Application Submitted!';
     document.getElementById('confirmMsg').textContent='Thank you for registering. We have received your application and will review your payment shortly.';
     goRegStep(5);
-  }, function(err){
-    alert('Submission failed. Please try again.');
-  });
+  }
 }
 
 function submitChair(){
@@ -602,18 +601,24 @@ function submitChair(){
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(appData)
   }).catch(err => console.error('DB Error:', err));
-  emailjs.send("service_x9r225b","template_h75i69m",{
-    to_name: "Admin",
-    from_name: v('c_fn')+' '+v('c_ln'),
-    from_email: v('c_em'),
-    role: "Chair",
-    details: 'Prefs: '+chairPrefs.join(', '),
-    extra: 'School: '+v('c_school')
-  }).then(function(){
+  if(typeof emailjs!=='undefined'){
+    emailjs.send("service_x9r225b","template_h75i69m",{
+      to_name: "Admin",
+      from_name: v('c_fn')+' '+v('c_ln'),
+      from_email: v('c_em'),
+      role: "Chair",
+      details: 'Prefs: '+chairPrefs.join(', '),
+      extra: 'School: '+v('c_school')
+    }).then(function(){
+      document.getElementById('confirmTitle').textContent='Application Submitted!';
+      document.getElementById('confirmMsg').textContent='Thank you. We will review your chair application and notify you by email.';
+      goRegStep(5);
+    });
+  } else {
     document.getElementById('confirmTitle').textContent='Application Submitted!';
     document.getElementById('confirmMsg').textContent='Thank you. We will review your chair application and notify you by email.';
     goRegStep(5);
-  });
+  }
 }
 
 async function checkAllottedPortfolios(email) {
@@ -678,7 +683,35 @@ function sendContact(){
   var fname=document.getElementById('cFname').value.trim(),lname=document.getElementById('cLname').value.trim(),email=document.getElementById('cEmail').value.trim(),msg=document.getElementById('cMsg').value.trim(),status=document.getElementById('cStatus'),btn=document.getElementById('cBtn');
   if(!fname||!lname||!email||!msg){status.style.display='block';status.style.color='#c0392b';status.textContent='Please fill in all required fields.';return;}
   btn.disabled=true;btn.textContent='Sending…';status.style.display='none';
-  emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
-    .then(function(){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";['cFname','cLname','cEmail','cMsg'].forEach(function(id){document.getElementById(id).value='';});btn.textContent='Send Message';btn.disabled=false;})
-    .catch(function(err){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong. Please try again.';console.error('EmailJS error:',err);btn.textContent='Send Message';btn.disabled=false;});
+  if(typeof emailjs!=='undefined'){
+    emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
+      .then(function(){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";['cFname','cLname','cEmail','cMsg'].forEach(function(id){document.getElementById(id).value='';});btn.textContent='Send Message';btn.disabled=false;})
+      .catch(function(err){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong. Please try again.';console.error('EmailJS error:',err);btn.textContent='Send Message';btn.disabled=false;});
+  } else {
+    status.style.display='block';
+    status.style.color='#c0392b';
+    status.textContent='Email service is currently unavailable. Please try again later.';
+    btn.textContent='Send Message';
+    btn.disabled=false;
+  }
+}
+
+// Bind all necessary global functions to the window object for Next.js
+if (typeof window !== 'undefined') {
+  window.tPrev = tPrev;
+  window.tNext = tNext;
+  window.openSvc = openSvc;
+  window.closeSvc = closeSvc;
+  window.openService = openSvc; // Safe alias
+  window.openTeamOverlay = openTeamOverlay;
+  window.closeTeamOverlay = closeTeamOverlay;
+  window.closeReg = closeReg;
+  window.openTeamApp = openTeamApp;
+  window.closeTeamApp = closeTeamApp;
+  window.teamNext = teamNext;
+  window.teamBack = teamBack;
+  window.teamSubmit = teamSubmit;
+  window.submitDelegate = submitDelegate;
+  window.submitChair = submitChair;
+  window.sendContact = sendContact;
 }
