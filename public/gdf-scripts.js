@@ -29,7 +29,6 @@ window.teamNext = teamNext;
 window.teamBack = teamBack;
 window.teamSubmit = teamSubmit;
 window.sendContact = sendContact;
->>>>>>> c70526799d163a03f9687c06bea3eeddf1513884
 
 let tCurrent = 0;
 
