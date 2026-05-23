@@ -670,7 +670,7 @@ export default function HomePage() {
       </div></div>
       <div className="mf"><div className="m2">
         <div><label className="ml">Age <span className="req">*</span></label><input type="number" className="mi" id="c_age" min="14" max="35" placeholder="e.g. 19" /></div>
-        <div><label className="ml">Phone <span className="req">*</span></label><input type="tel" className="mi" id="d_ph" placeholder="+971 XX XXX XXXX" /></div>
+        <div><label className="ml">Phone <span className="req">*</span></label><input type="tel" className="mi" id="c_ph" placeholder="+971 XX XXX XXXX" /></div>
       </div></div>
       <div className="mf"><label className="ml">Email <span className="req">*</span></label><input type="email" className="mi" id="c_em" /></div>
       <div className="mf"><label className="ml">Address <span className="req">*</span></label>

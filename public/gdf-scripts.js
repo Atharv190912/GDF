@@ -491,20 +491,25 @@ function submitDelegate(){
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(appData)
   }).catch(err => console.error('DB Error:', err));
-  const extra = `Payment: ${currentPaymentType.toUpperCase()} | Ref: ${v('d_transref')} | Date: ${v('d_transdate')}`;
+  const extra = 'Method: ' + app.paymentType + ' | Card Name: ' + app.cardName + ' | Ref: ' + app.transRef + ' | Bank: ' + app.bankName + ' | Last 4: ' + app.cardLast4 + ' | Portfolios: ' + JSON.stringify(app.portfolios);
   if(typeof emailjs!=='undefined'){
-    emailjs.send("service_x9r225b","template_h75i69m",{
-      to_name: "Admin",
-      from_name: v('d_fn')+' '+v('d_ln'),
-      from_email: v('d_em'),
-      role: "Delegate",
-      details: 'Committees: '+selectedComms.join(', '),
-      extra: extra
+    emailjs.send("service_gdfinternational","template_h75i69m",{
+      app_type: 'Delegate Registration',
+      app_id: app.id,
+      full_name: app.fname + ' ' + app.lname,
+      age: app.age,
+      email: app.email,
+      phone: app.phone,
+      address: app.address,
+      details: 'Committees: ' + app.committees.join(', '),
+      extra: extra,
+      date: app.date
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you for registering. We have received your application and will review your payment shortly.';
       goRegStep(5);
     }, function(err){
+      console.error('EmailJS Error:', err);
       alert('Submission failed. Please try again.');
     });
   } else {
@@ -515,30 +520,61 @@ function submitDelegate(){
 }
 
 function submitChair(){
+  var app = {
+    id: 'CHAIR' + Date.now().toString().slice(-6),
+    fname: v('c_fn'),
+    lname: v('c_ln'),
+    age: v('c_age'),
+    phone: v('c_ph'),
+    email: v('c_em'),
+    address: v('c_addr') + ', ' + v('c_emirate') + ', ' + v('c_country'),
+    school: v('c_school'),
+    expLevel: v('c_exp_level'),
+    conferences: v('c_conferences'),
+    chairExp: v('c_chair_exp'),
+    awards: v('c_awards'),
+    skills: v('c_skills'),
+    why: v('c_why'),
+    prefs: chairPrefs.map(function(id,i){
+      var c = COMMITTEES.find(function(x){return x.id===id;});
+      return (i+1) + '. ' + (c ? c.name : id);
+    }),
+    date: new Date().toLocaleString()
+  };
+
   const appData = {
     type: 'chair',
-    name: v('c_fn')+' '+v('c_ln'),
-    email: v('c_em'),
+    name: app.fname + ' ' + app.lname,
+    email: app.email,
     prefs: chairPrefs,
-    school: v('c_school')
+    school: app.school
   };
+  
   fetch('/api/applications', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(appData)
   }).catch(err => console.error('DB Error:', err));
+
   if(typeof emailjs!=='undefined'){
-    emailjs.send("service_x9r225b","template_h75i69m",{
-      to_name: "Admin",
-      from_name: v('c_fn')+' '+v('c_ln'),
-      from_email: v('c_em'),
-      role: "Chair",
-      details: 'Prefs: '+chairPrefs.join(', '),
-      extra: 'School: '+v('c_school')
+    emailjs.send("service_gdfinternational","template_h75i69m",{
+      app_type: 'Chair Application',
+      app_id: app.id,
+      full_name: app.fname + ' ' + app.lname,
+      age: app.age,
+      email: app.email,
+      phone: app.phone,
+      address: app.address,
+      details: 'Committee Prefs: ' + app.prefs.join(' | ') + ' | School: ' + app.school + ' | Level: ' + app.expLevel,
+      extra: 'Awards: ' + app.awards + ' | Skills: ' + app.skills + ' | Why: ' + app.why + ' | Conferences: ' + app.conferences,
+      date: app.date
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you. We will review your chair application and notify you by email.';
       goRegStep(5);
+    }, function(err){
+      console.error('EmailJS Error:', err);
+      alert('Submission failed. Please try again.');
     });
   } else {
     document.getElementById('confirmTitle').textContent='Application Submitted!';
