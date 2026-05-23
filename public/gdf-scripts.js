@@ -510,7 +510,7 @@ function submitDelegate(){
       goRegStep(5);
     }, function(err){
       console.error('EmailJS Error:', err);
-      alert('Submission failed. Please try again.');
+      alert('Submission failed: ' + (err?.text || JSON.stringify(err)) + '. Please check your EmailJS settings.');
     });
   } else {
     document.getElementById('confirmTitle').textContent='Application Submitted!';
@@ -574,7 +574,7 @@ function submitChair(){
       goRegStep(5);
     }, function(err){
       console.error('EmailJS Error:', err);
-      alert('Submission failed. Please try again.');
+      alert('Submission failed: ' + (err?.text || JSON.stringify(err)) + '. Please check your EmailJS settings.');
     });
   } else {
     document.getElementById('confirmTitle').textContent='Application Submitted!';
@@ -633,7 +633,7 @@ function sendContact(){
   if(typeof emailjs!=='undefined'){
     emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
       .then(function(){ if(status){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";} ['cFname','cLname','cEmail','cMsg'].forEach(id => { const el=document.getElementById(id); if(el)el.value=''; }); if(btn){btn.textContent='Send Message';btn.disabled=false;} })
-      .catch(function(err){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong. Please try again.';} if(btn){btn.textContent='Send Message';btn.disabled=false;} });
+      .catch(function(err){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong: ' + (err?.text || JSON.stringify(err));} if(btn){btn.textContent='Send Message';btn.disabled=false;} });
   } else {
     if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Email service is currently unavailable.';}
     if(btn){btn.textContent='Send Message';btn.disabled=false;}
