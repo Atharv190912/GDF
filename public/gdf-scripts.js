@@ -503,7 +503,8 @@ function submitDelegate(){
       address: app.address,
       details: 'Committees: ' + app.committees.join(', '),
       extra: extra,
-      date: app.date
+      date: app.date,
+      to_email: 'globaldiplomaticfoundaiton@gmail.com'
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you for registering. We have received your application and will review your payment shortly.';
@@ -567,7 +568,8 @@ function submitChair(){
       address: app.address,
       details: 'Committee Prefs: ' + app.prefs.join(' | ') + ' | School: ' + app.school + ' | Level: ' + app.expLevel,
       extra: 'Awards: ' + app.awards + ' | Skills: ' + app.skills + ' | Why: ' + app.why + ' | Conferences: ' + app.conferences,
-      date: app.date
+      date: app.date,
+      to_email: 'globaldiplomaticfoundaiton@gmail.com'
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you. We will review your chair application and notify you by email.';
@@ -621,7 +623,7 @@ function teamSubmit(){
   const appData = { type: 'team', name: tv('tm_fn')+' '+tv('tm_ln'), age: tv('tm_age'), email: tv('tm_em'), phone: tv('tm_ph'), address: tv('tm_addr')+', '+document.getElementById('tm_city').value+', '+document.getElementById('tm_country').value, department: document.getElementById('tm_dept').value, experience: tv('tm_exp'), why: tv('tm_why') };
   fetch('/api/applications', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(appData) }).catch(err => console.error(err));
   var appId='TEAM'+Date.now().toString().slice(-6); const ta=document.getElementById('tm_appid'); if(ta)ta.innerHTML='<b>Application ID:</b> '+appId+'<br><b>Name:</b> '+appData.name+'<br><b>Email:</b> '+appData.email+'<br><b>Department:</b> '+appData.department+'<br><b>Status:</b> Submitted — we\'ll be in touch soon.'; goTeamStep(4);
-  if(typeof emailjs!=='undefined'){ emailjs.send('service_gdfinternational','template_h75i69m',{ app_type:'Team Application', app_id:appId, full_name:appData.name, age:appData.age, email:appData.email, phone:appData.phone, address:appData.address, details:'Department: '+appData.department, extra:'Experience: '+appData.experience+' | Why GDF: '+appData.why, date:new Date().toLocaleString() }).catch(err => console.warn(err)); }
+  if(typeof emailjs!=='undefined'){ emailjs.send('service_gdfinternational','template_h75i69m',{ app_type:'Team Application', app_id:appId, full_name:appData.name, age:appData.age, email:appData.email, phone:appData.phone, address:appData.address, details:'Department: '+appData.department, extra:'Experience: '+appData.experience+' | Why GDF: '+appData.why, date:new Date().toLocaleString(), to_email:'globaldiplomaticfoundaiton@gmail.com' }).catch(err => console.warn(err)); }
 }
 
 function tv(id){var el=document.getElementById(id);return el?el.value.trim():'';}
