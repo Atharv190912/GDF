@@ -610,7 +610,7 @@ function updateTeamDots(current){
 
 function teamNext(step){
   if(step===1){ var fn=tv('tm_fn'),ln=tv('tm_ln'),age=tv('tm_age'),ph=tv('tm_ph'),em=tv('tm_em'),addr=tv('tm_addr'),dept=document.getElementById('tm_dept').value,country=document.getElementById('tm_country').value,city=document.getElementById('tm_city').value; if(!fn||!ln||!age||!ph||!em||!addr||!dept||!country||!city){ const te1=document.getElementById('tm_e1'); if(te1)te1.style.display='block'; return; } goTeamStep(2); }
-  else if(step===2){ if(!tv('tm_exp')||!tv('tm_why')){ const te2=document.getElementById('tm_e2'); if(te2)te2.style.display='block'; return; } buildTeamReview(); goTeamStep(3); }
+  else if(step===2){ if(!tv('tm_exp')||!tv('tm_why')){ const te2=document.getElementById('tm_e2'); if(te2)te2.style.display='block'; return; } teamSubmit(); }
 }
 
 function teamBack(step){if(step===2)goTeamStep(1);else if(step===3)goTeamStep(2);}
@@ -639,7 +639,7 @@ function teamSubmit(){
     }).then(function(){
       const ta = document.getElementById('tm_appid');
       if(ta) ta.innerHTML = '<b>Application ID:</b> ' + appId + '<br><b>Name:</b> ' + appData.name + '<br><b>Email:</b> ' + appData.email + '<br><b>Department:</b> ' + appData.department + '<br><b>Status:</b> Submitted — we\'ll be in touch soon.';
-      goTeamStep(4);
+      goTeamStep(3);
     }, function(err){
       console.error('EmailJS Team Error:', err);
       alert('Submission failed: ' + (err?.text || JSON.stringify(err)) + '. Please try again or contact us directly.');
