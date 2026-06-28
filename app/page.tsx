@@ -252,9 +252,9 @@ export default function HomePage() {
 
       {/* Row 2 */}
       <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/omisha.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src="images/omisha.png" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
         <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
-          <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>OMISHA CHANDRASHEKAR HEGDE</div>
+          <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Omisha Chandrashekar Hegde</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>Chief Operations Officer</div>
         </div>
       </div>
