@@ -243,18 +243,18 @@ export default function HomePage() {
       </div>
 
       <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/aman_tinted.jpg" />
+        <img src="images/tinted_student.jpg" />
         <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
-          <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Aman Kumar Mishra</div>
+          <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Pranav Sajith Nair</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>Global Manager</div>
         </div>
       </div>
 
       {/* Row 2 */}
       <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/tinted_student.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src="images/omisha.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
-          <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Pranav Sajith Nair</div>
+          <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>OMISHA CHANDRASHEKAR HEGDE</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>Chief Operations Officer</div>
         </div>
       </div>
