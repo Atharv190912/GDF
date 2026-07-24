@@ -316,6 +316,12 @@ export default function HomePage() {
         </div>
         <span style={{ fontSize: '.72rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>Technology Partner</span>
       </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+        <div style={{ background: '#fff', padding: '24px 36px', border: '1px solid #e8e4da', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '200px', minHeight: '90px' }} onMouseOver={(e) => { const t = e.currentTarget; t.style.boxShadow='0 4px 20px rgba(0,0,0,.1)'; }} onMouseOut={(e) => { const t = e.currentTarget; t.style.boxShadow='none'; }}>
+          <img src="images/earthaid.png" alt="EarthAid" style={{ maxHeight: '70px', maxWidth: '180px', objectFit: 'contain' }} />
+        </div>
+        <span style={{ fontSize: '.72rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>Sustainability Partner</span>
+      </div>
     </div>
     <p style={{ fontSize: '.9rem', color: 'var(--muted)' }}>Interested in sponsoring GDF? <a href="#contact" style={{ color: 'var(--navy)', fontWeight: '700', textDecoration: 'underline' }}>Get in touch</a></p>
   </div>
