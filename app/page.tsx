@@ -89,8 +89,8 @@ export default function HomePage() {
       <span className="marquee-dot"></span><span className="marquee-text">International Cooperation</span>
       <span className="marquee-dot"></span><span className="marquee-text">Youth Empowerment</span>
       <span className="marquee-dot"></span><span className="marquee-text">Model United Nations</span>
-      <span className="marquee-dot"></span><span className="marquee-text">GDF International 2025</span>
-      <span className="marquee-dot"></span><span className="marquee-text">Future Global Leaders</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GDF International Later 2026</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GDF Delegate Day 16 Aug 2026</span>
       <span className="marquee-dot"></span><span className="marquee-text">Sharjah, UAE</span>
     </div>
     <div className="marquee-item" aria-hidden="true">
@@ -99,8 +99,8 @@ export default function HomePage() {
       <span className="marquee-dot"></span><span className="marquee-text">International Cooperation</span>
       <span className="marquee-dot"></span><span className="marquee-text">Youth Empowerment</span>
       <span className="marquee-dot"></span><span className="marquee-text">Model United Nations</span>
-      <span className="marquee-dot"></span><span className="marquee-text">GDF International 2025</span>
-      <span className="marquee-dot"></span><span className="marquee-text">Future Global Leaders</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GDF International Later 2026</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GDF Delegate Day 16 Aug 2026</span>
       <span className="marquee-dot"></span><span className="marquee-text">Sharjah, UAE</span>
     </div>
   </div>
@@ -166,19 +166,19 @@ export default function HomePage() {
     <div className="divider"></div>
     <div className="news-grid">
       <div>
-      <img src="images/MYC.png" alt="News Image" /> <br />        
-<div className="news-title">Mark Your Calendar: 15th August</div>
-        <div className="news-text">The GDF International Conference will commence on 15th August and continue over two days, concluding on 16th August. Join students from around the world for a landmark gathering of young diplomats and future global leaders.</div>
+        <img src="images/MYC.png" alt="News Image" /> <br />        
+        <div className="news-title">GDF Delegate Day Announced</div>
+        <div className="news-text">Following the rescheduling of GDF International, we are excited to introduce GDF Delegate Day on 16 August 2026—a special one-day experience featuring engaging debates, networking opportunities, interactive activities, and more. Best of all, entry is completely free for all registered delegates, keeping the spirit of GDF alive while we prepare for an even bigger GDF International later this year.</div>
       </div>
       <div>
         <img src="images/DEL.png" alt="News Image" /> <br /> 
-        <div className="news-title">Delegate Applications: Now Open!</div>
-        <div className="news-text">Delegate applications for the GDF International are Now Open!. Limited spots are available — mark your calendars now.</div>
+        <div className="news-title">GDF International Postponed</div>
+        <div className="news-text">GDF International postponed to later 2026, dates yet to be announced.</div>
       </div>
       <div>
         <img src="images/SA.png" alt="News Image" /> <br />    
-        <div className="news-title">Secretariat Applications Open</div>
-        <div className="news-text">Applications are now open for the GDF Secretariat. Students can register to be part of the organising team shaping the conference experience.</div>
+        <div className="news-title">Delegate Applications: Now Open!</div>
+        <div className="news-text">Delegate applications for GDF International and GDF Delegate Day are Now Open! Limited spots are available — mark your calendars and register now.</div>
       </div>
     </div>
   </div>
