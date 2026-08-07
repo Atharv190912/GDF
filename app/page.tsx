@@ -106,36 +106,54 @@ export default function HomePage() {
   </div>
 </div>
 
-{/* CONFERENCES */}
+{/* CONFERENCES & EVENTS */}
 <section id="conferences" className="pad" style={{ background: 'var(--beige)' }}>
   <div className="wrap" style={{ position: 'relative', zIndex: '1' }}>
     <p className="tag">Upcoming Events</p>
-    <h2 className="h2">Conferences</h2>
+    <h2 className="h2">Conferences &amp; Events</h2>
     <div className="divider"></div>
 
-    <div style={{ display: 'flex', alignItems: 'center', gap: '60px', flexWrap: 'wrap' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'stretch' }}>
 
-      {/* Card */}
-<div className="conf-grid" style={{ flexShrink: '0', maxWidth: '310px', width: '100%' }}>
-  <div style={{ background: '#ffffff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', cursor: 'default' }}>
-    
-    {/* Image fills top */}
-    <img src="images/GDFI.png" style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#1a2740' }} />
+      {/* Frame 1 (Left): GDF DELEGATE DAY */}
+      <div style={{ background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 25px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: '1px solid rgba(212,175,55,0.3)' }}>
+        <div style={{ background: 'linear-gradient(135deg, #002147 0%, #1a2740 100%)', padding: '28px 24px', color: '#fff', textAlign: 'center', position: 'relative' }}>
+          <span style={{ background: 'var(--gold)', color: '#002147', fontSize: '0.7rem', fontWeight: '800', padding: '4px 14px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-block', marginBottom: '12px' }}>FREE ENTRY</span>
+          <h3 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '0 0 6px 0', letterSpacing: '0.5px', color: '#ffffff' }}>GDF DELEGATE DAY</h3>
+          <p style={{ fontSize: '0.85rem', color: 'var(--gold)', fontWeight: '600', margin: '0' }}>16 August 2026 · Sharjah, UAE</p>
+        </div>
+        <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: '1', justifyContent: 'space-between' }}>
+          <p style={{ fontSize: '.95rem', color: 'var(--muted)', lineHeight: '1.75', marginBottom: '24px' }}>
+            A special one-day experience featuring engaging debates, networking opportunities, interactive diplomacy activities, and expert mentorship. Entry is completely free for all registered delegates!
+          </p>
+          <div>
+            <button className="btn-sq-solid" onClick={() => { if (typeof window !== 'undefined' && (window as any).openDelegateDayReg) (window as any).openDelegateDayReg(); }} style={{ width: '100%', padding: '14px 20px', letterSpacing: '.08em', background: 'var(--gold)', color: '#002147', border: 'none', fontWeight: '700' }}>
+              REGISTER FOR DELEGATE DAY
+            </button>
+          </div>
+        </div>
+      </div>
 
-    {/* Text section: clean white box below */}
-    <div style={{ background: '#ffffff', padding: '14px 16px' }}>
-      <div style={{ fontSize: '.85rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase', color: '#1a2740' }}>GDF International</div>
-      <div style={{ fontSize: '.85rem', color: '#777', marginTop: '4px' }}>20 AED</div>
-    </div>
-
-  </div>
-</div>
-
-      {/* Write-up + button */}
-      <div style={{ flex: '1', minWidth: '240px', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '8px' }}>
-        <p style={{ fontSize: '.97rem', color: 'var(--muted)', lineHeight: '1.85', marginBottom: '28px' }}>Stay connected with us for the latest updates and announcements regarding our upcoming conferences and global events.</p>
-        <div>
-          <button className="btn-sq-solid" onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }} style={{ padding: '14px 40px', letterSpacing: '.1em' }}>REGISTER NOW!</button>
+      {/* Frame 2 (Right): GDF INTERNATIONAL */}
+      <div style={{ background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 25px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: '1px solid #eee' }}>
+        <div style={{ background: '#1a2740', padding: '0', position: 'relative' }}>
+          <img src="images/GDFI.png" style={{ width: '100%', maxHeight: '185px', objectFit: 'cover', display: 'block' }} alt="GDF International" />
+          <div style={{ position: 'absolute', bottom: '12px', left: '16px', background: 'rgba(0,33,71,0.9)', backdropFilter: 'blur(4px)', padding: '4px 12px', borderRadius: '6px', color: '#fff', fontSize: '0.8rem', fontWeight: '700' }}>
+            20 AED · LATER 2026
+          </div>
+        </div>
+        <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: '1', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '.05em', textTransform: 'uppercase', color: '#1a2740', marginBottom: '8px' }}>GDF International</div>
+            <p style={{ fontSize: '.95rem', color: 'var(--muted)', lineHeight: '1.75', marginBottom: '24px' }}>
+              Our flagship global conference bringing together students from across the globe to build the next generation of international leaders and diplomats.
+            </p>
+          </div>
+          <div>
+            <button className="btn-sq-solid" onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }} style={{ width: '100%', padding: '14px 20px', letterSpacing: '.08em' }}>
+              REGISTER FOR GDF INTERNATIONAL
+            </button>
+          </div>
         </div>
       </div>
 
