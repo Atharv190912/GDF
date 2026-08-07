@@ -127,7 +127,7 @@ export default function HomePage() {
             A special one-day experience featuring engaging debates, networking opportunities, interactive diplomacy activities, and expert mentorship. Entry is completely free for all registered delegates!
           </p>
           <div>
-            <button className="btn-sq-solid" onClick={() => { if (typeof window !== 'undefined' && (window as any).openDelegateDayReg) (window as any).openDelegateDayReg(); }} style={{ width: '100%', padding: '14px 20px', letterSpacing: '.08em', background: 'var(--gold)', color: '#002147', border: 'none', fontWeight: '700' }}>
+            <button className="btn-sq-solid" onClick={() => { const el = document.getElementById('delDayBackdrop'); if (el) el.style.display = 'flex'; }} style={{ width: '100%', padding: '14px 20px', letterSpacing: '.08em', background: 'var(--gold)', color: '#002147', border: 'none', fontWeight: '700' }}>
               REGISTER FOR DELEGATE DAY
             </button>
           </div>
@@ -873,7 +873,7 @@ export default function HomePage() {
 
     {/* Header */}
     <div style={{ background: 'linear-gradient(135deg, #002147 0%, #1a2740 100%)', padding: '28px 28px 20px', borderRadius: '16px 16px 0 0', position: 'relative' }}>
-      <button onClick={() => { (window as any).closeDelegateDayReg(); }} style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(255,255,255,0.15)', border: 'none', color: '#fff', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', fontSize: '1.1rem', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
+      <button onClick={() => { const el = document.getElementById('delDayBackdrop'); if (el) el.style.display = 'none'; }} style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(255,255,255,0.15)', border: 'none', color: '#fff', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', fontSize: '1.1rem', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
       <span style={{ background: 'var(--gold)', color: '#002147', fontSize: '0.65rem', fontWeight: '800', padding: '3px 12px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-block', marginBottom: '10px' }}>FREE ENTRY</span>
       <h2 style={{ color: '#fff', fontSize: '1.4rem', fontWeight: '800', margin: '0 0 4px 0' }}>GDF Delegate Day</h2>
       <p style={{ color: 'var(--gold)', fontSize: '0.85rem', fontWeight: '600', margin: 0 }}>16 August 2026 · Online</p>
