@@ -866,6 +866,107 @@ export default function HomePage() {
 
 
 
+
+{/* ===== DELEGATE DAY REGISTRATION MODAL ===== */}
+<div id="delDayBackdrop" style={{ display: 'none', position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 9999, alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+  <div className="modal" style={{ background: '#fff', borderRadius: '16px', width: '100%', maxWidth: '560px', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.3)', position: 'relative' }}>
+
+    {/* Header */}
+    <div style={{ background: 'linear-gradient(135deg, #002147 0%, #1a2740 100%)', padding: '28px 28px 20px', borderRadius: '16px 16px 0 0', position: 'relative' }}>
+      <button onClick={() => { (window as any).closeDelegateDayReg(); }} style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(255,255,255,0.15)', border: 'none', color: '#fff', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', fontSize: '1.1rem', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
+      <span style={{ background: 'var(--gold)', color: '#002147', fontSize: '0.65rem', fontWeight: '800', padding: '3px 12px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-block', marginBottom: '10px' }}>FREE ENTRY</span>
+      <h2 style={{ color: '#fff', fontSize: '1.4rem', fontWeight: '800', margin: '0 0 4px 0' }}>GDF Delegate Day</h2>
+      <p style={{ color: 'var(--gold)', fontSize: '0.85rem', fontWeight: '600', margin: 0 }}>16 August 2026 · Sharjah, UAE</p>
+    </div>
+
+    {/* Form Body */}
+    <div style={{ padding: '28px' }}>
+
+      {/* Section 1: Personal Information */}
+      <div style={{ marginBottom: '24px' }}>
+        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>1. Personal Information</h4>
+        <div className="mf"><label className="ml">Full Name (as on certificate) <span className="req">*</span></label><input className="mi" id="dd_fn" type="text" placeholder="Your full name" /></div>
+        <div className="mf"><label className="ml">Email Address <span className="req">*</span></label><input className="mi" id="dd_em" type="email" placeholder="your@email.com" /></div>
+        <div className="mf"><label className="ml">Phone Number (with country code) <span className="req">*</span></label><input className="mi" id="dd_ph" type="tel" placeholder="+1 234 567 8900" /></div>
+        <div className="mf">
+          <label className="ml">Country <span className="req">*</span></label>
+          <select className="mi" id="dd_country" onChange={() => { (window as any).onDelegateDayCountryChange((document.getElementById('dd_country') as HTMLSelectElement)?.value); }}>
+            <option value="">Select Country</option>
+            <option value="UAE">United Arab Emirates</option>
+            <option value="India">India</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="USA">United States</option>
+            <option value="UK">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className="mf">
+          <label className="ml">City <span className="req">*</span></label>
+          <select className="mi" id="dd_city"><option value="">Select City</option></select>
+        </div>
+        <div className="mf"><label className="ml">Date of Birth <span className="req">*</span></label><input className="mi" id="dd_dob" type="date" /></div>
+        <div className="mf">
+          <label className="ml">Gender (Optional)</label>
+          <select className="mi" id="dd_gender">
+            <option value="">Prefer not to say</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Non-binary">Non-binary</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Section 2: Academic Information */}
+      <div style={{ marginBottom: '24px' }}>
+        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>2. Academic Information</h4>
+        <div className="mf"><label className="ml">School / College / University Name <span className="req">*</span></label><input className="mi" id="dd_inst" type="text" placeholder="Your institution" /></div>
+        <div className="mf"><label className="ml">Grade / Year of Study <span className="req">*</span></label><input className="mi" id="dd_grade" type="text" placeholder="e.g. Grade 11, 2nd Year" /></div>
+        <div className="mf"><label className="ml">Organization (if not a student)</label><input className="mi" id="dd_org" type="text" placeholder="Your organization (optional)" /></div>
+      </div>
+
+      {/* Section 3: MUN & Diplomacy Experience */}
+      <div style={{ marginBottom: '24px' }}>
+        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>3. MUN &amp; Diplomacy Experience</h4>
+        <div className="mf">
+          <label className="ml">Have you attended a MUN before? <span className="req">*</span></label>
+          <select className="mi" id="dd_mun_exp">
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div className="mf"><label className="ml">Number of MUNs attended (if applicable)</label><input className="mi" id="dd_mun_count" type="number" min="0" placeholder="0" /></div>
+        <div className="mf"><label className="ml">Leadership Roles Held (Optional)</label><input className="mi" id="dd_leadership" type="text" placeholder="e.g. Secretary-General, Chair…" /></div>
+      </div>
+
+      {/* Section 4: Consent */}
+      <div style={{ marginBottom: '28px' }}>
+        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>4. Consent &amp; Confirmation</h4>
+        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
+          <input type="checkbox" id="dd_c1" style={{ marginTop: '2px', accentColor: '#002147' }} />
+          I confirm that the information provided is accurate.
+        </label>
+        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
+          <input type="checkbox" id="dd_c2" style={{ marginTop: '2px', accentColor: '#002147' }} />
+          I agree to receive updates regarding GDF events.
+        </label>
+        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
+          <input type="checkbox" id="dd_c3" style={{ marginTop: '2px', accentColor: '#002147' }} />
+          I consent to photography and videography during the event.
+        </label>
+      </div>
+
+      {/* Submit */}
+      <button id="ddSubmitBtn" className="btn-solid" style={{ width: '100%', padding: '15px', fontSize: '0.95rem', fontWeight: '700', background: 'var(--gold)', color: '#002147', border: 'none', borderRadius: '8px', cursor: 'pointer', letterSpacing: '0.05em' }} onClick={() => { (window as any).submitDelegateDay(); }}>
+        Submit Delegate Day Registration
+      </button>
+    </div>
+  </div>
+</div>
+
     </>
   );
 }
