@@ -120,7 +120,7 @@ export default function HomePage() {
         <div style={{ background: 'linear-gradient(135deg, #002147 0%, #1a2740 100%)', padding: '28px 24px', color: '#fff', textAlign: 'center', position: 'relative' }}>
           <span style={{ background: 'var(--gold)', color: '#002147', fontSize: '0.7rem', fontWeight: '800', padding: '4px 14px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-block', marginBottom: '12px' }}>FREE ENTRY</span>
           <h3 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '0 0 6px 0', letterSpacing: '0.5px', color: '#ffffff' }}>GDF DELEGATE DAY</h3>
-          <p style={{ fontSize: '0.85rem', color: 'var(--gold)', fontWeight: '600', margin: '0' }}>16 August 2026 · Sharjah, UAE</p>
+          <p style={{ fontSize: '0.85rem', color: 'var(--gold)', fontWeight: '600', margin: '0' }}>16 August 2026 · Online</p>
         </div>
         <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: '1', justifyContent: 'space-between' }}>
           <p style={{ fontSize: '.95rem', color: 'var(--muted)', lineHeight: '1.75', marginBottom: '24px' }}>
@@ -876,7 +876,7 @@ export default function HomePage() {
       <button onClick={() => { (window as any).closeDelegateDayReg(); }} style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(255,255,255,0.15)', border: 'none', color: '#fff', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', fontSize: '1.1rem', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
       <span style={{ background: 'var(--gold)', color: '#002147', fontSize: '0.65rem', fontWeight: '800', padding: '3px 12px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-block', marginBottom: '10px' }}>FREE ENTRY</span>
       <h2 style={{ color: '#fff', fontSize: '1.4rem', fontWeight: '800', margin: '0 0 4px 0' }}>GDF Delegate Day</h2>
-      <p style={{ color: 'var(--gold)', fontSize: '0.85rem', fontWeight: '600', margin: 0 }}>16 August 2026 · Sharjah, UAE</p>
+      <p style={{ color: 'var(--gold)', fontSize: '0.85rem', fontWeight: '600', margin: 0 }}>16 August 2026 · Online</p>
     </div>
 
     {/* Form Body */}
