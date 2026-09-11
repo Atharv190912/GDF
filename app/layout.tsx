@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://gdfintl.org'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://gdfintl.org',
   },
   openGraph: {
     title: 'Global Diplomatic Foundation',

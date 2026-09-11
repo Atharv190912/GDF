@@ -1,4 +1,6 @@
 User-Agent: *
 Allow: /
-Disallow: /_next/
+Allow: /_next/static/
+Disallow: /_next/server/
+Disallow: /api/
 Sitemap: https://gdfintl.org/sitemap.xml
