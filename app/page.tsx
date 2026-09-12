@@ -89,8 +89,7 @@ export default function HomePage() {
       <span className="marquee-dot"></span><span className="marquee-text">International Cooperation</span>
       <span className="marquee-dot"></span><span className="marquee-text">Youth Empowerment</span>
       <span className="marquee-dot"></span><span className="marquee-text">Model United Nations</span>
-      <span className="marquee-dot"></span><span className="marquee-text">GDF International Later 2026</span>
-      <span className="marquee-dot"></span><span className="marquee-text">GDF Delegate Day 16 Aug 2026</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GDF International 19-20 Dec 2026</span>
       <span className="marquee-dot"></span><span className="marquee-text">Sharjah, UAE</span>
     </div>
     <div className="marquee-item" aria-hidden="true">
@@ -99,8 +98,7 @@ export default function HomePage() {
       <span className="marquee-dot"></span><span className="marquee-text">International Cooperation</span>
       <span className="marquee-dot"></span><span className="marquee-text">Youth Empowerment</span>
       <span className="marquee-dot"></span><span className="marquee-text">Model United Nations</span>
-      <span className="marquee-dot"></span><span className="marquee-text">GDF International Later 2026</span>
-      <span className="marquee-dot"></span><span className="marquee-text">GDF Delegate Day 16 Aug 2026</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GDF International 19-20 Dec 2026</span>
       <span className="marquee-dot"></span><span className="marquee-text">Sharjah, UAE</span>
     </div>
   </div>
@@ -113,33 +111,14 @@ export default function HomePage() {
     <h2 className="h2">Conferences &amp; Events</h2>
     <div className="divider"></div>
 
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'stretch' }}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
 
-      {/* Frame 1 (Left): GDF DELEGATE DAY */}
-      <div style={{ background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 25px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: '1px solid rgba(212,175,55,0.3)' }}>
-        <div style={{ background: 'linear-gradient(135deg, #002147 0%, #1a2740 100%)', padding: '28px 24px', color: '#fff', textAlign: 'center', position: 'relative' }}>
-          <span style={{ background: 'var(--gold)', color: '#002147', fontSize: '0.7rem', fontWeight: '800', padding: '4px 14px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-block', marginBottom: '12px' }}>FREE ENTRY</span>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '0 0 6px 0', letterSpacing: '0.5px', color: '#ffffff' }}>GDF DELEGATE DAY</h3>
-          <p style={{ fontSize: '0.85rem', color: 'var(--gold)', fontWeight: '600', margin: '0' }}>16 August 2026 · Online</p>
-        </div>
-        <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: '1', justifyContent: 'space-between' }}>
-          <p style={{ fontSize: '.95rem', color: 'var(--muted)', lineHeight: '1.75', marginBottom: '24px' }}>
-            A special one-day experience featuring engaging debates, networking opportunities, interactive diplomacy activities, and expert mentorship. Entry is completely free for all registered delegates!
-          </p>
-          <div>
-            <button className="btn-sq-solid" onClick={() => { const el = document.getElementById('delDayBackdrop'); if (el) el.style.display = 'flex'; }} style={{ width: '100%', padding: '14px 20px', letterSpacing: '.08em', background: 'var(--gold)', color: '#002147', border: 'none', fontWeight: '700' }}>
-              REGISTER FOR DELEGATE DAY
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Frame 2 (Right): GDF INTERNATIONAL */}
-      <div style={{ background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 25px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: '1px solid #eee' }}>
+      {/* GDF INTERNATIONAL */}
+      <div style={{ maxWidth: '600px', width: '100%', background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 25px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: '1px solid #eee' }}>
         <div style={{ background: '#1a2740', padding: '0', position: 'relative' }}>
-          <img src="images/GDFI.png" style={{ width: '100%', maxHeight: '185px', objectFit: 'cover', display: 'block' }} alt="GDF International" />
+          <img src="images/GDFI.png" style={{ width: '100%', maxHeight: '250px', objectFit: 'cover', display: 'block' }} alt="GDF International" />
           <div style={{ position: 'absolute', bottom: '12px', left: '16px', background: 'rgba(0,33,71,0.9)', backdropFilter: 'blur(4px)', padding: '4px 12px', borderRadius: '6px', color: '#fff', fontSize: '0.8rem', fontWeight: '700' }}>
-            20 AED · LATER 2026
+            20 AED · 19-20 DEC 2026
           </div>
         </div>
         <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: '1', justifyContent: 'space-between' }}>
@@ -184,19 +163,19 @@ export default function HomePage() {
     <div className="divider"></div>
     <div className="news-grid">
       <div>
-        <img src="images/MYC.png" alt="News Image" /> <br />        
-        <div className="news-title">GDF Delegate Day Announced</div>
-        <div className="news-text">Following the rescheduling of GDF International, we are excited to introduce GDF Delegate Day on 16 August 2026—a special one-day experience featuring engaging debates, networking opportunities, interactive activities, and more. Best of all, entry is completely free for all registered delegates, keeping the spirit of GDF alive while we prepare for an even bigger GDF International later this year.</div>
-      </div>
-      <div>
         <img src="images/DEL.png" alt="News Image" /> <br /> 
-        <div className="news-title">GDF International Postponed</div>
-        <div className="news-text">GDF International postponed to later 2026, dates yet to be announced.</div>
+        <div className="news-title">GDF International Dates Announced!</div>
+        <div className="news-text">We are thrilled to announce that GDF International is officially scheduled for 19th - 20th December 2026 in Sharjah, UAE. Mark your calendars for the premier Model UN event!</div>
       </div>
       <div>
         <img src="images/SA.png" alt="News Image" /> <br />    
         <div className="news-title">Delegate Applications: Now Open!</div>
-        <div className="news-text">Delegate applications for GDF International and GDF Delegate Day are Now Open! Limited spots are available — mark your calendars and register now.</div>
+        <div className="news-text">Delegate applications for GDF International are Now Open! Limited spots are available — register now to secure your place.</div>
+      </div>
+      <div>
+        <img src="images/MYC.png" alt="News Image" /> <br />        
+        <div className="news-title">Secretariat Applications Open</div>
+        <div className="news-text">Want to be part of the organizing team? Applications to join the GDF Secretariat are currently open. Check out the "Join Our Team" section for more details.</div>
       </div>
     </div>
   </div>

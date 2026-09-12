@@ -141,6 +141,8 @@ const eventSchemas = [
     name: 'GDF International — Model United Nations Conference',
     description: 'GDF International is the most quality and affordable Model United Nations (MUN) conference in the UAE. Join students from across the globe for debate, diplomacy, and leadership development.',
     url: 'https://gdfintl.org/#conferences',
+    startDate: '2026-12-19',
+    endDate: '2026-12-20',
     image: 'https://gdfintl.org/logo.png',
     organizer: {
       '@type': 'Organization',
@@ -166,34 +168,6 @@ const eventSchemas = [
       url: 'https://gdfintl.org/#conferences',
     },
     keywords: 'MUN, Model United Nations, debate, diplomacy, UAE MUN, best MUN, affordable MUN, cheapest MUN',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Event',
-    name: 'GDF Delegate Day — Free MUN & Debate Day',
-    description: 'GDF Delegate Day is a FREE one-day Model United Nations and debate experience hosted by the Global Diplomatic Foundation. The cheapest MUN experience in the UAE — completely free entry for all delegates.',
-    url: 'https://gdfintl.org/#conferences',
-    startDate: '2026-08-16',
-    image: 'https://gdfintl.org/logo.png',
-    organizer: {
-      '@type': 'Organization',
-      name: 'Global Diplomatic Foundation',
-      url: 'https://gdfintl.org',
-    },
-    location: {
-      '@type': 'VirtualLocation',
-      url: 'https://gdfintl.org',
-    },
-    eventStatus: 'https://schema.org/EventScheduled',
-    eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'AED',
-      availability: 'https://schema.org/InStock',
-      url: 'https://gdfintl.org/#conferences',
-    },
-    keywords: 'free MUN, cheapest MUN, free debate conference, GDF Delegate Day, MUN UAE',
   },
 ]
 
