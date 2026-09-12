@@ -52,6 +52,8 @@ export default function HomePage() {
   <a href="#conferences">Conference</a>
   <a href="#news">Updates</a>
   <a href="#wwa">About Our Foundation</a>
+  <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>Why GDF</a>
+  <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>FAQ</a>
   <a href="#contact">Contact</a>
 </div>
 <div className="nav-socials">
@@ -382,21 +384,6 @@ export default function HomePage() {
         <div><button id="cBtn" className="btn-solid" style={{ padding: '14px 44px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).sendContact) (window as any).sendContact(); }}>Send Message</button></div>
         <div id="cStatus" style={{ marginTop: '12px', fontSize: '.85rem', display: 'none' }}></div>
       </div>
-    </div>
-  </div>
-</section>
-
-{/* ========== SEO BUTTONS ========== */}
-<section style={{ background: 'var(--off)', padding: '60px 0', textAlign: 'center' }}>
-  <div className="wrap">
-    <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '20px', color: '#1a2740' }}>Learn More About GDF</h3>
-    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-      <button style={{ padding: '12px 24px', border: '1.5px solid var(--navy)', background: 'transparent', color: 'var(--navy)', fontWeight: '700', cursor: 'pointer', borderRadius: '4px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>
-        Why Choose GDF?
-      </button>
-      <button style={{ padding: '12px 24px', border: '1.5px solid var(--navy)', background: 'transparent', color: 'var(--navy)', fontWeight: '700', cursor: 'pointer', borderRadius: '4px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>
-        Frequently Asked Questions
-      </button>
     </div>
   </div>
 </section>
