@@ -633,7 +633,7 @@ function submitDelegate(){
       details: 'Committees: ' + app.committees.join(', '),
       extra: extra,
       date: app.date,
-      to_email: 'globaldiplomaticfoundaiton@gmail.com'
+      to_email: 'info@gdfintl.org'
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you for registering. We have received your application and will review your payment shortly.';
@@ -698,7 +698,7 @@ function submitChair(){
       details: 'Committee Prefs: ' + app.prefs.join(' | ') + ' | School: ' + app.school + ' | Level: ' + app.expLevel,
       extra: 'Awards: ' + app.awards + ' | Skills: ' + app.skills + ' | Why: ' + app.why + ' | Conferences: ' + app.conferences,
       date: app.date,
-      to_email: 'globaldiplomaticfoundaiton@gmail.com'
+      to_email: 'info@gdfintl.org'
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you. We will review your chair application and notify you by email.';
@@ -764,7 +764,7 @@ function teamSubmit(){
       details: 'Department: ' + appData.department,
       extra: 'Experience: ' + appData.experience + ' | Why GDF: ' + appData.why,
       date: new Date().toLocaleString(),
-      to_email: 'globaldiplomaticfoundaiton@gmail.com'
+      to_email: 'info@gdfintl.org'
     }).then(function(){
       const ta = document.getElementById('tm_appid');
       if(ta) ta.innerHTML = '<b>Application ID:</b> ' + appId + '<br><b>Name:</b> ' + appData.name + '<br><b>Email:</b> ' + appData.email + '<br><b>Department:</b> ' + appData.department + '<br><b>Status:</b> Submitted — we\'ll be in touch soon.';
@@ -787,7 +787,7 @@ function sendContact(){
   if(!fname||!lname||!email||!msg){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Please fill in all required fields.';} return; }
   if(btn){btn.disabled=true;btn.textContent='Sending…';} if(status)status.style.display='none';
   if(typeof emailjs!=='undefined'){
-    emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
+    emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'info@gdfintl.org'})
       .then(function(){ if(status){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";} ['cFname','cLname','cEmail','cMsg'].forEach(id => { const el=document.getElementById(id); if(el)el.value=''; }); if(btn){btn.textContent='Send Message';btn.disabled=false;} })
       .catch(function(err){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong: ' + (err?.text || JSON.stringify(err));} if(btn){btn.textContent='Send Message';btn.disabled=false;} });
   } else {
@@ -806,108 +806,3 @@ function closeDelegateDayReg() {
   if (backdrop) backdrop.style.display = 'none';
 }
 
-function onDelegateDayCountryChange(countryVal) {
-  const citySelect = document.getElementById('dd_city');
-  if (!citySelect) return;
-  citySelect.innerHTML = '<option value="">Select City</option>';
-  if (countryVal && COUNTRY_DATA[countryVal]) {
-    COUNTRY_DATA[countryVal].forEach(function(city) {
-      const opt = document.createElement('option');
-      opt.value = city;
-      opt.textContent = city;
-      citySelect.appendChild(opt);
-    });
-  } else {
-    const opt = document.createElement('option');
-    opt.value = 'Other';
-    opt.textContent = 'Other / Standard';
-    citySelect.appendChild(opt);
-  }
-}
-
-function submitDelegateDay() {
-  const fname = tv('dd_fn');
-  const email = tv('dd_em');
-  const phone = tv('dd_ph');
-  const country = tv('dd_country');
-  const city = tv('dd_city');
-  const dob = tv('dd_dob');
-  const gender = tv('dd_gender');
-
-  const institution = tv('dd_inst');
-  const grade = tv('dd_grade');
-  const org = tv('dd_org');
-
-  const munExp = tv('dd_mun_exp');
-  const munCount = tv('dd_mun_count');
-  const leadership = tv('dd_leadership');
-
-  const c1 = document.getElementById('dd_c1')?.checked;
-  const c2 = document.getElementById('dd_c2')?.checked;
-  const c3 = document.getElementById('dd_c3')?.checked;
-
-  if (!fname || !email || !phone || !country || !city || !dob) {
-    alert('Please fill in all required personal information fields.');
-    return;
-  }
-  if (!institution || !grade) {
-    alert('Please fill in your academic information (School/College & Grade/Year).');
-    return;
-  }
-  if (!munExp) {
-    alert('Please select whether you have attended a MUN before.');
-    return;
-  }
-  if (!c1 || !c2 || !c3) {
-    alert('Please agree to all consent & confirmation checkboxes to proceed.');
-    return;
-  }
-
-  const appId = 'DDAY' + Date.now().toString().slice(-6);
-  const btn = document.getElementById('ddSubmitBtn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
-
-  const appData = {
-    type: 'delegate_day',
-    name: fname,
-    email: email,
-    phone: phone,
-    address: city + ', ' + country,
-    details: 'Institution: ' + institution + ' | Grade: ' + grade + ' | Org: ' + org + ' | MUN Exp: ' + munExp + ' (Count: ' + munCount + ')',
-    extra: 'Gender: ' + gender + ' | DOB: ' + dob + ' | Leadership: ' + leadership
-  };
-
-  fetch('/api/applications', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(appData)
-  }).catch(err => console.error('DB Error:', err));
-
-  if (typeof emailjs !== 'undefined') {
-    emailjs.send('service_gdfinternational', 'template_h75i69m', {
-      app_type: 'GDF Delegate Day Registration',
-      app_id: appId,
-      full_name: fname,
-      age: dob,
-      email: email,
-      phone: phone,
-      address: city + ', ' + country,
-      details: 'Institution: ' + institution + ' | Grade: ' + grade + ' | Org: ' + org + ' | MUN Exp: ' + munExp + ' (' + munCount + ')',
-      extra: 'Gender: ' + gender + ' | Leadership: ' + leadership + ' | Consents: Confirmed All',
-      date: new Date().toLocaleString(),
-      to_email: 'globaldiplomaticfoundaiton@gmail.com'
-    }).then(function() {
-      closeDelegateDayReg();
-      showConfirmation('GDF Delegate Day', appId, fname, email, 'Event Date: 16 August 2026<br>Venue: Online<br>Fee: Free Entry');
-      if (btn) { btn.disabled = false; btn.textContent = 'Submit Delegate Day Registration'; }
-    }, function(err) {
-      console.error('EmailJS Delegate Day Error:', err);
-      alert('Submission error: ' + (err?.text || JSON.stringify(err)) + '. Please try again.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Submit Delegate Day Registration'; }
-    });
-  } else {
-    closeDelegateDayReg();
-    showConfirmation('GDF Delegate Day', appId, fname, email, 'Event Date: 16 August 2026<br>Venue: Online<br>Fee: Free Entry');
-    if (btn) { btn.disabled = false; btn.textContent = 'Submit Delegate Day Registration'; }
-  }
-}

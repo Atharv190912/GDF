@@ -68,35 +68,44 @@ export default function HomePage() {
       <span style={{ color: 'var(--gold)', fontSize: '0.65rem', letterSpacing: '0.2em', fontWeight: 700 }}>INTERNATIONAL</span>
     </div>
   </a>
-<div className="nav-links montserrat">
-  <a href="#wwa">About</a>
-  <a href="#conferences">Events</a>
-  <a href="#news">Updates</a>
-  <a href="#team">Team</a>
-  <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>FAQ</a>
-  <a href="#contact">Contact</a>
-</div>
-<div className="nav-socials">
-  <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-  </a>
-  <a href="https://www.instagram.com/gdf_international/" target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-  </a>
-</div>
+  <div className="nav-links montserrat">
+    <a href="#wwa">About</a>
+    <a href="#initiatives">Initiatives</a>
+    <a href="#flagship">GDF International</a>
+    <a href="#circuit">The Circuit</a>
+    <a href="#team">Team</a>
+    <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+    <div className="nav-socials">
+      <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/gdf_international/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+    </div>
+    <button className="btn-sq-solid" style={{ padding: '10px 22px', fontSize: '0.72rem' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>
+      JOIN GDF
+    </button>
+  </div>
 </nav>
 
-{/* HERO */}
+{/* HERO SECTION */}
 <section id="hero">
   <div className="hero-bg"></div>
   <div className="hero-overlay"></div>
   <div className="hero-body reveal">
+    <div className="circuit-card-badge" style={{ marginBottom: '16px' }}>PIONEERING THE UAE ONLINE MUN CIRCUIT</div>
     <img src="/images/img_002_3ea5b8ad.png" alt="GDF Crest" className="hero-crest float-anim" />
-    <h1 style={{ fontWeight: 800 }}>Think Globally.<br />Lead Diplomatically.</h1>
-    <p className="montserrat reveal delay-1">The Global Diplomatic Foundation fosters a culture of dialogue, leadership, and international cooperation — uniting ambitious students to build the next generation of global leaders.</p> 
-    <div className="reveal delay-2">
-      <a href="#wwa" className="btn-sq-solid" style={{ marginRight: '16px' }}>Discover GDF</a>
-      <a href="#conferences" className="btn-ghost">View Events</a>
+    <h1 style={{ fontWeight: 900 }}>DEBATE. DIPLOMACY. DELIVER.</h1>
+    <p className="montserrat reveal delay-1">
+      Building the next generation of global leaders through diplomacy, dialogue, and decisive action. The UAE's pioneer in youth international relations and online diplomatic circuits.
+    </p> 
+    <div className="reveal delay-2" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <a href="#initiatives" className="btn-sq-solid">Explore Initiatives</a>
+      <a href="#flagship" className="btn-ghost">GDF International 2026</a>
     </div>
   </div>
 </section>
@@ -106,101 +115,259 @@ export default function HomePage() {
   <div className="marquee-track" id="marqueeTrack">
     <div className="marquee-item">
       <span className="marquee-dot"></span><span className="marquee-text">DIPLOMACY &amp; LEADERSHIP</span>
-      <span className="marquee-dot"></span><span className="marquee-text">INTERNATIONAL COOPERATION</span>
+      <span className="marquee-dot"></span><span className="marquee-text">UAE ONLINE MUN CIRCUIT</span>
       <span className="marquee-dot"></span><span className="marquee-text">YOUTH EMPOWERMENT</span>
-      <span className="marquee-dot"></span><span className="marquee-text">MODEL UNITED NATIONS</span>
+      <span className="marquee-dot"></span><span className="marquee-text">THE GDF CROWN</span>
       <span className="marquee-dot"></span><span className="marquee-text">SHARJAH, UAE</span>
     </div>
     <div className="marquee-item" aria-hidden="true">
       <span className="marquee-dot"></span><span className="marquee-text">DIPLOMACY &amp; LEADERSHIP</span>
-      <span className="marquee-dot"></span><span className="marquee-text">INTERNATIONAL COOPERATION</span>
+      <span className="marquee-dot"></span><span className="marquee-text">UAE ONLINE MUN CIRCUIT</span>
       <span className="marquee-dot"></span><span className="marquee-text">YOUTH EMPOWERMENT</span>
-      <span className="marquee-dot"></span><span className="marquee-text">MODEL UNITED NATIONS</span>
+      <span className="marquee-dot"></span><span className="marquee-text">THE GDF CROWN</span>
       <span className="marquee-dot"></span><span className="marquee-text">SHARJAH, UAE</span>
     </div>
   </div>
 </div>
 
-{/* WHO WE ARE */}
-<section id="wwa" className="pad">
-  <div className="watermark anton reveal">GLOBAL<br/>DIPLOMATIC<br/>FOUNDATION</div>
-  <div className="wrap wwa-grid">
-    <div className="wwa-text reveal delay-1">
-      <p className="tag">Our Mission</p>
-      <h2 className="h2">Empowering the Next Generation of Global Leaders</h2>
-      <div className="divider"></div>
-      <p className="body-text montserrat" style={{ marginBottom: '24px' }}>
-        The Global Diplomatic Foundation is dedicated to empowering young minds through strategic diplomatic dialogue, leadership development, and international cooperation.
-      </p>
-      <p className="body-text montserrat" style={{ marginBottom: '40px' }}>
-        Our expert-led approach brings together students from diverse backgrounds to create meaningful debate, build cross-cultural understanding, and solve the pressing issues of our time.
-      </p>
-      <a href="#" className="btn-ghost" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>Why Choose GDF?</a>
-    </div>
-    <div className="wwa-img-wrapper reveal delay-2">
-      <img src="images/img_001_f4f1400b.jpg" className="wwa-img-1" alt="GDF Conference" />
-      <img src="images/tinted_large.jpg" className="wwa-img-2 float-slow" alt="GDF Delegates" />
+{/* GDF IN NUMBERS */}
+<section className="numbers-section">
+  <div className="wrap">
+    <div className="numbers-grid">
+      <div className="number-item reveal">
+        <div className="number-val">#1</div>
+        <div className="number-label">In The UAE</div>
+        <div className="number-sub">Pioneers of the UAE Online MUN Circuit</div>
+      </div>
+      <div className="number-item reveal delay-1">
+        <div className="number-val">20+</div>
+        <div className="number-label">Diplomatic Chambers</div>
+        <div className="number-sub">World-class specialized committees</div>
+      </div>
+      <div className="number-item reveal delay-2">
+        <div className="number-val">12.6K+</div>
+        <div className="number-label">Global Network</div>
+        <div className="number-sub">Youth leaders across Broadcast &amp; Community</div>
+      </div>
+      <div className="number-item reveal delay-3">
+        <div className="number-val">1x</div>
+        <div className="number-label">Annual Flagship</div>
+        <div className="number-sub">Exclusive GDF International summit</div>
+      </div>
     </div>
   </div>
 </section>
 
-{/* CONFERENCES & EVENTS */}
-<section id="conferences" className="pad">
-  <div className="wrap" style={{ position: 'relative', zIndex: '1' }}>
-    <div className="reveal" style={{ textAlign: 'center' }}>
-      <p className="tag">Upcoming Events</p>
-      <h2 className="h2">Conferences &amp; Events</h2>
-      <div className="divider" style={{ margin: '0 auto 60px' }}></div>
+{/* WHO WE ARE & UAE CIRCUIT */}
+<section id="wwa" className="pad">
+  <div className="watermark anton reveal">GLOBAL<br/>DIPLOMATIC<br/>FOUNDATION</div>
+  <div className="wrap">
+    <div className="wwa-grid">
+      <div className="wwa-text reveal delay-1">
+        <p className="tag">Our Mission &amp; Foundation</p>
+        <h2 className="h2">Building the Future of Youth Diplomacy</h2>
+        <div className="divider"></div>
+        <p className="body-text montserrat" style={{ marginBottom: '20px' }}>
+          The Global Diplomatic Foundation (GDF) is an international youth diplomatic organization dedicated to equipping students with the critical thinking, public speaking, and policy-making skills needed to address the challenges of tomorrow.
+        </p>
+        <p className="body-text montserrat" style={{ marginBottom: '32px' }}>
+          We are proud to be the <strong style={{ color: 'var(--gold)' }}>first in the UAE to build the UAE Online MUN Circuit</strong> — establishing the nation's only premium, highly accessible virtual diplomatic network that connects delegates across continents.
+        </p>
+        <a href="#" className="btn-ghost" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>Why Choose GDF?</a>
+      </div>
+      <div className="wwa-img-wrapper reveal delay-2">
+        <img src="images/img_001_f4f1400b.jpg" className="wwa-img-1" alt="GDF Conference" />
+        <img src="images/tinted_large.jpg" className="wwa-img-2 float-slow" alt="GDF Delegates" />
+      </div>
     </div>
 
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      {/* GDF INTERNATIONAL CARD */}
-      <div className="conf-card reveal delay-1" style={{ maxWidth: '800px', width: '100%', display: 'flex', flexDirection: 'column' }}>
-        <div className="conf-img-wrap">
-          <img src="images/GDFI.png" alt="GDF International" />
-          <div className="conf-badge montserrat">19-20 DEC 2026</div>
+    {/* The Circuit & The Crown */}
+    <div className="circuit-grid" id="circuit">
+      <div className="circuit-card reveal">
+        <div className="circuit-card-badge">THE UAE PIONEERS</div>
+        <h3>The UAE Online MUN Circuit</h3>
+        <p>
+          Before GDF, access to high-caliber Model United Nations was restricted by geography and prohibitive fees. GDF transformed youth diplomacy by establishing the first structured UAE Online MUN Circuit — offering elite debate at just 20 AED without compromising on committee rigor or prestige.
+        </p>
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <span className="flagship-chip">Direct Virtual Chambers</span>
+          <span className="flagship-chip">Global Dais Expert Chairs</span>
+          <span className="flagship-chip">Strict Parliamentary Rules</span>
         </div>
-        <div className="conf-content" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '30px', alignItems: 'center' }}>
-          <div>
-            <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '2.2rem', color: 'var(--gold)', marginBottom: '12px', letterSpacing: '-0.01em' }}>GDF INTERNATIONAL</h3>
-            <p className="montserrat" style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: '1.7', margin: 0 }}>
-              Our flagship global conference bringing together students from across the globe to build the next generation of international leaders and diplomats in Sharjah, UAE.
-            </p>
+      </div>
+
+      <div className="circuit-card reveal delay-1">
+        <div className="circuit-card-badge">SUPREME RECOGNITION</div>
+        <h3>The GDF Crown &amp; Awards</h3>
+        <p>
+          GDF awards are unlike any other conference. We believe extraordinary research and diplomacy deserve extraordinary recognition. At GDF International, the highest-performing delegations compete for the coveted <strong style={{ color: 'var(--gold)' }}>GDF Crown</strong>, supreme trophies, and official leadership credentials.
+        </p>
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <span className="flagship-chip">The GDF Crown Trophy</span>
+          <span className="flagship-chip">Executive Best Delegate Awards</span>
+          <span className="flagship-chip">Global Dais Appointments</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* INITIATIVES SECTION: "WE DON'T JUST HOST — WE TEACH & EMPOWER" */}
+<section id="initiatives" className="pad" style={{ background: 'var(--navy2)', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
+  <div className="wrap">
+    <div className="reveal" style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 20px' }}>
+      <p className="tag">Beyond The Conference</p>
+      <h2 className="h2">We Don't Just Host — We Teach &amp; Empower</h2>
+      <div className="divider" style={{ margin: '0 auto 24px' }}></div>
+      <p className="body-text montserrat">
+        GDF is more than an annual summit. We are an active, 365-day diplomatic academy and community. Explore our 4 core educational pillars designed to accelerate your growth as an international leader.
+      </p>
+    </div>
+
+    <div className="initiatives-grid">
+      {/* 1. YOUTH ACADEMY */}
+      <div className="initiative-card reveal">
+        <div className="initiative-header">
+          <span className="initiative-badge">DIPLOMATIC EDUCATION</span>
+          <h3 className="initiative-title">GDF Youth Academy</h3>
+          <div className="initiative-tagline">Your gateway to global awareness, leadership, and diplomacy.</div>
+        </div>
+        <div className="initiative-body">
+          <p className="initiative-desc">
+            An all-in-one learning space on Google Classroom where young leaders access study guides, comprehensive briefing notes, and structured delegate training modules.
+          </p>
+          <ul className="initiative-features">
+            <li><span className="bullet">&#10003;</span> Exclusive study guides and foreign policy briefing notes</li>
+            <li><span className="bullet">&#10003;</span> Interactive discussions and peer-to-peer debate analysis</li>
+            <li><span className="bullet">&#10003;</span> Announcements on global scholarships, events and opportunities</li>
+          </ul>
+          <div className="initiative-action-box">
+            <div>
+              <div style={{ fontSize: '0.72rem', color: 'var(--gold)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.1em' }}>CLASSROOM CODE</div>
+              <div className="code-highlight">2ypkcedf</div>
+            </div>
+            <a href="https://classroom.google.com/" target="_blank" rel="noopener" className="btn-sq-solid" style={{ padding: '12px 24px' }}>
+              Join Classroom
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. GDF BROADCAST */}
+      <div className="initiative-card reveal delay-1">
+        <div className="initiative-header">
+          <span className="initiative-badge">DAILY INTELLIGENCE</span>
+          <h3 className="initiative-title">GDF Broadcast</h3>
+          <div className="initiative-tagline">Daily World Updates, Powered by GDF.</div>
+        </div>
+        <div className="initiative-body">
+          <p className="initiative-desc">
+            Stay ahead of geopolitics. Our editorial team delivers curated daily briefings on global affairs, diplomatic summits, and youth opportunities directly to your WhatsApp.
+          </p>
+          <ul className="initiative-features">
+            <li><span className="bullet">&#10003;</span> Verified global news and geopolitical situation reports</li>
+            <li><span className="bullet">&#10003;</span> Diplomatic insights, UN organ facts, and strategic perspectives</li>
+            <li><span className="bullet">&#10003;</span> Scholarship, competition, and youth ambassador alerts</li>
+          </ul>
+          <div className="initiative-action-box">
+            <div>
+              <div style={{ fontSize: '0.72rem', color: 'var(--gold)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.1em' }}>WHATSAPP CHANNEL</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--white)', fontWeight: 700 }}>12.6K+ Followers</div>
+            </div>
+            <a href="https://whatsapp.com/channel/0029VbCabBE5Ui2eM2uNSM1V" target="_blank" rel="noopener" className="btn-sq-solid" style={{ padding: '12px 24px' }}>
+              Follow Channel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. GDF GLOBAL COMMUNITY */}
+      <div className="initiative-card reveal">
+        <div className="initiative-header">
+          <span className="initiative-badge">WORLDWIDE NETWORK</span>
+          <h3 className="initiative-title">GDF Global Community</h3>
+          <div className="initiative-tagline">A Global Space for Young Leaders.</div>
+        </div>
+        <div className="initiative-body">
+          <p className="initiative-desc">
+            Be part of something bigger. An active international network connecting delegates, secretariat alumni, and youth leaders from across the Middle East and worldwide.
+          </p>
+          <ul className="initiative-features">
+            <li><span className="bullet">&#10003;</span> Connect with ambitious students and aspiring diplomats</li>
+            <li><span className="bullet">&#10003;</span> Engage in live conversations on contemporary multilateral issues</li>
+            <li><span className="bullet">&#10003;</span> Collaborate on youth-led advocacy and cross-border initiatives</li>
+          </ul>
+          <div className="initiative-action-box">
+            <div>
+              <div style={{ fontSize: '0.72rem', color: 'var(--gold)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.1em' }}>COMMUNITY CHANNEL</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--white)', fontWeight: 700 }}>Open to All Delegates</div>
+            </div>
+            <a href="https://whatsapp.com/channel/0029VbCabBE5Ui2eM2uNSM1V" target="_blank" rel="noopener" className="btn-sq-solid" style={{ padding: '12px 24px' }}>
+              Join Community
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. DEBATE OF THE MONTH & QUESTION OF THE DAY */}
+      <div className="initiative-card reveal delay-1">
+        <div className="initiative-header">
+          <span className="initiative-badge">COMPETITION &amp; MERIT</span>
+          <h3 className="initiative-title">Debate &amp; Knowledge Challenges</h3>
+          <div className="initiative-tagline">Test your knowledge · Challenge motions · Win certificates.</div>
+        </div>
+        <div className="initiative-body">
+          <p className="initiative-desc">
+            Continuous intellectual rigor. Take on the monthly parliamentary motion, answer daily diplomatic trivia, and earn verified recognition and executive features.
+          </p>
+          <ul className="initiative-features">
+            <li><span className="bullet">&#10003;</span> Debate of the Month: Formulate arguments on international policy</li>
+            <li><span className="bullet">&#10003;</span> Question of the Day: Test your understanding of global treaties</li>
+            <li><span className="bullet">&#10003;</span> Official GDF Certificates and social media spotlights for winners</li>
+          </ul>
+          <div className="initiative-action-box">
+            <div>
+              <div style={{ fontSize: '0.72rem', color: 'var(--gold)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.1em' }}>LIVE PARTICIPATION</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--white)', fontWeight: 700 }}>Weekly Competitions</div>
+            </div>
+            <a href="https://whatsapp.com/channel/0029VbCabBE5Ui2eM2uNSM1V" target="_blank" rel="noopener" className="btn-sq-solid" style={{ padding: '12px 24px' }}>
+              Participate Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* FLAGSHIP STAR SECTION: GDF INTERNATIONAL 2026 */}
+<section id="flagship" className="flagship-section">
+  <div className="wrap">
+    <div className="flagship-box reveal">
+      <div className="flagship-grid">
+        <div className="flagship-media">
+          <img src="images/GDFINTL.png" alt="GDF International" />
+          <div className="flagship-media-badge">EXCLUSIVELY ONCE A YEAR</div>
+        </div>
+        <div className="flagship-content">
+          <div className="flagship-eyebrow">THE PREMIER DIPLOMATIC SUMMIT · SHARJAH &amp; ONLINE CIRCUIT</div>
+          <h2 className="flagship-title">GDF INTERNATIONAL 2026</h2>
+          <p className="flagship-desc">
+            The flagship diplomatic conference hosted exclusively once per year. GDF International brings together delegates from across the region and around the world to debate pressing global crises, simulate real international diplomacy, and compete for the supreme <strong style={{ color: 'var(--gold)' }}>GDF Crown</strong>.
+          </p>
+          <div className="flagship-chips">
+            <span className="flagship-chip">🏆 The GDF Crown Trophy</span>
+            <span className="flagship-chip">📅 19–20 December 2026</span>
+            <span className="flagship-chip">💰 20 AED Accessible Delegate Fee</span>
+            <span className="flagship-chip">🏛️ 20+ Specialized Chambers</span>
+            <span className="flagship-chip">🌍 UAE &amp; Global Online Circuit</span>
           </div>
           <div>
-            <button className="btn-sq-solid" onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>
-              REGISTER NOW
+            <button className="btn-sq-solid" style={{ padding: '18px 44px', fontSize: '0.85rem' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>
+              REGISTER FOR GDF INTERNATIONAL →
             </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* NEWS */}
-<section id="news" className="pad">
-  <div className="wrap">
-    <div className="reveal">
-      <p className="tag">Updates</p>
-      <h2 className="h2">Latest News</h2>
-      <div className="divider"></div>
-    </div>
-    <div className="news-grid montserrat">
-      <div className="news-card reveal delay-1">
-        <div className="news-date">Dec 2026</div>
-        <h3 className="news-title">GDF International Dates Announced!</h3>
-        <p className="news-text">We are thrilled to announce that GDF International is officially scheduled for 19th - 20th December 2026 in Sharjah, UAE. Mark your calendars for the premier Model UN event!</p>
-      </div>
-      <div className="news-card reveal delay-2">
-        <div className="news-date">Registrations</div>
-        <h3 className="news-title">Delegate Applications: Now Open!</h3>
-        <p className="news-text">Delegate applications for GDF International are Now Open! Limited spots are available — register now to secure your place in the most quality MUN.</p>
-      </div>
-      <div className="news-card reveal delay-3">
-        <div className="news-date">Opportunities</div>
-        <h3 className="news-title">Secretariat Applications Open</h3>
-        <p className="news-text">Want to be part of the organizing team? Applications to join the GDF Secretariat are currently open. Check out the Team section for more details.</p>
       </div>
     </div>
   </div>
@@ -280,7 +447,7 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* SPONSORS */}
+{/* SPONSORS & PARTNERS */}
 <section id="sponsors" className="pad" style={{ background: 'var(--navy2)', borderTop: '1px solid rgba(212,175,55,0.06)' }}>
   <div className="wrap" style={{ textAlign: 'center' }}>
     <div className="reveal">
@@ -288,7 +455,7 @@ export default function HomePage() {
       <h2 className="h2">Sponsors &amp; Partners</h2>
       <div className="divider" style={{ margin: '0 auto 40px' }}></div>
     </div>
-    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '60px', marginBottom: '40px' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '60px', marginBottom: '20px' }}>
       <div className="reveal delay-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
         <img src="images/solarize.png" alt="Solarize Digitech" style={{ maxHeight: '70px', maxWidth: '200px', objectFit: 'contain', filter: 'brightness(1.5) grayscale(100%)', opacity: '0.6', transition: 'all .3s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='brightness(1) grayscale(0%)'; e.currentTarget.style.opacity='1';}} onMouseOut={(e)=>{e.currentTarget.style.filter='brightness(1.5) grayscale(100%)'; e.currentTarget.style.opacity='0.6';}} />
         <span className="montserrat" style={{ fontSize: '.7rem', fontWeight: '700', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--gold)' }}>Technology Partner</span>
@@ -306,7 +473,6 @@ export default function HomePage() {
   {/* Moving SVG wave typography — two copies for seamless loop */}
   <div className="wave-svg-container">
     <div className="wave-anim-inner">
-      {/* First copy */}
       <svg
         viewBox="0 0 3200 350"
         preserveAspectRatio="xMidYMid meet"
@@ -327,7 +493,6 @@ export default function HomePage() {
           </textPath>
         </text>
       </svg>
-      {/* Second copy — seamless continuation */}
       <svg
         viewBox="0 0 3200 350"
         preserveAspectRatio="xMidYMid meet"
@@ -370,6 +535,25 @@ export default function HomePage() {
   </div>
 </section>
 
+{/* FINAL CALL TO ACTION */}
+<section className="final-cta-section">
+  <div className="wrap reveal">
+    <p className="tag">Join The Global Movement</p>
+    <h2 className="final-cta-title">THE WORLD NEEDS<br/>BETTER DIALOGUE.</h2>
+    <p className="final-cta-sub montserrat">
+      Whether you are an aspiring delegate, a seasoned chair, or a student passionate about international relations — your journey in diplomacy begins with the Global Diplomatic Foundation.
+    </p>
+    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <a href="https://classroom.google.com/" target="_blank" rel="noopener" className="btn-sq-solid" style={{ padding: '16px 36px' }}>
+        Join Youth Academy (Code: 2ypkcedf)
+      </a>
+      <button className="btn-ghost" style={{ padding: '16px 36px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>
+        Register For Conference (20 AED)
+      </button>
+    </div>
+  </div>
+</section>
+
 {/* CONTACT */}
 <section id="contact" className="pad">
   <div className="wrap">
@@ -378,7 +562,9 @@ export default function HomePage() {
         <p className="tag">Get In Touch</p>
         <h2 className="h2" style={{ marginBottom: '20px', fontWeight: 800 }}>Contact Us</h2>
         <div className="divider"></div>
-        <p className="body-text montserrat" style={{ marginBottom: '32px' }}>Interested in working together or have a question about the conference? Fill out some info and we will be in touch shortly.</p>
+        <p className="body-text montserrat" style={{ marginBottom: '32px' }}>
+          Interested in collaborating with the Global Diplomatic Foundation, partnering with our circuit, or have questions about our initiatives? Reach out to our secretariat.
+        </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: '.9rem', color: 'var(--white)' }} className="montserrat">
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span style={{ color: 'var(--gold)' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.12 2.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
@@ -386,10 +572,7 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span style={{ color: 'var(--gold)' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <a href="mailto:info@gdfintl.org" style={{ color: 'var(--muted)' }}>info@gdfintl.org</a>
-              <a href="mailto:globaldiplomaticfoundaiton@gmail.com" style={{ color: 'var(--muted)' }}>globaldiplomaticfoundaiton@gmail.com</a>
-            </div>
+            <a href="mailto:info@gdfintl.org" style={{ color: 'var(--muted)' }}>info@gdfintl.org</a>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span style={{ color: 'var(--gold)' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
@@ -430,23 +613,32 @@ export default function HomePage() {
   <div className="wrap ft-grid montserrat">
     <div>
       <div className="ft-brand">GDF</div>
-      <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', lineHeight: '1.8' }}>The Global Diplomatic Foundation.<br/>Building the next generation of leaders.</p>
+      <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', lineHeight: '1.8' }}>
+        The Global Diplomatic Foundation.<br/>
+        Pioneering the UAE Online MUN Circuit.<br/>
+        Building the next generation of global leaders.
+      </p>
     </div>
     <div className="ft-col">
-      <div className="ft-col-title">Navigation</div>
+      <div className="ft-col-title">Organization</div>
       <a href="#wwa">About Us</a>
-      <a href="#conferences">Events</a>
-      <a href="#team">Our Team</a>
+      <a href="#initiatives">Youth Academy</a>
+      <a href="#circuit">UAE Circuit &amp; Crown</a>
+      <a href="#team">Secretariat</a>
       <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>Why GDF</a>
     </div>
     <div className="ft-col">
-      <div className="ft-col-title">Support</div>
-      <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>FAQ</a>
-      <a href="#contact">Contact Us</a>
+      <div className="ft-col-title">Programs</div>
+      <a href="#flagship">GDF International 2026</a>
+      <a href="https://classroom.google.com/" target="_blank" rel="noopener">Google Classroom (2ypkcedf)</a>
+      <a href="https://whatsapp.com/channel/0029VbCabBE5Ui2eM2uNSM1V" target="_blank" rel="noopener">GDF Broadcast</a>
+      <a href="https://whatsapp.com/channel/0029VbCabBE5Ui2eM2uNSM1V" target="_blank" rel="noopener">Global Community</a>
     </div>
     <div className="ft-col">
-      <div className="ft-col-title">Contact</div>
-      <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', lineHeight: '1.8' }}>
+      <div className="ft-col-title">Contact &amp; Support</div>
+      <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>Frequently Asked Questions</a>
+      <a href="#contact">Contact Secretariat</a>
+      <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', lineHeight: '1.8', marginTop: '12px' }}>
         <a href="mailto:info@gdfintl.org" style={{ display: 'inline', marginBottom: 0 }}>info@gdfintl.org</a><br />
         <a href="tel:+971562971909" style={{ display: 'inline', marginBottom: 0 }}>(+971) 56 297 1909</a>
       </p>
@@ -457,10 +649,8 @@ export default function HomePage() {
 {/* FLOATING BANNER */}
 <div className="floating-banner" onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>
   <div className="banner-pulse"></div>
-  Register Now
+  GDF International · Register
 </div>
-
-
 
 {/* ========== WHY GDF OVERLAY ========== */}
 <div className="overlay" id="whyGdfOverlay">
@@ -479,21 +669,21 @@ export default function HomePage() {
   <div className="ov-inner" style={{ background: 'var(--navy)', minHeight: '100vh', padding: '120px 20px 80px' }}>
     <div className="wrap">
       <div style={{ textAlign: 'center' }}>
-        <p className="tag">Why Choose GDF?</p>
-        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>The Best MUN &amp; Debate Conference in the UAE</h2>
+        <p className="tag">The GDF Difference</p>
+        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>Pioneering Youth Diplomacy in the UAE &amp; Beyond</h2>
         <div className="divider" style={{ margin: '0 auto 40px' }}></div>
-        <p style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 48px', color: 'var(--muted)', lineHeight: '1.8', fontSize: '1.05rem' }}>
-          The <strong style={{ color: 'var(--gold)' }}>Global Diplomatic Foundation (GDF)</strong> hosts <strong style={{ color: 'var(--gold)' }}>GDF International</strong> — the premier, most accessible, and top-tier <strong style={{ color: 'var(--gold)' }}>Model United Nations (MUN)</strong> and <strong style={{ color: 'var(--gold)' }}>debate conference</strong> in the UAE. Whether you are seeking world-class diplomatic training or premier parliamentary debate, GDF delivers excellence.
+        <p style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 48px', color: 'var(--muted)', lineHeight: '1.8', fontSize: '1.05rem' }}>
+          The <strong style={{ color: 'var(--gold)' }}>Global Diplomatic Foundation (GDF)</strong> is more than a conference organizer — we are the pioneers of the <strong style={{ color: 'var(--gold)' }}>UAE Online MUN Circuit</strong>. We built the UAE's only premium, highly accessible virtual diplomatic platform that bridges borders, trains young leaders, and rewards true excellence.
         </p>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
         {[
-          { icon: '🏆', title: 'Best MUN in UAE', desc: 'GDF International is recognised as one of the best Model United Nations conferences in the UAE, delivering a world-class MUN experience for students.' },
-          { icon: '💰', title: 'Most Accessible Conference', desc: 'At just 20 AED for GDF International — and completely FREE for GDF Delegate Day — we offer unmatched value for high-calibre diplomacy.' },
-          { icon: '✨', title: 'Highest Quality MUN', desc: 'Expert-led committees, professional debate formats, real diplomatic simulations — GDF International sets the standard for quality MUN conferences.' },
-          { icon: '🎤', title: 'Premier Debate Experience', desc: 'From structured debate to parliamentary procedure, GDF offers the best debate conference experience for students in Sharjah, Dubai, and across the UAE.' },
-          { icon: '🌍', title: 'Global & Inclusive', desc: 'Students from diverse backgrounds and schools across the region participate, providing a rich, international exchange of perspectives.' },
-          { icon: '🚀', title: 'Executive Leadership', desc: 'Beyond MUN and debate, GDF equips the next generation of global leaders with public speaking, policy drafting, and strategic negotiation skills.' },
+          { icon: '🌐', title: 'First UAE Online MUN Circuit', desc: 'GDF is the first organization in the UAE to build a dedicated, structured Online MUN Circuit, connecting ambitious students from across the region to high-level multilateral debate.' },
+          { icon: '👑', title: 'The GDF Crown & Supreme Awards', desc: 'Our recognition standards are unmatched. Outstanding delegates compete for the prestigious GDF Crown, bespoke trophies, executive certificates, and global dais appointments.' },
+          { icon: '✨', title: 'Exclusive Annual Flagship', desc: 'GDF International is hosted exclusively once per year (19–20 Dec 2026), ensuring supreme organizational rigor, distinguished guest speakers, and elite crisis chambers.' },
+          { icon: '💰', title: 'Premium & Accessible (20 AED)', desc: 'We believe elite diplomatic education should not be financially prohibitive. At just 20 AED, GDF International provides world-class quality at the most accessible price point.' },
+          { icon: '📚', title: 'We Don’t Just Host — We Teach', desc: 'Through the GDF Youth Academy (Google Classroom 2ypkcedf) and daily GDF Broadcast, we provide continuous foreign policy masterclasses, briefing notes, and study guides.' },
+          { icon: '🤝', title: 'Worldwide Diplomatic Community', desc: 'Over 12,600 young leaders are connected through our international channels, collaborating on global policy issues and participating in monthly debate challenges.' },
         ].map((item, i) => (
           <div key={i} style={{ background: 'var(--navy-card)', borderRadius: '12px', padding: '32px 26px', boxShadow: '0 8px 30px rgba(0,0,0,0.3)', border: '1px solid rgba(212,175,55,0.15)' }}>
             <div style={{ fontSize: '2.2rem', marginBottom: '16px' }}>{item.icon}</div>
@@ -524,17 +714,39 @@ export default function HomePage() {
     <div className="wrap">
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
         <p className="tag">Frequently Asked Questions</p>
-        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>MUN &amp; Debate Conference FAQ</h2>
+        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>Foundation &amp; Conference FAQ</h2>
         <div className="divider" style={{ margin: '0 auto 48px' }}></div>
       </div>
-      <div style={{ maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {[
-          { q: 'What is the best MUN conference?', a: 'GDF International by the Global Diplomatic Foundation is one of the best MUN (Model United Nations) conferences, offering the highest quality debate, diplomacy training, and leadership development for students in the UAE and globally.' },
-          { q: 'What is the registration fee for GDF conferences?', a: 'GDF International offers one of the most accessible MUN experiences at just 20 AED. Delegate Day events are completely FREE — making it an open and premier platform for young diplomats.' },
-          { q: 'What is the quality of MUN at GDF?', a: 'GDF International, organised by the Global Diplomatic Foundation, is among the highest quality MUN conferences in the UAE. It features expert-led committees, professional debate formats, and real diplomatic simulations for students.' },
-          { q: 'What is the best debate conference for students in UAE?', a: 'GDF International by the Global Diplomatic Foundation is the premier conference for students in the UAE and Middle East, combining rigorous debate, Model United Nations, and diplomacy training.' },
-          { q: 'What is GDF International?', a: 'GDF International is the flagship Model United Nations (MUN) and debate conference by the Global Diplomatic Foundation (GDF). It brings together students from across the globe to debate global issues, develop leadership skills, and experience real diplomacy.' },
-          { q: 'How do I register for GDF International?', a: 'Register for GDF International by visiting gdfintl.org and clicking Register. Spots are limited, so apply early!' },
+          { 
+            q: 'Does GDF only host Model UN conferences?', 
+            a: 'No! GDF is an international youth diplomatic organization and academy. We don\'t just host conferences — we teach, mentor, and empower young leaders year-round through the GDF Youth Academy (Google Classroom), our daily GDF Broadcast, the Global Community network, and monthly debate challenges.' 
+          },
+          { 
+            q: 'What is the UAE Online MUN Circuit?', 
+            a: 'GDF is the first organization in the UAE to build the UAE Online MUN Circuit. We created a structured, accessible virtual diplomatic arena that allows delegates across the Emirates and globally to debate complex geopolitical crises with expert chairs and international standards.' 
+          },
+          { 
+            q: 'What makes GDF International unique?', 
+            a: 'GDF International is hosted exclusively once per year (19–20 December 2026). It features 20+ specialized committees, crisis chambers, and our signature awards program — including the supreme GDF Crown trophy and executive delegate certificates.' 
+          },
+          { 
+            q: 'What is the registration fee for GDF International?', 
+            a: 'Registration for our flagship conference is just 20 AED, making GDF International the UAE\'s only premium and truly affordable online Model United Nations.' 
+          },
+          { 
+            q: 'How do I join the GDF Youth Academy?', 
+            a: 'Any student can join the GDF Youth Academy for free on Google Classroom using class code 2ypkcedf. You will receive study guides, foreign policy briefing notes, and delegate debate training materials.' 
+          },
+          { 
+            q: 'How do I access the GDF Broadcast and Global Community?', 
+            a: 'You can join our verified WhatsApp channel (over 12,600 followers) to receive daily curated world news, diplomatic insights, and announcements regarding upcoming debates and committee sessions.' 
+          },
+          { 
+            q: 'How do I register for GDF International 2026?', 
+            a: 'Delegate registrations are officially open at gdfintl.org. Click "Register Now" on the homepage to access the delegate application portal. Spots in specialized committees are allocated on a rolling basis.' 
+          },
         ].map((item, i) => (
           <details key={i} style={{ background: 'var(--navy-card)', borderRadius: '10px', border: '1px solid rgba(212,175,55,0.15)', overflow: 'hidden', color: 'var(--white)' }}>
             <summary style={{ padding: '20px 24px', fontWeight: '700', fontSize: '1rem', color: 'var(--white)', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -577,7 +789,7 @@ export default function HomePage() {
         <p className="svc-desc">GDF International is a youth-focused platform dedicated to fostering diplomacy, leadership, and global engagement. Register below to secure your delegate spot.</p>
         <div style={{ marginTop: '24px', width: '100%', position: 'relative' }}>
           <button className="btn-solid" style={{ width: '100%', padding: '15px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>Register as Delegate</button>
-          <span style={{ position: 'absolute', top: '-12px', right: '10px', background: '#e74c3c', color: 'white', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Opening Soon · Apr 7</span>
+          
         </div>
       </div>
     </div>
@@ -984,106 +1196,6 @@ export default function HomePage() {
 
 
 
-
-{/* ===== DELEGATE DAY REGISTRATION MODAL ===== */}
-<div id="delDayBackdrop" style={{ display: 'none', position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 9999, alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-  <div className="modal" style={{ background: '#fff', borderRadius: '16px', width: '100%', maxWidth: '560px', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.3)', position: 'relative' }}>
-
-    {/* Header */}
-    <div style={{ background: 'linear-gradient(135deg, #002147 0%, #1a2740 100%)', padding: '28px 28px 20px', borderRadius: '16px 16px 0 0', position: 'relative' }}>
-      <button onClick={() => { const el = document.getElementById('delDayBackdrop'); if (el) el.style.display = 'none'; }} style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(255,255,255,0.15)', border: 'none', color: '#fff', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', fontSize: '1.1rem', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
-      <span style={{ background: 'var(--gold)', color: '#002147', fontSize: '0.65rem', fontWeight: '800', padding: '3px 12px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-block', marginBottom: '10px' }}>FREE ENTRY</span>
-      <h2 style={{ color: '#fff', fontSize: '1.4rem', fontWeight: '800', margin: '0 0 4px 0' }}>GDF Delegate Day</h2>
-      <p style={{ color: 'var(--gold)', fontSize: '0.85rem', fontWeight: '600', margin: 0 }}>16 August 2026 · Online</p>
-    </div>
-
-    {/* Form Body */}
-    <div style={{ padding: '28px' }}>
-
-      {/* Section 1: Personal Information */}
-      <div style={{ marginBottom: '24px' }}>
-        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>1. Personal Information</h4>
-        <div className="mf"><label className="ml">Full Name (as on certificate) <span className="req">*</span></label><input className="mi" id="dd_fn" type="text" placeholder="Your full name" /></div>
-        <div className="mf"><label className="ml">Email Address <span className="req">*</span></label><input className="mi" id="dd_em" type="email" placeholder="your@email.com" /></div>
-        <div className="mf"><label className="ml">Phone Number (with country code) <span className="req">*</span></label><input className="mi" id="dd_ph" type="tel" placeholder="+1 234 567 8900" /></div>
-        <div className="mf">
-          <label className="ml">Country <span className="req">*</span></label>
-          <select className="mi" id="dd_country" onChange={() => { (window as any).onDelegateDayCountryChange((document.getElementById('dd_country') as HTMLSelectElement)?.value); }}>
-            <option value="">Select Country</option>
-            <option value="UAE">United Arab Emirates</option>
-            <option value="India">India</option>
-            <option value="Pakistan">Pakistan</option>
-            <option value="USA">United States</option>
-            <option value="UK">United Kingdom</option>
-            <option value="Canada">Canada</option>
-            <option value="Australia">Australia</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div className="mf">
-          <label className="ml">City <span className="req">*</span></label>
-          <select className="mi" id="dd_city"><option value="">Select City</option></select>
-        </div>
-        <div className="mf"><label className="ml">Date of Birth <span className="req">*</span></label><input className="mi" id="dd_dob" type="date" /></div>
-        <div className="mf">
-          <label className="ml">Gender (Optional)</label>
-          <select className="mi" id="dd_gender">
-            <option value="">Prefer not to say</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Non-binary">Non-binary</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-      </div>
-
-      {/* Section 2: Academic Information */}
-      <div style={{ marginBottom: '24px' }}>
-        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>2. Academic Information</h4>
-        <div className="mf"><label className="ml">School / College / University Name <span className="req">*</span></label><input className="mi" id="dd_inst" type="text" placeholder="Your institution" /></div>
-        <div className="mf"><label className="ml">Grade / Year of Study <span className="req">*</span></label><input className="mi" id="dd_grade" type="text" placeholder="e.g. Grade 11, 2nd Year" /></div>
-        <div className="mf"><label className="ml">Organization (if not a student)</label><input className="mi" id="dd_org" type="text" placeholder="Your organization (optional)" /></div>
-      </div>
-
-      {/* Section 3: MUN & Diplomacy Experience */}
-      <div style={{ marginBottom: '24px' }}>
-        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>3. MUN &amp; Diplomacy Experience</h4>
-        <div className="mf">
-          <label className="ml">Have you attended a MUN before? <span className="req">*</span></label>
-          <select className="mi" id="dd_mun_exp">
-            <option value="">Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-        <div className="mf"><label className="ml">Number of MUNs attended (if applicable)</label><input className="mi" id="dd_mun_count" type="number" min="0" placeholder="0" /></div>
-        <div className="mf"><label className="ml">Leadership Roles Held (Optional)</label><input className="mi" id="dd_leadership" type="text" placeholder="e.g. Secretary-General, Chair…" /></div>
-      </div>
-
-      {/* Section 4: Consent */}
-      <div style={{ marginBottom: '28px' }}>
-        <h4 style={{ fontSize: '0.8rem', fontWeight: '800', color: '#002147', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', borderBottom: '2px solid var(--gold)', paddingBottom: '6px' }}>4. Consent &amp; Confirmation</h4>
-        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
-          <input type="checkbox" id="dd_c1" style={{ marginTop: '2px', accentColor: '#002147' }} />
-          I confirm that the information provided is accurate.
-        </label>
-        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
-          <input type="checkbox" id="dd_c2" style={{ marginTop: '2px', accentColor: '#002147' }} />
-          I agree to receive updates regarding GDF events.
-        </label>
-        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
-          <input type="checkbox" id="dd_c3" style={{ marginTop: '2px', accentColor: '#002147' }} />
-          I consent to photography and videography during the event.
-        </label>
-      </div>
-
-      {/* Submit */}
-      <button id="ddSubmitBtn" className="btn-solid" style={{ width: '100%', padding: '15px', fontSize: '0.95rem', fontWeight: '700', background: 'var(--gold)', color: '#002147', border: 'none', borderRadius: '8px', cursor: 'pointer', letterSpacing: '0.05em' }} onClick={() => { (window as any).submitDelegateDay(); }}>
-        Submit Delegate Day Registration
-      </button>
-    </div>
-  </div>
-</div>
 
     </>
   );

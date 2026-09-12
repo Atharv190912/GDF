@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     'UAE conference', 'Sharjah conference', 'Dubai student conference', 'Middle East youth conference',
     // Long-tail
     'best MUN conference for students', 'most affordable MUN conference',
-    'GDF delegate day', 'GDF delegate', 'MUN registration UAE',
+    'UAE Online MUN Circuit', 'GDF Crown', 'MUN registration UAE',
   ],
   authors: [{ name: 'Global Diplomatic Foundation' }],
   creator: 'Global Diplomatic Foundation',
@@ -177,7 +177,7 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is the best MUN conference?',
+      name: 'What is the best MUN conference in the UAE?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'GDF International by the Global Diplomatic Foundation is widely regarded as one of the best MUN (Model United Nations) conferences, offering the highest quality debate, diplomacy training, and leadership development for students in the UAE and globally.',
@@ -185,50 +185,34 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'What is the cheapest MUN conference?',
+      name: 'What is the UAE Online MUN Circuit?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDF International offers one of the most affordable MUN experiences at just 20 AED. GDF Delegate Day is completely FREE — making it the cheapest MUN conference available. Register at gdfintl.org.',
+        text: 'GDF is the first organization in the UAE to build the UAE Online MUN Circuit — creating a borderless, accessible, and uncompromisingly rigorous virtual diplomatic arena for students across the Emirates and internationally at just 20 AED.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the most quality MUN in the UAE?',
+      name: 'Does GDF only host Model UN conferences?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDF International, organised by the Global Diplomatic Foundation, is the most quality MUN conference in the UAE. It features expert-led committees, professional debate formats, and real diplomatic simulations for students.',
+        text: 'No! GDF is an international youth diplomatic organization and academy. We teach, mentor, and empower young leaders year-round through the GDF Youth Academy (Google Classroom 2ypkcedf), our daily GDF Broadcast, the Global Community network, and monthly debate challenges.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the best debate conference for students?',
+      name: 'What makes GDF International unique?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDF International and GDF Delegate Day by the Global Diplomatic Foundation are the best debate conferences for students in the UAE and Middle East. They combine debate, Model United Nations, and diplomacy training in one premium yet affordable event.',
+        text: 'GDF International is hosted exclusively once per year (19–20 December 2026). It features 20+ specialized committees, world-class crisis rooms, and the coveted GDF Crown and supreme diplomatic awards.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is GDF International?',
+      name: 'How do I register for GDF International in UAE?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDF International is the flagship Model United Nations (MUN) and debate conference by the Global Diplomatic Foundation (GDF). It brings together students from across the globe to debate global issues, develop leadership skills, and experience real diplomacy. Visit gdfintl.org to register.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is there a free MUN conference in UAE?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes! GDF Delegate Day by the Global Diplomatic Foundation is a completely free MUN and debate event open to all registered delegates. It is the cheapest and most accessible MUN experience in the UAE.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I register for a MUN conference in UAE?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'You can register for GDF International or GDF Delegate Day — the best MUN conferences in the UAE — by visiting gdfintl.org and clicking the Register button. Spots are limited.',
+        text: 'You can register for GDF International — the UAE\'s premier online MUN conference — by visiting gdfintl.org and clicking Register. Delegate registration is just 20 AED.',
       },
     },
   ],
