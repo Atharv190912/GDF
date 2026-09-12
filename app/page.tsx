@@ -12,23 +12,23 @@ export default function HomePage() {
   return (
     <>
       <style>{`
-        .adm-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.85rem; color: #333; }
-        .adm-table th, .adm-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
-        .adm-table th { background: #f8f9fa; font-weight: 700; color: #1a2740; }
+        .adm-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.85rem; color: var(--white); }
+        .adm-table th, .adm-table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(212,175,55,0.1); }
+        .adm-table th { background: var(--navy-card); font-weight: 700; color: var(--gold); }
         .type-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
-        .type-badge.delegate { background: #e3f2fd; color: #1976d2; }
-        .type-badge.chair { background: #f3e5f5; color: #7b1fa2; }
-        .type-badge.team { background: #e8f5e9; color: #2e7d32; }
+        .type-badge.delegate { background: rgba(25,118,210,0.15); color: #64b5f6; }
+        .type-badge.chair { background: rgba(123,31,162,0.15); color: #ce93d8; }
+        .type-badge.team { background: rgba(46,125,50,0.15); color: #81c784; }
         .status-badge { padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; }
-        .status-badge.pending { background: #fff3e0; color: #f57c00; }
-        .status-badge.accepted { background: #e8f5e9; color: #2e7d32; }
-        .status-badge.declined { background: #ffebee; color: #c62828; }
+        .status-badge.pending { background: rgba(245,124,0,0.15); color: #ffb74d; }
+        .status-badge.accepted { background: rgba(46,125,50,0.15); color: #81c784; }
+        .status-badge.declined { background: rgba(198,40,40,0.15); color: #ef9a9a; }
         .btn-s { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 600; margin-right: 5px; }
         .btn-acc { background: #2e7d32; color: #fff; }
         .btn-dec { background: #c62828; color: #fff; }
-        .stat-card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center; }
-        .stat-card h3 { font-size: 0.8rem; color: #666; margin-bottom: 8px; }
-        .stat-card .num { font-size: 1.8rem; font-weight: 800; color: #1a2740; }
+        .stat-card { background: var(--navy-card); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); text-align: center; border: 1px solid rgba(212,175,55,0.08); }
+        .stat-card h3 { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+        .stat-card .num { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
       `}</style>
       {/* EmailJS */}
       <Script
@@ -107,7 +107,7 @@ export default function HomePage() {
 </div>
 
 {/* CONFERENCES & EVENTS */}
-<section id="conferences" className="pad" style={{ background: 'var(--beige)' }}>
+<section id="conferences" className="pad" style={{ background: 'var(--off)' }}>
   <div className="wrap" style={{ position: 'relative', zIndex: '1' }}>
     <p className="tag">Upcoming Events</p>
     <h2 className="h2">Conferences &amp; Events</h2>
@@ -116,16 +116,16 @@ export default function HomePage() {
     <div style={{ display: 'flex', justifyContent: 'center' }}>
 
       {/* GDF INTERNATIONAL */}
-      <div style={{ maxWidth: '600px', width: '100%', background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 6px 25px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: '1px solid #eee' }}>
-        <div style={{ background: '#1a2740', padding: '0', position: 'relative' }}>
+      <div style={{ maxWidth: '600px', width: '100%', background: 'var(--navy-card)', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.3)', display: 'flex', flexDirection: 'column', border: '1px solid rgba(212,175,55,0.1)', transition: 'transform .4s, box-shadow .4s' }} onMouseOver={(e) => { e.currentTarget.style.transform='translateY(-6px)'; e.currentTarget.style.boxShadow='0 16px 50px rgba(212,175,55,0.2)'; }} onMouseOut={(e) => { e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 8px 40px rgba(0,0,0,0.3)'; }}>
+        <div style={{ background: 'var(--navy2)', padding: '0', position: 'relative' }}>
           <img src="images/GDFI.png" style={{ width: '100%', maxHeight: '250px', objectFit: 'cover', display: 'block' }} alt="GDF International" />
-          <div style={{ position: 'absolute', bottom: '12px', left: '16px', background: 'rgba(0,33,71,0.9)', backdropFilter: 'blur(4px)', padding: '4px 12px', borderRadius: '6px', color: '#fff', fontSize: '0.8rem', fontWeight: '700' }}>
+          <div style={{ position: 'absolute', bottom: '12px', left: '16px', background: 'rgba(11,20,38,0.85)', backdropFilter: 'blur(8px)', padding: '4px 12px', borderRadius: '6px', color: 'var(--gold-light)', fontSize: '0.8rem', fontWeight: '700', border: '1px solid rgba(212,175,55,0.15)' }}>
             20 AED · 19-20 DEC 2026
           </div>
         </div>
         <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: '1', justifyContent: 'space-between' }}>
           <div>
-            <div style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '.05em', textTransform: 'uppercase', color: '#1a2740', marginBottom: '8px' }}>GDF International</div>
+            <div style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '.05em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '8px', fontFamily: 'Cinzel, serif' }}>GDF International</div>
             <p style={{ fontSize: '.95rem', color: 'var(--muted)', lineHeight: '1.75', marginBottom: '24px' }}>
               Our flagship global conference bringing together students from across the globe to build the next generation of international leaders and diplomats.
             </p>
@@ -143,7 +143,7 @@ export default function HomePage() {
 </section>
 
 {/* WHO WE ARE */}
-<section id="wwa" className="pad" style={{ background: 'var(--off)' }}>
+<section id="wwa" className="pad" style={{ background: 'var(--navy)' }}>
   <div className="wrap">
     <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
       <div>
@@ -152,30 +152,30 @@ export default function HomePage() {
         <div className="divider"></div>
         <p className="body-text">The Global Diplomatic Foundation is dedicated to empowering young minds through strategic diplomatic dialogue, leadership development, and international cooperation. Our expert-led approach brings together students from diverse backgrounds to create meaningful debate, build cross-cultural understanding, and develop the next generation of global leaders.</p>
       </div>
-      <img src="images/tinted_large.jpg" style={{ width: '100%', maxHeight: '500px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} />
+      <img src="images/tinted_large.jpg" style={{ width: '100%', maxHeight: '500px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 40px rgba(0,0,0,0.4)', border: '1px solid rgba(212,175,55,0.08)' }} />
     </div>
   </div>
 </section>
 
 {/* NEWS */}
-<section id="news" className="pad" style={{ background: 'var(--white)' }}>
+<section id="news" className="pad" style={{ background: 'var(--off)' }}>
   <div className="wrap">
     <p className="tag">Updates</p>
     <h2 className="h2">Latest News</h2>
     <div className="divider"></div>
     <div className="news-grid">
       <div>
-        <img src="images/DEL.png" alt="News Image" /> <br /> 
+        <img src="images/DEL.png" alt="News Image" className="news-img" />
         <div className="news-title">GDF International Dates Announced!</div>
         <div className="news-text">We are thrilled to announce that GDF International is officially scheduled for 19th - 20th December 2026 in Sharjah, UAE. Mark your calendars for the premier Model UN event!</div>
       </div>
       <div>
-        <img src="images/SA.png" alt="News Image" /> <br />    
+        <img src="images/SA.png" alt="News Image" className="news-img" />
         <div className="news-title">Delegate Applications: Now Open!</div>
         <div className="news-text">Delegate applications for GDF International are Now Open! Limited spots are available — register now to secure your place.</div>
       </div>
       <div>
-        <img src="images/MYC.png" alt="News Image" /> <br />        
+        <img src="images/MYC.png" alt="News Image" className="news-img" />
         <div className="news-title">Secretariat Applications Open</div>
         <div className="news-text">Want to be part of the organizing team? Applications to join the GDF Secretariat are currently open. Check out the "Join Our Team" section for more details.</div>
       </div>
@@ -216,7 +216,7 @@ export default function HomePage() {
 
 
 {/* TEAM */}
-<section id="team" className="pad" style={{ background: 'var(--white)' }}>
+<section id="team" className="pad" style={{ background: 'var(--navy)' }}>
   <div className="wrap">
     <p className="tag">The People Behind GDF</p>
     <h2 className="h2">Our Team</h2>
@@ -225,52 +225,52 @@ export default function HomePage() {
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gridTemplateRows: 'repeat(2,340px)', gap: '10px' }}>
 
       {/* Row 1 */}
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/Atharv.jpg" />
-        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--navy-card)', border: '1px solid rgba(212,175,55,0.05)', transition: 'transform .4s' }} onMouseOver={(e)=>{e.currentTarget.style.transform='scale(1.02)';}} onMouseOut={(e)=>{e.currentTarget.style.transform='scale(1)';}}>
+        <img src="images/Atharv.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'saturate(.7) brightness(.85)', transition: 'filter .4s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='saturate(1) brightness(1)';}} onMouseOut={(e)=>{e.currentTarget.style.filter='saturate(.7) brightness(.85)';}} />
+        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(11,20,38,.9))', padding: '18px 16px 14px', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
           <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Atharv Johari</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>Founder &amp; CEO</div>
         </div>
       </div>
 
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/mohit_tinted.jpg" />
-        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--navy-card)', border: '1px solid rgba(212,175,55,0.05)', transition: 'transform .4s' }} onMouseOver={(e)=>{e.currentTarget.style.transform='scale(1.02)';}} onMouseOut={(e)=>{e.currentTarget.style.transform='scale(1)';}}>
+        <img src="images/mohit_tinted.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'saturate(.7) brightness(.85)', transition: 'filter .4s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='saturate(1) brightness(1)';}} onMouseOut={(e)=>{e.currentTarget.style.filter='saturate(.7) brightness(.85)';}} />
+        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(11,20,38,.9))', padding: '18px 16px 14px', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
           <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Mohit Tanay Dandamudi</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>President</div>
         </div>
       </div>
 
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/tinted_student.jpg" />
-        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--navy-card)', border: '1px solid rgba(212,175,55,0.05)', transition: 'transform .4s' }} onMouseOver={(e)=>{e.currentTarget.style.transform='scale(1.02)';}} onMouseOut={(e)=>{e.currentTarget.style.transform='scale(1)';}}>
+        <img src="images/tinted_student.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'saturate(.7) brightness(.85)', transition: 'filter .4s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='saturate(1) brightness(1)';}} onMouseOut={(e)=>{e.currentTarget.style.filter='saturate(.7) brightness(.85)';}} />
+        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(11,20,38,.9))', padding: '18px 16px 14px', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
           <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Pranav Sajith Nair</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>Global Manager</div>
         </div>
       </div>
 
       {/* Row 2 */}
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/omisha.png" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--navy-card)', border: '1px solid rgba(212,175,55,0.05)', transition: 'transform .4s' }} onMouseOver={(e)=>{e.currentTarget.style.transform='scale(1.02)';}} onMouseOut={(e)=>{e.currentTarget.style.transform='scale(1)';}}>
+        <img src="images/omisha.png" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', filter: 'saturate(.7) brightness(.85)', transition: 'filter .4s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='saturate(1) brightness(1)';}} onMouseOut={(e)=>{e.currentTarget.style.filter='saturate(.7) brightness(.85)';}} />
+        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(11,20,38,.9))', padding: '18px 16px 14px', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
           <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Omisha Chandrashekar Hegde</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>Chief Operations Officer</div>
         </div>
       </div>
 
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--beige2)' }}>
-        <img src="images/guru.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(15,25,60,.82))', padding: '18px 16px 14px' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--navy-card)', border: '1px solid rgba(212,175,55,0.05)', transition: 'transform .4s' }} onMouseOver={(e)=>{e.currentTarget.style.transform='scale(1.02)';}} onMouseOut={(e)=>{e.currentTarget.style.transform='scale(1)';}}>
+        <img src="images/guru.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'saturate(.7) brightness(.85)', transition: 'filter .4s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='saturate(1) brightness(1)';}} onMouseOut={(e)=>{e.currentTarget.style.filter='saturate(.7) brightness(.85)';}} />
+        <div style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'linear-gradient(transparent,rgba(11,20,38,.9))', padding: '18px 16px 14px', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
           <div style={{ color: '#fff', fontSize: '.88rem', fontWeight: '700' }}>Guru Sriman Murari</div>
           <div style={{ color: 'var(--gold)', fontSize: '.74rem', marginTop: '3px' }}>Chief Communication Officer</div>
         </div>
       </div>
 
       {/* Join Our Team cell */}
-      <div style={{ background: 'var(--navy)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', padding: '32px' }}>
+      <div style={{ background: 'var(--navy-card)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', padding: '32px', border: '1px solid rgba(212,175,55,0.1)', transition: 'border-color .3s, box-shadow .3s' }} onMouseOver={(e)=>{e.currentTarget.style.borderColor='rgba(212,175,55,0.3)'; e.currentTarget.style.boxShadow='0 0 30px rgba(212,175,55,0.1)';}} onMouseOut={(e)=>{e.currentTarget.style.borderColor='rgba(212,175,55,0.1)'; e.currentTarget.style.boxShadow='none';}}>
         <div style={{ color: 'var(--gold)', fontSize: '2rem' }}>✦</div>
-        <p style={{ color: 'rgba(255,255,255,.75)', fontSize: '.85rem', textAlign: 'center', lineHeight: '1.7', fontFamily: 'Arial,Helvetica,sans-serif' }}>Want to be part of something global?</p>
-        <button onClick={() => { if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }} style={{ fontSize: '.72rem', padding: '12px 28px', cursor: 'pointer', border: '1.5px solid rgba(255,255,255,.5)', background: 'transparent', color: '#fff', fontFamily: 'Arial,Helvetica,sans-serif', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Join Our Team</button>
+        <p style={{ color: 'var(--muted)', fontSize: '.85rem', textAlign: 'center', lineHeight: '1.7' }}>Want to be part of something global?</p>
+        <button onClick={() => { if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }} className="btn-ghost">Join Our Team</button>
       </div>
 
     </div>{/* end grid */}
@@ -278,73 +278,74 @@ export default function HomePage() {
 </section>{/* end team section */}
 
 {/* ========== SOCIAL ========== */}
-<section id="social" style={{ background: 'var(--navy)', padding: '70px 0 80px', overflow: 'hidden', marginTop: '100px' }}>
+<section id="social" style={{ background: 'var(--navy2)', padding: '70px 0 80px', overflow: 'hidden', marginTop: '0', borderTop: '1px solid rgba(212,175,55,0.06)' }}>
   <div style={{ width: '100%', overflow: 'hidden', marginBottom: '44px' }}>
     <svg viewBox="0 0 1200 130" width="100%" height="130" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
       <defs><path id="arcStatic" d="M50,115 Q600,5 1150,115"/></defs>
-      <text fontFamily="Arial,Helvetica,sans-serif" fontSize="72" fontWeight="900" fill="white" letterSpacing="3">
+      <text fontFamily="Cinzel,serif" fontSize="72" fontWeight="700" fill="url(#goldGrad)" letterSpacing="3">
         <textPath href="#arcStatic" startOffset="50%" textAnchor="middle">Follow Us On Social Media</textPath>
       </text>
+      <defs><linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#F3E5AB"/><stop offset="50%" stopColor="#D4AF37"/><stop offset="100%" stopColor="#AA7C11"/></linearGradient></defs>
     </svg>
   </div>
   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '18px' }}>
-    <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '54px', height: '54px', background: '#fff', borderRadius: '10px', color: '#1b2a4a' }}>
+    <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" aria-label="Facebook" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '54px', height: '54px', background: 'transparent', borderRadius: '10px', color: 'var(--gold)', border: '1.5px solid rgba(212,175,55,0.2)', transition: 'all .3s' }} onMouseOver={(e)=>{e.currentTarget.style.background='var(--gold)';e.currentTarget.style.color='var(--navy)';e.currentTarget.style.boxShadow='0 0 20px rgba(212,175,55,0.3)';}} onMouseOut={(e)=>{e.currentTarget.style.background='transparent';e.currentTarget.style.color='var(--gold)';e.currentTarget.style.boxShadow='none';}}>
       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
     </a>
-    <a href="https://www.instagram.com/gdf_international/" target="_blank" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '54px', height: '54px', background: '#fff', borderRadius: '10px', color: '#1b2a4a' }}>
+    <a href="https://www.instagram.com/gdf_international/" target="_blank" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '54px', height: '54px', background: 'transparent', borderRadius: '10px', color: 'var(--gold)', border: '1.5px solid rgba(212,175,55,0.2)', transition: 'all .3s' }} onMouseOver={(e)=>{e.currentTarget.style.background='var(--gold)';e.currentTarget.style.color='var(--navy)';e.currentTarget.style.boxShadow='0 0 20px rgba(212,175,55,0.3)';}} onMouseOut={(e)=>{e.currentTarget.style.background='transparent';e.currentTarget.style.color='var(--gold)';e.currentTarget.style.boxShadow='none';}}>
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
       </svg>
     </a>
-    <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '54px', height: '54px', background: '#fff', borderRadius: '10px', color: '#1b2a4a' }}>
+    <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '54px', height: '54px', background: 'transparent', borderRadius: '10px', color: 'var(--gold)', border: '1.5px solid rgba(212,175,55,0.2)', transition: 'all .3s' }} onMouseOver={(e)=>{e.currentTarget.style.background='var(--gold)';e.currentTarget.style.color='var(--navy)';e.currentTarget.style.boxShadow='0 0 20px rgba(212,175,55,0.3)';}} onMouseOut={(e)=>{e.currentTarget.style.background='transparent';e.currentTarget.style.color='var(--gold)';e.currentTarget.style.boxShadow='none';}}>
       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.06C12.66 9.1 14 8 16 8c4 0 5 2.6 5 6v10h-5v-9c0-2.1-.04-4.8-3-4.8S10 12.9 10 15v9H7.5V8z"/></svg>
     </a>
   </div>
 </section>
 
 {/* ========== SPONSORS ========== */}
-<section id="sponsors" style={{ background: '#fff', padding: '60px 0' }}>
+<section id="sponsors" style={{ background: 'var(--navy)', padding: '60px 0', borderTop: '1px solid rgba(212,175,55,0.06)' }}>
   <div className="wrap" style={{ textAlign: 'center' }}>
     <p className="tag" style={{ textAlign: 'center' }}>Our Partners</p>
     <h2 className="h2" style={{ textAlign: 'center' }}>Sponsors &amp; Partners</h2>
     <div className="divider" style={{ margin: '0 auto 40px' }}></div>
     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '48px', marginBottom: '48px' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-        <div style={{ background: '#fff', padding: '24px 36px', border: '1px solid #e8e4da', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '200px', minHeight: '90px' }} onMouseOver={(e) => { const t = e.currentTarget; t.style.boxShadow='0 4px 20px rgba(0,0,0,.1)'; }} onMouseOut={(e) => { const t = e.currentTarget; t.style.boxShadow='none'; }}>
-          <img src="images/solarize.png" alt="Solarize Digitech" style={{ maxHeight: '70px', maxWidth: '180px', objectFit: 'contain' }} />
+        <div style={{ background: 'var(--navy-card)', padding: '24px 36px', border: '1px solid rgba(212,175,55,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '200px', minHeight: '90px', borderRadius: '8px', transition: 'all .3s' }} onMouseOver={(e) => { const t = e.currentTarget; t.style.boxShadow='0 4px 20px rgba(212,175,55,.15)'; t.style.borderColor='rgba(212,175,55,0.3)'; }} onMouseOut={(e) => { const t = e.currentTarget; t.style.boxShadow='none'; t.style.borderColor='rgba(212,175,55,0.1)'; }}>
+          <img src="images/solarize.png" alt="Solarize Digitech" style={{ maxHeight: '70px', maxWidth: '180px', objectFit: 'contain', filter: 'brightness(1.2)' }} />
         </div>
-        <span style={{ fontSize: '.72rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>Technology Partner</span>
+        <span style={{ fontSize: '.72rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--gold)' }}>Technology Partner</span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-        <div style={{ background: '#fff', padding: '8px 12px', border: '1px solid #e8e4da', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '200px', minHeight: '90px' }} onMouseOver={(e) => { const t = e.currentTarget; t.style.boxShadow='0 4px 20px rgba(0,0,0,.1)'; }} onMouseOut={(e) => { const t = e.currentTarget; t.style.boxShadow='none'; }}>
-          <img src="images/earthaid.png" alt="EarthAid" style={{ maxHeight: '80px', maxWidth: '190px', objectFit: 'contain' }} />
+        <div style={{ background: 'var(--navy-card)', padding: '8px 12px', border: '1px solid rgba(212,175,55,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '200px', minHeight: '90px', borderRadius: '8px', transition: 'all .3s' }} onMouseOver={(e) => { const t = e.currentTarget; t.style.boxShadow='0 4px 20px rgba(212,175,55,.15)'; t.style.borderColor='rgba(212,175,55,0.3)'; }} onMouseOut={(e) => { const t = e.currentTarget; t.style.boxShadow='none'; t.style.borderColor='rgba(212,175,55,0.1)'; }}>
+          <img src="images/earthaid.png" alt="EarthAid" style={{ maxHeight: '80px', maxWidth: '190px', objectFit: 'contain', filter: 'brightness(1.2)' }} />
         </div>
-        <span style={{ fontSize: '.72rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>Sustainability Partner</span>
+        <span style={{ fontSize: '.72rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--gold)' }}>Sustainability Partner</span>
       </div>
     </div>
-    <p style={{ fontSize: '.9rem', color: 'var(--muted)' }}>Interested in sponsoring GDF? <a href="#contact" style={{ color: 'var(--navy)', fontWeight: '700', textDecoration: 'underline' }}>Get in touch</a></p>
+    <p style={{ fontSize: '.9rem', color: 'var(--muted)' }}>Interested in sponsoring GDF? <a href="#contact" style={{ color: 'var(--gold)', fontWeight: '700', textDecoration: 'underline' }}>Get in touch</a></p>
   </div>
 </section>
 
 {/* ========== CONTACT ========== */}
-<section id="contact" className="pad" style={{ background: 'var(--beige)' }}>
+<section id="contact" className="pad" style={{ background: 'var(--off)' }}>
   <div className="wrap">
     <div className="contact-grid">
       <div className="c-left">
         <p className="tag">Get In Touch</p>
-        <h2 style={{ fontSize: 'clamp(1.8rem,3.2vw,2.8rem)', fontWeight: '700', letterSpacing: '-.02em', lineHeight: '1.1', marginBottom: '18px' }}>Contact Us</h2>
+        <h2 style={{ fontSize: 'clamp(1.8rem,3.2vw,2.8rem)', fontWeight: '700', letterSpacing: '0.04em', lineHeight: '1.1', marginBottom: '18px', color: 'var(--white)', fontFamily: 'Cinzel, serif' }}>Contact Us</h2>
         <div className="divider"></div>
-        <p style={{ marginBottom: '28px' }}>Interested in working together? Fill out some info and we will be in touch shortly. We can't wait to hear from you!</p>
+        <p style={{ marginBottom: '28px', color: 'var(--muted)' }}>Interested in working together? Fill out some info and we will be in touch shortly. We can&apos;t wait to hear from you!</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '.9rem', color: 'var(--muted)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ width: '36px', height: '36px', background: 'var(--navy)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.12 2.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span style={{ width: '36px', height: '36px', background: 'var(--gold)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.12 2.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             </span>
             <a href="tel:+971562971909" style={{ color: 'var(--muted)', textDecoration: 'none' }}>+971 56 297 1909</a>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ width: '36px', height: '36px', background: 'var(--navy)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span style={{ width: '36px', height: '36px', background: 'var(--gold)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </span>
             <div>
               <a href="mailto:info@gdfintl.org" style={{ color: 'var(--muted)', textDecoration: 'none' }}>info@gdfintl.org</a><br />
@@ -352,8 +353,8 @@ export default function HomePage() {
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ width: '36px', height: '36px', background: 'var(--navy)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span style={{ width: '36px', height: '36px', background: 'var(--gold)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: '0' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </span>
             <span>Sharjah, United Arab Emirates</span>
           </div>
@@ -364,11 +365,11 @@ export default function HomePage() {
           <span className="c-lbl">Name</span>
           <div className="c-row">
             <div className="c-group">
-              <label className="c-lbl" style={{ fontSize: '.73rem', color: '#999' }}>First Name <span className="c-sub">(required)</span></label>
+              <label className="c-lbl" style={{ fontSize: '.73rem', color: 'var(--muted)' }}>First Name <span className="c-sub">(required)</span></label>
               <input type="text" className="inp" id="cFname" />
             </div>
             <div className="c-group">
-              <label className="c-lbl" style={{ fontSize: '.73rem', color: '#999' }}>Last Name <span className="c-sub">(required)</span></label>
+              <label className="c-lbl" style={{ fontSize: '.73rem', color: 'var(--muted)' }}>Last Name <span className="c-sub">(required)</span></label>
               <input type="text" className="inp" id="cLname" />
             </div>
           </div>
@@ -402,13 +403,13 @@ export default function HomePage() {
       <a href="#" onClick={() => { (window as any).closeWhyGdf(); return false; }} style={{ color: 'rgba(255,255,255,.75)', fontSize: '.78rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Close &#215;</a>
     </div>
   </div>
-  <div className="ov-inner" style={{ background: 'var(--off)', minHeight: '100vh', padding: '120px 20px 80px' }}>
+  <div className="ov-inner" style={{ background: 'var(--navy)', minHeight: '100vh', padding: '120px 20px 80px' }}>
     <div className="wrap">
       <p className="tag" style={{ textAlign: 'center' }}>Why Choose GDF?</p>
       <h2 className="h2" style={{ textAlign: 'center' }}>The Best MUN &amp; Debate Conference in the UAE</h2>
       <div className="divider" style={{ margin: '0 auto 40px' }}></div>
       <p style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 48px', color: 'var(--muted)', lineHeight: '1.8', fontSize: '1rem' }}>
-        The <strong>Global Diplomatic Foundation (GDF)</strong> hosts <strong>GDF International</strong> — the most quality, most affordable, and best <strong>Model United Nations (MUN)</strong> and <strong>debate conference</strong> in the UAE and Middle East. Whether you're looking for the <strong>cheapest MUN</strong>, the <strong>world's best MUN</strong>, or a premium <strong>debate experience</strong>, GDF is the answer.
+        The <strong style={{ color: 'var(--gold)' }}>Global Diplomatic Foundation (GDF)</strong> hosts <strong style={{ color: 'var(--gold)' }}>GDF International</strong> — the most quality, most affordable, and best <strong style={{ color: 'var(--gold)' }}>Model United Nations (MUN)</strong> and <strong style={{ color: 'var(--gold)' }}>debate conference</strong> in the UAE and Middle East. Whether you&apos;re looking for the <strong style={{ color: 'var(--gold)' }}>cheapest MUN</strong>, the <strong style={{ color: 'var(--gold)' }}>world&apos;s best MUN</strong>, or a premium <strong style={{ color: 'var(--gold)' }}>debate experience</strong>, GDF is the answer.
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '28px' }}>
         {[
@@ -419,9 +420,9 @@ export default function HomePage() {
           { icon: '🌍', title: 'International & Inclusive', desc: 'Students from across the globe participate in GDF conferences, making it a truly international MUN experience with diverse perspectives.' },
           { icon: '🚀', title: 'Leadership Development', desc: 'Beyond MUN and debate, GDF builds the next generation of global leaders through diplomacy, collaboration, and youth empowerment programs.' },
         ].map((item, i) => (
-          <div key={i} style={{ background: '#fff', borderRadius: '12px', padding: '28px 24px', boxShadow: '0 4px 16px rgba(0,0,0,0.06)', border: '1px solid rgba(212,175,55,0.15)' }}>
+          <div key={i} style={{ background: 'var(--navy-card)', borderRadius: '12px', padding: '28px 24px', boxShadow: '0 4px 20px rgba(0,0,0,0.2)', border: '1px solid rgba(212,175,55,0.1)', transition: 'transform .3s, box-shadow .3s, border-color .3s' }} onMouseOver={(e)=>{e.currentTarget.style.transform='translateY(-4px)';e.currentTarget.style.boxShadow='0 8px 30px rgba(212,175,55,0.15)';e.currentTarget.style.borderColor='rgba(212,175,55,0.3)';}} onMouseOut={(e)=>{e.currentTarget.style.transform='translateY(0)';e.currentTarget.style.boxShadow='0 4px 20px rgba(0,0,0,0.2)';e.currentTarget.style.borderColor='rgba(212,175,55,0.1)';}}>
             <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{item.icon}</div>
-            <h3 style={{ fontSize: '1rem', fontWeight: '800', color: '#1a2740', marginBottom: '10px', letterSpacing: '-0.01em' }}>{item.title}</h3>
+            <h3 style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--gold)', marginBottom: '10px', letterSpacing: '0.02em', fontFamily: 'Cinzel, serif' }}>{item.title}</h3>
             <p style={{ fontSize: '0.88rem', color: 'var(--muted)', lineHeight: '1.7', margin: 0 }}>{item.desc}</p>
           </div>
         ))}
@@ -444,7 +445,7 @@ export default function HomePage() {
       <a href="#" onClick={() => { (window as any).closeFaq(); return false; }} style={{ color: 'rgba(255,255,255,.75)', fontSize: '.78rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Close &#215;</a>
     </div>
   </div>
-  <div className="ov-inner" style={{ background: '#fff', minHeight: '100vh', padding: '120px 20px 80px' }}>
+  <div className="ov-inner" style={{ background: 'var(--navy)', minHeight: '100vh', padding: '120px 20px 80px' }}>
     <div className="wrap">
       <p className="tag" style={{ textAlign: 'center' }}>Frequently Asked Questions</p>
       <h2 className="h2" style={{ textAlign: 'center' }}>MUN &amp; Debate Conference FAQ</h2>
@@ -459,8 +460,8 @@ export default function HomePage() {
           { q: 'Is there a free MUN conference in UAE?', a: 'Yes! GDF Delegate Day by the Global Diplomatic Foundation is a completely free MUN and debate event open to all registered delegates — the cheapest and most accessible MUN experience in the UAE.' },
           { q: 'How do I register for a MUN conference in UAE?', a: 'Register for GDF International or GDF Delegate Day — the best MUN conferences in the UAE — by visiting gdfintl.org and clicking Register. Spots are limited, so apply early!' },
         ].map((item, i) => (
-          <details key={i} style={{ background: 'var(--off)', borderRadius: '10px', border: '1px solid #eee', overflow: 'hidden' }}>
-            <summary style={{ padding: '20px 24px', fontWeight: '700', fontSize: '0.95rem', color: '#1a2740', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <details key={i} style={{ background: 'var(--navy-card)', borderRadius: '10px', border: '1px solid rgba(212,175,55,0.1)', overflow: 'hidden', transition: 'border-color .3s' }}>
+            <summary style={{ padding: '20px 24px', fontWeight: '700', fontSize: '0.95rem', color: 'var(--white)', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>{item.q}</span>
               <span style={{ fontSize: '1.2rem', color: 'var(--gold)', flexShrink: 0, marginLeft: '16px' }}>+</span>
             </summary>
@@ -496,6 +497,13 @@ export default function HomePage() {
 
   </div>
 </footer>
+
+{/* FLOATING BANNER */}
+<div className="floating-banner" onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>
+  <div className="banner-pulse"></div>
+  Register Now
+</div>
+
 
 {/* ========== SERVICE OVERLAY (Conference) ========== */}
 <div className="overlay" id="svcOverlay">

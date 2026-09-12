@@ -240,7 +240,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600;700&family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
@@ -262,7 +262,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {/* Loading Screen */}
+        <div id="gdf-loader">
+          <div className="loader-ring">
+            <img src="/images/LGC.png" alt="GDF" />
+          </div>
+        </div>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('load', function() {
+            var loader = document.getElementById('gdf-loader');
+            if (loader) {
+              setTimeout(function() {
+                loader.classList.add('fade-out');
+                setTimeout(function() { loader.remove(); }, 700);
+              }, 800);
+            }
+          });
+        ` }} />
+        {children}
+      </body>
     </html>
   )
 }
