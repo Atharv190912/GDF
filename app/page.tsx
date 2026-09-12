@@ -211,56 +211,45 @@ export default function HomePage() {
   <div className="wrap">
     <div className="reveal" style={{ textAlign: 'center' }}>
       <p className="tag">The People Behind GDF</p>
-      <h2 className="h2 anton">Our Team</h2>
+      <h2 className="h2" style={{ fontWeight: 800 }}>Our Team</h2>
       <div className="divider" style={{ margin: '0 auto 60px' }}></div>
     </div>
 
-    <div className="team-grid">
-      <div className="t-card reveal">
-        <img src="images/Atharv.jpg" alt="Atharv Johari" />
-        <div className="t-overlay">
-          <div className="t-name">Atharv Johari</div>
-          <div className="t-role montserrat">Founder &amp; CEO</div>
+    {/* Team Slider */}
+    <div className="team-slider-wrapper reveal">
+      <div className="team-slider-img-col" id="teamSliderImg">
+        <img src="images/Atharv.jpg" alt="Atharv Johari" id="teamSliderPhoto" />
+      </div>
+      <div className="team-slider-text-col">
+        <div className="team-slider-name" id="teamSliderName">Atharv Johari</div>
+        <div className="team-slider-role" id="teamSliderRole">Founder &amp; CEO</div>
+        <div className="team-slider-msg" id="teamSliderMsg">
+          &ldquo;GDF was born from a simple belief — that every young person deserves a platform to think globally and lead with purpose. We are not just running a conference; we are building a generation of diplomats.&rdquo;
+        </div>
+        <div className="team-slider-controls">
+          <button className="team-slider-btn" id="teamPrev" onClick={() => { if(typeof window !== 'undefined' && (window as any).teamSliderPrev) (window as any).teamSliderPrev(); }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button className="team-slider-btn" id="teamNext" onClick={() => { if(typeof window !== 'undefined' && (window as any).teamSliderNext) (window as any).teamSliderNext(); }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+        <div style={{ marginTop: '24px', display: 'flex', gap: '8px' }} id="teamDots">
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)', display: 'inline-block', transition: 'all .3s' }}></span>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
         </div>
       </div>
-      <div className="t-card reveal delay-1">
-        <img src="images/mohit_tinted.jpg" alt="Mohit Tanay Dandamudi" />
-        <div className="t-overlay">
-          <div className="t-name">Mohit Tanay</div>
-          <div className="t-role montserrat">President</div>
-        </div>
-      </div>
-      <div className="t-card reveal delay-2">
-        <img src="images/tinted_student.jpg" alt="Pranav Sajith Nair" />
-        <div className="t-overlay">
-          <div className="t-name">Pranav Sajith Nair</div>
-          <div className="t-role montserrat">Global Manager</div>
-        </div>
-      </div>
-      <div className="t-card reveal">
-        <img src="images/omisha.png" alt="Omisha Chandrashekar Hegde" />
-        <div className="t-overlay">
-          <div className="t-name">Omisha Hegde</div>
-          <div className="t-role montserrat">COO</div>
-        </div>
-      </div>
-      <div className="t-card reveal delay-1">
-        <img src="images/guru.jpg" alt="Guru Sriman Murari" />
-        <div className="t-overlay">
-          <div className="t-name">Guru Murari</div>
-          <div className="t-role montserrat">CCO</div>
-        </div>
-      </div>
-      <div className="join-box reveal delay-2">
-        <div>
-          <h3>BECOME A<br/>PART OF GDF</h3>
-          <p className="montserrat" style={{ marginTop: '16px' }}>Want to build something global? We are actively looking for passionate individuals.</p>
-        </div>
-        <button className="join-btn" onClick={() => { if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }}>Join Our Team</button>
-      </div>
+    </div>
+
+    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+      <button className="btn-ghost" onClick={() => { if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }}>Join Our Team</button>
     </div>
   </div>
 </section>
+
 
 {/* SPONSORS */}
 <section id="sponsors" className="pad" style={{ background: 'var(--navy2)', borderTop: '1px solid rgba(212,175,55,0.06)' }}>
@@ -283,15 +272,72 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* SOCIAL WAVE */}
-<section id="social">
-  <div className="wrap">
-    <h2 className="anton reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--gold)', marginBottom: '40px', letterSpacing: '0.05em' }}>CONNECT WITH US</h2>
-    <div className="reveal delay-1">
-      <a href="https://www.instagram.com/gdf_international/" target="_blank" className="soc-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" className="soc-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-      <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" className="soc-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+{/* SOCIAL WAVE — SVG textPath sine-wave */}
+<section className="social-wave-section" id="social">
+  {/* Moving SVG wave typography — two copies for seamless loop */}
+  <div className="wave-svg-container">
+    <div className="wave-anim-inner">
+      {/* First copy */}
+      <svg
+        viewBox="0 0 3200 350"
+        preserveAspectRatio="xMidYMid meet"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ overflow: 'visible', width: '3200px', height: '350px', flexShrink: 0 }}
+      >
+        <defs>
+          <path
+            id="wavePath1"
+            d="M 0,175 C 200,35 400,35 600,175 S 1000,315 1200,175 S 1600,35 1800,175 S 2200,315 2400,175 S 2800,35 3000,175 S 3400,315 3600,175"
+            fill="none"
+            stroke="none"
+          />
+        </defs>
+        <text className="wave-text-path">
+          <textPath href="#wavePath1" startOffset="0%" textLength="3200" lengthAdjust="spacing">
+            Follow Us On Social · Follow Us On Social · Follow Us On Social ·
+          </textPath>
+        </text>
+      </svg>
+      {/* Second copy — seamless continuation */}
+      <svg
+        viewBox="0 0 3200 350"
+        preserveAspectRatio="xMidYMid meet"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ overflow: 'visible', width: '3200px', height: '350px', flexShrink: 0 }}
+        aria-hidden="true"
+      >
+        <defs>
+          <path
+            id="wavePath2"
+            d="M 0,175 C 200,35 400,35 600,175 S 1000,315 1200,175 S 1600,35 1800,175 S 2200,315 2400,175 S 2800,35 3000,175 S 3400,315 3600,175"
+            fill="none"
+            stroke="none"
+          />
+        </defs>
+        <text className="wave-text-path">
+          <textPath href="#wavePath2" startOffset="0%" textLength="3200" lengthAdjust="spacing">
+            Follow Us On Social · Follow Us On Social · Follow Us On Social ·
+          </textPath>
+        </text>
+      </svg>
     </div>
+  </div>
+
+  {/* Stationary social icons at bottom */}
+  <div className="wave-icons-container">
+    <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" rel="noopener" className="wave-icon" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="#293B5B"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" rel="noopener" className="wave-icon" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="#293B5B"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="https://www.instagram.com/gdf_international/" target="_blank" rel="noopener" className="wave-icon" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#293B5B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="#293B5B" stroke="none"/>
+      </svg>
+    </a>
   </div>
 </section>
 
@@ -301,7 +347,7 @@ export default function HomePage() {
     <div className="contact-grid reveal">
       <div className="c-left">
         <p className="tag">Get In Touch</p>
-        <h2 className="h2 anton" style={{ marginBottom: '20px' }}>Contact Us</h2>
+        <h2 className="h2" style={{ marginBottom: '20px', fontWeight: 800 }}>Contact Us</h2>
         <div className="divider"></div>
         <p className="body-text montserrat" style={{ marginBottom: '32px' }}>Interested in working together or have a question about the conference? Fill out some info and we will be in touch shortly.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: '.9rem', color: 'var(--white)' }} className="montserrat">

@@ -55,6 +55,88 @@ function tGoTo(index) {
 function tNext() { tGoTo(tCurrent + 1); }
 function tPrev() { tGoTo(tCurrent - 1); }
 
+// ── TEAM SLIDER ──
+var teamData = [
+  {
+    name: 'Atharv Johari',
+    role: 'Founder & CEO',
+    img: 'images/Atharv.jpg',
+    msg: '"GDF was born from a simple belief — that every young person deserves a platform to think globally and lead with purpose. We are not just running a conference; we are building a generation of diplomats."'
+  },
+  {
+    name: 'Mohit Tanay Dandamudi',
+    role: 'President',
+    img: 'images/mohit_tinted.jpg',
+    msg: '"At GDF, we believe that the best conversations happen when diverse voices come together. Every delegate who walks through our doors leaves a little more certain of their ability to change the world."'
+  },
+  {
+    name: 'Pranav Sajith Nair',
+    role: 'Global Manager',
+    img: 'images/tinted_student.jpg',
+    msg: '"Connecting GDF to the world is not just a role — it is a responsibility. I am proud to represent an organisation that truly puts youth at the center of global dialogue and leadership."'
+  },
+  {
+    name: 'Omisha Chandrashekar Hegde',
+    role: 'Chief Operations Officer',
+    img: 'images/omisha.png',
+    msg: '"Behind every seamless conference experience is a team that truly cares. At GDF, operations is not just logistics — it is the art of turning a vision into reality, one detail at a time."'
+  },
+  {
+    name: 'Guru Sriman Murari',
+    role: 'Chief Communication Officer',
+    img: 'images/guru.jpg',
+    msg: '"Every great movement needs a voice. At GDF, communication is our bridge between the team and the world — ensuring that our mission of diplomacy, leadership, and youth empowerment is heard loud and clear."'
+  }
+];
+
+var teamSliderCurrent = 0;
+
+function teamSliderGoTo(index) {
+  var total = teamData.length;
+  teamSliderCurrent = (index + total) % total;
+  var member = teamData[teamSliderCurrent];
+
+  var photo = document.getElementById('teamSliderPhoto');
+  var name = document.getElementById('teamSliderName');
+  var role = document.getElementById('teamSliderRole');
+  var msg = document.getElementById('teamSliderMsg');
+  var dots = document.getElementById('teamDots');
+
+  if (!photo || !name || !role || !msg) return;
+
+  // Fade out
+  var wrapper = document.querySelector('.team-slider-wrapper');
+  if (wrapper) wrapper.style.opacity = '0';
+  if (wrapper) wrapper.style.transition = 'opacity 0.3s ease';
+
+  setTimeout(function() {
+    photo.src = member.img;
+    photo.alt = member.name;
+    name.textContent = member.name;
+    role.textContent = member.role;
+    msg.textContent = member.msg;
+
+    // Update dots
+    if (dots) {
+      var allDots = dots.querySelectorAll('span');
+      allDots.forEach(function(d, i) {
+        d.style.background = i === teamSliderCurrent ? 'var(--gold)' : 'rgba(212,175,55,0.2)';
+        d.style.width = i === teamSliderCurrent ? '24px' : '8px';
+        d.style.borderRadius = '4px';
+      });
+    }
+
+    // Fade in
+    if (wrapper) wrapper.style.opacity = '1';
+  }, 300);
+}
+
+function teamSliderNext() { teamSliderGoTo(teamSliderCurrent + 1); }
+function teamSliderPrev() { teamSliderGoTo(teamSliderCurrent - 1); }
+
+window.teamSliderNext = teamSliderNext;
+window.teamSliderPrev = teamSliderPrev;
+
 // Robust DOMContentLoaded handler
 function initAll() {
   console.log('GDF Scripts: DOMContentLoaded / initAll');
