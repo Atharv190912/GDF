@@ -94,41 +94,60 @@ var teamSliderCurrent = 0;
 function teamSliderGoTo(index) {
   var total = teamData.length;
   teamSliderCurrent = (index + total) % total;
+  var nextIndex = (teamSliderCurrent + 1) % total;
   var member = teamData[teamSliderCurrent];
+  var nextMember = teamData[nextIndex];
 
-  var photo = document.getElementById('teamSliderPhoto');
-  var name = document.getElementById('teamSliderName');
-  var role = document.getElementById('teamSliderRole');
-  var msg = document.getElementById('teamSliderMsg');
-  var dots = document.getElementById('teamDots');
+  var photo = document.getElementById('teamCardPhoto');
+  var name = document.getElementById('teamCardName');
+  var role = document.getElementById('teamCardRole');
+  var msg = document.getElementById('teamCardQuote');
+  var dots = document.getElementById('teamIndicators');
 
-  if (!photo || !name || !role || !msg) return;
+  var fPhoto = document.getElementById('teamFadedPhoto');
+  var fName = document.getElementById('teamFadedName');
+  var fRole = document.getElementById('teamFadedRole');
 
-  // Fade out
-  var wrapper = document.querySelector('.team-slider-wrapper');
-  if (wrapper) wrapper.style.opacity = '0';
-  if (wrapper) wrapper.style.transition = 'opacity 0.3s ease';
+  var activeCard = document.getElementById('teamActiveCard');
+  var fadedCard = document.getElementById('teamFadedCard');
+
+  if (activeCard) {
+    activeCard.style.opacity = '0.2';
+    activeCard.style.transform = 'scale(0.98)';
+  }
+  if (fadedCard) {
+    fadedCard.style.opacity = '0.1';
+  }
 
   setTimeout(function() {
-    photo.src = member.img;
-    photo.alt = member.name;
-    name.textContent = member.name;
-    role.textContent = member.role;
-    msg.textContent = member.msg;
+    if (photo) { photo.src = member.img; photo.alt = member.name; }
+    if (name) name.textContent = member.name;
+    if (role) role.textContent = member.role;
+    if (msg) msg.textContent = member.msg;
 
-    // Update dots
+    if (fPhoto) { fPhoto.src = nextMember.img; fPhoto.alt = nextMember.name; }
+    if (fName) fName.textContent = nextMember.name;
+    if (fRole) fRole.textContent = nextMember.role;
+
     if (dots) {
-      var allDots = dots.querySelectorAll('span');
+      var allDots = dots.querySelectorAll('.team-paint-dot');
       allDots.forEach(function(d, i) {
-        d.style.background = i === teamSliderCurrent ? 'var(--gold)' : 'rgba(212,175,55,0.2)';
-        d.style.width = i === teamSliderCurrent ? '24px' : '8px';
-        d.style.borderRadius = '4px';
+        if (i === teamSliderCurrent) {
+          d.classList.add('active');
+        } else {
+          d.classList.remove('active');
+        }
       });
     }
 
-    // Fade in
-    if (wrapper) wrapper.style.opacity = '1';
-  }, 300);
+    if (activeCard) {
+      activeCard.style.opacity = '1';
+      activeCard.style.transform = 'scale(1)';
+    }
+    if (fadedCard) {
+      fadedCard.style.opacity = '0.4';
+    }
+  }, 220);
 }
 
 function teamSliderNext() { teamSliderGoTo(teamSliderCurrent + 1); }

@@ -63,9 +63,9 @@ export default function HomePage() {
 <nav>
   <a href="#hero" className="nav-brand">
     <img src="images/LGC.png" alt="GDF Logo"/>
-    <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.1' }} className="anton">
-      <span style={{ fontSize: '1.2rem', letterSpacing: '0.05em' }}>Global Diplomatic Foundation</span>
-      <span style={{ color: 'var(--gold)', fontSize: '0.6rem', letterSpacing: '0.2em' }}>INTERNATIONAL</span>
+    <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.1' }}>
+      <span style={{ fontSize: '1.2rem', letterSpacing: '0.02em', fontWeight: 800 }}>Global Diplomatic Foundation</span>
+      <span style={{ color: 'var(--gold)', fontSize: '0.65rem', letterSpacing: '0.2em', fontWeight: 700 }}>INTERNATIONAL</span>
     </div>
   </a>
 <div className="nav-links montserrat">
@@ -92,7 +92,7 @@ export default function HomePage() {
   <div className="hero-overlay"></div>
   <div className="hero-body reveal">
     <img src="/images/img_002_3ea5b8ad.png" alt="GDF Crest" className="hero-crest float-anim" />
-    <h1 className="anton">Think Globally.<br />Lead Diplomatically.</h1>
+    <h1 style={{ fontWeight: 800 }}>Think Globally.<br />Lead Diplomatically.</h1>
     <p className="montserrat reveal delay-1">The Global Diplomatic Foundation fosters a culture of dialogue, leadership, and international cooperation — uniting ambitious students to build the next generation of global leaders.</p> 
     <div className="reveal delay-2">
       <a href="#wwa" className="btn-sq-solid" style={{ marginRight: '16px' }}>Discover GDF</a>
@@ -127,7 +127,7 @@ export default function HomePage() {
   <div className="wrap wwa-grid">
     <div className="wwa-text reveal delay-1">
       <p className="tag">Our Mission</p>
-      <h2 className="h2 anton">Empowering the Next Generation of Global Leaders</h2>
+      <h2 className="h2">Empowering the Next Generation of Global Leaders</h2>
       <div className="divider"></div>
       <p className="body-text montserrat" style={{ marginBottom: '24px' }}>
         The Global Diplomatic Foundation is dedicated to empowering young minds through strategic diplomatic dialogue, leadership development, and international cooperation.
@@ -149,7 +149,7 @@ export default function HomePage() {
   <div className="wrap" style={{ position: 'relative', zIndex: '1' }}>
     <div className="reveal" style={{ textAlign: 'center' }}>
       <p className="tag">Upcoming Events</p>
-      <h2 className="h2 anton">Conferences &amp; Events</h2>
+      <h2 className="h2">Conferences &amp; Events</h2>
       <div className="divider" style={{ margin: '0 auto 60px' }}></div>
     </div>
 
@@ -162,7 +162,7 @@ export default function HomePage() {
         </div>
         <div className="conf-content" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '30px', alignItems: 'center' }}>
           <div>
-            <h3 className="anton" style={{ fontSize: '2.5rem', color: 'var(--gold)', marginBottom: '12px', letterSpacing: '0.02em' }}>GDF INTERNATIONAL</h3>
+            <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '2.2rem', color: 'var(--gold)', marginBottom: '12px', letterSpacing: '-0.01em' }}>GDF INTERNATIONAL</h3>
             <p className="montserrat" style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: '1.7', margin: 0 }}>
               Our flagship global conference bringing together students from across the globe to build the next generation of international leaders and diplomats in Sharjah, UAE.
             </p>
@@ -183,7 +183,7 @@ export default function HomePage() {
   <div className="wrap">
     <div className="reveal">
       <p className="tag">Updates</p>
-      <h2 className="h2 anton">Latest News</h2>
+      <h2 className="h2">Latest News</h2>
       <div className="divider"></div>
     </div>
     <div className="news-grid montserrat">
@@ -206,57 +206,86 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* TEAM */}
-<section id="team" className="pad">
+{/* TEAM CAROUSEL PER USER PAINT SKETCH */}
+<section id="team" className="pad team-paint-section">
   <div className="wrap">
-    <div className="reveal" style={{ textAlign: 'center' }}>
+    <div className="reveal" style={{ textAlign: 'center', marginBottom: '50px' }}>
       <p className="tag">The People Behind GDF</p>
-      <h2 className="h2" style={{ fontWeight: 800 }}>Our Team</h2>
-      <div className="divider" style={{ margin: '0 auto 60px' }}></div>
+      <h2 className="h2" style={{ fontWeight: 800 }}>Meet Our Team</h2>
+      <div className="divider" style={{ margin: '0 auto' }}></div>
     </div>
 
-    {/* Team Slider */}
-    <div className="team-slider-wrapper reveal">
-      <div className="team-slider-img-col" id="teamSliderImg">
-        <img src="images/Atharv.jpg" alt="Atharv Johari" id="teamSliderPhoto" />
+    {/* Team Carousel (Main Active Card + Faded Next Card + Circle Arrow) */}
+    <div className="team-paint-container reveal">
+      {/* Active Card */}
+      <div className="team-paint-active-card" id="teamActiveCard">
+        <div className="team-paint-photo-wrapper">
+          <img id="teamCardPhoto" src="images/Atharv.jpg" alt="Atharv Johari" />
+        </div>
+        <div className="team-paint-bio">
+          <h3 className="team-paint-name" id="teamCardName">Atharv Johari</h3>
+          <p className="team-paint-role" id="teamCardRole">Founder &amp; CEO</p>
+          <div className="team-paint-msg" id="teamCardQuote">
+            &ldquo;GDF was born from a simple belief — that every young person deserves a platform to think globally and lead with purpose. We are not just running a conference; we are building a generation of diplomats.&rdquo;
+          </div>
+          <div className="team-paint-dots" id="teamIndicators">
+            <span className="team-paint-dot active"></span>
+            <span className="team-paint-dot"></span>
+            <span className="team-paint-dot"></span>
+            <span className="team-paint-dot"></span>
+            <span className="team-paint-dot"></span>
+          </div>
+        </div>
       </div>
-      <div className="team-slider-text-col">
-        <div className="team-slider-name" id="teamSliderName">Atharv Johari</div>
-        <div className="team-slider-role" id="teamSliderRole">Founder &amp; CEO</div>
-        <div className="team-slider-msg" id="teamSliderMsg">
-          &ldquo;GDF was born from a simple belief — that every young person deserves a platform to think globally and lead with purpose. We are not just running a conference; we are building a generation of diplomats.&rdquo;
+
+      {/* Faded Next Person Card (per Paint sketch) */}
+      <div
+        className="team-paint-faded-card"
+        id="teamFadedCard"
+        onClick={() => { if (typeof window !== 'undefined' && (window as any).teamSliderNext) (window as any).teamSliderNext(); }}
+        title="Click to view next team member"
+      >
+        <div className="team-paint-faded-badge">NEXT</div>
+        <img id="teamFadedPhoto" src="images/mohit_tinted.jpg" alt="Next Team Member" className="team-paint-faded-img" />
+        <div className="team-paint-faded-label">
+          <div id="teamFadedName" style={{ fontWeight: 800 }}>Mohit Tanay</div>
+          <div id="teamFadedRole" className="team-paint-faded-role-text">President</div>
         </div>
-        <div className="team-slider-controls">
-          <button className="team-slider-btn" id="teamPrev" onClick={() => { if(typeof window !== 'undefined' && (window as any).teamSliderPrev) (window as any).teamSliderPrev(); }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button className="team-slider-btn" id="teamNext" onClick={() => { if(typeof window !== 'undefined' && (window as any).teamSliderNext) (window as any).teamSliderNext(); }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
-        <div style={{ marginTop: '24px', display: 'flex', gap: '8px' }} id="teamDots">
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)', display: 'inline-block', transition: 'all .3s' }}></span>
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(212,175,55,0.2)', display: 'inline-block', transition: 'all .3s' }}></span>
-        </div>
+      </div>
+
+      {/* Navigation Arrows */}
+      <div className="team-paint-arrow-group">
+        <button
+          className="team-paint-arrow-btn"
+          id="teamNextBtn"
+          onClick={() => { if (typeof window !== 'undefined' && (window as any).teamSliderNext) (window as any).teamSliderNext(); }}
+          aria-label="Next Team Member"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <button
+          className="team-paint-arrow-btn prev"
+          id="teamPrevBtn"
+          onClick={() => { if (typeof window !== 'undefined' && (window as any).teamSliderPrev) (window as any).teamSliderPrev(); }}
+          aria-label="Previous Team Member"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
       </div>
     </div>
 
-    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <button className="btn-ghost" onClick={() => { if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }}>Join Our Team</button>
     </div>
   </div>
 </section>
-
 
 {/* SPONSORS */}
 <section id="sponsors" className="pad" style={{ background: 'var(--navy2)', borderTop: '1px solid rgba(212,175,55,0.06)' }}>
   <div className="wrap" style={{ textAlign: 'center' }}>
     <div className="reveal">
       <p className="tag">Our Partners</p>
-      <h2 className="h2 anton">Sponsors &amp; Partners</h2>
+      <h2 className="h2">Sponsors &amp; Partners</h2>
       <div className="divider" style={{ margin: '0 auto 40px' }}></div>
     </div>
     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '60px', marginBottom: '40px' }}>
@@ -432,6 +461,93 @@ export default function HomePage() {
 </div>
 
 
+
+{/* ========== WHY GDF OVERLAY ========== */}
+<div className="overlay" id="whyGdfOverlay">
+  <div className="ov-nav">
+    <a href="#" onClick={() => { (window as any).closeWhyGdf(); return false; }} className="nav-brand">
+      <img src="images/LGC.png" alt="GDF Logo" />
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+        <span style={{ fontWeight: 800 }}>Global Diplomatic Foundation</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.55rem', marginTop: '2px', letterSpacing: '0.15em' }}>INTERNATIONAL</span>
+      </div>
+    </a>
+    <div style={{ display: 'flex', gap: '32px' }}>
+      <a href="#" onClick={() => { (window as any).closeWhyGdf(); return false; }} style={{ color: 'rgba(255,255,255,.85)', fontSize: '.8rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Close &#215;</a>
+    </div>
+  </div>
+  <div className="ov-inner" style={{ background: 'var(--navy)', minHeight: '100vh', padding: '120px 20px 80px' }}>
+    <div className="wrap">
+      <div style={{ textAlign: 'center' }}>
+        <p className="tag">Why Choose GDF?</p>
+        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>The Best MUN &amp; Debate Conference in the UAE</h2>
+        <div className="divider" style={{ margin: '0 auto 40px' }}></div>
+        <p style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 48px', color: 'var(--muted)', lineHeight: '1.8', fontSize: '1.05rem' }}>
+          The <strong style={{ color: 'var(--gold)' }}>Global Diplomatic Foundation (GDF)</strong> hosts <strong style={{ color: 'var(--gold)' }}>GDF International</strong> — the premier, most accessible, and top-tier <strong style={{ color: 'var(--gold)' }}>Model United Nations (MUN)</strong> and <strong style={{ color: 'var(--gold)' }}>debate conference</strong> in the UAE. Whether you are seeking world-class diplomatic training or premier parliamentary debate, GDF delivers excellence.
+        </p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
+        {[
+          { icon: '🏆', title: 'Best MUN in UAE', desc: 'GDF International is recognised as one of the best Model United Nations conferences in the UAE, delivering a world-class MUN experience for students.' },
+          { icon: '💰', title: 'Most Accessible Conference', desc: 'At just 20 AED for GDF International — and completely FREE for GDF Delegate Day — we offer unmatched value for high-calibre diplomacy.' },
+          { icon: '✨', title: 'Highest Quality MUN', desc: 'Expert-led committees, professional debate formats, real diplomatic simulations — GDF International sets the standard for quality MUN conferences.' },
+          { icon: '🎤', title: 'Premier Debate Experience', desc: 'From structured debate to parliamentary procedure, GDF offers the best debate conference experience for students in Sharjah, Dubai, and across the UAE.' },
+          { icon: '🌍', title: 'Global & Inclusive', desc: 'Students from diverse backgrounds and schools across the region participate, providing a rich, international exchange of perspectives.' },
+          { icon: '🚀', title: 'Executive Leadership', desc: 'Beyond MUN and debate, GDF equips the next generation of global leaders with public speaking, policy drafting, and strategic negotiation skills.' },
+        ].map((item, i) => (
+          <div key={i} style={{ background: 'var(--navy-card)', borderRadius: '12px', padding: '32px 26px', boxShadow: '0 8px 30px rgba(0,0,0,0.3)', border: '1px solid rgba(212,175,55,0.15)' }}>
+            <div style={{ fontSize: '2.2rem', marginBottom: '16px' }}>{item.icon}</div>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--gold)', marginBottom: '12px', letterSpacing: '-0.01em' }}>{item.title}</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--muted)', lineHeight: '1.7', margin: 0 }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+{/* ========== FAQ OVERLAY ========== */}
+<div className="overlay" id="faqOverlay">
+  <div className="ov-nav">
+    <a href="#" onClick={() => { (window as any).closeFaq(); return false; }} className="nav-brand">
+      <img src="images/LGC.png" alt="GDF Logo" />
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+        <span style={{ fontWeight: 800 }}>Global Diplomatic Foundation</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.55rem', marginTop: '2px', letterSpacing: '0.15em' }}>INTERNATIONAL</span>
+      </div>
+    </a>
+    <div style={{ display: 'flex', gap: '32px' }}>
+      <a href="#" onClick={() => { (window as any).closeFaq(); return false; }} style={{ color: 'rgba(255,255,255,.85)', fontSize: '.8rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Close &#215;</a>
+    </div>
+  </div>
+  <div className="ov-inner" style={{ background: 'var(--navy)', minHeight: '100vh', padding: '120px 20px 80px' }}>
+    <div className="wrap">
+      <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+        <p className="tag">Frequently Asked Questions</p>
+        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>MUN &amp; Debate Conference FAQ</h2>
+        <div className="divider" style={{ margin: '0 auto 48px' }}></div>
+      </div>
+      <div style={{ maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {[
+          { q: 'What is the best MUN conference?', a: 'GDF International by the Global Diplomatic Foundation is one of the best MUN (Model United Nations) conferences, offering the highest quality debate, diplomacy training, and leadership development for students in the UAE and globally.' },
+          { q: 'What is the registration fee for GDF conferences?', a: 'GDF International offers one of the most accessible MUN experiences at just 20 AED. Delegate Day events are completely FREE — making it an open and premier platform for young diplomats.' },
+          { q: 'What is the quality of MUN at GDF?', a: 'GDF International, organised by the Global Diplomatic Foundation, is among the highest quality MUN conferences in the UAE. It features expert-led committees, professional debate formats, and real diplomatic simulations for students.' },
+          { q: 'What is the best debate conference for students in UAE?', a: 'GDF International by the Global Diplomatic Foundation is the premier conference for students in the UAE and Middle East, combining rigorous debate, Model United Nations, and diplomacy training.' },
+          { q: 'What is GDF International?', a: 'GDF International is the flagship Model United Nations (MUN) and debate conference by the Global Diplomatic Foundation (GDF). It brings together students from across the globe to debate global issues, develop leadership skills, and experience real diplomacy.' },
+          { q: 'How do I register for GDF International?', a: 'Register for GDF International by visiting gdfintl.org and clicking Register. Spots are limited, so apply early!' },
+        ].map((item, i) => (
+          <details key={i} style={{ background: 'var(--navy-card)', borderRadius: '10px', border: '1px solid rgba(212,175,55,0.15)', overflow: 'hidden', color: 'var(--white)' }}>
+            <summary style={{ padding: '20px 24px', fontWeight: '700', fontSize: '1rem', color: 'var(--white)', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span>{item.q}</span>
+              <span style={{ fontSize: '1.3rem', color: 'var(--gold)', flexShrink: 0, marginLeft: '16px' }}>+</span>
+            </summary>
+            <p style={{ padding: '0 24px 20px', color: 'var(--muted)', lineHeight: '1.75', fontSize: '0.92rem', margin: 0 }}>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
 
 {/* ========== SERVICE OVERLAY (Conference) ========== */}
 <div className="overlay" id="svcOverlay">
