@@ -9,6 +9,10 @@ window.openSvc = openSvc;
 window.closeSvc = closeSvc;
 window.openTeamOverlay = openTeamOverlay;
 window.closeTeamOverlay = closeTeamOverlay;
+window.openWhyGdf = openWhyGdf;
+window.closeWhyGdf = closeWhyGdf;
+window.openFaq = openFaq;
+window.closeFaq = closeFaq;
 
 window.buildPortfolioFields = buildPortfolioFields;
 window.setPaymentType = setPaymentType;
@@ -223,6 +227,26 @@ function openTeamOverlay() {
 
 function closeTeamOverlay() {
   const el = document.getElementById('teamOverlay');
+  if(el) el.classList.remove('open');
+}
+
+function openWhyGdf() {
+  const el = document.getElementById('whyGdfOverlay');
+  if(el) el.classList.add('open');
+}
+
+function closeWhyGdf() {
+  const el = document.getElementById('whyGdfOverlay');
+  if(el) el.classList.remove('open');
+}
+
+function openFaq() {
+  const el = document.getElementById('faqOverlay');
+  if(el) el.classList.add('open');
+}
+
+function closeFaq() {
+  const el = document.getElementById('faqOverlay');
   if(el) el.classList.remove('open');
 }
 

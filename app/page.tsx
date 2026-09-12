@@ -386,61 +386,105 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* ========== SEO: WHY GDF ========== */}
-<section id="why-gdf" style={{ background: 'var(--off)', padding: '80px 0' }}>
+{/* ========== SEO BUTTONS ========== */}
+<section style={{ background: 'var(--off)', padding: '60px 0', textAlign: 'center' }}>
   <div className="wrap">
-    <p className="tag" style={{ textAlign: 'center' }}>Why Choose GDF?</p>
-    <h2 className="h2" style={{ textAlign: 'center' }}>The Best MUN &amp; Debate Conference in the UAE</h2>
-    <div className="divider" style={{ margin: '0 auto 40px' }}></div>
-    <p style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 48px', color: 'var(--muted)', lineHeight: '1.8', fontSize: '1rem' }}>
-      The <strong>Global Diplomatic Foundation (GDF)</strong> hosts <strong>GDF International</strong> — the most quality, most affordable, and best <strong>Model United Nations (MUN)</strong> and <strong>debate conference</strong> in the UAE and Middle East. Whether you're looking for the <strong>cheapest MUN</strong>, the <strong>world's best MUN</strong>, or a premium <strong>debate experience</strong>, GDF is the answer.
-    </p>
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '28px', marginBottom: '48px' }}>
-      {[
-        { icon: '🏆', title: 'Best MUN in UAE', desc: 'GDF International is recognised as one of the best Model United Nations conferences in the UAE, delivering a world-class MUN experience for students.' },
-        { icon: '💰', title: 'Cheapest MUN Conference', desc: 'At just 20 AED for GDF International — and completely FREE for GDF Delegate Day — we are the most affordable MUN conference available anywhere.' },
-        { icon: '✨', title: 'Most Quality MUN', desc: 'Expert-led committees, professional debate formats, real diplomatic simulations — GDF International sets the standard for quality MUN conferences.' },
-        { icon: '🎤', title: 'Premier Debate Conference', desc: 'From structured debate to parliamentary procedure, GDF offers the best debate conference experience for students in Sharjah, Dubai, and across the UAE.' },
-        { icon: '🌍', title: 'International & Inclusive', desc: 'Students from across the globe participate in GDF conferences, making it a truly international MUN experience with diverse perspectives.' },
-        { icon: '🚀', title: 'Leadership Development', desc: 'Beyond MUN and debate, GDF builds the next generation of global leaders through diplomacy, collaboration, and youth empowerment programs.' },
-      ].map((item, i) => (
-        <div key={i} style={{ background: '#fff', borderRadius: '12px', padding: '28px 24px', boxShadow: '0 4px 16px rgba(0,0,0,0.06)', border: '1px solid rgba(212,175,55,0.15)' }}>
-          <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{item.icon}</div>
-          <h3 style={{ fontSize: '1rem', fontWeight: '800', color: '#1a2740', marginBottom: '10px', letterSpacing: '-0.01em' }}>{item.title}</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--muted)', lineHeight: '1.7', margin: 0 }}>{item.desc}</p>
-        </div>
-      ))}
+    <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '20px', color: '#1a2740' }}>Learn More About GDF</h3>
+    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <button style={{ padding: '12px 24px', border: '1.5px solid var(--navy)', background: 'transparent', color: 'var(--navy)', fontWeight: '700', cursor: 'pointer', borderRadius: '4px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>
+        Why Choose GDF?
+      </button>
+      <button style={{ padding: '12px 24px', border: '1.5px solid var(--navy)', background: 'transparent', color: 'var(--navy)', fontWeight: '700', cursor: 'pointer', borderRadius: '4px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>
+        Frequently Asked Questions
+      </button>
     </div>
   </div>
 </section>
 
-{/* ========== FAQ (Rich Snippets) ========== */}
-<section id="faq" style={{ background: '#fff', padding: '80px 0' }}>
-  <div className="wrap">
-    <p className="tag" style={{ textAlign: 'center' }}>Frequently Asked Questions</p>
-    <h2 className="h2" style={{ textAlign: 'center' }}>MUN &amp; Debate Conference FAQ</h2>
-    <div className="divider" style={{ margin: '0 auto 48px' }}></div>
-    <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      {[
-        { q: 'What is the best MUN conference?', a: 'GDF International by the Global Diplomatic Foundation is one of the best MUN (Model United Nations) conferences, offering the highest quality debate, diplomacy training, and leadership development for students in the UAE and globally.' },
-        { q: 'What is the cheapest MUN conference?', a: 'GDF International offers one of the most affordable MUN experiences at just 20 AED. GDF Delegate Day is completely FREE — making it the cheapest MUN conference available. Register at gdfintl.org.' },
-        { q: 'What is the most quality MUN in the UAE?', a: 'GDF International, organised by the Global Diplomatic Foundation, is the most quality MUN conference in the UAE. It features expert-led committees, professional debate formats, and real diplomatic simulations for students.' },
-        { q: 'What is the best debate conference for students?', a: 'GDF International and GDF Delegate Day by the Global Diplomatic Foundation are the best debate conferences for students in the UAE and Middle East, combining debate, Model United Nations, and diplomacy training.' },
-        { q: 'What is GDF International?', a: 'GDF International is the flagship Model United Nations (MUN) and debate conference by the Global Diplomatic Foundation (GDF). It brings together students from across the globe to debate global issues, develop leadership skills, and experience real diplomacy.' },
-        { q: 'Is there a free MUN conference in UAE?', a: 'Yes! GDF Delegate Day by the Global Diplomatic Foundation is a completely free MUN and debate event open to all registered delegates — the cheapest and most accessible MUN experience in the UAE.' },
-        { q: 'How do I register for a MUN conference in UAE?', a: 'Register for GDF International or GDF Delegate Day — the best MUN conferences in the UAE — by visiting gdfintl.org and clicking Register. Spots are limited, so apply early!' },
-      ].map((item, i) => (
-        <details key={i} style={{ background: 'var(--off)', borderRadius: '10px', border: '1px solid #eee', overflow: 'hidden' }}>
-          <summary style={{ padding: '20px 24px', fontWeight: '700', fontSize: '0.95rem', color: '#1a2740', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>{item.q}</span>
-            <span style={{ fontSize: '1.2rem', color: 'var(--gold)', flexShrink: 0, marginLeft: '16px' }}>+</span>
-          </summary>
-          <p style={{ padding: '0 24px 20px', color: 'var(--muted)', lineHeight: '1.75', fontSize: '0.9rem', margin: 0 }}>{item.a}</p>
-        </details>
-      ))}
+{/* ========== WHY GDF OVERLAY ========== */}
+<div className="overlay" id="whyGdfOverlay">
+  <div className="ov-nav">
+    <a href="#" onClick={() => { (window as any).closeWhyGdf(); return false; }} className="nav-brand">
+      <img src="images/LGC.png" />
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+        <span>Global Diplomatic Foundation</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '4px' }}>INTERNATIONAL</span>
+      </div>
+    </a>
+    <div style={{ display: 'flex', gap: '32px' }}>
+      <a href="#" onClick={() => { (window as any).closeWhyGdf(); return false; }} style={{ color: 'rgba(255,255,255,.75)', fontSize: '.78rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Close &#215;</a>
     </div>
   </div>
-</section>
+  <div className="ov-inner" style={{ background: 'var(--off)', minHeight: '100vh', padding: '120px 20px 80px' }}>
+    <div className="wrap">
+      <p className="tag" style={{ textAlign: 'center' }}>Why Choose GDF?</p>
+      <h2 className="h2" style={{ textAlign: 'center' }}>The Best MUN &amp; Debate Conference in the UAE</h2>
+      <div className="divider" style={{ margin: '0 auto 40px' }}></div>
+      <p style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 48px', color: 'var(--muted)', lineHeight: '1.8', fontSize: '1rem' }}>
+        The <strong>Global Diplomatic Foundation (GDF)</strong> hosts <strong>GDF International</strong> — the most quality, most affordable, and best <strong>Model United Nations (MUN)</strong> and <strong>debate conference</strong> in the UAE and Middle East. Whether you're looking for the <strong>cheapest MUN</strong>, the <strong>world's best MUN</strong>, or a premium <strong>debate experience</strong>, GDF is the answer.
+      </p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '28px' }}>
+        {[
+          { icon: '🏆', title: 'Best MUN in UAE', desc: 'GDF International is recognised as one of the best Model United Nations conferences in the UAE, delivering a world-class MUN experience for students.' },
+          { icon: '💰', title: 'Cheapest MUN Conference', desc: 'At just 20 AED for GDF International — and completely FREE for GDF Delegate Day — we are the most affordable MUN conference available anywhere.' },
+          { icon: '✨', title: 'Most Quality MUN', desc: 'Expert-led committees, professional debate formats, real diplomatic simulations — GDF International sets the standard for quality MUN conferences.' },
+          { icon: '🎤', title: 'Premier Debate Conference', desc: 'From structured debate to parliamentary procedure, GDF offers the best debate conference experience for students in Sharjah, Dubai, and across the UAE.' },
+          { icon: '🌍', title: 'International & Inclusive', desc: 'Students from across the globe participate in GDF conferences, making it a truly international MUN experience with diverse perspectives.' },
+          { icon: '🚀', title: 'Leadership Development', desc: 'Beyond MUN and debate, GDF builds the next generation of global leaders through diplomacy, collaboration, and youth empowerment programs.' },
+        ].map((item, i) => (
+          <div key={i} style={{ background: '#fff', borderRadius: '12px', padding: '28px 24px', boxShadow: '0 4px 16px rgba(0,0,0,0.06)', border: '1px solid rgba(212,175,55,0.15)' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{item.icon}</div>
+            <h3 style={{ fontSize: '1rem', fontWeight: '800', color: '#1a2740', marginBottom: '10px', letterSpacing: '-0.01em' }}>{item.title}</h3>
+            <p style={{ fontSize: '0.88rem', color: 'var(--muted)', lineHeight: '1.7', margin: 0 }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+{/* ========== FAQ OVERLAY (Rich Snippets) ========== */}
+<div className="overlay" id="faqOverlay">
+  <div className="ov-nav">
+    <a href="#" onClick={() => { (window as any).closeFaq(); return false; }} className="nav-brand">
+      <img src="images/LGC.png" />
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+        <span>Global Diplomatic Foundation</span>
+        <span style={{ color: 'var(--gold)', fontSize: '.45rem', marginTop: '4px' }}>INTERNATIONAL</span>
+      </div>
+    </a>
+    <div style={{ display: 'flex', gap: '32px' }}>
+      <a href="#" onClick={() => { (window as any).closeFaq(); return false; }} style={{ color: 'rgba(255,255,255,.75)', fontSize: '.78rem', fontWeight: '700', letterSpacing: '.08em', textTransform: 'uppercase' }}>Close &#215;</a>
+    </div>
+  </div>
+  <div className="ov-inner" style={{ background: '#fff', minHeight: '100vh', padding: '120px 20px 80px' }}>
+    <div className="wrap">
+      <p className="tag" style={{ textAlign: 'center' }}>Frequently Asked Questions</p>
+      <h2 className="h2" style={{ textAlign: 'center' }}>MUN &amp; Debate Conference FAQ</h2>
+      <div className="divider" style={{ margin: '0 auto 48px' }}></div>
+      <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {[
+          { q: 'What is the best MUN conference?', a: 'GDF International by the Global Diplomatic Foundation is one of the best MUN (Model United Nations) conferences, offering the highest quality debate, diplomacy training, and leadership development for students in the UAE and globally.' },
+          { q: 'What is the cheapest MUN conference?', a: 'GDF International offers one of the most affordable MUN experiences at just 20 AED. GDF Delegate Day is completely FREE — making it the cheapest MUN conference available. Register at gdfintl.org.' },
+          { q: 'What is the most quality MUN in the UAE?', a: 'GDF International, organised by the Global Diplomatic Foundation, is the most quality MUN conference in the UAE. It features expert-led committees, professional debate formats, and real diplomatic simulations for students.' },
+          { q: 'What is the best debate conference for students?', a: 'GDF International and GDF Delegate Day by the Global Diplomatic Foundation are the best debate conferences for students in the UAE and Middle East, combining debate, Model United Nations, and diplomacy training.' },
+          { q: 'What is GDF International?', a: 'GDF International is the flagship Model United Nations (MUN) and debate conference by the Global Diplomatic Foundation (GDF). It brings together students from across the globe to debate global issues, develop leadership skills, and experience real diplomacy.' },
+          { q: 'Is there a free MUN conference in UAE?', a: 'Yes! GDF Delegate Day by the Global Diplomatic Foundation is a completely free MUN and debate event open to all registered delegates — the cheapest and most accessible MUN experience in the UAE.' },
+          { q: 'How do I register for a MUN conference in UAE?', a: 'Register for GDF International or GDF Delegate Day — the best MUN conferences in the UAE — by visiting gdfintl.org and clicking Register. Spots are limited, so apply early!' },
+        ].map((item, i) => (
+          <details key={i} style={{ background: 'var(--off)', borderRadius: '10px', border: '1px solid #eee', overflow: 'hidden' }}>
+            <summary style={{ padding: '20px 24px', fontWeight: '700', fontSize: '0.95rem', color: '#1a2740', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span>{item.q}</span>
+              <span style={{ fontSize: '1.2rem', color: 'var(--gold)', flexShrink: 0, marginLeft: '16px' }}>+</span>
+            </summary>
+            <p style={{ padding: '0 24px 20px', color: 'var(--muted)', lineHeight: '1.75', fontSize: '0.9rem', margin: 0 }}>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {/* ========== FOOTER ========== */}
 <footer>
