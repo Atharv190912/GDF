@@ -461,10 +461,6 @@ export default function HomePage() {
     </div>
   </div>
 </section>
-
-  </div>
-</section>
-
 {/* SPONSORS & PARTNERS */}
 <section id="sponsors" className="pad" style={{ background: 'var(--navy2)', borderTop: '1px solid rgba(212,175,55,0.06)' }}>
   <div className="wrap" style={{ textAlign: 'center' }}>
