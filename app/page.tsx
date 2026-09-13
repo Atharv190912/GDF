@@ -56,7 +56,7 @@ export default function HomePage() {
         onLoad={() => { (window as any).emailjs?.init('cck5UdkTGd-58RJEU'); }}
       />
       {/* Site scripts - v2 */}
-      <Script src={`/gdf-scripts.js?v=${Date.now()}`} strategy="afterInteractive" />
+      <Script src="/gdf-scripts.js?v=2.4.2" strategy="afterInteractive" />
 
 
 {/* NAV */}
@@ -74,6 +74,7 @@ export default function HomePage() {
     <a href="#flagship">GDF International</a>
     <a href="#circuit">The Circuit</a>
     <a href="#team">Team</a>
+    <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>Why GDF</a>
     <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>FAQ</a>
     <a href="#contact">Contact</a>
   </div>
@@ -83,12 +84,12 @@ export default function HomePage() {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
       </a>
       <a href="https://www.instagram.com/gdf_international/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
       </a>
     </div>
-    <button className="btn-sq-solid" style={{ padding: '10px 22px', fontSize: '0.72rem' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>
-      JOIN GDF
-    </button>
   </div>
 </nav>
 
@@ -153,6 +154,16 @@ export default function HomePage() {
         <div className="number-val">1x</div>
         <div className="number-label">Annual Flagship</div>
         <div className="number-sub">Exclusive GDF International summit</div>
+      </div>
+      <div className="number-item reveal delay-1">
+        <div className="number-val">1</div>
+        <div className="number-label">Conferences Held</div>
+        <div className="number-sub">Successfully hosted events</div>
+      </div>
+      <div className="number-item reveal delay-2">
+        <div className="number-val">100+</div>
+        <div className="number-label">Delegates Hosted</div>
+        <div className="number-sub">Future leaders impacted</div>
       </div>
     </div>
   </div>
@@ -356,11 +367,11 @@ export default function HomePage() {
             The flagship diplomatic conference hosted exclusively once per year. GDF International brings together delegates from across the region and around the world to debate pressing global crises, simulate real international diplomacy, and compete for the supreme <strong style={{ color: 'var(--gold)' }}>GDF Crown</strong>.
           </p>
           <div className="flagship-chips">
-            <span className="flagship-chip">🏆 The GDF Crown Trophy</span>
-            <span className="flagship-chip">📅 19–20 December 2026</span>
-            <span className="flagship-chip">💰 20 AED Accessible Delegate Fee</span>
-            <span className="flagship-chip">🏛️ 20+ Specialized Chambers</span>
-            <span className="flagship-chip">🌍 UAE &amp; Global Online Circuit</span>
+            <span className="flagship-chip">The GDF Crown Trophy</span>
+            <span className="flagship-chip">19–20 December 2026</span>
+            <span className="flagship-chip">20 AED Accessible Delegate Fee</span>
+            <span className="flagship-chip">20+ Specialized Chambers</span>
+            <span className="flagship-chip">UAE &amp; Global Online Circuit</span>
           </div>
           <div>
             <button className="btn-sq-solid" style={{ padding: '18px 44px', fontSize: '0.85rem' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>
@@ -373,77 +384,84 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* TEAM CAROUSEL PER USER PAINT SKETCH */}
-<section id="team" className="pad team-paint-section">
+{/* TEAM CAROUSEL - BOARD MEETING CIRCULAR TABLE */}
+<section id="team" className="pad team-paint-section" style={{ overflow: 'hidden' }}>
   <div className="wrap">
-    <div className="reveal" style={{ textAlign: 'center', marginBottom: '50px' }}>
+    <div className="reveal" style={{ textAlign: 'center', marginBottom: '40px' }}>
       <p className="tag">The People Behind GDF</p>
       <h2 className="h2" style={{ fontWeight: 800 }}>Meet Our Team</h2>
       <div className="divider" style={{ margin: '0 auto' }}></div>
     </div>
 
-    {/* Team Carousel (Main Active Card + Faded Next Card + Circle Arrow) */}
-    <div className="team-paint-container reveal">
-      {/* Active Card */}
-      <div className="team-paint-active-card" id="teamActiveCard">
-        <div className="team-paint-photo-wrapper">
-          <img id="teamCardPhoto" src="images/Atharv.jpg" alt="Atharv Johari" />
-        </div>
-        <div className="team-paint-bio">
-          <h3 className="team-paint-name" id="teamCardName">Atharv Johari</h3>
-          <p className="team-paint-role" id="teamCardRole">Founder &amp; CEO</p>
-          <div className="team-paint-msg" id="teamCardQuote">
-            &ldquo;GDF was born from a simple belief — that every young person deserves a platform to think globally and lead with purpose. We are not just running a conference; we are building a generation of diplomats.&rdquo;
+    <div className="board-table-container reveal" style={{ position: 'relative', width: '100%', maxWidth: '800px', height: '400px', margin: '0 auto', perspective: '1000px' }}>
+      {/* Table Graphic */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', width: '600px', height: '600px', transform: 'translate(-50%, -10%) rotateX(70deg)', background: 'radial-gradient(ellipse at center, var(--navy-card) 0%, rgba(13,23,48,0) 70%)', border: '1px solid rgba(212,175,55,0.1)', borderRadius: '50%', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', zIndex: 1 }}></div>
+      
+      {/* The rotating container */}
+      <div id="teamReactSlider" style={{ position: 'absolute', inset: 0, zIndex: 2, transformStyle: 'preserve-3d' }}>
+        {[
+          { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
+          { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
+          { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
+          { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
+          { name: 'Guru Sriman Murari', role: 'Chief Communication Officer', img: 'images/guru.jpg' }
+        ].map((member, i) => (
+          <div key={i} className="team-member-node" style={{ 
+            position: 'absolute', top: '50%', left: '50%', width: '120px', height: '180px', 
+            transform: `translate(-50%, -50%) rotate(${i * 72}deg) translateY(-220px) rotate(-${i * 72}deg)`,
+            transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+            textAlign: 'center', cursor: 'pointer'
+          }} onClick={(e) => {
+             const container = document.getElementById('teamReactSlider');
+             if(container) {
+                // Swirl effect by rotating the parent container
+                const currentRotation = parseFloat(container.getAttribute('data-rotation') || '0');
+                // Calculate shortest path to the clicked item
+                const targetAngle = -(i * 72);
+                let diff = (targetAngle - currentRotation) % 360;
+                if (diff < -180) diff += 360;
+                if (diff > 180) diff -= 360;
+                const newRotation = currentRotation + diff;
+                
+                container.style.transform = `rotate(${newRotation}deg)`;
+                container.setAttribute('data-rotation', newRotation.toString());
+                
+                // Counter-rotate the children to keep them upright
+                const children = container.querySelectorAll('.team-member-node');
+                children.forEach((child: any, index) => {
+                   const originalChildRotation = index * 72;
+                   child.style.transform = `translate(-50%, -50%) rotate(${originalChildRotation}deg) translateY(-220px) rotate(-${originalChildRotation + newRotation}deg)`;
+                });
+             }
+          }}>
+            <img src={member.img} alt={member.name} style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '3px solid var(--gold)', boxShadow: '0 4px 15px rgba(0,0,0,0.4)', background: '#000' }} />
+            <div style={{ marginTop: '12px', background: 'rgba(13,23,48,0.8)', padding: '6px', borderRadius: '8px', border: '1px solid rgba(212,175,55,0.2)', backdropFilter: 'blur(4px)' }}>
+              <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--white)', lineHeight: 1.2 }}>{member.name}</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--gold)', marginTop: '4px' }}>{member.role}</div>
+            </div>
           </div>
-          <div className="team-paint-dots" id="teamIndicators">
-            <span className="team-paint-dot active"></span>
-            <span className="team-paint-dot"></span>
-            <span className="team-paint-dot"></span>
-            <span className="team-paint-dot"></span>
-            <span className="team-paint-dot"></span>
-          </div>
-        </div>
+        ))}
       </div>
-
-      {/* Faded Next Person Card (per Paint sketch) */}
-      <div
-        className="team-paint-faded-card"
-        id="teamFadedCard"
-        onClick={() => { if (typeof window !== 'undefined' && (window as any).teamSliderNext) (window as any).teamSliderNext(); }}
-        title="Click to view next team member"
-      >
-        <div className="team-paint-faded-badge">NEXT</div>
-        <img id="teamFadedPhoto" src="images/mohit_tinted.jpg" alt="Next Team Member" className="team-paint-faded-img" />
-        <div className="team-paint-faded-label">
-          <div id="teamFadedName" style={{ fontWeight: 800 }}>Mohit Tanay</div>
-          <div id="teamFadedRole" className="team-paint-faded-role-text">President</div>
-        </div>
-      </div>
-
-      {/* Navigation Arrows */}
-      <div className="team-paint-arrow-group">
-        <button
-          className="team-paint-arrow-btn"
-          id="teamNextBtn"
-          onClick={() => { if (typeof window !== 'undefined' && (window as any).teamSliderNext) (window as any).teamSliderNext(); }}
-          aria-label="Next Team Member"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-        <button
-          className="team-paint-arrow-btn prev"
-          id="teamPrevBtn"
-          onClick={() => { if (typeof window !== 'undefined' && (window as any).teamSliderPrev) (window as any).teamSliderPrev(); }}
-          aria-label="Previous Team Member"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-      </div>
+      
+      {/* Initial load script for center positioning */}
+      <script dangerouslySetInnerHTML={{__html: `
+        setTimeout(() => {
+          const container = document.getElementById('teamReactSlider');
+          if(container) {
+            container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            container.setAttribute('data-rotation', '0');
+          }
+        }, 100);
+      `}} />
     </div>
 
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <button className="btn-ghost" onClick={() => { if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }}>Join Our Team</button>
+    <div style={{ textAlign: 'center', marginTop: '30px' }}>
+      <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '20px' }}>Click on a team member to rotate the table.</p>
+      <button className="btn-ghost" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }}>Join Our Team</button>
     </div>
+  </div>
+</section>
+
   </div>
 </section>
 
@@ -455,13 +473,13 @@ export default function HomePage() {
       <h2 className="h2">Sponsors &amp; Partners</h2>
       <div className="divider" style={{ margin: '0 auto 40px' }}></div>
     </div>
-    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '60px', marginBottom: '20px' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '80px', marginBottom: '20px' }}>
       <div className="reveal delay-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-        <img src="images/solarize.png" alt="Solarize Digitech" style={{ maxHeight: '70px', maxWidth: '200px', objectFit: 'contain', filter: 'brightness(1.5) grayscale(100%)', opacity: '0.6', transition: 'all .3s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='brightness(1) grayscale(0%)'; e.currentTarget.style.opacity='1';}} onMouseOut={(e)=>{e.currentTarget.style.filter='brightness(1.5) grayscale(100%)'; e.currentTarget.style.opacity='0.6';}} />
+        <img src="images/solarize.png" alt="Solarize Digitech" style={{ height: '70px', objectFit: 'contain' }} />
         <span className="montserrat" style={{ fontSize: '.7rem', fontWeight: '700', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--gold)' }}>Technology Partner</span>
       </div>
       <div className="reveal delay-2" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-        <img src="images/earthaid.png" alt="EarthAid" style={{ maxHeight: '80px', maxWidth: '200px', objectFit: 'contain', filter: 'brightness(1.5) grayscale(100%)', opacity: '0.6', transition: 'all .3s' }} onMouseOver={(e)=>{e.currentTarget.style.filter='brightness(1) grayscale(0%)'; e.currentTarget.style.opacity='1';}} onMouseOut={(e)=>{e.currentTarget.style.filter='brightness(1.5) grayscale(100%)'; e.currentTarget.style.opacity='0.6';}} />
+        <img src="images/earthaid.png" alt="EarthAid" style={{ height: '70px', objectFit: 'contain' }} />
         <span className="montserrat" style={{ fontSize: '.7rem', fontWeight: '700', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--gold)' }}>Sustainability Partner</span>
       </div>
     </div>
@@ -678,12 +696,12 @@ export default function HomePage() {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
         {[
-          { icon: '🌐', title: 'First UAE Online MUN Circuit', desc: 'GDF is the first organization in the UAE to build a dedicated, structured Online MUN Circuit, connecting ambitious students from across the region to high-level multilateral debate.' },
-          { icon: '👑', title: 'The GDF Crown & Supreme Awards', desc: 'Our recognition standards are unmatched. Outstanding delegates compete for the prestigious GDF Crown, bespoke trophies, executive certificates, and global dais appointments.' },
-          { icon: '✨', title: 'Exclusive Annual Flagship', desc: 'GDF International is hosted exclusively once per year (19–20 Dec 2026), ensuring supreme organizational rigor, distinguished guest speakers, and elite crisis chambers.' },
-          { icon: '💰', title: 'Premium & Accessible (20 AED)', desc: 'We believe elite diplomatic education should not be financially prohibitive. At just 20 AED, GDF International provides world-class quality at the most accessible price point.' },
-          { icon: '📚', title: 'We Don’t Just Host — We Teach', desc: 'Through the GDF Youth Academy (Google Classroom 2ypkcedf) and daily GDF Broadcast, we provide continuous foreign policy masterclasses, briefing notes, and study guides.' },
-          { icon: '🤝', title: 'Worldwide Diplomatic Community', desc: 'Over 12,600 young leaders are connected through our international channels, collaborating on global policy issues and participating in monthly debate challenges.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>, title: 'First UAE Online MUN Circuit', desc: 'GDF is the first organization in the UAE to build a dedicated, structured Online MUN Circuit, connecting ambitious students from across the region to high-level multilateral debate.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="2 4 5 16 19 16 22 4 15 11 12 2 9 11 2 4"/></svg>, title: 'The GDF Crown & Supreme Awards', desc: 'Our recognition standards are unmatched. Outstanding delegates compete for the prestigious GDF Crown, bespoke trophies, executive certificates, and global dais appointments.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>, title: 'Exclusive Annual Flagship', desc: 'GDF International is hosted exclusively once per year (19–20 Dec 2026), ensuring supreme organizational rigor, distinguished guest speakers, and elite crisis chambers.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>, title: 'Premium & Accessible (20 AED)', desc: 'We believe elite diplomatic education should not be financially prohibitive. At just 20 AED, GDF International provides world-class quality at the most accessible price point.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>, title: 'We Don’t Just Host — We Teach', desc: 'Through the GDF Youth Academy (Google Classroom 2ypkcedf) and daily GDF Broadcast, we provide continuous foreign policy masterclasses, briefing notes, and study guides.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>, title: 'Worldwide Diplomatic Community', desc: 'Over 12,600 young leaders are connected through our international channels, collaborating on global policy issues and participating in monthly debate challenges.' },
         ].map((item, i) => (
           <div key={i} style={{ background: 'var(--navy-card)', borderRadius: '12px', padding: '32px 26px', boxShadow: '0 8px 30px rgba(0,0,0,0.3)', border: '1px solid rgba(212,175,55,0.15)' }}>
             <div style={{ fontSize: '2.2rem', marginBottom: '16px' }}>{item.icon}</div>
@@ -719,6 +737,10 @@ export default function HomePage() {
       </div>
       <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {[
+          { 
+            q: 'Who founded GDF?', 
+            a: 'The Global Diplomatic Foundation was founded by Atharv Johari.' 
+          },
           { 
             q: 'Does GDF only host Model UN conferences?', 
             a: 'No! GDF is an international youth diplomatic organization and academy. We don\'t just host conferences — we teach, mentor, and empower young leaders year-round through the GDF Youth Academy (Google Classroom), our daily GDF Broadcast, the Global Community network, and monthly debate challenges.' 

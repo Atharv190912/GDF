@@ -633,7 +633,7 @@ function submitDelegate(){
       details: 'Committees: ' + app.committees.join(', '),
       extra: extra,
       date: app.date,
-      to_email: 'info@gdfintl.org'
+      to_email: 'globaldiplomaticfoundaiton@gmail.com'
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you for registering. We have received your application and will review your payment shortly.';
@@ -698,7 +698,7 @@ function submitChair(){
       details: 'Committee Prefs: ' + app.prefs.join(' | ') + ' | School: ' + app.school + ' | Level: ' + app.expLevel,
       extra: 'Awards: ' + app.awards + ' | Skills: ' + app.skills + ' | Why: ' + app.why + ' | Conferences: ' + app.conferences,
       date: app.date,
-      to_email: 'info@gdfintl.org'
+      to_email: 'globaldiplomaticfoundaiton@gmail.com'
     }).then(function(){
       document.getElementById('confirmTitle').textContent='Application Submitted!';
       document.getElementById('confirmMsg').textContent='Thank you. We will review your chair application and notify you by email.';
@@ -764,7 +764,7 @@ function teamSubmit(){
       details: 'Department: ' + appData.department,
       extra: 'Experience: ' + appData.experience + ' | Why GDF: ' + appData.why,
       date: new Date().toLocaleString(),
-      to_email: 'info@gdfintl.org'
+      to_email: 'globaldiplomaticfoundaiton@gmail.com'
     }).then(function(){
       const ta = document.getElementById('tm_appid');
       if(ta) ta.innerHTML = '<b>Application ID:</b> ' + appId + '<br><b>Name:</b> ' + appData.name + '<br><b>Email:</b> ' + appData.email + '<br><b>Department:</b> ' + appData.department + '<br><b>Status:</b> Submitted — we\'ll be in touch soon.';
@@ -787,7 +787,7 @@ function sendContact(){
   if(!fname||!lname||!email||!msg){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Please fill in all required fields.';} return; }
   if(btn){btn.disabled=true;btn.textContent='Sending…';} if(status)status.style.display='none';
   if(typeof emailjs!=='undefined'){
-    emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'info@gdfintl.org'})
+    emailjs.send('service_contactus','template_vkr9e0i',{from_name:fname+' '+lname,from_email:email,message:msg,to_email:'globaldiplomaticfoundaiton@gmail.com'})
       .then(function(){ if(status){status.style.display='block';status.style.color='#27ae60';status.textContent="Message sent! We'll be in touch shortly.";} ['cFname','cLname','cEmail','cMsg'].forEach(id => { const el=document.getElementById(id); if(el)el.value=''; }); if(btn){btn.textContent='Send Message';btn.disabled=false;} })
       .catch(function(err){ if(status){status.style.display='block';status.style.color='#c0392b';status.textContent='Something went wrong: ' + (err?.text || JSON.stringify(err));} if(btn){btn.textContent='Send Message';btn.disabled=false;} });
   } else {
