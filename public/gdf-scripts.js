@@ -82,9 +82,9 @@ var teamData = [
     msg: '"Behind every seamless conference experience is a team that truly cares. At GDF, operations is not just logistics — it is the art of turning a vision into reality, one detail at a time."'
   },
   {
-    name: 'Guru Sriman Murari',
+    name: 'Akshita Subi Nair',
     role: 'Chief Communication Officer',
-    img: 'images/guru.jpg',
+    img: 'images/akshita.jpg',
     msg: '"Every great movement needs a voice. At GDF, communication is our bridge between the team and the world — ensuring that our mission of diplomacy, leadership, and youth empowerment is heard loud and clear."'
   }
 ];
@@ -805,4 +805,5 @@ function closeDelegateDayReg() {
   const backdrop = document.getElementById('delDayBackdrop');
   if (backdrop) backdrop.style.display = 'none';
 }
+
 

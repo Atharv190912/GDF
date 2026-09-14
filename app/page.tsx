@@ -384,8 +384,8 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* TEAM CAROUSEL - BOARD MEETING CIRCULAR TABLE */}
-<section id="team" className="pad team-paint-section" style={{ overflow: 'hidden' }}>
+{/* TEAM - BASIC SWIPE CARDS */}
+<section id="team" className="pad team-paint-section">
   <div className="wrap">
     <div className="reveal" style={{ textAlign: 'center', marginBottom: '40px' }}>
       <p className="tag">The People Behind GDF</p>
@@ -393,70 +393,52 @@ export default function HomePage() {
       <div className="divider" style={{ margin: '0 auto' }}></div>
     </div>
 
-    <div className="board-table-container reveal" style={{ position: 'relative', width: '100%', maxWidth: '800px', height: '400px', margin: '0 auto', perspective: '1000px' }}>
-      {/* Table Graphic */}
-      <div style={{ position: 'absolute', top: '50%', left: '50%', width: '600px', height: '600px', transform: 'translate(-50%, -10%) rotateX(70deg)', background: 'radial-gradient(ellipse at center, var(--navy-card) 0%, rgba(13,23,48,0) 70%)', border: '1px solid rgba(212,175,55,0.1)', borderRadius: '50%', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', zIndex: 1 }}></div>
-      
-      {/* The rotating container */}
-      <div id="teamReactSlider" style={{ position: 'absolute', inset: 0, zIndex: 2, transformStyle: 'preserve-3d' }}>
-        {[
-          { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
-          { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
-          { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
-          { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
-          { name: 'Guru Sriman Murari', role: 'Chief Communication Officer', img: 'images/guru.jpg' }
-        ].map((member, i) => (
-          <div key={i} className="team-member-node" style={{ 
-            position: 'absolute', top: '50%', left: '50%', width: '120px', height: '180px', 
-            transform: `translate(-50%, -50%) rotate(${i * 72}deg) translateY(-220px) rotate(-${i * 72}deg)`,
-            transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-            textAlign: 'center', cursor: 'pointer'
-          }} onClick={(e) => {
-             const container = document.getElementById('teamReactSlider');
-             if(container) {
-                // Swirl effect by rotating the parent container
-                const currentRotation = parseFloat(container.getAttribute('data-rotation') || '0');
-                // Calculate shortest path to the clicked item
-                const targetAngle = -(i * 72);
-                let diff = (targetAngle - currentRotation) % 360;
-                if (diff < -180) diff += 360;
-                if (diff > 180) diff -= 360;
-                const newRotation = currentRotation + diff;
-                
-                container.style.transform = `rotate(${newRotation}deg)`;
-                container.setAttribute('data-rotation', newRotation.toString());
-                
-                // Counter-rotate the children to keep them upright
-                const children = container.querySelectorAll('.team-member-node');
-                children.forEach((child: any, index) => {
-                   const originalChildRotation = index * 72;
-                   child.style.transform = `translate(-50%, -50%) rotate(${originalChildRotation}deg) translateY(-220px) rotate(-${originalChildRotation + newRotation}deg)`;
-                });
-             }
-          }}>
-            <img src={member.img} alt={member.name} style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '3px solid var(--gold)', boxShadow: '0 4px 15px rgba(0,0,0,0.4)', background: '#000' }} />
-            <div style={{ marginTop: '12px', background: 'rgba(13,23,48,0.8)', padding: '6px', borderRadius: '8px', border: '1px solid rgba(212,175,55,0.2)', backdropFilter: 'blur(4px)' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--white)', lineHeight: 1.2 }}>{member.name}</div>
-              <div style={{ fontSize: '0.7rem', color: 'var(--gold)', marginTop: '4px' }}>{member.role}</div>
-            </div>
+    <div className="team-swipe-container reveal" style={{ 
+      display: 'flex', overflowX: 'auto', gap: '20px', paddingBottom: '20px', 
+      scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none'
+    }}>
+      <style>{`
+        .team-swipe-container::-webkit-scrollbar { display: none; }
+        .team-basic-card {
+          flex: 0 0 280px;
+          scroll-snap-align: center;
+          background: var(--navy-card);
+          border: 1px solid rgba(212,175,55,0.15);
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+          text-align: center;
+          padding-bottom: 24px;
+        }
+        .team-basic-img {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          border-bottom: 2px solid var(--gold);
+        }
+        @media (max-width: 600px) {
+          .team-basic-card { flex: 0 0 260px; }
+          .team-basic-img { height: 280px; }
+        }
+      `}</style>
+      {[
+        { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
+        { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
+        { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
+        { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
+        { name: 'Akshita Subi Nair', role: 'Chief Communication Officer', img: 'images/akshita.jpg' }
+      ].map((member, i) => (
+        <div key={i} className="team-basic-card">
+          <img src={member.img} alt={member.name} className="team-basic-img" />
+          <div style={{ padding: '20px 12px 0' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--white)', margin: '0 0 8px 0', lineHeight: 1.2 }}>{member.name}</h3>
+            <div style={{ fontSize: '0.85rem', color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{member.role}</div>
           </div>
-        ))}
-      </div>
-      
-      {/* Initial load script for center positioning */}
-      <script dangerouslySetInnerHTML={{__html: `
-        setTimeout(() => {
-          const container = document.getElementById('teamReactSlider');
-          if(container) {
-            container.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            container.setAttribute('data-rotation', '0');
-          }
-        }, 100);
-      `}} />
+        </div>
+      ))}
     </div>
 
     <div style={{ textAlign: 'center', marginTop: '30px' }}>
-      <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '20px' }}>Click on a team member to rotate the table.</p>
       <button className="btn-ghost" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }}>Join Our Team</button>
     </div>
   </div>
@@ -1218,3 +1200,4 @@ export default function HomePage() {
     </>
   );
 }
+
