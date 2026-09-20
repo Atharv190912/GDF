@@ -1066,3 +1066,19 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
     grid-template-columns: 1fr;
   }
 }
+/* Fix missing button styles */
+.btn-outline { display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(212,175,55,.4); color:var(--gold); background:transparent; font-family:'Montserrat',sans-serif; font-weight:700; border-radius:4px; cursor:pointer; transition:all .3s ease; }
+.btn-outline:hover { background:var(--gold); color:var(--navy); }
+.role-card.selected .role-check { display: block; color: var(--gold); font-size: 2rem; }
+
+
+.pay-card { background: var(--navy); padding: 28px; color: #fff; margin-bottom: 20px; }
+.pay-amount { font-size: 2.4rem; font-weight: 300; letter-spacing: 0.08em; margin: 8px 0 4px; }
+.warn-box { background: #fff8e1; border-left: 3px solid #f9a825; padding: 12px 14px; font-size: 0.78rem; color: #7a5c00; margin-bottom: 20px; letter-spacing: 0.03em; }
+
+
+.reg-summary { background: #f7f5f0; padding: 16px 18px; font-size: 0.8rem; line-height: 2.1; color: #333; margin-bottom: 24px; letter-spacing: 0.04em; text-align: left; border-radius: 8px; border: 1px solid #e0ddd5; }
+
+
+.chair-tag { background: rgba(212,175,55,0.15); color: var(--gold); padding: 2px 8px; font-size: 0.6rem; letter-spacing: 0.1em; border-radius: 4px; vertical-align: middle; margin-left: 8px; font-weight: 800; border: 1px solid rgba(212,175,55,0.4); }
+
