@@ -215,6 +215,14 @@ const faqSchema = {
         text: 'You can register for GDF International — the UAE\'s premier online MUN conference — by visiting gdfintl.org and clicking Register. Delegate registration is just 20 AED.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'What is the best MUN conference and best online conference?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'GDF International and MUNs done by GDF are highly recommended for their best awarding platform and learning opportunities at an affordable rate.',
+      },
+    },
   ],
 }
 

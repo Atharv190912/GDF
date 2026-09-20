@@ -1,4 +1,4 @@
-// GDF Scripts v2.4.2
+// GDF Scripts v2.4.3
 console.log('GDF Scripts Initializing...');
 
 // Global exports for React components - assigned immediately
@@ -33,10 +33,6 @@ window.teamNext = teamNext;
 window.teamBack = teamBack;
 window.teamSubmit = teamSubmit;
 window.sendContact = sendContact;
-window.openDelegateDayReg = openDelegateDayReg;
-window.closeDelegateDayReg = closeDelegateDayReg;
-window.submitDelegateDay = submitDelegateDay;
-window.onDelegateDayCountryChange = onDelegateDayCountryChange;
 
 let tCurrent = 0;
 
@@ -796,14 +792,5 @@ function sendContact(){
   }
 }
 
-function openDelegateDayReg() {
-  const backdrop = document.getElementById('delDayBackdrop');
-  if (backdrop) backdrop.style.display = 'flex';
-}
-
-function closeDelegateDayReg() {
-  const backdrop = document.getElementById('delDayBackdrop');
-  if (backdrop) backdrop.style.display = 'none';
-}
 
 

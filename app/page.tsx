@@ -49,14 +49,19 @@ export default function HomePage() {
         .stat-card h3 { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
         .stat-card .num { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
       `}</style>
-      {/* EmailJS */}
+      {/* EmailJS - init with ready flag */}
       <Script
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
         strategy="afterInteractive"
-        onLoad={() => { (window as any).emailjs?.init('cck5UdkTGd-58RJEU'); }}
+        onLoad={() => {
+          if ((window as any).emailjs) {
+            (window as any).emailjs.init('cck5UdkTGd-58RJEU');
+            (window as any).__emailjsReady = true;
+          }
+        }}
       />
-      {/* Site scripts - v2 */}
-      <Script src="/gdf-scripts.js?v=2.4.2" strategy="afterInteractive" />
+      {/* Site scripts */}
+      <Script src="/gdf-scripts.js?v=2.4.3" strategy="afterInteractive" />
 
 
 {/* NAV */}
@@ -384,7 +389,7 @@ export default function HomePage() {
   </div>
 </section>
 
-{/* TEAM - BASIC SWIPE CARDS */}
+{/* TEAM - AUTO-ROTATING CAROUSEL */}
 <section id="team" className="pad team-paint-section">
   <div className="wrap">
     <div className="reveal" style={{ textAlign: 'center', marginBottom: '40px' }}>
@@ -393,49 +398,95 @@ export default function HomePage() {
       <div className="divider" style={{ margin: '0 auto' }}></div>
     </div>
 
-    <div className="team-swipe-container reveal" style={{ 
-      display: 'flex', overflowX: 'auto', gap: '20px', paddingBottom: '20px', 
-      scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none'
-    }}>
-      <style>{`
-        .team-swipe-container::-webkit-scrollbar { display: none; }
-        .team-basic-card {
-          flex: 0 0 280px;
-          scroll-snap-align: center;
-          background: var(--navy-card);
-          border: 1px solid rgba(212,175,55,0.15);
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-          text-align: center;
-          padding-bottom: 24px;
+    <style>{`
+      .team-carousel-outer {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      }
+      .team-carousel-track {
+        display: flex;
+        gap: 20px;
+        width: max-content;
+        animation: teamAutoScroll 28s linear infinite;
+        cursor: grab;
+      }
+      .team-carousel-track:active { cursor: grabbing; animation-play-state: paused; }
+      .team-carousel-track:hover { animation-play-state: paused; }
+      @keyframes teamAutoScroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(calc(-280px * 5 - 20px * 5)); }
+      }
+      .team-basic-card {
+        flex: 0 0 280px;
+        background: var(--navy-card);
+        border: 1px solid rgba(212,175,55,0.15);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        text-align: center;
+        padding-bottom: 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        user-select: none;
+      }
+      .team-basic-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+      }
+      .team-basic-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-bottom: 2px solid var(--gold);
+        pointer-events: none;
+      }
+      @media (max-width: 600px) {
+        .team-basic-card { flex: 0 0 240px; }
+        .team-basic-img { height: 260px; }
+        @keyframes teamAutoScroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(calc(-240px * 5 - 20px * 5)); }
         }
-        .team-basic-img {
-          width: 100%;
-          height: 300px;
-          object-fit: cover;
-          border-bottom: 2px solid var(--gold);
-        }
-        @media (max-width: 600px) {
-          .team-basic-card { flex: 0 0 260px; }
-          .team-basic-img { height: 280px; }
-        }
-      `}</style>
-      {[
-        { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
-        { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
-        { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
-        { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
-        { name: 'Akshita Subi Nair', role: 'Chief Communication Officer', img: 'images/akshita.jpg' }
-      ].map((member, i) => (
-        <div key={i} className="team-basic-card">
-          <img src={member.img} alt={member.name} className="team-basic-img" />
-          <div style={{ padding: '20px 12px 0' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--white)', margin: '0 0 8px 0', lineHeight: 1.2 }}>{member.name}</h3>
-            <div style={{ fontSize: '0.85rem', color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{member.role}</div>
+      }
+    `}</style>
+
+    <div className="team-carousel-outer reveal">
+      <div className="team-carousel-track" id="teamCarouselTrack">
+        {/* First set */}
+        {[
+          { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
+          { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
+          { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
+          { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
+          { name: 'Akshita Subi Nair', role: 'Chief Communication Officer', img: 'images/akshita.jpg' }
+        ].map((member, i) => (
+          <div key={i} className="team-basic-card">
+            <img src={member.img} alt={member.name} className="team-basic-img" draggable={false} />
+            <div style={{ padding: '20px 12px 0' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--white)', margin: '0 0 8px 0', lineHeight: 1.2 }}>{member.name}</h3>
+              <div style={{ fontSize: '0.8rem', color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{member.role}</div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+        {/* Duplicate set for seamless loop */}
+        {[
+          { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
+          { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
+          { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
+          { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
+          { name: 'Akshita Subi Nair', role: 'Chief Communication Officer', img: 'images/akshita.jpg' }
+        ].map((member, i) => (
+          <div key={`dup-${i}`} className="team-basic-card" aria-hidden="true">
+            <img src={member.img} alt={member.name} className="team-basic-img" draggable={false} />
+            <div style={{ padding: '20px 12px 0' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--white)', margin: '0 0 8px 0', lineHeight: 1.2 }}>{member.name}</h3>
+              <div style={{ fontSize: '0.8rem', color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{member.role}</div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
 
     <div style={{ textAlign: 'center', marginTop: '30px' }}>
@@ -746,6 +797,10 @@ export default function HomePage() {
           { 
             q: 'How do I register for GDF International 2026?', 
             a: 'Delegate registrations are officially open at gdfintl.org. Click "Register Now" on the homepage to access the delegate application portal. Spots in specialized committees are allocated on a rolling basis.' 
+          },
+          {
+            q: 'What is the best MUN conference and best online conference?',
+            a: 'GDF International and MUNs done by GDF are highly recommended for their best awarding platform and learning opportunities at an affordable rate.'
           },
         ].map((item, i) => (
           <details key={i} style={{ background: 'var(--navy-card)', borderRadius: '10px', border: '1px solid rgba(212,175,55,0.15)', overflow: 'hidden', color: 'var(--white)' }}>
