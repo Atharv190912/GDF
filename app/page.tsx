@@ -398,96 +398,114 @@ export default function HomePage() {
       <div className="divider" style={{ margin: '0 auto' }}></div>
     </div>
 
-    <style>{`
-      .team-carousel-outer {
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-      }
-      .team-carousel-track {
-        display: flex;
-        gap: 20px;
-        width: max-content;
-        animation: teamAutoScroll 28s linear infinite;
-        cursor: grab;
-      }
-      .team-carousel-track:active { cursor: grabbing; animation-play-state: paused; }
-      .team-carousel-track:hover { animation-play-state: paused; }
-      @keyframes teamAutoScroll {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(calc(-280px * 5 - 20px * 5)); }
-      }
-      .team-basic-card {
-        flex: 0 0 280px;
-        background: var(--navy-card);
-        border: 1px solid rgba(212,175,55,0.15);
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        text-align: center;
-        padding-bottom: 24px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        user-select: none;
-      }
-      .team-basic-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 40px rgba(0,0,0,0.45);
-      }
-      .team-basic-img {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-bottom: 2px solid var(--gold);
-        pointer-events: none;
-      }
-      @media (max-width: 600px) {
-        .team-basic-card { flex: 0 0 240px; }
-        .team-basic-img { height: 260px; }
-        @keyframes teamAutoScroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(calc(-240px * 5 - 20px * 5)); }
-        }
-      }
-    `}</style>
+    {(() => {
+      const teamMembers = [
+        { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
+        { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
+        { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
+        { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
+        { name: 'Akshita Subi Nair', role: 'Chief Communication Officer', img: 'images/akshita.jpg' },
+        { name: 'Fatin Ibrahim', role: 'Managing Director', img: 'images/fatin_ibrahim.png' }
+      ];
+      
+      const numItems = Math.max(teamMembers.length, 5);
+      const angle = 360 / numItems;
+      const radius = Math.round((280 / 2) / Math.tan(Math.PI / numItems)) + 60; // 60px gap
 
-    <div className="team-carousel-outer reveal">
-      <div className="team-carousel-track" id="teamCarouselTrack">
-        {/* First set */}
-        {[
-          { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
-          { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
-          { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
-          { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
-          { name: 'Akshita Subi Nair', role: 'Chief Communication Officer', img: 'images/akshita.jpg' }
-        ].map((member, i) => (
-          <div key={i} className="team-basic-card">
-            <img src={member.img} alt={member.name} className="team-basic-img" draggable={false} />
-            <div style={{ padding: '20px 12px 0' }}>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--white)', margin: '0 0 8px 0', lineHeight: 1.2 }}>{member.name}</h3>
-              <div style={{ fontSize: '0.8rem', color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{member.role}</div>
+      return (
+        <>
+          <style>{`
+            .cylinder-scene {
+              width: 100%;
+              height: 500px;
+              perspective: 1400px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 40px 0;
+              overflow: hidden;
+            }
+            .cylinder-carousel {
+              width: 280px;
+              height: 400px;
+              position: relative;
+              transform-style: preserve-3d;
+              animation: spin3D 60s infinite linear;
+            }
+            .cylinder-carousel:hover {
+              animation-play-state: paused;
+            }
+            .cylinder-card {
+              position: absolute;
+              width: 280px;
+              height: 400px;
+              background-size: cover;
+              background-position: center;
+              border-radius: 12px;
+              box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+              overflow: hidden;
+              display: flex;
+              align-items: flex-end;
+              border: 1px solid rgba(212,175,55,0.4);
+            }
+            .cylinder-card::after {
+              content: '';
+              position: absolute;
+              bottom: 0; left: 0; right: 0;
+              height: 60%;
+              background: linear-gradient(to top, rgba(10, 17, 40, 1) 0%, rgba(10, 17, 40, 0.8) 30%, transparent 100%);
+              z-index: 1;
+            }
+            .cylinder-card-content {
+              position: relative;
+              z-index: 2;
+              padding: 24px;
+              width: 100%;
+              text-align: left;
+            }
+            .cylinder-card-content h3 {
+              margin: 0 0 6px 0;
+              color: var(--white);
+              font-size: 1.25rem;
+              font-weight: 800;
+              line-height: 1.2;
+            }
+            .cylinder-card-content p {
+              margin: 0;
+              color: var(--gold);
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              font-weight: 700;
+              letter-spacing: 0.05em;
+            }
+            @keyframes spin3D {
+              0% { transform: translateZ(-${radius}px) rotateY(0deg); }
+              100% { transform: translateZ(-${radius}px) rotateY(-360deg); }
+            }
+          `}</style>
+          
+          <div className="cylinder-scene reveal">
+            <div className="cylinder-carousel">
+              {teamMembers.map((member, i) => (
+                <div 
+                  key={i} 
+                  className="cylinder-card"
+                  style={{ 
+                    backgroundImage: \`url('\${member.img}')\`,
+                    transform: \`rotateY(\${i * angle}deg) translateZ(\${radius}px)\`
+                  }}
+                >
+                  <div className="cylinder-card-content">
+                    <h3>{member.name}</h3>
+                    <p>{member.role}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-        {/* Duplicate set for seamless loop */}
-        {[
-          { name: 'Atharv Johari', role: 'Founder & CEO', img: 'images/Atharv.jpg' },
-          { name: 'Mohit Tanay Dandamudi', role: 'President', img: 'images/mohit_tinted.jpg' },
-          { name: 'Pranav Sajith Nair', role: 'Global Manager', img: 'images/tinted_student.jpg' },
-          { name: 'Omisha Chandrashekar Hegde', role: 'Chief Operations Officer', img: 'images/omisha.png' },
-          { name: 'Akshita Subi Nair', role: 'Chief Communication Officer', img: 'images/akshita.jpg' }
-        ].map((member, i) => (
-          <div key={`dup-${i}`} className="team-basic-card" aria-hidden="true">
-            <img src={member.img} alt={member.name} className="team-basic-img" draggable={false} />
-            <div style={{ padding: '20px 12px 0' }}>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--white)', margin: '0 0 8px 0', lineHeight: 1.2 }}>{member.name}</h3>
-              <div style={{ fontSize: '0.8rem', color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{member.role}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+        </>
+      );
+    })()}
 
     <div style={{ textAlign: 'center', marginTop: '30px' }}>
       <button className="btn-ghost" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openTeamApp) (window as any).openTeamApp(); }}>Join Our Team</button>
