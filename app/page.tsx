@@ -73,16 +73,7 @@ export default function HomePage() {
       <span style={{ color: 'var(--gold)', fontSize: '0.65rem', letterSpacing: '0.2em', fontWeight: 700 }}>INTERNATIONAL</span>
     </div>
   </a>
-  <div className="nav-links montserrat">
-    <a href="#wwa">About</a>
-    <a href="#initiatives">Initiatives</a>
-    <a href="#flagship">GDF International</a>
-    <a href="#circuit">The Circuit</a>
-    <a href="#team">Team</a>
-    <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>Why GDF</a>
-    <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq(); }}>FAQ</a>
-    <a href="#contact">Contact</a>
-  </div>
+
   <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
     <div className="nav-socials">
       <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" rel="noopener" aria-label="Facebook">
@@ -121,14 +112,17 @@ export default function HomePage() {
     document.getElementById('mobileBackdrop')?.classList.remove('open');
   }}>✕</button>
   <div className="mobile-drawer-brand">
-    <img src="images/LGC.png" alt="GDF Logo" style={{ height: '40px' }} />
-    <span>GDF International</span>
+    <img src="images/LGC.png" alt="GDF Logo" style={{ height: '42px' }} />
+    <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+      <span style={{ fontWeight: 800, fontSize: '0.9rem', color: 'var(--white)' }}>Global Diplomatic Foundation</span>
+      <span style={{ color: 'var(--gold)', fontSize: '0.55rem', letterSpacing: '0.18em', fontWeight: 700 }}>INTERNATIONAL</span>
+    </div>
   </div>
   <div className="mobile-drawer-links">
     {([
-      { label: 'About', href: '#wwa' },
+      { label: 'About GDF', href: '#wwa' },
+      { label: 'Events', href: '#flagship' },
       { label: 'Initiatives', href: '#initiatives' },
-      { label: 'GDF International', href: '#flagship' },
       { label: 'The Circuit', href: '#circuit' },
       { label: 'Team', href: '#team' },
       { label: 'Contact', href: '#contact' },

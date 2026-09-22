@@ -1082,9 +1082,9 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
 
 .chair-tag { background: rgba(212,175,55,0.15); color: var(--gold); padding: 2px 8px; font-size: 0.6rem; letter-spacing: 0.1em; border-radius: 4px; vertical-align: middle; margin-left: 8px; font-weight: 800; border: 1px solid rgba(212,175,55,0.4); }
 
-/* ── HAMBURGER BUTTON ── */
+/* ── HAMBURGER BUTTON — always visible ── */
 .nav-hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1196,9 +1196,6 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
 
 /* ── MOBILE RESPONSIVE BREAKPOINTS ── */
 @media (max-width: 860px) {
-  .nav-links { display: none; }
-  .nav-socials { display: none; }
-  .nav-hamburger { display: flex; }
 
   .hero-body h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
 
