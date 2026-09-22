@@ -95,8 +95,74 @@ export default function HomePage() {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
       </a>
     </div>
+    <button
+      className="nav-hamburger"
+      aria-label="Open menu"
+      onClick={() => {
+        document.getElementById('mobileDrawer')?.classList.add('open');
+        document.getElementById('mobileBackdrop')?.classList.add('open');
+      }}
+    >
+      <span/><span/><span/>
+    </button>
   </div>
 </nav>
+
+{/* MOBILE DRAWER BACKDROP */}
+<div id="mobileBackdrop" className="mobile-backdrop" onClick={() => {
+  document.getElementById('mobileDrawer')?.classList.remove('open');
+  document.getElementById('mobileBackdrop')?.classList.remove('open');
+}} />
+
+{/* MOBILE DRAWER */}
+<div id="mobileDrawer" className="mobile-drawer">
+  <button className="mobile-drawer-close" aria-label="Close menu" onClick={() => {
+    document.getElementById('mobileDrawer')?.classList.remove('open');
+    document.getElementById('mobileBackdrop')?.classList.remove('open');
+  }}>✕</button>
+  <div className="mobile-drawer-brand">
+    <img src="images/LGC.png" alt="GDF Logo" style={{ height: '40px' }} />
+    <span>GDF International</span>
+  </div>
+  <div className="mobile-drawer-links">
+    {([
+      { label: 'About', href: '#wwa' },
+      { label: 'Initiatives', href: '#initiatives' },
+      { label: 'GDF International', href: '#flagship' },
+      { label: 'The Circuit', href: '#circuit' },
+      { label: 'Team', href: '#team' },
+      { label: 'Contact', href: '#contact' },
+    ] as { label: string; href: string }[]).map(({ label, href }) => (
+      <a key={label} href={href} onClick={() => {
+        document.getElementById('mobileDrawer')?.classList.remove('open');
+        document.getElementById('mobileBackdrop')?.classList.remove('open');
+      }}>{label}</a>
+    ))}
+    <a href="#" onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('mobileDrawer')?.classList.remove('open');
+      document.getElementById('mobileBackdrop')?.classList.remove('open');
+      if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf();
+    }}>Why GDF</a>
+    <a href="#" onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('mobileDrawer')?.classList.remove('open');
+      document.getElementById('mobileBackdrop')?.classList.remove('open');
+      if (typeof window !== 'undefined' && (window as any).openFaq) (window as any).openFaq();
+    }}>FAQ</a>
+  </div>
+  <div className="mobile-drawer-socials">
+    <a href="https://www.facebook.com/profile.php?id=61580761976168" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/gdf_international/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/gdf-international-6089ab3ab/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+  </div>
+</div>
 
 {/* HERO SECTION */}
 <section id="hero">
@@ -491,8 +557,8 @@ export default function HomePage() {
                   key={i} 
                   className="cylinder-card"
                   style={{ 
-                    backgroundImage: \`url('\${member.img}')\`,
-                    transform: \`rotateY(\${i * angle}deg) translateZ(\${radius}px)\`
+                    backgroundImage: `url('${member.img}')`,
+                    transform: `rotateY(${i * angle}deg) translateZ(${radius}px)`
                   }}
                 >
                   <div className="cylinder-card-content">
