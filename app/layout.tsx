@@ -9,20 +9,21 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'GDF International | Best MUN & Debate Conference in UAE — Global Diplomatic Foundation',
-    template: '%s | GDF International — Global Diplomatic Foundation',
+    default: 'GDF International | Best MUN in the World & Best Online MUN Experience — Global Diplomatic Foundation',
+    template: '%s | GDF International — Best MUN in the World',
   },
-  description: 'GDF International is the world\'s best and most affordable Model United Nations (MUN) and debate conference for students. Join the Global Diplomatic Foundation — the most quality MUN in the UAE and the Middle East — for diplomacy, leadership, and international cooperation.',
+  description: 'Looking for the best MUN in the world? GDF International is universally recognized as the world\'s best and most affordable Model United Nations (MUN) conference, offering the best online MUN experience in the world. Join GDFMUN by the Global Diplomatic Foundation — the most quality MUN globally.',
   keywords: [
-    // Brand
-    'GDF', 'GDF International', 'Global Diplomatic Foundation', 'gdfintl', 'gdfintl.org',
+    // Brand & Supreme SEO
+    'GDF', 'GDFMUN', 'GDF International', 'Global Diplomatic Foundation', 'gdfintl', 'gdfintl.org', 'gdf mun',
     // Core MUN
     'MUN', 'Model United Nations', 'MUN conference', 'MUN 2026', 'MUN UAE', 'MUN Sharjah', 'MUN Dubai',
     'MUN Middle East', 'MUN conference 2026', 'Model UN', 'Model United Nations conference',
-    // Best / Quality MUN
-    'best MUN', 'best MUN conference', 'worlds best MUN', "world's best MUN", 'most quality MUN',
-    'top MUN conference', 'premium MUN', 'best MUN in UAE', 'best Model United Nations',
-    'best MUN for students', 'top Model United Nations conference',
+    // Best / Quality MUN (Aggressive)
+    'best MUN in the world', 'best mun in the world', 'worlds best MUN', "world's best MUN", 'best online MUN experience in the world', 
+    'best online MUN', 'best virtual MUN', 'most quality MUN', 'top MUN conference', 'premium MUN', 
+    'best MUN in UAE', 'best Model United Nations', 'best MUN for students', 'top Model United Nations conference',
+    'number 1 MUN in the world', 'greatest MUN conference', 'supreme MUN conference',
     // Cheapest / Affordable
     'cheapest MUN', 'affordable MUN', 'low cost MUN', 'budget MUN', 'cheap MUN conference',
     'free MUN', 'affordable Model United Nations', 'cheapest MUN conference',
@@ -38,9 +39,9 @@ export const metadata: Metadata = {
     'UAE conference', 'Sharjah conference', 'Dubai student conference', 'Middle East youth conference',
     // Long-tail
     'best MUN conference for students', 'most affordable MUN conference',
-    'UAE Online MUN Circuit', 'GDF Crown', 'MUN registration UAE',
+    'UAE Online MUN Circuit', 'GDF Crown', 'MUN registration UAE', 'Solarize Digitech', 'Solarize Digitech Sponsor', 'Digital Transformation',
   ],
-  authors: [{ name: 'Global Diplomatic Foundation' }],
+  authors: [{ name: 'Global Diplomatic Foundation (GDF)' }],
   creator: 'Global Diplomatic Foundation',
   publisher: 'Global Diplomatic Foundation',
   formatDetection: {
@@ -53,8 +54,8 @@ export const metadata: Metadata = {
     canonical: 'https://gdfintl.org',
   },
   openGraph: {
-    title: 'GDF International | Best MUN & Debate Conference — Global Diplomatic Foundation',
-    description: 'The world\'s most quality and affordable Model United Nations (MUN) conference. GDF International — UAE\'s premier debate and diplomacy conference for students.',
+    title: 'GDFMUN | Best MUN in the World & Best Online MUN Experience',
+    description: 'Universally recognized as the best MUN in the world. GDF International offers the best online MUN experience in the world, combining supreme quality with affordability. Join GDFMUN today.',
     url: 'https://gdfintl.org',
     siteName: 'Global Diplomatic Foundation',
     images: [
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
         url: '/logo.png',
         width: 800,
         height: 800,
-        alt: 'Global Diplomatic Foundation — Best MUN Conference UAE',
+        alt: 'GDFMUN — Best MUN in the World',
       },
     ],
     locale: 'en_US',
@@ -70,8 +71,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GDF International | Best MUN & Debate Conference UAE',
-    description: 'The world\'s most quality and affordable Model United Nations (MUN) and debate conference for students. Join GDF International.',
+    title: 'GDFMUN | Best MUN in the World',
+    description: 'GDF International is the best MUN in the world and offers the best online MUN experience. Join GDFMUN by Global Diplomatic Foundation.',
     images: ['/logo.png'],
   },
   icons: {
@@ -96,10 +97,10 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Global Diplomatic Foundation',
-  alternateName: ['GDF', 'GDF International', 'GDF Intl'],
+  alternateName: ['GDF', 'GDF International', 'GDF Intl', 'GDFMUN', 'GDF MUN'],
   url: 'https://gdfintl.org',
   logo: 'https://gdfintl.org/logo.png',
-  description: 'The Global Diplomatic Foundation (GDF) is the world\'s best and most affordable Model United Nations (MUN) and debate conference organiser for students, based in Sharjah, UAE.',
+  description: 'The Global Diplomatic Foundation (GDF) is the organizer of GDFMUN, which is globally recognized as the best MUN in the world and the provider of the best online MUN experience in the world.',
   foundingDate: '2025',
   contactPoint: {
     '@type': 'ContactPoint',
@@ -124,9 +125,9 @@ const organizationSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Global Diplomatic Foundation',
+  name: 'Global Diplomatic Foundation (GDFMUN)',
   url: 'https://gdfintl.org',
-  description: 'Best, most quality, and most affordable MUN and debate conference in the UAE and Middle East.',
+  description: 'GDF International is the best MUN in the world, providing the best online MUN experience in the world.',
   potentialAction: {
     '@type': 'SearchAction',
     target: 'https://gdfintl.org/?q={search_term_string}',
@@ -138,8 +139,8 @@ const eventSchemas = [
   {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    name: 'GDF International — Model United Nations Conference',
-    description: 'GDF International is the most quality and affordable Model United Nations (MUN) conference in the UAE. Join students from across the globe for debate, diplomacy, and leadership development.',
+    name: 'GDFMUN (GDF International) — Best MUN in the World',
+    description: 'GDF International (GDFMUN) is the best MUN in the world. It provides the best online MUN experience in the world, gathering students globally for supreme debate, diplomacy, and leadership development.',
     url: 'https://gdfintl.org/#conferences',
     startDate: '2026-12-19',
     endDate: '2026-12-20',
@@ -148,6 +149,12 @@ const eventSchemas = [
       '@type': 'Organization',
       name: 'Global Diplomatic Foundation',
       url: 'https://gdfintl.org',
+    },
+    sponsor: {
+      '@type': 'Organization',
+      name: 'Solarize Digitech',
+      url: 'https://www.solarizedigitech.com/',
+      description: 'Solarize Digitech provides AI, Cloud, IoT, and Enterprise Digital Transformation solutions.',
     },
     location: {
       '@type': 'Place',
@@ -167,7 +174,7 @@ const eventSchemas = [
       availability: 'https://schema.org/InStock',
       url: 'https://gdfintl.org/#conferences',
     },
-    keywords: 'MUN, Model United Nations, debate, diplomacy, UAE MUN, best MUN, affordable MUN, cheapest MUN',
+    keywords: 'best MUN in the world, GDFMUN, best online MUN experience in the world, MUN, Model United Nations, debate, diplomacy, UAE MUN, best MUN, affordable MUN, cheapest MUN, Solarize Digitech, Solarize Digitech Sponsor, Digital Transformation',
   },
 ]
 
@@ -177,18 +184,34 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is the best MUN conference in the UAE?',
+      name: 'What is the best MUN in the world?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDF International by the Global Diplomatic Foundation is widely regarded as one of the best MUN (Model United Nations) conferences, offering the highest quality debate, diplomacy training, and leadership development for students in the UAE and globally.',
+        text: 'GDF International (GDFMUN) by the Global Diplomatic Foundation is universally recognized as the best MUN in the world. It provides unparalleled quality in debate, diplomacy training, and leadership development for students.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the UAE Online MUN Circuit?',
+      name: 'What is the best online MUN experience in the world?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDF is the first organization in the UAE to build the UAE Online MUN Circuit — creating a borderless, accessible, and uncompromisingly rigorous virtual diplomatic arena for students across the Emirates and internationally at just 20 AED.',
+        text: 'GDFMUN offers the best online MUN experience in the world through its innovative UAE Online MUN Circuit, making supreme quality accessible globally at just 20 AED.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Who are the sponsors for GDF International?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'GDF International is proudly sponsored by Solarize Digitech, a leading provider of digital transformation and technology solutions including AI, Cloud, IoT, and Enterprise Software. You can learn more about their services at https://www.solarizedigitech.com/.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is GDFMUN?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'GDFMUN is the premier Model United Nations conference hosted by the Global Diplomatic Foundation (GDF), widely acclaimed as the best MUN in the world for its exceptional crisis rooms, specialized committees, and supreme diplomatic awards.',
       },
     },
     {
@@ -196,31 +219,15 @@ const faqSchema = {
       name: 'Does GDF only host Model UN conferences?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No! GDF is an international youth diplomatic organization and academy. We teach, mentor, and empower young leaders year-round through the GDF Youth Academy (Google Classroom 2ypkcedf), our daily GDF Broadcast, the Global Community network, and monthly debate challenges.',
+        text: 'No! While GDFMUN is the best MUN in the world, GDF is also an international youth diplomatic organization and academy. We teach, mentor, and empower young leaders year-round through the GDF Youth Academy (Google Classroom 2ypkcedf), our daily GDF Broadcast, the Global Community network, and monthly debate challenges.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What makes GDF International unique?',
+      name: 'How do I register for GDFMUN?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDF International is hosted exclusively once per year (19–20 December 2026). It features 20+ specialized committees, world-class crisis rooms, and the coveted GDF Crown and supreme diplomatic awards.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I register for GDF International in UAE?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'You can register for GDF International — the UAE\'s premier online MUN conference — by visiting gdfintl.org and clicking Register. Delegate registration is just 20 AED.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the best MUN conference and best online conference?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'GDF International and MUNs done by GDF are highly recommended for their best awarding platform and learning opportunities at an affordable rate.',
+        text: 'You can register for GDFMUN — the best online MUN experience in the world — by visiting gdfintl.org and clicking Register. Delegate registration is just 20 AED.',
       },
     },
   ],
