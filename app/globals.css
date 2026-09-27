@@ -1081,6 +1081,7 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   display: flex;
   flex-direction: row;
   gap: 16px;
+  margin-top: 20px;
   margin-bottom: 24px;
 }
 .role-card {
@@ -1114,21 +1115,10 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   line-height: 1.4;
 }
 .role-check {
-  display: none;
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: var(--navy);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
-  border: 1px solid var(--gold);
+  display: none !important;
 }
 .role-card.selected .role-check {
-  display: block;
-  color: var(--gold);
-  font-size: 1.2rem;
+  display: none !important;
 }
 
 
