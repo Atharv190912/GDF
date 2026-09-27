@@ -1069,7 +1069,67 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
 /* Fix missing button styles */
 .btn-outline { display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(212,175,55,.4); color:var(--gold); background:transparent; font-family:'Montserrat',sans-serif; font-weight:700; border-radius:4px; cursor:pointer; transition:all .3s ease; }
 .btn-outline:hover { background:var(--gold); color:var(--navy); }
-.role-card.selected .role-check { display: block; color: var(--gold); font-size: 2rem; }
+.step-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+.role-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.role-card {
+  flex: 1;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+.role-card:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(212,175,55,0.5);
+}
+.role-card.selected {
+  border-color: var(--gold);
+  background: rgba(212,175,55,0.1);
+}
+.role-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.role-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.role-check {
+  display: none;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--navy);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid var(--gold);
+}
+.role-card.selected .role-check {
+  display: block;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
 
 
 .pay-card { background: var(--navy); padding: 28px; color: #fff; margin-bottom: 20px; }
@@ -1091,8 +1151,9 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   gap: 5px;
   width: 40px;
   height: 40px;
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
+  outline: none !important;
   cursor: pointer;
   padding: 8px;
   z-index: 901;
