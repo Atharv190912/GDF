@@ -25,6 +25,63 @@ export default function HomePage() {
         else nav?.classList.remove('scrolled');
       };
       window.addEventListener('scroll', handleScroll);
+
+      // ── Cylinder drag-to-rotate ──
+      const carousel = document.querySelector('.cylinder-carousel') as HTMLElement | null;
+      if (carousel) {
+        let isDragging = false;
+        let startX = 0;
+        let currentAngle = 0;
+
+        const getAngleFromTransform = (el: HTMLElement): number => {
+          const style = window.getComputedStyle(el);
+          const mat = new DOMMatrix(style.transform);
+          return Math.round(Math.atan2(mat.m13, mat.m11) * (180 / Math.PI));
+        };
+
+        const onDown = (clientX: number) => {
+          isDragging = true;
+          startX = clientX;
+          currentAngle = getAngleFromTransform(carousel);
+          carousel.style.animationPlayState = 'paused';
+          carousel.style.cursor = 'grabbing';
+        };
+        const onMove = (clientX: number) => {
+          if (!isDragging) return;
+          const r = carousel.dataset.radius || '340';
+          const delta = (clientX - startX) * 0.4;
+          const newAngle = currentAngle - delta;
+          carousel.style.animation = 'none';
+          carousel.style.transform = `translateZ(-${r}px) rotateY(${newAngle}deg)`;
+        };
+        const onUp = () => {
+          isDragging = false;
+          carousel.style.cursor = 'grab';
+        };
+
+        const onMouseDown = (e: MouseEvent) => onDown(e.clientX);
+        const onMouseMove = (e: MouseEvent) => onMove(e.clientX);
+        const onTouchStart = (e: TouchEvent) => onDown(e.touches[0].clientX);
+        const onTouchMove = (e: TouchEvent) => { e.preventDefault(); onMove(e.touches[0].clientX); };
+
+        carousel.addEventListener('mousedown', onMouseDown);
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onUp);
+        carousel.addEventListener('touchstart', onTouchStart, { passive: false });
+        carousel.addEventListener('touchmove', onTouchMove, { passive: false });
+        carousel.addEventListener('touchend', onUp);
+
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+          carousel.removeEventListener('mousedown', onMouseDown);
+          window.removeEventListener('mousemove', onMouseMove);
+          window.removeEventListener('mouseup', onUp);
+          carousel.removeEventListener('touchstart', onTouchStart);
+          carousel.removeEventListener('touchmove', onTouchMove);
+          carousel.removeEventListener('touchend', onUp);
+        };
+      }
+
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, []);
@@ -69,7 +126,7 @@ export default function HomePage() {
   <a href="#hero" className="nav-brand">
     <img src="images/LGC.png" alt="GDF Logo"/>
     <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.1' }}>
-      <span style={{ fontSize: '1.2rem', letterSpacing: '0.02em', fontWeight: 800 }}>Global Diplomatic Foundation</span>
+      <span style={{ fontSize: '1.1rem', letterSpacing: '0.06em', fontWeight: 800, textTransform: 'uppercase' }}>Global Diplomatic Foundation</span>
       <span style={{ color: 'var(--gold)', fontSize: '0.65rem', letterSpacing: '0.2em', fontWeight: 700 }}>INTERNATIONAL</span>
     </div>
   </a>
@@ -422,7 +479,7 @@ export default function HomePage() {
     <div className="flagship-box reveal">
       <div className="flagship-grid">
         <div className="flagship-media">
-          <img src="images/GDFINTL.png" alt="GDF International" />
+          <img src="images/GDFINTL.jpg" alt="GDF International" />
           <div className="flagship-media-badge">EXCLUSIVELY ONCE A YEAR</div>
         </div>
         <div className="flagship-content">
@@ -545,7 +602,7 @@ export default function HomePage() {
           `}</style>
           
           <div className="cylinder-scene reveal">
-            <div className="cylinder-carousel">
+            <div className="cylinder-carousel" data-radius={radius}>
               {teamMembers.map((member, i) => (
                 <div 
                   key={i} 
@@ -914,7 +971,7 @@ export default function HomePage() {
     <div className="crumb"><a href="#" onClick={() => { (window as any).closeSvc(); return false; }}>Conference</a> &rsaquo; GDF International</div>
     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '48px', maxWidth: '900px' }}>
       <div style={{ flex: '0 0 42%' }}>
-        <img src="images/GDFINTL.png" style={{ width: '100%', display: 'block', borderRadius: '8px' }} />
+        <img src="images/GDFINTL.jpg" style={{ width: '100%', display: 'block', borderRadius: '8px' }} />
       </div>
       <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '16px' }}>
         <h1 className="svc-h1" style={{ marginTop: '0' }}>GDF International</h1>

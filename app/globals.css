@@ -1092,8 +1092,7 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   width: 40px;
   height: 40px;
   background: none;
-  border: 1px solid rgba(212,175,55,0.3);
-  border-radius: 6px;
+  border: none;
   cursor: pointer;
   padding: 8px;
   z-index: 901;
@@ -1106,6 +1105,11 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   border-radius: 2px;
   transition: all 0.3s ease;
 }
+.nav-hamburger:hover span { background: var(--gold-light); }
+
+/* Cylinder drag cursor */
+.cylinder-carousel { cursor: grab; }
+.cylinder-carousel:active { cursor: grabbing; }
 
 /* ── MOBILE DRAWER ── */
 .mobile-backdrop {
