@@ -1352,3 +1352,150 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
 }
 
 
+.comm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+ 
+/* Scrollbar styling */
+.comm-grid::-webkit-scrollbar { width: 4px; }
+.comm-grid::-webkit-scrollbar-track { background: var(--beige); }
+.comm-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+ 
+/* Section divider label inside grid */
+.comm-section-lbl {
+  grid-column: 1 / -1;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #bbb;
+  padding: 10px 0 4px;
+  border-top: 1px solid var(--border);
+  margin-top: 2px;
+}
+.comm-section-lbl:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+ 
+/* Individual committee card */
+.comm-card {
+  border: 1.5px solid var(--border);
+  background: #fff;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 62px;
+}
+.comm-card:hover:not(.comm-disabled) {
+  border-color: var(--navy);
+  background: var(--beige);
+  transform: translateY(-1px);
+}
+ 
+/* Selected state */
+.comm-card.comm-selected {
+  border-color: var(--navy);
+  background: var(--navy);
+}
+/* Checkmark on selected */
+.comm-card.comm-selected::after {
+  content: '\2713';
+  position: absolute;
+  top: 7px; right: 9px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+ 
+/* Disabled (max reached, not selected) */
+.comm-card.comm-disabled {
+  opacity: .38;
+  cursor: not-allowed;
+}
+ 
+/* Card text */
+.comm-card-abbr {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  transition: color .2s;
+  padding-right: 18px;        /* space for tick */
+}
+.comm-card.comm-selected .comm-card-abbr { color: var(--gold); }
+ 
+.comm-card-name {
+  font-size: .7rem;
+  font-weight: 300;
+  letter-spacing: .03em;
+  color: var(--muted);
+  line-height: 1.35;
+  transition: color .2s;
+}
+.comm-card.comm-selected .comm-card-name { color: rgba(255,255,255,.68); }
+ 
+/* Crisis pill */
+.comm-crisis-pill {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: .57rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  background: rgba(201,168,76,.12);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.3);
+  width: fit-content;
+  transition: background .2s, border-color .2s;
+}
+.comm-card.comm-selected .comm-crisis-pill {
+  background: rgba(201,168,76,.25);
+  border-color: rgba(201,168,76,.55);
+}
+ 
+/* ── CHAIR-SPECIFIC: ranked preference badges ── */
+.comm-card.pref1 { border-color: #1a3a6b; background: #1a3a6b; }
+.comm-card.pref2 { border-color: #2d5a9e; background: #2d5a9e; }
+.comm-card.pref3 { border-color: #4472c4; background: #4472c4; }
+.comm-card.pref1 .comm-card-abbr,
+.comm-card.pref2 .comm-card-abbr,
+.comm-card.pref3 .comm-card-abbr { color: var(--gold); }
+.comm-card.pref1 .comm-card-name,
+.comm-card.pref2 .comm-card-name,
+.comm-card.pref3 .comm-card-name { color: rgba(255,255,255,.68); }
+ 
+/* Rank badge (1st / 2nd / 3rd) inside chair cards */
+.pref-num-badge {
+  position: absolute;
+  top: 7px; right: 9px;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--gold);
+  padding: 1px 6px;
+}
+ 
+/* Selected count line */
+.comm-sel-count {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  margin-bottom: 14px;
+}
+.comm-sel-count.c0 { color: #c0392b; }
+.comm-sel-count.c-partial { color: var(--gold); }
+.comm-sel-count.c-full { color: #27ae60; }
+
