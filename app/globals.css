@@ -1384,7 +1384,7 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
 /* Individual committee card */
 .comm-card {
   border: 1.5px solid var(--border);
-  background: #fff;
+  background: var(--navy-card);
   padding: 12px 14px;
   cursor: pointer;
   transition: border-color .2s, background .2s, transform .15s;
@@ -1396,15 +1396,15 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   min-height: 62px;
 }
 .comm-card:hover:not(.comm-disabled) {
-  border-color: var(--navy);
-  background: var(--beige);
+  border-color: var(--gold);
+  background: var(--navy-light);
   transform: translateY(-1px);
 }
  
 /* Selected state */
 .comm-card.comm-selected {
-  border-color: var(--navy);
-  background: var(--navy);
+  border-color: var(--gold);
+  background: var(--navy-light);
 }
 /* Checkmark on selected */
 .comm-card.comm-selected::after {
@@ -1428,7 +1428,7 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--white);
   transition: color .2s;
   padding-right: 18px;        /* space for tick */
 }
@@ -1442,7 +1442,7 @@ footer{background:var(--navy2);padding:80px 0 40px;border-top:2px solid var(--go
   line-height: 1.35;
   transition: color .2s;
 }
-.comm-card.comm-selected .comm-card-name { color: rgba(255,255,255,.68); }
+.comm-card.comm-selected .comm-card-name { color: rgba(255,255,255,.9); }
  
 /* Crisis pill */
 .comm-crisis-pill {
