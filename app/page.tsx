@@ -1069,9 +1069,9 @@ export default function HomePage() {
       <div className="mf"><label className="ml">Email <span className="req">*</span></label><input type="email" className="mi" id="d_em" /></div>
       <div className="mf"><label className="ml">Address <span className="req">*</span></label>
         <input type="text" className="mi" id="d_addr" placeholder="Street address" style={{ marginBottom: '8px' }} />
-        <div className="m2" style={{ marginBottom: '8px' }}>
+        <div id="d_country_city_row" className="m2" style={{ marginBottom: '8px' }}>
           <select className="mi" id="d_country" onChange={(e) => { (window as any).onCountryChange(); }}><option value="">Country *</option></select>
-          <select className="mi" id="d_city"><option value="">City / Region *</option></select>
+          <div id="d_city_wrapper" style={{ display: 'contents' }}><select className="mi" id="d_city" style={{ width: '100%' }}><option value="">City / Region *</option></select></div>
         </div>
         <div id="emirate_row" style={{ display: 'none', marginBottom: '8px' }}>
           <select className="mi" id="d_emirate" style={{ width: '100%' }}>
@@ -1219,9 +1219,9 @@ export default function HomePage() {
       <div className="mf"><label className="ml">Email <span className="req">*</span></label><input type="email" className="mi" id="c_em" /></div>
       <div className="mf"><label className="ml">Address <span className="req">*</span></label>
         <input type="text" className="mi" id="c_addr" placeholder="Street address" style={{ marginBottom: '8px' }} />
-        <div className="m2" style={{ marginBottom: '8px' }}>
+        <div id="c_country_city_row" className="m2" style={{ marginBottom: '8px' }}>
           <select className="mi" id="c_country" onChange={(e) => { (window as any).onChairCountryChange(); }}><option value="">Country *</option></select>
-          <select className="mi" id="c_city"><option value="">City / Region *</option></select>
+          <div id="c_city_wrapper" style={{ display: 'contents' }}><select className="mi" id="c_city" style={{ width: '100%' }}><option value="">City / Region *</option></select></div>
         </div>
         <div id="c_emirate_row" style={{ display: 'none', marginBottom: '8px' }}>
           <select className="mi" id="c_emirate" style={{ width: '100%' }}>
