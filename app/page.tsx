@@ -1144,13 +1144,17 @@ export default function HomePage() {
           padding: '24px', textAlign: 'center', gap: '12px',
           border: '2px solid rgba(245,124,0,0.6)'
         }}>
-          <span style={{ fontSize: '2.5rem' }}>⚠️</span>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
           <p style={{ color: '#ffb74d', fontWeight: 700, fontSize: '1rem', margin: 0 }}>International Payment Temporarily Unavailable</p>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem', lineHeight: '1.6', margin: 0 }}>Due to a technical issue, the international payment portal is currently unavailable. Please use the <strong style={{ color: 'var(--gold)' }}>Indian (UPI) method</strong> or contact us directly at <a href="mailto:info@gdfintl.org" style={{ color: 'var(--gold)' }}>info@gdfintl.org</a> or <a href="tel:+971562971909" style={{ color: 'var(--gold)' }}>+971 56 297 1909</a> to complete your registration.</p>
         </div>
         <div className="pay-card">
           <div style={{ fontSize: '.7rem', letterSpacing: '.1em', textTransform: 'uppercase', opacity: '.6', marginBottom: '8px' }}>Registration Fee</div>
-          <div style={{ fontSize: '2.4rem', fontWeight: '700', marginBottom: '4px' }}>Affordable</div>
+          <div style={{ fontSize: '2.4rem', fontWeight: '700', marginBottom: '4px' }}>5.45$</div>
           <div style={{ fontSize: '.82rem', opacity: '.7', marginBottom: '20px' }}>GDF International — Delegate</div>
           <div style={{ borderTop: '1px solid rgba(255,255,255,.15)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div className="pay-row"><span>Bank</span><span>HSBC</span></div>
