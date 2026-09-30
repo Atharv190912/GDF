@@ -220,11 +220,11 @@ export default function HomePage() {
   <div className="hero-bg"></div>
   <div className="hero-overlay"></div>
   <div className="hero-body reveal">
-    <div className="circuit-card-badge" style={{ marginBottom: '16px' }}>PIONEERING THE UAE ONLINE MUN CIRCUIT</div>
+    <div className="circuit-card-badge" style={{ marginBottom: '16px' }}>PIONEERS OF THE ONLINE MUN CIRCUIT</div>
     <img src="/images/img_002_3ea5b8ad.png" alt="GDF Crest" className="hero-crest float-anim" />
     <h1 style={{ fontWeight: 900 }}>DEBATE. DIPLOMACY. DELIVER.</h1>
     <p className="montserrat reveal delay-1">
-      Building the next generation of global leaders through diplomacy, dialogue, and decisive action. The UAE's pioneer in youth international relations and online diplomatic circuits.
+      Building the next generation of global leaders through diplomacy, dialogue, and decisive action. The pioneer in youth international relations and online diplomatic circuits.
     </p> 
     <div className="reveal delay-2" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
       <a href="#initiatives" className="btn-sq-solid">Explore Initiatives</a>
@@ -241,14 +241,14 @@ export default function HomePage() {
       <span className="marquee-dot"></span><span className="marquee-text">UAE ONLINE MUN CIRCUIT</span>
       <span className="marquee-dot"></span><span className="marquee-text">YOUTH EMPOWERMENT</span>
       <span className="marquee-dot"></span><span className="marquee-text">THE GDF CROWN</span>
-      <span className="marquee-dot"></span><span className="marquee-text">SHARJAH, UAE</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GLOBAL ONLINE CIRCUIT</span>
     </div>
     <div className="marquee-item" aria-hidden="true">
       <span className="marquee-dot"></span><span className="marquee-text">DIPLOMACY &amp; LEADERSHIP</span>
       <span className="marquee-dot"></span><span className="marquee-text">UAE ONLINE MUN CIRCUIT</span>
       <span className="marquee-dot"></span><span className="marquee-text">YOUTH EMPOWERMENT</span>
       <span className="marquee-dot"></span><span className="marquee-text">THE GDF CROWN</span>
-      <span className="marquee-dot"></span><span className="marquee-text">SHARJAH, UAE</span>
+      <span className="marquee-dot"></span><span className="marquee-text">GLOBAL ONLINE CIRCUIT</span>
     </div>
   </div>
 </div>
@@ -259,8 +259,8 @@ export default function HomePage() {
     <div className="numbers-grid">
       <div className="number-item reveal">
         <div className="number-val">#1</div>
-        <div className="number-label">In The UAE</div>
-        <div className="number-sub">Pioneers of the UAE Online MUN Circuit</div>
+        <div className="number-label">In Pioneering MUN</div>
+        <div className="number-sub">Free MUN &amp; Diplomatic Tutoring</div>
       </div>
       <div className="number-item reveal delay-1">
         <div className="number-val">20+</div>
@@ -304,7 +304,7 @@ export default function HomePage() {
           The Global Diplomatic Foundation (GDF) is an international youth diplomatic organization dedicated to equipping students with the critical thinking, public speaking, and policy-making skills needed to address the challenges of tomorrow.
         </p>
         <p className="body-text montserrat" style={{ marginBottom: '32px' }}>
-          We are proud to be the <strong style={{ color: 'var(--gold)' }}>first in the UAE to build the UAE Online MUN Circuit</strong> — establishing the nation's only premium, highly accessible virtual diplomatic network that connects delegates across continents.
+          We are proud to be the <strong style={{ color: 'var(--gold)' }}>pioneers of the UAE Online MUN Circuit</strong> — establishing a premium, highly accessible virtual diplomatic network that connects delegates across continents.
         </p>
         <a href="#" className="btn-ghost" onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined' && (window as any).openWhyGdf) (window as any).openWhyGdf(); }}>Why Choose GDF?</a>
       </div>
@@ -317,10 +317,10 @@ export default function HomePage() {
     {/* The Circuit & The Crown */}
     <div className="circuit-grid" id="circuit">
       <div className="circuit-card reveal">
-        <div className="circuit-card-badge">THE UAE PIONEERS</div>
-        <h3>The UAE Online MUN Circuit</h3>
+        <div className="circuit-card-badge">THE PIONEERS</div>
+        <h3>The Online MUN Circuit</h3>
         <p>
-          Before GDF, access to high-caliber Model United Nations was restricted by geography and prohibitive fees. GDF transformed youth diplomacy by establishing the first structured UAE Online MUN Circuit — offering elite debate at just 20 AED without compromising on committee rigor or prestige.
+          Before GDF, access to high-caliber Model United Nations was restricted by geography and prohibitive fees. GDF transformed youth diplomacy by establishing the first structured Online MUN Circuit — offering elite debate at an affordable price without compromising on committee rigor or prestige.
         </p>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           <span className="flagship-chip">Direct Virtual Chambers</span>
@@ -483,7 +483,7 @@ export default function HomePage() {
           <div className="flagship-media-badge">EXCLUSIVELY ONCE A YEAR</div>
         </div>
         <div className="flagship-content">
-          <div className="flagship-eyebrow">THE PREMIER DIPLOMATIC SUMMIT · SHARJAH &amp; ONLINE CIRCUIT</div>
+          <div className="flagship-eyebrow">THE PREMIER DIPLOMATIC SUMMIT · GLOBAL ONLINE CIRCUIT</div>
           <h2 className="flagship-title">GDF INTERNATIONAL 2026</h2>
           <p className="flagship-desc">
             The flagship diplomatic conference hosted exclusively once per year. GDF International brings together delegates from across the region and around the world to debate pressing global crises, simulate real international diplomacy, and compete for the supreme <strong style={{ color: 'var(--gold)' }}>GDF Crown</strong>.
@@ -491,7 +491,7 @@ export default function HomePage() {
           <div className="flagship-chips">
             <span className="flagship-chip">The GDF Crown Trophy</span>
             <span className="flagship-chip">19–20 December 2026</span>
-            <span className="flagship-chip">20 AED Accessible Delegate Fee</span>
+            <span className="flagship-chip">Affordable Delegate Fee</span>
             <span className="flagship-chip">20+ Specialized Chambers</span>
             <span className="flagship-chip">UAE &amp; Global Online Circuit</span>
           </div>
@@ -730,7 +730,7 @@ export default function HomePage() {
         Join Youth Academy (Code: 2ypkcedf)
       </a>
       <button className="btn-ghost" style={{ padding: '16px 36px' }} onClick={() => { if (typeof window !== 'undefined' && (window as any).openReg) (window as any).openReg(); }}>
-        Register For Conference (20 AED)
+        Register For Conference (Affordable)
       </button>
     </div>
   </div>
@@ -755,10 +755,6 @@ export default function HomePage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span style={{ color: 'var(--gold)' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
             <a href="mailto:info@gdfintl.org" style={{ color: 'var(--muted)' }}>info@gdfintl.org</a>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span style={{ color: 'var(--gold)' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <span style={{ color: 'var(--muted)' }}>Sharjah, United Arab Emirates</span>
           </div>
         </div>
       </div>
@@ -797,7 +793,7 @@ export default function HomePage() {
       <div className="ft-brand">GDF</div>
       <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', lineHeight: '1.8' }}>
         The Global Diplomatic Foundation.<br/>
-        Pioneering the UAE Online MUN Circuit.<br/>
+        Pioneering the Online MUN Circuit.<br/>
         Building the next generation of global leaders.
       </p>
     </div>
@@ -852,18 +848,18 @@ export default function HomePage() {
     <div className="wrap">
       <div style={{ textAlign: 'center' }}>
         <p className="tag">The GDF Difference</p>
-        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>Pioneering Youth Diplomacy in the UAE &amp; Beyond</h2>
+        <h2 className="h2" style={{ textAlign: 'center', fontWeight: 800 }}>Pioneering Youth Diplomacy Globally</h2>
         <div className="divider" style={{ margin: '0 auto 40px' }}></div>
         <p style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 48px', color: 'var(--muted)', lineHeight: '1.8', fontSize: '1.05rem' }}>
-          The <strong style={{ color: 'var(--gold)' }}>Global Diplomatic Foundation (GDF)</strong> is more than a conference organizer — we are the pioneers of the <strong style={{ color: 'var(--gold)' }}>UAE Online MUN Circuit</strong>. We built the UAE's only premium, highly accessible virtual diplomatic platform that bridges borders, trains young leaders, and rewards true excellence.
+          The <strong style={{ color: 'var(--gold)' }}>Global Diplomatic Foundation (GDF)</strong> is more than a conference organizer — we are the pioneers of the <strong style={{ color: 'var(--gold)' }}>UAE Online MUN Circuit</strong>. We built a premium, highly accessible virtual diplomatic platform that bridges borders, trains young leaders, and rewards true excellence.
         </p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
         {[
-          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>, title: 'First UAE Online MUN Circuit', desc: 'GDF is the first organization in the UAE to build a dedicated, structured Online MUN Circuit, connecting ambitious students from across the region to high-level multilateral debate.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>, title: 'First Online MUN Circuit', desc: 'GDF is the first organization to build a dedicated, structured Online MUN Circuit, connecting ambitious students from across the region to high-level multilateral debate.' },
           { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="2 4 5 16 19 16 22 4 15 11 12 2 9 11 2 4"/></svg>, title: 'The GDF Crown & Supreme Awards', desc: 'Our recognition standards are unmatched. Outstanding delegates compete for the prestigious GDF Crown, bespoke trophies, executive certificates, and global dais appointments.' },
           { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>, title: 'Exclusive Annual Flagship', desc: 'GDF International is hosted exclusively once per year (19–20 Dec 2026), ensuring supreme organizational rigor, distinguished guest speakers, and elite crisis chambers.' },
-          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>, title: 'Premium & Accessible (20 AED)', desc: 'We believe elite diplomatic education should not be financially prohibitive. At just 20 AED, GDF International provides world-class quality at the most accessible price point.' },
+          { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>, title: 'Premium & Accessible', desc: 'We believe elite diplomatic education should not be financially prohibitive. GDF International provides world-class quality at the most accessible and affordable price point.' },
           { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>, title: 'We Don’t Just Host — We Teach', desc: 'Through the GDF Youth Academy (Google Classroom 2ypkcedf) and daily GDF Broadcast, we provide continuous foreign policy masterclasses, briefing notes, and study guides.' },
           { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>, title: 'Worldwide Diplomatic Community', desc: 'Over 12,600 young leaders are connected through our international channels, collaborating on global policy issues and participating in monthly debate challenges.' },
         ].map((item, i) => (
@@ -911,7 +907,7 @@ export default function HomePage() {
           },
           { 
             q: 'What is the UAE Online MUN Circuit?', 
-            a: 'GDF is the first organization in the UAE to build the UAE Online MUN Circuit. We created a structured, accessible virtual diplomatic arena that allows delegates across the Emirates and globally to debate complex geopolitical crises with expert chairs and international standards.' 
+            a: 'GDF is the first organization to build the Online MUN Circuit. We created a structured, accessible virtual diplomatic arena that allows delegates across the Emirates and globally to debate complex geopolitical crises with expert chairs and international standards.' 
           },
           { 
             q: 'What makes GDF International unique?', 
@@ -919,7 +915,7 @@ export default function HomePage() {
           },
           { 
             q: 'What is the registration fee for GDF International?', 
-            a: 'Registration for our flagship conference is just 20 AED, making GDF International the UAE\'s only premium and truly affordable online Model United Nations.' 
+            a: 'Registration for our flagship conference is at an affordable rate of just $5.45 (equivalent to 20 AED, ₹500 INR, €4.81), making GDF International the world\'s most premium and truly affordable online Model United Nations.' 
           },
           { 
             q: 'How do I join the GDF Youth Academy?', 
@@ -935,10 +931,11 @@ export default function HomePage() {
           },
           {
             q: 'What is the best MUN conference and best online conference?',
-            a: 'GDF International and MUNs done by GDF are highly recommended for their best awarding platform and learning opportunities at an affordable rate.'
+            a: 'GDF International and MUNs done by GDF are highly recommended for their best awarding platform and learning opportunities at an affordable rate.',
+            hidden: true
           },
-        ].map((item, i) => (
-          <details key={i} style={{ background: 'var(--navy-card)', borderRadius: '10px', border: '1px solid rgba(212,175,55,0.15)', overflow: 'hidden', color: 'var(--white)' }}>
+        ].map((item: any, i) => (
+          <details key={i} style={{ ...(item.hidden ? { display: 'none' } : {}), background: 'var(--navy-card)', borderRadius: '10px', border: '1px solid rgba(212,175,55,0.15)', overflow: 'hidden', color: 'var(--white)' }}>
             <summary style={{ padding: '20px 24px', fontWeight: '700', fontSize: '1rem', color: 'var(--white)', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>{item.q}</span>
               <span style={{ fontSize: '1.3rem', color: 'var(--gold)', flexShrink: 0, marginLeft: '16px' }}>+</span>
@@ -1119,10 +1116,8 @@ export default function HomePage() {
         <button 
           id="payTypeIntl"
           className="btn-outline" 
-          style={{ flex: '1', padding: '10px', fontSize: '.85rem', background: 'var(--navy)', color: 'white' }}
-          onClick={() => {
-            if (typeof window !== 'undefined' && (window as any).setPaymentType) (window as any).setPaymentType('international');
-          }}
+          disabled
+          style={{ flex: '1', padding: '10px', fontSize: '.85rem', background: 'rgba(26,39,64,0.5)', color: 'rgba(255,255,255,0.4)', cursor: 'not-allowed', borderColor: 'rgba(255,255,255,0.1)' }}
         >
           International
         </button>
@@ -1139,10 +1134,23 @@ export default function HomePage() {
       </div>
 
       {/* International Payment Details */}
-      <div id="payDetailsIntl">
+      <div id="payDetailsIntl" style={{ position: 'relative' }}>
+        {/* Hazard overlay covering international payment */}
+        <div style={{
+          position: 'absolute', inset: '0', zIndex: 10,
+          background: 'rgba(10,14,36,0.93)',
+          borderRadius: '12px',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+          padding: '24px', textAlign: 'center', gap: '12px',
+          border: '2px solid rgba(245,124,0,0.6)'
+        }}>
+          <span style={{ fontSize: '2.5rem' }}>⚠️</span>
+          <p style={{ color: '#ffb74d', fontWeight: 700, fontSize: '1rem', margin: 0 }}>International Payment Temporarily Unavailable</p>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem', lineHeight: '1.6', margin: 0 }}>Due to a technical issue, the international payment portal is currently unavailable. Please use the <strong style={{ color: 'var(--gold)' }}>Indian (UPI) method</strong> or contact us directly at <a href="mailto:info@gdfintl.org" style={{ color: 'var(--gold)' }}>info@gdfintl.org</a> or <a href="tel:+971562971909" style={{ color: 'var(--gold)' }}>+971 56 297 1909</a> to complete your registration.</p>
+        </div>
         <div className="pay-card">
           <div style={{ fontSize: '.7rem', letterSpacing: '.1em', textTransform: 'uppercase', opacity: '.6', marginBottom: '8px' }}>Registration Fee</div>
-          <div style={{ fontSize: '2.4rem', fontWeight: '700', marginBottom: '4px' }}>20 AED</div>
+          <div style={{ fontSize: '2.4rem', fontWeight: '700', marginBottom: '4px' }}>Affordable</div>
           <div style={{ fontSize: '.82rem', opacity: '.7', marginBottom: '20px' }}>GDF International — Delegate</div>
           <div style={{ borderTop: '1px solid rgba(255,255,255,.15)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div className="pay-row"><span>Bank</span><span>HSBC</span></div>

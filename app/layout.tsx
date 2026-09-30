@@ -158,11 +158,11 @@ const eventSchemas = [
     },
     location: {
       '@type': 'Place',
-      name: 'Sharjah, United Arab Emirates',
+      name: 'Global Online Circuit',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Sharjah',
-        addressCountry: 'AE',
+        addressLocality: 'Online',
+        addressCountry: 'Global',
       },
     },
     eventStatus: 'https://schema.org/EventScheduled',
@@ -195,7 +195,7 @@ const faqSchema = {
       name: 'What is the best online MUN experience in the world?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'GDFMUN offers the best online MUN experience in the world through its innovative UAE Online MUN Circuit, making supreme quality accessible globally at just 20 AED.',
+        text: 'GDFMUN offers the best online MUN experience in the world through its innovative UAE Online MUN Circuit, making supreme quality accessible globally at an affordable price.',
       },
     },
     {
@@ -227,7 +227,7 @@ const faqSchema = {
       name: 'How do I register for GDFMUN?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You can register for GDFMUN — the best online MUN experience in the world — by visiting gdfintl.org and clicking Register. Delegate registration is just 20 AED.',
+        text: 'You can register for GDFMUN — the best online MUN experience in the world — by visiting gdfintl.org and clicking Register. Delegate registration is just $5.45 (equivalent to 20 AED, ₹500 INR, €4.81).',
       },
     },
   ],
