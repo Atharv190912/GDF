@@ -1183,35 +1183,37 @@ export default function HomePage() {
         <div className="warn-box" style={{ background: 'rgba(0,0,0,0.05)', color: '#444', border: '1px solid #ddd' }}>Scan the QR code above or use the UPI ID. Fill in the transaction details below.</div>
       </div>
 
-      <div className="mf">
-        <div className="m2">
-          <div>
-            <label className="ml" id="lbl_chname">Cardholder / Account Name <span className="req">*</span></label>
-            <input type="text" className="mi" id="d_chname" placeholder="Full Name" />
-          </div>
-          <div id="col_card4">
-            <label className="ml">Last 4 digits of card <span className="req">*</span></label>
-            <input type="text" className="mi" id="d_card4" placeholder="XXXX" maxLength={4} />
-          </div>
-        </div>
-      </div>
-      <div className="mf">
-        <div className="m2">
-          <div id="col_bankname">
-            <label className="ml">Bank Name <span className="req">*</span></label>
-            <input type="text" className="mi" id="d_bankname" placeholder="e.g. Emirates NBD" />
-          </div>
-          <div>
-            <label className="ml" id="lbl_transref">Transaction Reference <span className="req">*</span></label>
-            <input type="text" className="mi" id="d_transref" placeholder="e.g. TXN123456" />
+      <div id="paymentInputFields">
+        <div className="mf">
+          <div className="m2">
+            <div>
+              <label className="ml" id="lbl_chname">Cardholder / Account Name <span className="req">*</span></label>
+              <input type="text" className="mi" id="d_chname" placeholder="Full Name" />
+            </div>
+            <div id="col_card4">
+              <label className="ml">Last 4 digits of card <span className="req">*</span></label>
+              <input type="text" className="mi" id="d_card4" placeholder="XXXX" maxLength={4} />
+            </div>
           </div>
         </div>
+        <div className="mf">
+          <div className="m2">
+            <div id="col_bankname">
+              <label className="ml">Bank Name <span className="req">*</span></label>
+              <input type="text" className="mi" id="d_bankname" placeholder="e.g. Emirates NBD" />
+            </div>
+            <div>
+              <label className="ml" id="lbl_transref">Transaction Reference <span className="req">*</span></label>
+              <input type="text" className="mi" id="d_transref" placeholder="e.g. TXN123456" />
+            </div>
+          </div>
+        </div>
+        <div className="mf"><label className="ml">Transfer Date <span className="req">*</span></label><input type="date" className="mi" id="d_transdate" /></div>
       </div>
-      <div className="mf"><label className="ml">Transfer Date <span className="req">*</span></label><input type="date" className="mi" id="d_transdate" /></div>
       
       <div style={{ display: 'flex', gap: '10px', marginTop: '8px' }}>
         <button className="btn-outline" style={{ flex: '1', padding: '13px' }} onClick={() => { (window as any).regBack(4); }}>← Back</button>
-        <button className="btn-solid" style={{ flex: '1', padding: '13px' }} onClick={() => { (window as any).submitDelegate(); }}>Submit Application →</button>
+        <button id="btnSubmitPayment" className="btn-solid" style={{ flex: '1', padding: '13px' }} onClick={() => { (window as any).submitDelegate(); }}>Submit Application →</button>
       </div>
     </div>
 

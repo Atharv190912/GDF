@@ -263,6 +263,9 @@ function setPaymentType(type) {
 
   if (!intlBtn || !indBtn || !intlDetails || !indDetails) return;
 
+  const inputFields = document.getElementById('paymentInputFields');
+  const submitBtn = document.getElementById('btnSubmitPayment');
+
   if (type === 'international') {
     intlBtn.style.background = '#1a2740'; // var(--navy)
     intlBtn.style.color = 'white';
@@ -274,6 +277,8 @@ function setPaymentType(type) {
     if (colBank) colBank.style.display = 'block';
     if (lblChName) lblChName.innerHTML = 'Cardholder / Account Name <span class="req">*</span>';
     if (lblTransRef) lblTransRef.innerHTML = 'Transaction Reference <span class="req">*</span>';
+    if (inputFields) inputFields.style.display = 'none';
+    if (submitBtn) submitBtn.style.display = 'none';
   } else {
     indBtn.style.background = '#1a2740'; // var(--navy)
     indBtn.style.color = 'white';
@@ -285,6 +290,8 @@ function setPaymentType(type) {
     if (colBank) colBank.style.display = 'none';
     if (lblChName) lblChName.innerHTML = 'Name <span class="req">*</span>';
     if (lblTransRef) lblTransRef.innerHTML = 'Transaction ID <span class="req">*</span>';
+    if (inputFields) inputFields.style.display = 'block';
+    if (submitBtn) submitBtn.style.display = 'block';
   }
 }
 
